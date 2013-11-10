@@ -26,4 +26,8 @@ PublicStand::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  config.generators do |generator|
+    generator.template_engine :haml
+  end
 end

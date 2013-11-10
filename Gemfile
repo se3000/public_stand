@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'haml'
 gem 'jquery-rails'
 gem 'pg'
 gem 'rails', '4.0.1'
