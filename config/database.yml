@@ -6,6 +6,6 @@ development:
 
 test:
   adapter: postgresql
-  database: public_stand_development
+  database: public_stand_test
   pool: 5
   timeout: 5000
