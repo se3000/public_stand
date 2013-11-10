@@ -11,9 +11,11 @@ gem 'uglifier'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-group :doc do
-  gem 'sdoc', require: false
-end
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
+
+group :development, :test do
+  gem 'capybara'
+  gem 'rspec-rails'
+  gem 'database_cleaner'
+end
