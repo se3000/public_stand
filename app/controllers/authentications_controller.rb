@@ -8,8 +8,7 @@ class AuthenticationsController < ApplicationController
     @authentication = Authentication.new(Params.clean params)
     if @authentication.save
       flash[:notice] = "Congratulations! You're awesome!"
-      redirect_to new_authentication_path
-    else
+      redirect_to edit_user_path(@authentication.user)
       render :new
     end
   end
