@@ -1,5 +1,6 @@
 PublicStand::Application.routes.draw do
   root 'root#welcome'
+  get 'sign_up' => 'authentications#new'
   resources :authentications, only: [:new, :create]
 
   # The priority is based upon order of creation: first created -> highest priority.
