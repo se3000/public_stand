@@ -10,6 +10,9 @@ gem 'turbolinks'
 gem 'uglifier'
 gem 'zurb-foundation'
 
+group :production do
+  gem 'rails_12factor'
+end
 
 group :development, :test do
   gem 'capybara'
