@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 1.2'
 
 group :development, :test do
   gem 'capybara'
+  gem 'pry'
   gem 'rspec-rails'
   gem 'database_cleaner'
 end
