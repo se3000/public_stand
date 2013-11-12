@@ -30,3 +30,7 @@ RSpec.configure do |config|
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
 end
+
+def log_in(authentication)
+  controller.session[:authentication_id] = authentication.id
+end
