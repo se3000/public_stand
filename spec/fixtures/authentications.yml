@@ -1,0 +1,8 @@
+---
+zoe:
+  id: 1
+  email: zbarnes@slugline.com
+  password_digest: $2a$04$BWdhKnngHEeXhkkMEQMz5upN9GHw.8giW47z6.r80nNsO4/zvEu1m
+  created_at: 2013-11-13 05:10:22.116741000 Z
+  updated_at: 2013-11-13 05:10:22.116741000 Z
+  user_id: 
