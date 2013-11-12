@@ -16,9 +16,11 @@ end
 
 group :development, :test do
   gem 'capybara'
+  gem 'database_cleaner'
   gem 'factory_girl'
+  gem 'faker'
   gem 'fixture_builder'
   gem 'pry'
   gem 'rspec-rails'
-  gem 'database_cleaner'
+  gem 'valid_attribute'
 end
