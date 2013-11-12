@@ -1,7 +1,10 @@
 PublicStand::Application.routes.draw do
   root 'root#welcome'
+  get 'login' => 'sessions#new'
   get 'sign_up' => 'authentications#new'
+
   resources :authentications, only: [:new, :create]
+  resources :sessions
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

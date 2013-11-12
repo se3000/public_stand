@@ -24,4 +24,26 @@ describe Authentication do
       auth.user.should be_present
     end
   end
+
+  describe ".authenticate" do
+    let(:email) { 'email@example.com' }
+    let(:password) { 'Password123' }
+    let!(:auth) do
+      Authentication.create(email: email,
+                            password: password,
+                            password_confirmation: password)
+    end
+
+    context "when the right email/password is given" do
+      it "returns the authentication" do
+        Authentication.authenticate(email, password).should == auth
+      end
+    end
+
+    context "when the wrong email/password is given" do
+      it "returns the nothing" do
+        Authentication.authenticate(email, 'offByALittle').should be_nil
+      end
+    end
+  end
 end
