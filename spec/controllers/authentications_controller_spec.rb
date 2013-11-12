@@ -11,13 +11,11 @@ describe AuthenticationsController do
   end
 
   describe "#new" do
+    let(:authentication_params) { {email: 'zbarnes@slugline', password: 'frankNbeans', password_confirmation: 'frankNbeans'} }
+
     it "creates a new instance of Authentication" do
       expect {
-        post :create, authentication: {
-          email: 'zbarnes@slugline',
-          password: 'frankNbeans',
-          password_confirmation: 'frankNbeans'
-        }
+        post :create, authentication: authentication_params
       }.to change { Authentication.count }.by(+1)
       response.should be_redirect
 
@@ -27,22 +25,16 @@ describe AuthenticationsController do
     end
 
     context "when the Authorization is not valid" do
+      let(:authentication_params) { {email: 'zbarnes@slugline', password: 'frankNbeans', password_confirmation: ''} }
+
       it "renders the new page" do
-        post :create, authentication: {
-          email: 'zbarnes@slugline',
-          password: 'frankNbeans',
-          password_confirmation: ''
-        }
+        post :create, authentication: authentication_params
         response.should render_template :new
       end
 
       it "does not save the new authentication" do
         expect {
-          post :create, authentication: {
-            email: 'zbarnes@slugline',
-            password: 'frankNbeans',
-            password_confirmation: ''
-          }
+          post :create, authentication: authentication_params
         }.not_to change { Authentication.count }
 
         auth = assigns(:authentication)

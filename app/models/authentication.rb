@@ -5,8 +5,6 @@ class Authentication < ActiveRecord::Base
 
   validates :user, presence: true, on: :update
 
-  after_create :create_user
-
   def self.authenticate(email, password)
     auth = find_by_email(email)
     auth if auth && auth.authenticate(password)

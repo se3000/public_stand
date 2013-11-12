@@ -11,20 +11,6 @@ describe Authentication do
     end
   end
 
-  describe "before_create" do
-    it "creates a new user" do
-      auth = Authentication.new(email: 'email@example.com', password: 'pass', password_confirmation: 'pass')
-
-      auth.user.should be_nil
-
-      expect {
-        auth.save
-      }.to change { User.count }.by(1)
-
-      auth.user.should be_present
-    end
-  end
-
   describe ".authenticate" do
     let(:email) { 'email@example.com' }
     let(:password) { 'Password123' }
