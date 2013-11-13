@@ -9,19 +9,26 @@ class ApplicationController < ActionController::Base
   private
 
   def ensure_logged_in
-    flash.alert = "You must be logged in to access this page"
-    redirect_to :root unless current_user
+    unless current_user.present?
+      flash.alert = "You must be logged in to access this page"
+      redirect_to :root
+    end
   end
 
   def ensure_authenticated
-    flash.alert = "You must be logged in to access this page"
-    redirect_to :root unless session[:authentication_id]
+    unless current_auth.present?
+      flash.alert = "You must be logged in to access this page"
+      redirect_to new_user_path
+    end
   end
 
   def current_user
-    return @current_user if @current_user
+    @current_user ||= current_auth.user if current_auth
+  end
+
+  def current_auth
     if session[:authentication_id]
-      @current_user = Authentication.find(session[:authentication_id]).user
+      Authentication.find(session[:authentication_id])
     end
   end
 end

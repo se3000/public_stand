@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(version: 20131111215402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+  enable_extension "dblink"
 
   create_table "authentications", force: true do |t|
     t.string   "email",           null: false

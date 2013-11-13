@@ -26,11 +26,13 @@ describe "Signing up" do
     fill_in "Password", with: 'frankyPanky'
     fill_in "Password Confirmation", with: 'frankyPanky'
     click_button 'Sign Up'
-
     page.should have_content "Congratulations! You're awesome!"
-    fill_in "First Name", with: 'Zoe'
-    fill_in "Last Name", with: 'Barnes'
-    fill_in "Phone Number", with: '(518)334-6656'
-    fill_in "Zip Code", with: '11211'
+
+    fill_in "First name", with: 'Zoe'
+    fill_in "Last name", with: 'Barnes'
+    fill_in "Phone number", with: '(518)334-6656'
+    fill_in "Zip code", with: '11211'
+    click_button 'Create User'
+    page.should have_content "Welcome Zoe!"
   end
 end
