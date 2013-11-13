@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SessionsController do
   describe "#create" do
-    let(:authentication) { authentications(:zoe) }
+    let(:authentication) { authentications(:zoes_auth) }
     let(:email) { authentication.email }
     let(:password) { authentication.password }
 

@@ -1,1 +1,9 @@
---- {}
+---
+zoe:
+  id: 1
+  first_name: Zoe
+  last_name: Barnes
+  phone_number: (518)334-6656
+  zip_code: '11211'
+  created_at: 2013-11-13 14:46:25.875525000 Z
+  updated_at: 2013-11-13 14:46:25.875525000 Z

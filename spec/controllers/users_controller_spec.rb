@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UsersController do
   describe "#new" do
-    before { log_in authentications(:zoe) }
+    before { log_in authentications(:zoes_auth) }
 
     it "builds a new instance of user" do
       get :new
@@ -16,7 +16,7 @@ describe UsersController do
   end
 
   describe "#create" do
-    let(:authentication) { authentications(:zoe) }
+    let(:authentication) { authentications(:zoes_auth) }
     before { log_in authentication }
 
     context "when the user is valid" do
