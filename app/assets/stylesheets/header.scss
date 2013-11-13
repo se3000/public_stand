@@ -1,0 +1,14 @@
+.stripes {
+  width: 100%;
+  margin-bottom: 26px;
+  .red {
+    border-bottom: solid 3px red;
+  }
+  .white {
+    border-bottom: solid 3px white;
+  }
+  .blue {
+    border-bottom: solid 3px blue;
+  }
+}
+

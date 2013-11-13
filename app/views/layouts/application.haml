@@ -30,7 +30,11 @@
     .columns.large-9
       %h2 Public Stand
     .columns.large-3
-      %h2= "Welcome" if current_user.present?
+      = link_to "Your Account", current_user if current_user.present?
+  .stripes
+    .red
+    .white
+    .blue
 
   = yield
 
