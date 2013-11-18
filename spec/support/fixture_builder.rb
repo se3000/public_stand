@@ -4,6 +4,6 @@ FixtureBuilder.configure do |fbuilder|
 
   fbuilder.factory do
     @zoes_auth = Authentication.create(email: 'zbarnes@slugline.com', password: 'frankyPanky', password_confirmation: 'frankyPanky')
-    @zoe = User.create(name: "Zoe Barnes", phone_number: "(518)334-6656", zip_code: 11211)
+    @zoe = User.create(name: "Zoe Barnes", phone_number: "(518)334-6656", zip_code: 11211, authentication: @zoes_auth)
   end
 end

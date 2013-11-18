@@ -34,4 +34,22 @@ describe SessionsController do
       end
     end
   end
+
+  describe "#destroy" do
+    before { session[:authentication_id] = authentications(:zoes_auth) }
+
+    it "removes any stored session_id" do
+      expect(session[:authentication_id]).to be_present
+
+      get :destroy
+
+      expect(session[:authentication_id]).to be_nil
+    end
+
+    it "redirects to root" do
+      get :destroy
+
+      expect(response).to redirect_to root_path
+    end
+  end
 end

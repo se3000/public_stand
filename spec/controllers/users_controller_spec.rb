@@ -16,7 +16,7 @@ describe UsersController do
   end
 
   describe "#create" do
-    let(:authentication) { authentications(:zoes_auth) }
+    let(:authentication) { FactoryGirl.create(:authentication) }
     let(:user_params) { {name: "First Last"} }
 
     before { log_in authentication }

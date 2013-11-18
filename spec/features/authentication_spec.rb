@@ -1,8 +1,8 @@
-require 'spec_helper'
+require 'feature_helper'
 
 describe "Logging in" do
   before do
-    Authentication.create(email: 'zbarnes@slugline.com',
+    Authentication.create(email: 'zbarnacles@slugline.com',
                           password: 'frankyPanky',
                           password_confirmation: 'frankyPanky')
   end
@@ -10,7 +10,7 @@ describe "Logging in" do
   it "allows the user to create a new login" do
     visit login_path
 
-    fill_in "Email", with: 'zbarnes@slugline.com'
+    fill_in "Email", with: 'zbarnacles@slugline.com'
     fill_in "Password", with: 'frankyPanky'
     click_button 'Log In'
 
@@ -22,7 +22,7 @@ describe "Signing up" do
   it "allows the user to create a new login" do
     visit new_authentication_path
 
-    fill_in "Email", with: 'zbarnes@slugline.com'
+    fill_in "Email", with: 'zbarnacles@slugline.com'
     fill_in "Password", with: 'frankyPanky'
     fill_in "Password Confirmation", with: 'frankyPanky'
     click_button 'Sign Up'
@@ -33,5 +33,20 @@ describe "Signing up" do
     fill_in "Zip code", with: '11211'
     click_button 'Create User'
     page.should have_content "Welcome Zoe Barnes!"
+  end
+end
+
+describe "Logging out" do
+  it "allows a user to no longer be signed in" do
+    visit root_path
+    page.should_not have_content "Log Out"
+
+    log_in_as authentications(:zoes_auth)
+    visit root_path
+    page.should have_content "Log Out"
+
+    click_link "Log Out"
+    page.should have_content "successfully logged out"
+    page.should_not have_content "Log Out"
   end
 end

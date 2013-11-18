@@ -1,10 +1,11 @@
 PublicStand::Application.routes.draw do
   root 'root#welcome'
   get 'login' => 'sessions#new'
+  get 'log_out' => 'sessions#destroy'
   get 'sign_up' => 'authentications#new'
 
   resources :authentications, only: [:new, :create]
-  resources :sessions, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
