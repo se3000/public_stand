@@ -17,11 +17,11 @@ describe UsersController do
 
   describe "#create" do
     let(:authentication) { authentications(:zoes_auth) }
+    let(:user_params) { {name: "First Last"} }
+
     before { log_in authentication }
 
     context "when the user is valid" do
-      let(:user_params) { {first_name: "First", last_name: 'Last'} }
-
       it "creates a user" do
         authentication.user.should be_nil
 
@@ -35,7 +35,7 @@ describe UsersController do
     end
 
     context "when the user is invalid" do
-      let(:user_params) { {first_name: "First", last_name: nil} }
+      before { User.any_instance.should_receive(:save).and_return(false) }
 
       it "does not create a user" do
         expect {
@@ -51,9 +51,9 @@ describe "UsersController::Params" do
   describe ".clean" do
     it "removes everything other than email, password, and password_confirmation" do
       params = ActionController::Parameters.new(user: {
-          name: 'Uneccesary',
-          first_name: 'first',
-          last_name: 'last',
+          name: 'First Last',
+          first_name: 'Unneeded',
+          last_name: 'Unnecessary',
           zip_code: '11111',
           phone_number: "(555)555-5555"
         },
@@ -63,8 +63,7 @@ describe "UsersController::Params" do
       cleaned = UsersController::Params.clean(params)
 
       expect(cleaned).to eq({
-        first_name: 'first',
-        last_name: 'last',
+        name: 'First Last',
         zip_code: '11111',
         phone_number: '(555)555-5555'}.with_indifferent_access)
     end

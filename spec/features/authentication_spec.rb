@@ -28,11 +28,11 @@ describe "Signing up" do
     click_button 'Sign Up'
     page.should have_content "Congratulations! You're awesome!"
 
-    fill_in "First name", with: 'Zoe'
-    fill_in "Last name", with: 'Barnes'
+    fill_in "Name", with: 'Zoe Barnes'
     fill_in "Phone number", with: '(518)334-6656'
     fill_in "Zip code", with: '11211'
     click_button 'Create User'
     page.should have_content "Welcome Zoe!"
+    page.should have_content "You don't aren't a part of any organizations. Create an organization"
   end
 end

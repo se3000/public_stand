@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = current_auth.build_user(Params.clean(params))
     if @user.save
-      flash.notice = "Welcome #{@user.first_name}!"
+      flash.notice = "Welcome #{@user.name}!"
       redirect_to @user
     else
       flash.now.alert = @user.errors.full_messages
@@ -19,8 +19,7 @@ class UsersController < ApplicationController
 
   class Params
     def self.clean(params)
-      params.require(:user)
-        .permit(:first_name, :last_name, :zip_code, :phone_number)
+      params.require(:user).permit(:name, :zip_code, :phone_number)
     end
   end
 end

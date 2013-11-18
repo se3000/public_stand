@@ -27,8 +27,7 @@ ActiveRecord::Schema.define(version: 20131111215402) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "name"
     t.string   "phone_number"
     t.string   "zip_code"
     t.datetime "created_at"
