@@ -32,7 +32,6 @@ describe "Signing up" do
     fill_in "Phone number", with: '(518)334-6656'
     fill_in "Zip code", with: '11211'
     click_button 'Create User'
-    page.should have_content "Welcome Zoe!"
-    page.should have_content "You don't aren't a part of any organizations. Create an organization"
+    page.should have_content "Welcome Zoe Barnes!"
   end
 end
