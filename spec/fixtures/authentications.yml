@@ -2,7 +2,7 @@
 zoes_auth:
   id: 1
   email: zbarnes@slugline.com
-  password_digest: $2a$04$sRVvEG6qHRUwAARlM6223OPfUoSPgpV7tKfusXVkFdH9hQixgoJzy
-  created_at: 2013-11-18 23:11:23.747322000 Z
-  updated_at: 2013-11-18 23:11:23.776740000 Z
+  password_digest: $2a$04$A7HRDWQX1jGSprF7v/EkjuH0DYFBnDM/nUuzVex4afAIX1J/umwHS
+  created_at: 2013-11-19 00:38:52.575165000 Z
+  updated_at: 2013-11-19 00:38:52.606325000 Z
   user_id: '1'
