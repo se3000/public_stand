@@ -1,5 +1,5 @@
 class AuthenticationsController < ApplicationController
-  skip_before_filter :ensure_logged_in, only: [:new, :create]
+  skip_before_filter :ensure_authenticated, only: [:new, :create]
 
   def new
     @authentication = Authentication.new
@@ -10,7 +10,7 @@ class AuthenticationsController < ApplicationController
     if @authentication.save
       flash[:notice] = "Congratulations! You're awesome!"
       session[:authentication_id] = @authentication.id
-      redirect_to new_user_path
+      redirect_to :root
     else
       render :new
     end

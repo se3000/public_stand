@@ -15,6 +15,7 @@ describe SessionsController do
 
       it "should redirect to the next page" do
         post :create, email: email, password: password
+
         response.should be_redirect
         expect(session[:authentication_id]).to eq authentication.id
       end
@@ -29,6 +30,7 @@ describe SessionsController do
 
       it "should redirect to the next page" do
         post :create, email: email, password: password
+
         response.should render_template 'sessions/new'
         expect(session[:authentication_id]).to be_nil
       end
@@ -49,7 +51,7 @@ describe SessionsController do
     it "redirects to root" do
       get :destroy
 
-      expect(response).to redirect_to root_path
+      expect(response).to redirect_to welcome_path
     end
   end
 end

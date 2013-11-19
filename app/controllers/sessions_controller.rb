@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :ensure_logged_in, only: [:new, :create]
+  skip_before_filter :ensure_authenticated
 
   def create
     auth = Authentication.authenticate(params[:email], params[:password])
@@ -16,6 +16,6 @@ class SessionsController < ApplicationController
   def destroy
     session[:authentication_id] = nil
     flash.notice = 'You have successfully logged out.'
-    redirect_to :root
+    redirect_to :welcome
   end
 end

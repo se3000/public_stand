@@ -1,24 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_filter :ensure_logged_in
+  before_filter :ensure_authenticated
 
-  helper_method :current_user
+  helper_method :current_user, :logged_in?
 
 
   private
 
-  def ensure_logged_in
-    unless current_user.present?
-      flash.alert = "You must be logged in to access this page"
-      redirect_to :root
-    end
-  end
-
   def ensure_authenticated
-    unless current_auth.present?
+    unless logged_in?
       flash.alert = "You must be logged in to access this page"
-      redirect_to new_user_path
+      redirect_to welcome_path
     end
   end
 
@@ -27,8 +20,10 @@ class ApplicationController < ActionController::Base
   end
 
   def current_auth
-    if session[:authentication_id]
-      Authentication.find(session[:authentication_id])
-    end
+    @current_auth ||= Authentication.find_by_id(session[:authentication_id])
+  end
+
+  def logged_in?
+    current_auth.present?
   end
 end

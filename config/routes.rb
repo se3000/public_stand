@@ -1,8 +1,9 @@
 PublicStand::Application.routes.draw do
-  root 'root#welcome'
+  root 'root#home'
   get 'login' => 'sessions#new'
   get 'log_out' => 'sessions#destroy'
   get 'sign_up' => 'authentications#new'
+  get 'welcome' => 'root#welcome'
 
   resources :authentications, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
