@@ -1,1 +1,7 @@
---- {}
+---
+clear_water_initiative:
+  id: 1
+  name: Clear Water Initaitive
+  description: Get wet.
+  created_at: 2013-11-19 16:39:47.365833000 Z
+  updated_at: 2013-11-19 16:39:47.365833000 Z

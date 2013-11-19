@@ -3,6 +3,12 @@ FixtureBuilder.configure do |fbuilder|
   fbuilder.files_to_check += Dir["spec/factories/*.rb", "spec/support/fixture_builder.rb"]
 
   fbuilder.factory do
+    @clear_water_initiative = Organization.create(name: 'Clear Water Initaitive', description: 'Get wet.')
+
+    @gillians_auth = Authentication.create(email: 'gcole@clearwater.org', password: 'claireDontCare', password_confirmation: 'claireDontCare')
+    @gillian = User.create(name: "Gillian Cole", authentication: @gillians_auth)
+    @gillians_membership = Membership.create(member: @gillian, organization: @clear_water_initiative)
+
     @zoes_auth = Authentication.create(email: 'zbarnes@slugline.com', password: 'frankyPanky', password_confirmation: 'frankyPanky')
     @zoe = User.create(name: "Zoe Barnes", phone_number: "(518)334-6656", zip_code: 11211, authentication: @zoes_auth)
   end

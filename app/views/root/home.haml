@@ -2,3 +2,6 @@
   %h2
     You aren't a part of any organizations.
     = link_to "Create an organization", new_organization_path
+- current_user.organizations.each do |organization|
+  %h2= link_to organization.name, organization
+  %p= organization.description

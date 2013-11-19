@@ -16,6 +16,10 @@ class OrganizationsController < ApplicationController
     end
   end
 
+  def show
+    @organization = Organization.find(params[:id])
+  end
+
   class Params
     def self.clean(params)
       params.require(:organization).permit(:name, :description)

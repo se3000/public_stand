@@ -47,6 +47,18 @@ describe OrganizationsController do
       end
     end
   end
+
+  describe "#show" do
+    before { log_in users(:zoe) }
+
+    let(:organization) { Organization.first }
+
+    it "creates a new instance of Authentication" do
+      get :show, id: organization.id
+
+      expect(assigns :organization).to eq organization
+    end
+  end
 end
 
 describe "OrganizationsController::Params" do
