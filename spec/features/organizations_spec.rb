@@ -18,6 +18,7 @@ end
 describe "Viewing an organization" do
   let(:gillian) { users(:gillian) }
   let(:clear_water_initiative) { gillian.organizations.first }
+  let(:clear_water_campaign) { clear_water_initiative.campaigns.first }
 
   it "associates the user that creates the organization with the organization" do
     log_in_as gillian
@@ -25,5 +26,8 @@ describe "Viewing an organization" do
     page.should have_content clear_water_initiative.name
     page.should have_content clear_water_initiative.description
     click_link clear_water_initiative.name
+
+    page.should have_content "Campaigns:"
+    page.should have_content clear_water_campaign.name
   end
 end

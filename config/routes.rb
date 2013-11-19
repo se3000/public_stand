@@ -7,7 +7,7 @@ PublicStand::Application.routes.draw do
 
   resources :authentications, only: [:new, :create]
   resources :organizations, only: [:new, :create, :show] do
-    resources :campaigns, only: [:new]
+    resources :campaigns, only: [:new, :create, :show]
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
