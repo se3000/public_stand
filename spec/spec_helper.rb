@@ -34,5 +34,7 @@ RSpec.configure do |config|
 end
 
 def log_in(authentication)
+  authentication = authentication.authentication if authentication.is_a? User
+
   controller.session[:authentication_id] = authentication.id
 end
