@@ -1,8 +1,15 @@
 ---
-zoe:
+gillian:
   id: 1
+  name: Gillian Cole
+  phone_number: 
+  zip_code: 
+  created_at: 2013-11-19 16:07:35.123665000 Z
+  updated_at: 2013-11-19 16:07:35.123665000 Z
+zoe:
+  id: 2
   name: Zoe Barnes
   phone_number: (518)334-6656
   zip_code: '11211'
-  created_at: 2013-11-19 00:38:52.603632000 Z
-  updated_at: 2013-11-19 00:38:52.603632000 Z
+  created_at: 2013-11-19 16:07:35.207174000 Z
+  updated_at: 2013-11-19 16:07:35.207174000 Z
