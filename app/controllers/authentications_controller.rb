@@ -8,6 +8,7 @@ class AuthenticationsController < ApplicationController
   def create
     @authentication = Authentication.new(Params.clean params)
     if @authentication.save
+      @authentication.create_user
       flash[:notice] = "Congratulations! You're awesome!"
       session[:authentication_id] = @authentication.id
       redirect_to :root

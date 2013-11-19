@@ -10,15 +10,25 @@ describe AuthenticationsController do
     end
   end
 
-  describe "#new" do
+  describe "#create" do
     let(:authentication_params) { {email: 'zbarnes@slugline', password: 'frankNbeans', password_confirmation: 'frankNbeans'} }
 
     it "creates a new instance of Authentication" do
       expect {
         post :create, authentication: authentication_params
       }.to change { Authentication.count }.by(+1)
-      response.should be_redirect
+    end
 
+    it "creates a new instance of User" do
+      expect {
+        post :create, authentication: authentication_params
+      }.to change { User.count }.by(+1)
+    end
+
+    it 'redirects to a new instance of Authentication' do
+      post :create, authentication: authentication_params
+
+      response.should be_redirect
       auth = assigns(:authentication)
       auth.should be_a Authentication
       auth.should be_persisted
