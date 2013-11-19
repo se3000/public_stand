@@ -4,6 +4,7 @@ FixtureBuilder.configure do |fbuilder|
 
   fbuilder.factory do
     @clear_water_initiative = Organization.create(name: 'Clear Water Initaitive', description: 'Get wet.')
+    @clear_water_campaign = Campaign.create(name: 'Clear Water for Africa', organization: @clear_water_initiative)
 
     @gillians_auth = Authentication.create(email: 'gcole@clearwater.org', password: 'claireDontCare', password_confirmation: 'claireDontCare')
     @gillian = User.create(name: "Gillian Cole", authentication: @gillians_auth)
