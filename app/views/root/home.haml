@@ -1,0 +1,4 @@
+- if current_user.organizations.empty?
+  %h2
+    You aren't a part of any organizations.
+    = link_to "Create an organization", new_organization_path

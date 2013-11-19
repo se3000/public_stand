@@ -6,7 +6,7 @@ PublicStand::Application.routes.draw do
   get 'welcome' => 'root#welcome'
 
   resources :authentications, only: [:new, :create]
-  resources :organizations, only: [:new, :create]
+  resources :organizations, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
 
