@@ -22,19 +22,21 @@
   = csrf_meta_tag
 
 %body
+  .light-background
+    .row
+      .columns.large-9
+        %h2 Public Stand
+      .columns.large-3
+        = link_to "Log Out", log_out_path if logged_in?
+  .stripes
+    .alert-stripe
+    .blank-stripe
+    .primary-stripe
+
   %header
     .flash
       - flash.each do |key, message|
         = message
-  .row
-    .columns.large-9
-      %h2 Public Stand
-    .columns.large-3
-      = link_to "Log Out", log_out_path if logged_in?
-  .stripes
-    .red
-    .white
-    .blue
 
   = yield
 

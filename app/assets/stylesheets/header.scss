@@ -1,14 +1,20 @@
+@import "variables";
+
 .stripes {
   width: 100%;
   margin-bottom: 26px;
-  .red {
-    border-bottom: solid 3px red;
+  .alert-stripe {
+    border-bottom: solid 3px $alert-color;
   }
-  .white {
+  .blank-stripe {
     border-bottom: solid 3px white;
   }
-  .blue {
-    border-bottom: solid 3px blue;
+  .primary-stripe {
+    border-bottom: solid 3px $primary-color;
   }
+}
+
+.light-background {
+  background-color: $light-background;
 }
 

@@ -1008,7 +1008,5 @@
 // $topbar-breakpoint: emCalc(940px); // Change to 9999px for always mobile layout
 // $topbar-media-query: "only screen and (min-width "#{$topbar-breakpoint}")";
 
-$primary-color: blue;
-$header-font-family: "Times New Roman", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-$body-font-family: "Times New Roman", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+@import 'variables';
 @import 'foundation';
