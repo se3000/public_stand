@@ -22,12 +22,20 @@
   = csrf_meta_tag
 
 %body
-  .light-background
-    .row
-      .columns.large-9
-        %h2 Public Stand
-      .columns.large-3
-        = link_to "Log Out", log_out_path if logged_in?
+  .light-background.contain-to-grid
+    %nav.top-bar
+      %ul.title-area
+        %li
+          %h3= link_to 'Public Stand', root_path
+      %section.top-bar-section
+        %ul.right
+          %li.divider
+          %li
+            - if logged_in?
+              = link_to "Log Out", log_out_path
+            - else
+              = link_to "Log In", login_path
+          %li.divider
   .stripes
     .alert-stripe
     .blank-stripe

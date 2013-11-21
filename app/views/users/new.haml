@@ -1,11 +1,12 @@
-= form_for @user do |form|
-  = form.label :name
-  = form.text_field :name
+.row
+  = form_for @user do |form|
+    = form.label :name
+    = form.text_field :name
 
-  = form.label :phone_number
-  = form.text_field :phone_number
+    = form.label :phone_number
+    = form.text_field :phone_number
 
-  = form.label :zip_code
-  = form.text_field :zip_code
+    = form.label :zip_code
+    = form.text_field :zip_code
 
-  = form.submit
+    = form.submit

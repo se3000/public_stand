@@ -1,12 +1,12 @@
-= form_for @authentication do |f|
-  %ul
-    %li
-      = f.label :email, "Email Address"
-      = f.text_field :email
-    %li
-      = f.label :password
-      = f.password_field :password
-    %li
-      = f.label :password_confirmation, "Password Confirmation"
-      = f.password_field :password_confirmation
+.row
+  = form_for @authentication do |f|
+    = f.label :email, "Email Address"
+    = f.text_field :email
+
+    = f.label :password
+    = f.password_field :password
+
+    = f.label :password_confirmation, "Password Confirmation"
+    = f.password_field :password_confirmation
+
     = f.submit "Sign Up"

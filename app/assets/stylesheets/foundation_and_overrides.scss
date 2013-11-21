@@ -1,5 +1,6 @@
 // Required global settings and mixins for Foundation
 @import "foundation/foundation-global";
+@import 'variables';
 
 // Settings file to override Foundation variables
 
@@ -1008,5 +1009,9 @@
 // $topbar-breakpoint: emCalc(940px); // Change to 9999px for always mobile layout
 // $topbar-media-query: "only screen and (min-width "#{$topbar-breakpoint}")";
 
-@import 'variables';
+$topbar-bg: $light-background;
+$topbar-menu-link-color: $primary-color;
+$topbar-link-color: $primary-color;
+$topbar-dropdown-bg: $light-background;
+
 @import 'foundation';

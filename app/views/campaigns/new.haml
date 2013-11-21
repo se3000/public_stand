@@ -1,8 +1,9 @@
-= form_for [@organization, @campaign] do |form|
-  = form.label :name
-  = form.text_field :name
+.row
+  = form_for [@organization, @campaign] do |form|
+    = form.label :name
+    = form.text_field :name
 
-  = form.label :description
-  = form.text_field :description
+    = form.label :description
+    = form.text_field :description
 
-  = form.submit
+    = form.submit
