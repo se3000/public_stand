@@ -6,4 +6,11 @@ class RootController < ApplicationController
 
   def home
   end
+
+
+  private
+
+  def ensure_authenticated
+    redirect_to welcome_path unless logged_in?
+  end
 end
