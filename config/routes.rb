@@ -4,6 +4,10 @@ PublicStand::Application.routes.draw do
   get 'log_out' => 'sessions#destroy'
   get 'sign_up' => 'authentications#new'
   get 'welcome' => 'root#welcome'
+  get 'splash' => 'root#splash'
+  get 'organizer' => 'root#organizer'
+  get 'lobbyist' => 'root#lobbyist'
+  get 'effective' => 'root#effective'
 
   resources :authentications, only: [:new, :create]
   resources :organizations, only: [:new, :create, :show] do
