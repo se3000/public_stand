@@ -1,7 +1,7 @@
 require 'feature_helper'
 
 describe "Signing up" do
-  xit "allows the user to create a new login" do
+  xit "allows the user to fill out personal information" do
     visit new_authentication_path
 
     fill_in "Email", with: 'zbarnacles@slugline.com'
