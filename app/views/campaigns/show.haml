@@ -3,6 +3,8 @@
   %h2 by #{link_to @organization.name, @organization}
   %h3= @campaign.description
 
-  - @campaign.targets.each do |target|
-    = link_to "Call #{target.name}", '#'
-    = link_to target.phone_number, '#'
+  - @campaign.campaign_targets.each do |campaign_target|
+    - target = campaign_target.target
+    %p= link_to "Call #{target.name}", '#'
+    %p= link_to target.phone_number, '#'
+    %p= campaign_target.script

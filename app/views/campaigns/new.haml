@@ -6,11 +6,15 @@
     = form.label :description
     = form.text_field :description
 
-    = form.fields_for :targets, @target do |target_form|
-      = target_form.label :name, "Target Name"
-      = target_form.text_field :name
+    = form.fields_for :campaign_targets, @campaign_target do |campaign_target_form|
+      = campaign_target_form.fields_for :target, @target do |target_form|
+        = target_form.label :name, "Target Name"
+        = target_form.text_field :name
 
-      = target_form.label :phone_number, "Target Phone Number"
-      = target_form.text_field :phone_number
+        = target_form.label :phone_number, "Phone Number"
+        = target_form.text_field :phone_number
+
+      = campaign_target_form.label :script, "Script"
+      = campaign_target_form.text_field :script
 
     = form.submit

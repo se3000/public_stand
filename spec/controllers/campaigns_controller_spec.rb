@@ -15,6 +15,8 @@ describe CampaignsController do
       expect(campaign).to be_a Campaign
       expect(campaign).to be_new_record
       expect(assigns(:organization)).to eq organization
+      expect(assigns(:campaign_target)).to be_a CampaignTarget
+      expect(assigns(:target)).to be_a Target
     end
   end
 
@@ -40,6 +42,8 @@ describe CampaignsController do
         }.not_to change { Campaign.count }
 
         expect(response).to render_template :new
+        expect(assigns(:campaign_target)).to be_a CampaignTarget
+        expect(assigns(:target)).to be_a Target
       end
     end
   end
@@ -68,7 +72,10 @@ describe "CampaignsController::Params" do
           name: 'No Campaign, No Gain.',
           description: 'Hilarity ensues as Sebastian(Dwayne Johnson) tries to convince politicians, and the world, that Independents are people too.',
           release_date: 'November 11th, 2014',
-          targets_attributes: [{name: 'a', phone_number: '1', other: 'b'}]
+          campaign_targets_attributes: [{
+            script: 'hey',
+            target_attributes: [{name: 'a', phone_number: '1', other: 'b'}]
+          }]
         }
       )
     end
@@ -76,7 +83,9 @@ describe "CampaignsController::Params" do
     it { should eq({
         name: 'No Campaign, No Gain.',
         description: 'Hilarity ensues as Sebastian(Dwayne Johnson) tries to convince politicians, and the world, that Independents are people too.',
-        targets_attributes: [{name: 'a', phone_number: '1'}]
+        campaign_targets_attributes: [{
+          script: 'hey', target_attributes: [{name: 'a', phone_number: '1'}]
+        }]
       }.with_indifferent_access)
     }
   end
