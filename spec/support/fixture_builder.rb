@@ -12,5 +12,8 @@ FixtureBuilder.configure do |fbuilder|
 
     @zoes_auth = Authentication.create(email: 'zbarnes@slugline.com', password: 'frankyPanky', password_confirmation: 'frankyPanky')
     @zoe = User.create(name: "Zoe Barnes", phone_number: "(518)334-6656", zip_code: 11211, authentication: @zoes_auth)
+
+    @claire = Target.create(name: "Claire Underwood", phone_number: "(518)334-6656")
+    @claire_campaign_target = CampaignTarget.create(campaign: @clear_water_campaign, target: @claire, script: 'Call that B...')
   end
 end

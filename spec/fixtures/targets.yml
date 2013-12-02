@@ -1,1 +1,7 @@
---- {}
+---
+claire:
+  id: 1
+  name: Claire Underwood
+  phone_number: (518)334-6656
+  created_at: 2013-12-02 21:57:16.473570000 Z
+  updated_at: 2013-12-02 21:57:16.473570000 Z
