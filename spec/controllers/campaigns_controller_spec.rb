@@ -59,15 +59,25 @@ end
 
 describe "CampaignsController::Params" do
   describe ".clean" do
-    params = ActionController::Parameters.new(
-      organization_id: 1,
-      campaign: {
-        name: 'No campaign. No gain.',
-        description: 'Hilarity ensues as Sebastian(Dwayne Johnson) tries to convince politicians, and the world, that Independents are people too.',
-        release_date: 'November 11th, 2014'
-      }
-    )
+    subject { CampaignsController::Params.clean(params) }
 
-    CampaignsController::Params.clean(params).keys.should =~ ['name', 'description']
+    let(:params) do
+      ActionController::Parameters.new(
+        organization_id: 1,
+        campaign: {
+          name: 'No Campaign, No Gain.',
+          description: 'Hilarity ensues as Sebastian(Dwayne Johnson) tries to convince politicians, and the world, that Independents are people too.',
+          release_date: 'November 11th, 2014',
+          targets_attributes: [{name: 'a', phone_number: '1', other: 'b'}]
+        }
+      )
+    end
+
+    it { should eq({
+        name: 'No Campaign, No Gain.',
+        description: 'Hilarity ensues as Sebastian(Dwayne Johnson) tries to convince politicians, and the world, that Independents are people too.',
+        targets_attributes: [{name: 'a', phone_number: '1'}]
+      }.with_indifferent_access)
+    }
   end
 end

@@ -2,3 +2,7 @@
   %h1= @campaign.name
   %h2 by #{link_to @organization.name, @organization}
   %h3= @campaign.description
+
+  - @campaign.targets.each do |target|
+    = link_to "Call #{target.name}", '#'
+    = link_to target.phone_number, '#'

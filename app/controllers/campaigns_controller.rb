@@ -3,6 +3,7 @@ class CampaignsController < ApplicationController
   def new
     @organization = Organization.find(params[:organization_id])
     @campaign = Campaign.new
+    @target = @campaign.targets.build
   end
 
   def create
@@ -25,7 +26,7 @@ class CampaignsController < ApplicationController
 
   class Params
     def self.clean(params)
-      params.require(:campaign).permit(:name, :description)
+      params.require(:campaign).permit(:name, :description, targets_attributes: [:name, :phone_number])
     end
   end
 end

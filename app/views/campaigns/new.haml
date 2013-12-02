@@ -6,4 +6,11 @@
     = form.label :description
     = form.text_field :description
 
+    = form.fields_for :targets, @target do |target_form|
+      = target_form.label :name, "Target Name"
+      = target_form.text_field :name
+
+      = target_form.label :phone_number, "Target Phone Number"
+      = target_form.text_field :phone_number
+
     = form.submit
