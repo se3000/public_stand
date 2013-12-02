@@ -17,6 +17,7 @@ end
 group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'debugger'
   gem 'factory_girl'
   gem 'faker'
   gem 'fixture_builder'
