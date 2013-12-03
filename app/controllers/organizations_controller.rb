@@ -5,9 +5,10 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-    @organization = current_user.organizations.build(Params.clean(params))
+    @organization = Organization.new(Params.clean(params))
 
     if @organization.save
+      current_user.memberships.create(organization: @organization)
       flash.notice = "Successfully created new organization!"
       redirect_to @organization
     else

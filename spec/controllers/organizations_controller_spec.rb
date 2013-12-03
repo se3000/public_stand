@@ -13,7 +13,8 @@ describe OrganizationsController do
   end
 
   describe "#create" do
-    before { log_in users(:zoe) }
+    let(:current_user) { users(:zoe) }
+    before { log_in current_user }
 
     context "when the organization is valid" do
       let(:organization_params) { {name: "Clear Water Initiative"} }
@@ -22,6 +23,7 @@ describe OrganizationsController do
         expect {
           post :create, organization: organization_params
         }.to change { Organization.count }.by(+1)
+        expect(current_user.organizations).to include Organization.last
       end
 
       it "redirects to the new organization page" do
@@ -34,13 +36,13 @@ describe OrganizationsController do
     context "when the organization is not valid" do
       let(:organization_params) { {name: nil} }
 
-      it "creates a new instance of Organization" do
+      it "does not create a new instance of Organization" do
         expect {
           post :create, organization: organization_params
         }.not_to change { Organization.count }
       end
 
-      it "creates a new instance of Organization" do
+      it "renders the new template" do
         post :create, organization: organization_params
 
         expect(response).to render_template :new
