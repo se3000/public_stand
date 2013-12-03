@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'bcrypt-ruby'
+gem 'elementaljs-rails'
 gem 'haml'
 gem 'jquery-rails'
 gem 'pg'
