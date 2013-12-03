@@ -16,6 +16,7 @@ group :production do
 end
 
 group :development, :test do
+  gem 'better_receive'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'debugger'
