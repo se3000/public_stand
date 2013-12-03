@@ -1,3 +1,19 @@
+GIT
+  remote: git://github.com/pivotal/jasmine-gem.git
+  revision: 72dd6c06a776aa520bb41af03d29321b08842a46
+  specs:
+    jasmine (2.0.0.rc5)
+      jasmine-core (~> 2.0.0.rc5)
+      phantomjs
+      rack (>= 1.2.1)
+      rake
+
+GIT
+  remote: git://github.com/pivotal/jasmine.git
+  revision: 16ffd3b3fb0501964690ddd0f4409878a96e52e3
+  specs:
+    jasmine-core (2.0.0.rc5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -81,6 +97,7 @@ GEM
     multi_json (1.8.2)
     nokogiri (1.5.10)
     pg (0.17.0)
+    phantomjs (1.9.2.0)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -166,6 +183,8 @@ DEPENDENCIES
   faker
   fixture_builder
   haml
+  jasmine!
+  jasmine-core!
   jquery-rails
   pg
   pry

@@ -23,6 +23,8 @@ group :development, :test do
   gem 'faker'
   gem 'fixture_builder'
   gem 'pry'
+  gem 'jasmine-core', github: 'pivotal/jasmine'
+  gem 'jasmine', github: 'pivotal/jasmine-gem'
   gem 'rspec-rails'
   gem 'valid_attribute'
 end
