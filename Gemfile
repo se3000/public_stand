@@ -8,6 +8,7 @@ gem 'pg'
 gem 'rails', '4.0.1'
 gem 'sass-rails'
 gem 'turbolinks'
+gem 'twilio-ruby'
 gem 'uglifier'
 gem 'zurb-foundation'
 

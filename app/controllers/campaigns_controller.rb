@@ -23,6 +23,7 @@ class CampaignsController < ApplicationController
   def show
     @organization = Organization.find(params[:organization_id])
     @campaign = @organization.campaigns.find(params[:id])
+    @twilio_token = TwilioClient.outgoing_token
   end
 
 
