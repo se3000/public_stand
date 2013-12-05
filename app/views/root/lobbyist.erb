@@ -2,31 +2,32 @@
 <html>
 <head>
   <title>Public Stand</title>
-  <%# <link rel="stylesheet" href="assets/foundation_and_overrides.css"> %>
-  <link rel="stylesheet" href="assets/normalize.css">
-  <link rel="stylesheet" href="assets/effective.css">
+  <%= stylesheet_link_tag "mockups" %>
 </head>
 
 <body class='splash'>
-  <div class="container">
-    <div class="headline">
-      <div class="line-one">
-        How do you change lobbying?
+  <div class="container-border">
+    Public Stand
+    <div class="container">
+      <div class="headline">
+        <div class="line-one">
+          How do you change lobbying?
+        </div>
+        <div class="line-two">
+          Make everyone a lobbyist
+        </div>
       </div>
-      <div class="line-two">
-        Make everyone a lobbyist
+
+      <form class="email-form">
+        <input type="text" name="email" placeholder="Your email address" class="big-input-field">
+      </form>
+
+      <div class="ending-tag">
+        <p>Click a button to be heard.</p>
+        <button>Button</button>
       </div>
+
     </div>
-
-    <form class="email-form">
-      <input type="text" name="email" placeholder="Your email address" class="big-input-field">
-    </form>
-
-    <div class="ending-tag">
-      <p>Click a button to be heard.</p>
-      <button>Button</button>
-    </div>
-
   </div>
 
 </body>
