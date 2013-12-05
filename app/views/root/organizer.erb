@@ -2,32 +2,33 @@
 <html>
 <head>
   <title>Public Stand</title>
-  <%# <link rel="stylesheet" href="assets/foundation_and_overrides.css"> %>
-  <link rel="stylesheet" href="assets/normalize.css">
-  <link rel="stylesheet" href="assets/effective.css">
+  <%= stylesheet_link_tag "mockups" %>
 </head>
 
 <body class='splash'>
-  <div class="container">
-    <div class="headline">
-      <div class="line-one">
-        You have opinions. You have friends.
+  <div class="container-border">
+    Public Stand
+    <div class="container">
+      <div class="headline">
+        <div class="line-one">
+          You have opinions. You have friends.
+        </div>
+        <div class="line-two">
+          You are an organizer.
+        </div>
       </div>
-      <div class="line-two">
-        You are an organizer.
+
+      <form class="email-form">
+        <input type="text" name="email" placeholder="Your email address" class="big-input-field">
+      </form>
+
+      <div class="ending-tag">
+        <p>The causes you care about need you to stand.</p>
+        <p>They need your friends to stand.<p/>
+        <p><span>Public Stand</span> is here to help.<p/>
       </div>
+
     </div>
-
-    <form class="email-form">
-      <input type="text" name="email" placeholder="Your email address" class="big-input-field">
-    </form>
-
-    <div class="ending-tag">
-      <p>The causes you care about need you to stand.</p>
-      <p>They need your friends to stand.<p/>
-      <p><span>Public Stand</span> is here to help.<p/>
-    </div>
-
   </div>
 
 </body>
