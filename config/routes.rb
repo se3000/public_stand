@@ -9,6 +9,7 @@ PublicStand::Application.routes.draw do
   get 'organizer' => 'root#organizer'
   get 'lobbyist' => 'root#lobbyist'
   get 'effective' => 'root#effective'
+  get 'stand' => 'root#stand'
 
   resources :authentications, only: [:new, :create]
   resources :campaigns, only: [] do
