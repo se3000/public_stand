@@ -23,6 +23,10 @@ class RootController < ApplicationController
     render 'splash', layout: false
   end
 
+  def stand
+    render 'stand', layout: false
+  end
+
 
   private
 
