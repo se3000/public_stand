@@ -6,13 +6,10 @@ PublicStand::Application.routes.draw do
   get 'welcome' => 'root#welcome'
 
   get 'splash' => 'root#splash'
-  get 'organizer' => 'root#organizer'
+  get 'organizers' => 'root#organizer', as: 'organizers'
   get 'lobbyist' => 'root#lobbyist'
   get 'effective' => 'root#effective'
   get 'stand' => 'root#stand'
-  get 'dear-internet' => 'root#dear_internet', as: 'dear_internet'
-  get 'full-width' => 'root#full_width'
-  get 'splash2' => 'root#splash2'
 
   resources :authentications, only: [:new, :create]
   resources :campaigns, only: [] do

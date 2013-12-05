@@ -12,7 +12,7 @@ class RootController < ApplicationController
   end
 
   def organizer
-    render 'organizer', layout: false
+    render 'organizer_splash', layout: false
   end
 
   def lobbyist
@@ -40,10 +40,9 @@ class RootController < ApplicationController
     render 'splash2', layout: false
   end
 
-
   private
 
   def ensure_authenticated
-    redirect_to dear_internet_path unless logged_in?
+    redirect_to organizers_path unless logged_in?
   end
 end
