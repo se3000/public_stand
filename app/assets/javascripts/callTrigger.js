@@ -1,8 +1,8 @@
 callTrigger = function callTrigger(element) {
   $element = $(element);
+  Twilio.Device.setup($element.data('token'));
 
   $element.click(function () {
-    console.log('here');
-    Twilio.Device.setup();
+    Twilio.Device.connect()
   });
 }

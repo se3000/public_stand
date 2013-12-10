@@ -1,15 +1,28 @@
 describe("callTrigger", function () {
-  var $fixture;
+  describe("after page load", function () {
+    var $fixture;
 
-  beforeEach(function () {
-    $fixture = setFixture('<a href="#" data-behavior="callTrigger">link</a>');
+    beforeEach(function () {
+      $fixture = setFixture('<a href="#" data-behavior="callTrigger">link</a>');
+    });
+
+    it('connects through Twilio on click', function () {
+      spyOn(Twilio.Device, 'connect')
+
+      $fixture.find('a').click();
+
+      expect(Twilio.Device.connect).toHaveBeenCalled();
+    });
   });
 
-  it('runs', function () {
-    spyOn(Twilio.Device, 'setup')
+  describe("on page load", function () {
+    it('sets up the Twilio device', function () {
+      spyOn(Twilio.Device, 'setup');
 
-    $fixture.find('a').click();
+      var link = '<a href="#" data-behavior="callTrigger" data-token="twilioToken">link</a>'
+      Elemental.load($('#jasmine_content').html(link));
 
-    expect(Twilio.Device.setup).toHaveBeenCalled();
+      expect(Twilio.Device.setup).toHaveBeenCalledWith("twilioToken");
+    });
   });
 });

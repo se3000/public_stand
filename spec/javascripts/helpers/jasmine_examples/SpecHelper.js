@@ -19,15 +19,16 @@ afterEach(function () {
 });
 
 setFixture = function setFixture(newFixture) {
-  jasmineContent = $('#jasmine_content')
-  jasmineContent.empty();
-  jasmineContent.html(newFixture);
-  Elemental.load(jasmineContent);
-  return jasmineContent;
+  $jasmineContent = $('#jasmine_content')
+  $jasmineContent.empty();
+  $jasmineContent.html(newFixture);
+  Elemental.load($jasmineContent);
+  return $jasmineContent;
 }
 
 Twilio = {
   Device: {
+    connect: function() {},
     setup: function() {}
   }
 }
