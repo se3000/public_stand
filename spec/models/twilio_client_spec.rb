@@ -24,4 +24,10 @@ describe TwilioClient do
       TwilioClient.outgoing_token.should == 'OutgoingToken98345'
     end
   end
+
+  describe "outgoing_twiml" do
+    it "returns a TwiML response to call Steve's phone" do
+      expect(TwilioClient.outgoing_twiml).to be_a Twilio::TwiML::Response
+    end
+  end
 end
