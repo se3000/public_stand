@@ -8,5 +8,6 @@
     - target = campaign_target.target
     %p= link_to "Call #{target.name}", '#',
       data: {behavior: 'callTrigger displayNextAction', token: @twilio_token, "next-selector" => '#hang-up-link'}
-    %p= link_to "Hang Up", '#', hidden: 'hidden', id: 'hang-up-link', remote: true
+    %p= link_to "Hang Up", '#', hidden: 'hidden', id: 'hang-up-link',
+      data: {behavior: 'hangUpTrigger displayNextAction'}
     %p= campaign_target.script
