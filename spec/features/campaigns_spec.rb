@@ -21,7 +21,6 @@ describe "Creating a campaign" do
     page.should have_content "Down with the Underwoods"
     page.should have_content "Claire Underwood is evil. Who knows about Frank? And Carrie Underwood just sucks."
     page.should have_content "Call Claire Underwood"
-    page.should have_content "(123)456-7890"
     page.should have_content "Hey Claire,\n\nShut it!\n\n\nLove,\n{{your name here}}"
   end
 end

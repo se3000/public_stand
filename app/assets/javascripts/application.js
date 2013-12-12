@@ -11,13 +11,12 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require foundation
 //= require turbolinks
 //= require elemental
 //= require_tree .
 
-$(document).foundation();
+jQuery(document).foundation();
 
 $(document).ready(function() {
   Elemental.load(document);

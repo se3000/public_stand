@@ -6,7 +6,7 @@
 
   - @campaign.campaign_targets.each do |campaign_target|
     - target = campaign_target.target
-    %p= link_to "Call #{target.name}", '#'
-    %p= link_to target.phone_number, '#',
-      data: {behavior: 'callTrigger', token: @twilio_token}
+    %p= link_to "Call #{target.name}", '#',
+      data: {behavior: 'callTrigger displayNextAction', token: @twilio_token, "next-selector" => '#hang-up-link'}
+    %p= link_to "Hang Up", '#', hidden: 'hidden', id: 'hang-up-link', remote: true
     %p= campaign_target.script
