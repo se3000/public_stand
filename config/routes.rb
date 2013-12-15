@@ -11,6 +11,9 @@ PublicStand::Application.routes.draw do
   get 'effective' => 'root#effective'
 
   resources :authentications, only: [:new, :create]
+  resources :campaigns, only: [] do
+    resources :phone_calls, only: [:create]
+  end
   resources :organizations, only: [:new, :create, :show] do
     resources :campaigns, only: [:new, :create, :show]
   end
