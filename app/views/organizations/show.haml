@@ -4,5 +4,5 @@
 
   %h3 Campaigns:
   - @organization.campaigns.each do |campaign|
-    %h2= campaign.name
+    %h2= link_to campaign.name, [@organization, campaign]
   %h2= link_to "Create a new campaign", new_organization_campaign_path(@organization)
