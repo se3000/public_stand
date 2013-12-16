@@ -6,6 +6,9 @@ class PhoneCallsController < ApplicationController
 
     phone_call = campaign.phone_calls.create(target: target)
 
-    render json: { twilio_token: phone_call.twilio_token }
+    render json: {
+      phone_call_id: phone_call.id,
+      twilio_token: phone_call.twilio_token
+    }
   end
 end

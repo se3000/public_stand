@@ -21,16 +21,17 @@ describe PhoneCallsController do
       }.to change { target.phone_calls.count }.by(+1)
     end
 
-    it "returns JSON with the hash included" do
-      phone_call = double(PhoneCall, twilio_token: 'twilioToken')
+    it "returns JSON with the token and id included" do
+      phone_call = double(PhoneCall, id: 10, twilio_token: 'twilioToken')
       Campaign.any_instance
         .stub_chain(:phone_calls, :create)
         .and_return(phone_call)
 
       post :create, campaign_id: campaign.id
 
-      twilio_token = JSON.parse(response.body)['twilio_token']
-      expect(twilio_token).to eq phone_call.twilio_token
+      parsed = JSON.parse(response.body)
+      expect(parsed['phone_call_id']).to eq 10
+      expect(parsed['twilio_token']).to eq phone_call.twilio_token
     end
   end
 end
