@@ -8,6 +8,8 @@ class PhoneCall < ActiveRecord::Base
 
   before_validation :generate_twilio_token, on: :create
 
+  delegate :phone_number, to: :target, prefix: true
+
 
   private
 

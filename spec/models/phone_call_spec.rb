@@ -15,6 +15,17 @@ describe PhoneCall do
     end
   end
 
+  describe "#target_phone_number" do
+    it "delegates to #number to target" do
+      target = Target.new
+      phone_call = PhoneCall.new(target: target)
+
+      expect(target).to receive(:phone_number).and_return("target's phone number")
+
+      expect(phone_call.target_phone_number).to eq "target's phone number"
+    end
+  end
+
   describe "on create" do
     let(:phone_call) { FactoryGirl.build(:phone_call) }
     it "generates a  twilio token before" do
