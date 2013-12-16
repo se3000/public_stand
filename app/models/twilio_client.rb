@@ -3,11 +3,10 @@ class TwilioClient
   AUTH_TOKEN = ENV['TWILIO_AUTH_TOKEN']
   OUTGOING_APP_ID = ENV['TWILIO_APP_ID']
 
-  def self.outgoing_twiml
+  def self.outbound_twiml_for phone_call
     Twilio::TwiML::Response.new do |response|
-      response.Say 'Please hold while we connect your call.', :voice => 'woman'
       response.Dial callerId: '+15186213184' do |dial|
-        dial.Number '+15183346656'
+        dial.Number phone_call.target_phone_number
       end
     end
   end

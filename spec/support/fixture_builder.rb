@@ -15,5 +15,7 @@ FixtureBuilder.configure do |fbuilder|
 
     @claire = Target.create(name: "Claire Underwood", phone_number: "(518)334-6656")
     @claire_campaign_target = CampaignTarget.create(campaign: @clear_water_campaign, target: @claire, script: 'Call that B...')
+
+    @unstarted_call = PhoneCall.create(target: @claire, campaign: @clear_water_campaign)
   end
 end

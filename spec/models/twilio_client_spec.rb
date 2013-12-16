@@ -1,6 +1,23 @@
 require 'spec_helper'
 
 describe TwilioClient do
+  describe ".outbound_twiml_for" do
+    let(:response) { double(:twilio_response) }
+    let(:dialer) { double(:twilio_dialer) }
+    let(:phone_call) { double(:twiml_response, target_phone_number: 'any#') }
+
+    it "returns a TwiML response calling the phone call's number" do
+      expect(Twilio::TwiML::Response).to receive(:new)
+        .and_yield response
+      expect(response).to receive(:Dial)
+        .and_yield(dialer)
+      expect(dialer).to receive(:Number)
+        .with(phone_call.target_phone_number)
+
+      TwilioClient.outbound_twiml_for phone_call
+    end
+  end
+
   describe ".outgoing_token" do
     it "asks an instance for an outgoing token" do
       TwilioClient.any_instance
@@ -22,12 +39,6 @@ describe TwilioClient do
       Twilio::Util::Capability.stub(new: capability)
 
       TwilioClient.outgoing_token.should == 'OutgoingToken98345'
-    end
-  end
-
-  describe "outgoing_twiml" do
-    it "returns a TwiML response to call Steve's phone" do
-      expect(TwilioClient.outgoing_twiml).to be_a Twilio::TwiML::Response
     end
   end
 end
