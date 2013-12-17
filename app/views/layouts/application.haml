@@ -42,9 +42,9 @@
     .primary-stripe
 
   %header
-    .flash
-      - flash.each do |key, message|
-        = message
+    - flash.each do |key, message|
+      %div{ class: "flash #{key}" }
+        .row= message
 
   = yield
 
