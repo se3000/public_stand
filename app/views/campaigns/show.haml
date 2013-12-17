@@ -1,13 +1,21 @@
 = javascript_include_tag "//static.twilio.com/libs/twiliojs/1.1/twilio.min.js"
 .row
-  %h1= @campaign.name
-  %h2 by #{link_to @organization.name, @organization}
-  %h3= @campaign.description
-
+  .columns.large-12
+    .left
+      %h1= @campaign.name
+    .right
+      %h2 by #{link_to @organization.name, @organization}
+    = render 'layouts/stripes', clear: true
+  .columns.large-11.large-offset-1
+    %h4= @campaign.description
   - @campaign.campaign_targets.each do |campaign_target|
     - target = campaign_target.target
-    %p= link_to "Call #{target.name}", '#',
-      data: {behavior: 'callTrigger displayNextAction', campaign_id: @campaign.id, "next-selector" => '#hang-up-link'}
-    %p= link_to "Hang Up", '#', hidden: 'hidden', id: 'hang-up-link',
-      data: {behavior: 'hangUpTrigger displayNextAction'}
-    %p= campaign_target.script
+    .columns.large-centered.large-4
+      = link_to "Call #{target.name}", '#', class: 'button large round',
+        data: {behavior: 'callTrigger displayNextAction', campaign_id: @campaign.id, "next-selector" => '#hang-up-link'}
+      = link_to "Hang Up", '#', style: "display: none;", id: 'hang-up-link', class: 'button large round',
+        data: {behavior: 'hangUpTrigger displayNextAction'}
+    .columns.large-11.large-offset-1
+      %h6 Don't know what to say? Try this:
+    .columns.large-10.large-offset-2
+      %p= campaign_target.script

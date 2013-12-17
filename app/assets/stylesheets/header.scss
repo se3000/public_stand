@@ -2,6 +2,9 @@
 
 .stripes {
   width: 100%;
+  &.clear{
+    clear: both;
+  }
 
   .alert-stripe {
     border-bottom: solid 3px $alert-color;
