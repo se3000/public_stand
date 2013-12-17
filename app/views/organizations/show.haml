@@ -1,8 +1,12 @@
 .row
-  %h1= @organization.name
-  %h3= @organization.description
-
-  %h3 Campaigns:
-  - @organization.campaigns.each do |campaign|
-    %h2= link_to campaign.name, [@organization, campaign]
-  %h2= link_to "Create a new campaign", new_organization_campaign_path(@organization)
+  .columns.large-12
+    %h1= @organization.name
+    = render 'layouts/stripes'
+    %h6= @organization.description
+    %h3 Campaigns:
+  .columns.large-11.large-offset-1
+    - @organization.campaigns.each do |campaign|
+      %h3= link_to(campaign.name, [@organization, campaign])
+      .columns.large-10.large-offset-1= campaign.description
+    %br
+    %h3= link_to "Create a new campaign", new_organization_campaign_path(@organization)
