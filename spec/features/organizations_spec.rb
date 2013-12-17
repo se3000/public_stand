@@ -25,7 +25,6 @@ describe "Viewing an organization" do
 
     page.should have_content clear_water_initiative.name
     page.should have_content clear_water_initiative.description
-    click_link clear_water_initiative.name
 
     page.should have_content "Campaigns:"
     page.should have_content clear_water_campaign.name

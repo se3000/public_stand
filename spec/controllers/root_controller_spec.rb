@@ -5,7 +5,7 @@ describe RootController do
     context "when the user is logged in" do
       before { log_in authentications(:zoes_auth) }
 
-      it 'redirects them to the welcome page' do
+      it 'renders the page' do
         get :home
 
         expect(response).to be_success
