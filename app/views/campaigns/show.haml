@@ -1,10 +1,8 @@
 = javascript_include_tag "//static.twilio.com/libs/twiliojs/1.1/twilio.min.js"
 .row
   .columns.large-12
-    .left
-      %h1= @campaign.name
-    .right
-      %h2 by #{link_to @organization.name, @organization}
+    .left.title= @campaign.name
+    .right.title-secondary by #{link_to @organization.name, @organization}
     = render 'layouts/stripes', clear: true
   .columns.large-11.large-offset-1
     .campaign-description= @campaign.description
