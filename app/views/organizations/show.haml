@@ -1,12 +1,13 @@
 .row
   .columns.large-12
-    %h1= @organization.name
-    = render 'layouts/stripes'
+    .left.title= @organization.name
+    = render 'layouts/stripes', clear: true
     %h6= @organization.description
     %h3 Campaigns:
   .columns.large-11.large-offset-1
-    - @organization.campaigns.each do |campaign|
-      %h3= link_to(campaign.name, [@organization, campaign])
-      .columns.large-10.large-offset-1= campaign.description
-    %br
-    %h3= link_to "Create a new campaign", new_organization_campaign_path(@organization)
+    .index.columns
+      - @organization.campaigns.each do |campaign|
+        %h3= link_to(campaign.name, [@organization, campaign])
+        .large-10.large-offset-1= campaign.description
+    .columns
+      %h3= link_to "Create a new campaign", new_organization_campaign_path(@organization)

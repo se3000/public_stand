@@ -34,3 +34,25 @@ header {
 .light-background {
   background-color: $light-background;
 }
+
+.index {
+  margin-bottom: 2em;
+}
+
+.center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.75em;
+  line-height: 1.25em;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.title-secondary {
+  font-size: 1.5625em;
+  margin-top: 1em;
+  font-weight: bold;
+}
