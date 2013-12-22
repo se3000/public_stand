@@ -12,3 +12,8 @@
  *= require_tree .
  *= require foundation_and_overrides
  */
+
+#__connectionFlash__ {
+height: 138px !important;
+max-width: none;
+}
