@@ -1,7 +1,15 @@
-- if current_user.organizations.empty?
-  %h2
-    You aren't a part of any organizations.
-    = link_to "Create an organization", new_organization_path
-- current_user.organizations.each do |organization|
-  %h2= link_to organization.name, organization
-  %p= organization.description
+.row
+  .column.large-12
+    .left.title Organizations
+    = render 'layouts/stripes', clear: true
+
+  .column.large-11.large-offset-1
+    .index.column
+      - if current_user.organizations.empty?
+        %h3
+          You aren't a part of any organizations.
+      - current_user.organizations.each do |organization|
+        %h3= link_to organization.name, organization
+        .large-10.large-offset-1= organization.description
+    .column
+      %h3= link_to "Create a new organization", new_organization_path

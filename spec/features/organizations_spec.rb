@@ -5,8 +5,8 @@ describe "Creating an organization" do
 
   it "associates the user that creates the organization with the organization" do
     log_in_as user
-    page.should have_content "You aren't a part of any organizations. Create an organization"
-    click_link "Create an organization"
+    page.should have_content "You aren't a part of any organizations. Create a new organization"
+    click_link "Create a new organization"
 
     fill_in "Name", with: "Politicians Unsettled by Scandal(the tv show)"
     fill_in "Description", with: "We've had enough."

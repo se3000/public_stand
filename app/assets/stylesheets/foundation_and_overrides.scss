@@ -1019,3 +1019,9 @@ $topbar-dropdown-bg: $light-background;
 h1 {
   margin: 0;
 }
+
+.row {
+  .column, .columns {
+    padding: 0px;
+  }
+}
