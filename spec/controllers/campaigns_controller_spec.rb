@@ -58,6 +58,14 @@ describe CampaignsController do
       expect(assigns(:organization)).to eq organization
       expect(assigns(:campaign)).to eq campaign
     end
+
+    it "builds a new call token" do
+      TwilioClient.better_receive(:outgoing_token).and_return('twilioToken123')
+
+      get :show, organization_id: organization.id, id: campaign.id
+
+      expect(assigns(:twilio_token)).to eq('twilioToken123')
+    end
   end
 end
 

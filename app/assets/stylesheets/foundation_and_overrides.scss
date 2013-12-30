@@ -1015,3 +1015,13 @@ $topbar-link-color: $primary-color;
 $topbar-dropdown-bg: $light-background;
 
 @import 'foundation';
+
+h1 {
+  margin: 0;
+}
+
+.row {
+  .column, .columns {
+    padding: 0px;
+  }
+}

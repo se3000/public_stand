@@ -1,12 +1,13 @@
 .row
-  = form_for @authentication do |f|
-    = f.label :email, "Email Address"
-    = f.text_field :email
+  .large-centered.columns.large-4
+    = form_for @authentication do |f|
+      = f.label :email, "Email Address"
+      = f.text_field :email
 
-    = f.label :password
-    = f.password_field :password
+      = f.label :password
+      = f.password_field :password
 
-    = f.label :password_confirmation, "Password Confirmation"
-    = f.password_field :password_confirmation
+      = f.label :password_confirmation, "Password Confirmation"
+      = f.password_field :password_confirmation
 
-    = f.submit "Sign Up"
+      = f.submit "Sign Up"
