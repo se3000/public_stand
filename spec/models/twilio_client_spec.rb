@@ -41,4 +41,26 @@ describe TwilioClient do
       TwilioClient.outgoing_token.should == 'OutgoingToken98345'
     end
   end
+
+  describe "#begin_call" do
+    let(:phone_call) { FactoryGirl.build(:phone_call, from_number: 'a') }
+    let(:calls) { double(:calls) }
+    let(:client) { TwilioClient.new }
+
+    it "creates a new call through the twilio rest client" do
+      Twilio::REST::Client.any_instance
+        .stub_chain(:account, :calls)
+        .and_return(calls)
+
+      expect(calls).to receive(:create)
+        .with({
+          from: TwilioClient::APP_PHONE_NUMBER,
+          to: phone_call.from_number,
+          url: "#{ENV['ROOT_URL']}/twilio_outbound_voice_callback?phone_call_id=#{phone_call.id}",
+          method: "GET"
+        })
+
+      client.begin_call phone_call
+    end
+  end
 end
