@@ -36,4 +36,15 @@ describe PhoneCall do
       expect(phone_call.twilio_token).not_to be_nil
     end
   end
+
+  describe "#start" do
+    let(:phone_call) { FactoryGirl.build(:phone_call) }
+
+    it "tells the Twilio API to start the call" do
+      TwilioClient.better_receive(:begin_call)
+        .with(phone_call)
+
+      phone_call.start
+    end
+  end
 end

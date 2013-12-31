@@ -10,6 +10,10 @@ class PhoneCall < ActiveRecord::Base
 
   delegate :phone_number, to: :target, prefix: true
 
+  def start
+    TwilioClient.begin_call(self)
+  end
+
 
   private
 
