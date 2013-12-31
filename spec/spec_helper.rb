@@ -21,6 +21,9 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.start
+  end
+
+  config.before(:each, twilio: true) do
     Twilio::REST::Client.stub_chain(:new, :account, :calls, :create)
   end
 
