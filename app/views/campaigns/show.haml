@@ -13,6 +13,11 @@
         data: {behavior: 'callTrigger displayNextAction', campaign_id: @campaign.id, "next-selector" => '#hang-up-link'}
       = link_to "Hang Up", '#', style: "display: none;", id: 'hang-up-link', class: 'button large round',
         data: {behavior: 'hangUpTrigger displayNextAction'}
+    .columns.center
+      = form_for [@campaign, PhoneCall.new], remote: true do |call_form|
+        = call_form.label :from_number, "Your Phone Number"
+        = call_form.text_field :from_number
+        = call_form.submit "Connect Me!"
     .columns.large-11.large-offset-1
       %h6 Don't know what to say? Try this:
     .columns.large-10.large-offset-2

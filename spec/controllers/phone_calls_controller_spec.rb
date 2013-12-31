@@ -22,16 +22,57 @@ describe PhoneCallsController do
     end
 
     it "returns JSON with the token and id included" do
-      phone_call = double(PhoneCall, id: 10, twilio_token: 'twilioToken')
-      Campaign.any_instance
-        .stub_chain(:phone_calls, :create)
-        .and_return(phone_call)
+      phone_call = double(PhoneCall, id: 10, twilio_token: 'twilioToken', from_number?: false)
+      PhoneCall.stub(create: phone_call)
 
       post :create, campaign_id: campaign.id
 
       parsed = JSON.parse(response.body)
       expect(parsed['phone_call_id']).to eq 10
       expect(parsed['twilio_token']).to eq phone_call.twilio_token
+    end
+
+    context "when there is a #from_number" do
+      it "has Twilio call the from_number" do
+        PhoneCall.any_instance.should_receive :start
+
+        post :create, campaign_id: campaign.id, phone_call: {from_number: "+15183346656"}
+      end
+    end
+
+    context "when there is no #from_number" do
+      it "does not call the from_number" do
+        PhoneCall.any_instance.should_not_receive :start
+
+        post :create, campaign_id: campaign.id, phone_call_attributes: {}
+      end
+    end
+  end
+end
+
+describe "PhoneCallsController::Params" do
+  let(:campaign) { campaigns(:clear_water_campaign) }
+
+  describe ".clean" do
+    subject { CampaignsController::Params.clean(params) }
+
+    let(:params) do
+      ActionController::Parameters.new(
+        campaign_id: campaign.id,
+        phone_call: {
+          from_number: '+15183346656',
+        }
+      )
+    end
+
+    it "sets the target and the campaign" do
+      cleaned = PhoneCallsController::Params.clean(params)
+
+      expect(cleaned).to eq({
+        "campaign"    => campaign,
+        "target"      => campaign.targets.first,
+        "from_number" => '+15183346656'
+      })
     end
   end
 end
