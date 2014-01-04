@@ -4,18 +4,18 @@
     .left.title= @campaign.name
     .right.title-secondary by #{link_to @organization.name, @organization}
     = render 'layouts/stripes', clear: true
-  .columns.large-11.large-offset-1
+  .columns.large-11.large-offset-1.small-11.small-offset-1
     .campaign-description= @campaign.description
   - @campaign.campaign_targets.each do |campaign_target|
     - target = campaign_target.target
-    .columns.center
+    .columns.center.hide-for-small
       = link_to "Call #{target.name} from your computer", '#', class: 'button large round',
         data: {behavior: 'callTrigger displayNextAction', campaign_id: @campaign.id, "next-selector" => '#hang-up-link'}
       = link_to "Hang Up", '#', style: "display: none;", id: 'hang-up-link', class: 'button large round',
         data: {behavior: 'hangUpTrigger displayNextAction'}
-    .columns.center
+    .columns.center.hide-for-medium-up
       = form_for [@campaign, PhoneCall.new] do |call_form|
-        .columns.large-4.large-offset-4
+        .columns.small-4.small-offset-4
           = call_form.label :from_number, "Your Phone Number"
           = call_form.text_field :from_number
           = call_form.submit "Call #{target.name} from my phone"
