@@ -10,6 +10,8 @@ PublicStand::Application.routes.draw do
   get 'lobbyist' => 'root#lobbyist'
   get 'effective' => 'root#effective'
   get 'stand' => 'root#stand'
+  get 'dear-internet' => 'root#dear_internet'
+  get 'full-width' => 'root#full_width'
 
   resources :authentications, only: [:new, :create]
   resources :campaigns, only: [] do

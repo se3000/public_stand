@@ -27,6 +27,14 @@ class RootController < ApplicationController
     render 'stand', layout: false
   end
 
+  def dear_internet
+    render 'dear_internet', layout: false
+  end
+
+  def full_width
+    render 'full-width', layout: false
+  end
+
 
   private
 
