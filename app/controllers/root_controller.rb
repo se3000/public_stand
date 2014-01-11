@@ -40,6 +40,7 @@ class RootController < ApplicationController
     render 'splash2', layout: false
   end
 
+
   private
 
   def ensure_authenticated
