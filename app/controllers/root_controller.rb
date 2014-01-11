@@ -35,6 +35,10 @@ class RootController < ApplicationController
     render 'full-width', layout: false
   end
 
+  def splash2
+    render 'splash2', layout: false
+  end
+
 
   private
 

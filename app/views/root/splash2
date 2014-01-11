@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Public Stand</title>
+  <%= stylesheet_link_tag "foundation" %>
+  <%= stylesheet_link_tag "splash2" %>
+
+</head>
+<body>
+	<div id="hello">
+	  <div class="container">
+	   	<div class="row">
+	   	 	<div class="small-12 columns centered">
+	   	 		<h1>Bolt Theme</h1>
+	   	 		<h2>FREE BOOTSTRAP THEMES</h2>
+	   		</div>
+	  	</div>
+	  </div> 
+	</div>
+	
+	<div id="green">
+		<div class="container">
+			<div class="row">
+				<div class="small-5 columns centered">
+					<%= image_tag("iphone.png") %>
+				</div>
+
+				<div class="small-7 columns centered">
+					<h3>WHAT WE DO</h3>
+					<p>We give you the http:// call links. You put them in emails, on social media posts, on blogs, and in one click your campaign supporters can be making phone calls.</p>
+					<p>You’ll be provided analytics on call traffic, conversion, and caller geography.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row mt centered">
+		<div class="small-7 small-offset-1 columns mt">
+				<p class="lead">Interested in having your supporters make phone calls from email, social media, and anywhere else? Drop us a line at <a href="mailto:action@publicstand.com">action@publicstand.com</a></p>
+		</div>
+		
+		<div class="small-3 columns end mt">
+			<p><a href="mailto:action@publicstand.com"><button type="button" class="btn btn-theme btn-lg">Email Us</button></a></p>
+		</div>
+	</div>
+
+	<!-- <div id="skills">
+		<div class="container">
+			<div class="row centered">
+				<h3>OUR SKILLS</h3>
+				<div class="small-3 columns mt">
+					<p>Johnny</p>
+				</div>
+				<div class="small-3 columns mt">
+					<p>Steve</p>
+				</div>
+				<div class="small-3 columns mt">
+					<p>Ryan</p>
+				</div>
+				<div class="small-3 columns mt">
+					
+				</div>
+			</div>
+		</div>
+	</div>-->
+</body>
