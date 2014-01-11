@@ -12,7 +12,7 @@ describe TwilioClient do
       expect(response).to receive(:Dial)
         .and_yield(dialer)
       expect(dialer).to receive(:Number)
-        .with(phone_call.target_phone_number)
+        .with("+1"+phone_call.target_phone_number)
 
       TwilioClient.outbound_twiml_for phone_call
     end
@@ -55,7 +55,7 @@ describe TwilioClient do
       expect(calls).to receive(:create)
         .with({
           from: TwilioClient::APP_PHONE_NUMBER,
-          to: phone_call.from_number,
+          to: "+1#{phone_call.from_number}",
           url: "#{ENV['ROOT_URL']}/twilio_outbound_voice_callback?phone_call_id=#{phone_call.id}",
           method: "GET"
         })
