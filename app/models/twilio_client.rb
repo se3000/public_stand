@@ -8,7 +8,7 @@ class TwilioClient
   def self.outbound_twiml_for phone_call
     Twilio::TwiML::Response.new do |response|
       response.Dial callerId: APP_PHONE_NUMBER do |dial|
-        dial.Number phone_call.target_phone_number
+        dial.Number "+1#{phone_call.target_phone_number}"
       end
     end
   end
@@ -30,7 +30,7 @@ class TwilioClient
   def begin_call(phone_call)
     new_client.account.calls.create(
       from: APP_PHONE_NUMBER,
-      to: phone_call.from_number,
+      to: "+1#{phone_call.from_number}",
       url: "#{ROOT_URL}/twilio_outbound_voice_callback?phone_call_id=#{phone_call.id}",
       method: 'GET'
     )
