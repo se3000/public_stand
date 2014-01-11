@@ -4,20 +4,39 @@
   <title>Public Stand</title>
   <%= stylesheet_link_tag "foundation" %>
   <%= stylesheet_link_tag "splash2" %>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 
 </head>
 <body>
+	<div class="container">
+		<div class="row">
+ 			<div class="small-2 small-offset-10 columns mt">
+ 				<a href="mailto:action@publicstand.com"><button type="button" class="btn btn-theme btn-lg">Contact Us</button></a>
+ 			</div>
+ 		</div>
+ 	</div>
+
 	<div id="hello">
 	  <div class="container">
 	   	<div class="row">
 	   	 	<div class="small-12 columns centered">
-	   	 		<h1>Bolt Theme</h1>
-	   	 		<h2>FREE BOOTSTRAP THEMES</h2>
+	   	 		<h1>Public Stand</h1>
+	   	 		<h2>Helping your campaign’s supporters make phone calls with a click of a link.</h2>
 	   		</div>
+	   	</div>
+	   	<div class="row call-tool">
+	   		<div class="small-5 small-centered columns">
+					<div class="row">
+						<div id="button" class="small-7 columns centered">
+	  					<button type="button" class="btn btn-theme btn-lg" id="change-campaign"></button>
+	  				</div> 
+	  				<p class="small-5 columns"><a href="#" id="change-link">Change the campaign</a></p>
+					</div>
+				</div>
 	  	</div>
 	  </div> 
 	</div>
-	
+
 	<div id="green">
 		<div class="container">
 			<div class="row">
@@ -64,3 +83,6 @@
 		</div>
 	</div>-->
 </body>
+
+<%= javascript_include_tag "changeCampaign" %>
+
