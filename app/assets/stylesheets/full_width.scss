@@ -45,8 +45,10 @@ html {
 @media only screen and (max-width: 620px) {
   #small-screen-image { 
     display: block;
-    width: 100%;
     text-align: center;
+    img {
+      width: 100%;
+    }
   }
   .open-letter {
     float: none;
