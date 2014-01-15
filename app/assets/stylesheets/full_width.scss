@@ -1,12 +1,11 @@
-html { 
-  background: url(/assets/flagforweb_03.jpg) no-repeat center center fixed; 
+html {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
- 
+
 .open-letter {
   margin: 4em 2em 0 0;
   background-color:rgba(252,248,248,0.7);
@@ -23,7 +22,7 @@ html {
   .letter-text {
   	font-size: 1.2em
   }
-} 
+}
 
 .email-form {
   .big-input-field {

@@ -1,18 +1,29 @@
 /*Common elements*/
 
+.dear-internet {
+  margin-top: 100px;
+
+  .salutation {
+    font-size: 3.2em;
+    font-weight: bold;
+    text-align: left;
+    font-family: "times new roman";
+  }
+  .letter-text {
+    padding-top: 1em;
+  }
+}
 
 body {
-  .row.full-width { 
-    width: 100%; max-width: 83em;  
+  .row.full-width {
+    width: 100%; max-width: 83em;
     .mock-letter-splash {
-      color: #5B5C5C;
       padding: 4em 4em 4em 4em;
       img {
         padding-right: 1em;
         padding-bottom: 2em;
       }
       .open-letter {
-        margin-top: -6px;
         .salutation {
           font-weight: bold;
           text-align: left;
@@ -23,14 +34,14 @@ body {
           padding-top: 1em;
         }
       }
-    } 
+    }
   }
 
   .container-border {
     background-color: #000000;
     color: #ffffff;
     // font-size: 1.5em;
-    // padding: .5em 2em 2em 2em; 
+    // padding: .5em 2em 2em 2em;
     .container {
       background-color: #ffffff;
       // padding: 4em 6em 6em 6em;
@@ -38,7 +49,7 @@ body {
       // font-size: .75em;
       // margin-top: .5em;
       font-family: 'Tangerine', cursive;
-      .headline { 
+      .headline {
         font-weight: bold;
         font-family: helvetica;
         text-align: center;
@@ -67,7 +78,7 @@ body {
           font-size: 100%;
         }
       }
-    } 
+    }
   }
 }
 
@@ -101,7 +112,7 @@ table {
 .ending-tag {
   padding-top: 2em;
   text-align: center;
-  font-size: 1.5em; 
+  font-size: 1.5em;
   span {
     color: #000000;
   }
