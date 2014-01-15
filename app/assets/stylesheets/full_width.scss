@@ -3,11 +3,20 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  @media only screen and (max-width: 620px) {
+    background-image: none; 
+    background-color: #222222;
+  }
+
+
+}
+#small-screen-image { 
+    display: none;
 }
 
 .open-letter {
   margin: 4em 2em 0 0;
-  background-color:rgba(252,248,248,0.7);
+  background-color:rgba(252,248,248,0.75);
   padding: 1em;
   float: right;
   font-family: helvetica;
@@ -32,3 +41,17 @@ html {
     font-size: 100%;
   }
 }
+
+@media only screen and (max-width: 620px) {
+  #small-screen-image { 
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  .open-letter {
+    float: none;
+    margin: auto auto;
+    margin-top: 1em;
+    width: 100%;
+  }
+} 
