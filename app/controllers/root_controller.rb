@@ -28,6 +28,7 @@ class RootController < ApplicationController
   end
 
   def dear_internet
+    @email_subscriber = EmailSubscriber.new
     render 'dear_internet', layout: false
   end
 

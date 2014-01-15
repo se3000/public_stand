@@ -1,5 +1,5 @@
 PublicStand::Application.routes.draw do
-  root 'root#home'
+  root 'root#dear_internet'
   get 'login' => 'sessions#new'
   get 'log_out' => 'sessions#destroy'
   get 'sign_up' => 'authentications#new'
@@ -18,6 +18,7 @@ PublicStand::Application.routes.draw do
   resources :campaigns, only: [] do
     resources :phone_calls, only: [:create]
   end
+  resources :email_subscribers, only: [:create]
   resources :organizations, only: [:new, :create, :show] do
     resources :campaigns, only: [:new, :create, :show]
   end
