@@ -1,5 +1,5 @@
 PublicStand::Application.routes.draw do
-  root 'root#home'
+  root 'root#dear_internet'
   get 'login' => 'sessions#new'
   get 'log_out' => 'sessions#destroy'
   get 'sign_up' => 'authentications#new'
@@ -9,11 +9,16 @@ PublicStand::Application.routes.draw do
   get 'organizer' => 'root#organizer'
   get 'lobbyist' => 'root#lobbyist'
   get 'effective' => 'root#effective'
+  get 'stand' => 'root#stand'
+  get 'dear-internet' => 'root#dear_internet'
+  get 'full-width' => 'root#full_width'
+  get 'splash2' => 'root#splash2'
 
   resources :authentications, only: [:new, :create]
   resources :campaigns, only: [] do
     resources :phone_calls, only: [:create]
   end
+  resources :email_subscribers, only: [:create]
   resources :organizations, only: [:new, :create, :show] do
     resources :campaigns, only: [:new, :create, :show]
   end

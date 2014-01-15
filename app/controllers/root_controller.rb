@@ -23,6 +23,23 @@ class RootController < ApplicationController
     render 'splash', layout: false
   end
 
+  def stand
+    render 'stand', layout: false
+  end
+
+  def dear_internet
+    @email_subscriber = EmailSubscriber.new
+    render 'dear_internet', layout: false
+  end
+
+  def full_width
+    render 'full-width', layout: false
+  end
+
+  def splash2
+    render 'splash2', layout: false
+  end
+
 
   private
 

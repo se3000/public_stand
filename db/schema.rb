@@ -11,10 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131230224600) do
+ActiveRecord::Schema.define(version: 20140115012752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+  enable_extension "dblink"
 
   create_table "authentications", force: true do |t|
     t.string   "email",           null: false
@@ -39,6 +41,12 @@ ActiveRecord::Schema.define(version: 20131230224600) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active",          default: false
+  end
+
+  create_table "email_subscribers", force: true do |t|
+    t.string   "email_address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "memberships", force: true do |t|
