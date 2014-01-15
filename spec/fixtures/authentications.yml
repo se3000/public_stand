@@ -1,0 +1,15 @@
+---
+gillians_auth:
+  id: 1
+  email: gcole@clearwater.org
+  password_digest: $2a$04$mtchSaxC37GWxlHfgUePX.UO5kOi8GA.1nbCaCQIp8NAorqf4.x7i
+  created_at: 2014-01-15 02:05:03.267727000 Z
+  updated_at: 2014-01-15 02:05:03.323668000 Z
+  user_id: '1'
+zoes_auth:
+  id: 2
+  email: zbarnes@slugline.com
+  password_digest: $2a$04$CaCP0lI1vJbIiSn4PfrmIebOlTL1dvPUl0MEFGydUtJfN2qVwUQP6
+  created_at: 2014-01-15 02:05:03.344246000 Z
+  updated_at: 2014-01-15 02:05:03.346951000 Z
+  user_id: '2'

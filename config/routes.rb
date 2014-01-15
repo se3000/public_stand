@@ -1,5 +1,5 @@
 PublicStand::Application.routes.draw do
-  root 'root#home'
+  root 'root#dear_internet'
   get 'login' => 'sessions#new'
   get 'log_out' => 'sessions#destroy'
   get 'sign_up' => 'authentications#new'
