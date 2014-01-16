@@ -10,6 +10,27 @@ body {
   background-color: #f2f2f2;
 }
 
+#dear-internet {
+  color: #5B5C5C;
+  padding: 4em 4em 4em 4em;
+  img {
+    padding-right: 1em;
+    padding-bottom: 2em;
+  }
+  .open-letter {
+    margin-top: -6px;
+    .salutation {
+      font-weight: bold;
+      text-align: left;
+      font-family: "times new roman";
+      font-size: 3.2em;
+    }
+    .letter-text {
+      padding-top: 1em;
+    }
+  }
+}
+
 #mock-letter-splash {
   background-color: #222222;
   img#large-screen-image {

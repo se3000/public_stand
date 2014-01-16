@@ -30,7 +30,7 @@ class RootController < ApplicationController
 
   def dear_internet
     @email_subscriber = EmailSubscriber.new
-    render 'dear_internet', layout: false
+    render 'dear_internet'
   end
 
   def full_width
