@@ -1,5 +1,6 @@
 class RootController < ApplicationController
   skip_before_filter :ensure_authenticated, except: [:home]
+  layout "splash"
 
   def welcome
   end
@@ -33,11 +34,11 @@ class RootController < ApplicationController
   end
 
   def full_width
-    render 'full-width', layout: false
+    render 'full-width'
   end
 
   def splash2
-    render 'splash2', layout: false
+    render 'splash2'
   end
 
 
