@@ -19,7 +19,7 @@ describe EmailSubscribersController do
       it "redirects to the root with a negative message" do
         post :create, email_subscriber: { email_address: 'a@a.a' }
 
-        expect(flash[:alert]).to eq("Looks like we already have your email address.")
+        expect(flash[:notice]).to eq("Thanks! We'll keep you up to date.")
         expect(response).to redirect_to root_path
       end
     end

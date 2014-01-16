@@ -5,25 +5,6 @@ html {
   background-size: cover;
 }
 
-
-.open-letter {
-  margin: 4em 2em 0 0;
-  background-color:rgba(252,248,248,0.7);
-  padding: 1em;
-  float: right;
-  font-family: helvetica;
-  width: 24em;
-  .salutation {
-    font-weight: bold;
-    text-align: left;
-    font-size: 3.2em;
-    color: white;
-  }
-  .letter-text {
-  	font-size: 1.2em
-  }
-}
-
 .email-form {
   .big-input-field {
     width: 15em;
