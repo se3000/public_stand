@@ -11,8 +11,8 @@ PublicStand::Application.routes.draw do
   get 'effective' => 'root#effective'
   get 'stand' => 'root#stand'
   get 'dear-internet' => 'root#dear_internet'
-  get 'full-width' => 'root#full_width'
-  get 'splash2' => 'root#splash2'
+  get 'supporters' => 'root#supporters'
+  get 'organizers' => 'root#organizers'
 
   resources :authentications, only: [:new, :create]
   resources :campaigns, only: [] do

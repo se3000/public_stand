@@ -184,6 +184,7 @@ body {
      padding: 10px 30px;
      margin-bottom: 0;
      font-size: 18px;
+     font-weight: bold;
      border: 5px solid transparent;
      border-radius: 0px;
   }
@@ -209,7 +210,7 @@ body {
   #hello {
      width: 100%;
      padding-top: 100px;
-     padding-bottom: 200px;
+     padding-bottom: 250px;
      h1 {
         font-size: 90px;
         font-weight: 700;
@@ -229,34 +230,33 @@ body {
      }
   }
 
-
   #orange {
-     background-color: $main-color;
-     padding-top: 50px;
-     padding-bottom: 40px;
-     margin-bottom: 0px;
+    background-color: $main-color;
+    padding-top: 50px;
+    padding-bottom: 40px;
+    margin-bottom: 0px;
+    h3 {
+       color: white;
+       font-weight: 400;
+       margin-bottom: 20px;
+       font-weight: bold;
+    }
+    p {
+      color: white;
+      font-weight: 400;
+      font-size: 20px;
+    }
   }
 
-  #orange h3 {
-     color: white;
-     font-weight: 400;
-     margin-bottom: 20px;
-     font-weight: bold;
-  }
-
-  #orange p {
-     color: white;
-     font-weight: 400;
-     font-size: 20px;
-  }
-
-  #cta input {
-     width: 70%;
-     margin-right: 1em;
-     display: inline-block;
-  }
-
-  #cta button {
-     display: inline-block;
+  #cta {
+    padding-top: 50px;
+    input {
+      display: inline-block;
+      width: 68%%;
+      height: 3em;
+      padding-left: 1em;
+      padding-right: 1em;
+      font-size: 100%;
+    }
   }
 }

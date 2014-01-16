@@ -1,0 +1,43 @@
+#organizer-splash
+	.row.mt
+		.large-2-centered.large-offset-10.columns
+			= link_to "Contact Us", "mailto:action@publicstand.com", :id => "contact-button", :class => "btn btn-theme btn-lg"
+	#hello
+		.container
+			.row
+				.small-12.columns.centered
+					%h1 Public Stand
+					%h2 Imagine your campaign's supporters making advocacy phone calls with a click of a link.
+					%h2 
+						= link_to "Like this one", "javascript:void(0)" 
+						to save the trees in Maine.
+					%h2
+						= link_to "Or this one", "javascript:void(0)" 
+						to stop killing dead animals.
+	#orange
+		.container
+			.row
+				.large-5.columns.centered
+					.row
+						.large-6.large-centered.columns
+							= image_tag "phone.png"
+				.large-7.columns.centered
+					%h3 WHAT WE DO
+					%p After filling out the the call campaign's basic information, we give you the http:// call links. You them in emails, social media posts, and websites, and in one click your campaign supporters can be making phone calls.
+					%p You’ll be provided analytics on call traffic, conversion, and caller geography.
+
+	#cta
+		.row.centered
+			.large-6.large-offset-1.columns
+				%p.lead 
+					Interested in having your supporters make phone calls from email, social media, and anywhere else? Drop us a line at 
+					= link_to "action@publicstand.com", "mailto:action@publicstand.com"
+			
+			.small-12.large-4.columns.end
+				%p.lead Or sign up for the spiciest of Public Stand updates below
+				= form_for @email_subscriber do |subscriber_form|
+					= subscriber_form.text_field :email_address, placeholder: 'Your email address'
+					= link_to "Signup", email_subscribers_path, method: "post", class: "btn btn-theme"
+
+
+

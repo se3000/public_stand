@@ -33,13 +33,14 @@ class RootController < ApplicationController
     render 'dear_internet'
   end
 
-  def supporter_splash
+  def supporters
     @email_subscriber = EmailSubscriber.new
     render 'supporter_splash'
   end
 
-  def splash2
-    render 'splash2'
+  def organizers
+    @email_subscriber = EmailSubscriber.new
+    render 'organizer_splash'
   end
 
 
