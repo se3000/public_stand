@@ -33,8 +33,9 @@ class RootController < ApplicationController
     render 'dear_internet'
   end
 
-  def full_width
-    render 'full-width'
+  def supporter_splash
+    @email_subscriber = EmailSubscriber.new
+    render 'supporter_splash'
   end
 
   def splash2

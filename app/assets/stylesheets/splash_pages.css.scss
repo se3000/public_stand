@@ -4,6 +4,7 @@ $topbar-bg: #f2f2f2;
 $topbar-dropdown-bg: #f2f2f2;
 $topbar-height: 100%;
 $main-color: rgb(255,126,0);
+$button-border-color: darken($main-color, 10%);
 @import 'foundation';
 
 body {
@@ -46,12 +47,12 @@ body {
 
   .open-letter {
     position: relative;
-    margin: 3em 2em 0 0;
+    margin: 4em 2em 0 0;
     background-color:rgba(252,248,248,0.75);
     padding: 1em;
     float: right;
     font-family: helvetica;
-    width: 24em;
+    width: 26em;
     h1.salutation {
       font-weight: bold;
       text-align: left;
@@ -66,13 +67,18 @@ body {
     }
   } 
 
-  .email-form {
-    .big-input-field {
-      width: 15em;
-      height: 2em;
+  form#new_email_subscriber {
+    input#email_subscriber_email_address {
+      width: 73%;
+      height: 3em;
       padding-left: 1em;
       padding-right: 1em;
       font-size: 100%;
+      display: inline-block;
+    }
+    .button {
+      background-color: $main-color;
+      border-color: $button-border-color;
     }
   }
 
