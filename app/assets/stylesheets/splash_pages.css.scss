@@ -11,6 +11,23 @@ body {
   background-color: #f2f2f2;
 }
 
+
+.btn-theme {
+   color: #ffffff;
+   background-color: $main-color;
+   border-color: transparent;
+   display: inline-block;
+}
+
+.btn {
+   padding: 10px 30px;
+   margin-bottom: 0;
+   font-size: 18px;
+   font-weight: bold;
+   border: 5px solid transparent;
+   border-radius: 0px;
+}
+
 #dear-internet {
   color: #5B5C5C;
   padding: 4em 4em 4em 4em;
@@ -69,16 +86,15 @@ body {
 
   form#new_email_subscriber {
     input#email_subscriber_email_address {
-      width: 73%;
+      width: 66%;
       height: 3em;
       padding-left: 1em;
       padding-right: 1em;
       font-size: 100%;
       display: inline-block;
     }
-    .button {
-      background-color: $main-color;
-      border-color: $button-border-color;
+    div {
+      display: inline;
     }
   }
 
@@ -164,7 +180,6 @@ body {
      transition: color 0.1s ease-in, background 0.1s ease-in;
   }
 
-  /* Bootstrap Modifications */
   hr {
      display: block;
      height: 1px;
