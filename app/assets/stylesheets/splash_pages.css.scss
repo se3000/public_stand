@@ -20,7 +20,6 @@ body {
 }
 
 .btn {
-   padding: 10px 30px;
    margin-bottom: 0;
    font-size: 18px;
    font-weight: bold;
@@ -64,12 +63,12 @@ body {
 
   .open-letter {
     position: relative;
-    margin: 4em 2em 0 0;
+    margin: 2em 2em 0 0;
     background-color:rgba(252,248,248,0.75);
     padding: 1em;
     float: right;
     font-family: helvetica;
-    width: 26em;
+    width: 24em;
     h1.salutation {
       font-weight: bold;
       text-align: left;
@@ -79,14 +78,17 @@ body {
       margin-bottom: .3em;
     }
     .letter-text p {
-    	font-size: 1.2em;
-      line-height: 1.4em;
+    	font-size: 1em;
+      line-height: 1.6em;
+    }
+    input.button {
+      padding: .5em 1em .4em 1em;
     }
   } 
 
   form#new_email_subscriber {
     input#email_subscriber_email_address {
-      width: 66%;
+      width: 68%;
       height: 3em;
       padding-left: 1em;
       padding-right: 1em;
@@ -239,14 +241,14 @@ body {
      padding-top: 100px;
      padding-bottom: 250px;
      h1 {
-        font-size: 5.6px;
+        font-size: 5em;
         font-weight: 700;
         letter-spacing: 3px;
      }
      h2 {
         color: #c0c0c0;
         font-weight: 400;
-        font-size: 2em;
+        font-size: 1.8em;
      }
      .call-tool {
         margin-top: 3em;
@@ -260,11 +262,10 @@ body {
   #orange {
     background-color: $main-color;
     padding-top: 3em;
-    padding-bottom: 2em;
+    padding-bottom: 1em;
     margin-bottom: 0px;
     img {
-      padding-top: 50px;
-      padding-bottom: 40px;
+      padding-bottom: 2em;
     }
     h3 {
        color: white;
@@ -283,7 +284,7 @@ body {
     padding-top: 50px;
     input {
       display: inline-block;
-      width: 68%%;
+      width: 64%;
       height: 3em;
       padding-left: 1em;
       padding-right: 1em;
