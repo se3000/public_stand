@@ -49,7 +49,7 @@ body {
   }
 }
 
-#mock-letter-splash {
+#supporter-splash {
   background-color: #222222;
   img#large-screen-image {
     width: 100%;
@@ -76,7 +76,7 @@ body {
       font-size: 3.2em;
       color: white;
       margin-top: .1em;
-      margin-bottom: .1em;
+      margin-bottom: .3em;
     }
     .letter-text p {
     	font-size: 1.2em;
@@ -115,8 +115,20 @@ body {
     .open-letter {
       float: none;
       margin: auto auto;
-      margin-top: 1em;
+      margin-top: 0;
       width: 100%;
+      h1.salutation {
+        font-size: 2.6em;
+      }
+    }
+    form#new_email_subscriber {
+      input#email_subscriber_email_address {
+        width: 100%;
+      }
+      input.button {
+        display: block;
+        margin: auto auto;
+      }
     }
   } 
 }
@@ -227,7 +239,7 @@ body {
      padding-top: 100px;
      padding-bottom: 250px;
      h1 {
-        font-size: 90px;
+        font-size: 5.6px;
         font-weight: 700;
         letter-spacing: 3px;
      }
@@ -247,9 +259,13 @@ body {
 
   #orange {
     background-color: $main-color;
-    padding-top: 50px;
-    padding-bottom: 40px;
+    padding-top: 3em;
+    padding-bottom: 2em;
     margin-bottom: 0px;
+    img {
+      padding-top: 50px;
+      padding-bottom: 40px;
+    }
     h3 {
        color: white;
        font-weight: 400;
