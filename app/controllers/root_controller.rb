@@ -44,6 +44,6 @@ class RootController < ApplicationController
   private
 
   def ensure_authenticated
-    redirect_to welcome_path unless logged_in?
+    redirect_to dear_internet_path unless logged_in?
   end
 end

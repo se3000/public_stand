@@ -1,5 +1,5 @@
 PublicStand::Application.routes.draw do
-  root 'root#dear_internet'
+  root 'root#home'
   get 'login' => 'sessions#new'
   get 'log_out' => 'sessions#destroy'
   get 'sign_up' => 'authentications#new'
@@ -10,7 +10,7 @@ PublicStand::Application.routes.draw do
   get 'lobbyist' => 'root#lobbyist'
   get 'effective' => 'root#effective'
   get 'stand' => 'root#stand'
-  get 'dear-internet' => 'root#dear_internet'
+  get 'dear-internet' => 'root#dear_internet', as: 'dear_internet'
   get 'full-width' => 'root#full_width'
   get 'splash2' => 'root#splash2'
 

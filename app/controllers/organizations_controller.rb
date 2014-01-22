@@ -1,4 +1,6 @@
 class OrganizationsController < ApplicationController
+  skip_before_filter :ensure_authenticated
+  load_and_authorize_resource
 
   def new
     @organization = Organization.new
@@ -25,5 +27,12 @@ class OrganizationsController < ApplicationController
     def self.clean(params)
       params.require(:organization).permit(:name, :description)
     end
+  end
+
+
+  private
+
+  def organization_params
+    Params.clean(params)
   end
 end

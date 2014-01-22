@@ -1,4 +1,6 @@
 class CampaignsController < ApplicationController
+  skip_before_filter :ensure_authenticated
+  load_and_authorize_resource through: :organization
 
   def new
     @organization = Organization.find(params[:organization_id])
@@ -29,6 +31,10 @@ class CampaignsController < ApplicationController
 
   private
 
+  def organization
+    Organization.find(params[:organization_id])
+  end
+
   def build_campaign_target
     @campaign_target = @campaign.campaign_targets.build
     @target = @campaign_target.build_target
@@ -45,5 +51,9 @@ class CampaignsController < ApplicationController
         ]
       )
     end
+  end
+
+  def campaign_params
+    Params.clean(params)
   end
 end
