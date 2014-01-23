@@ -1,9 +1,15 @@
+@import 'variables';
+
 .campaign-description {
   font-size: 1.4375em;
   margin-bottom: 1em;
   white-space: pre-line;
 }
 
-.campaign-script {
-  white-space: pre-line;
+#instruction {
+  .instructions {
+    h3 {
+      color: $secondary-color;
+    }
+  }
 }

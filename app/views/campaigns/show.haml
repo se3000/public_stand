@@ -9,8 +9,10 @@
   - @campaign.campaign_targets.each do |campaign_target|
     - target = campaign_target.target
     .columns.center.hide-for-small
-      = link_to "Call #{target.name} from your computer", '#', class: 'button large round',
-        data: {behavior: 'callTrigger', campaign_id: @campaign.id, reveal_id: 'instruction'}
+      = link_to "Call #{target.name} from your computer", '#', class: 'button large round', id: 'call-link',
+        data: {behavior: 'callTrigger displayNextAction', reveal_id: 'instruction', campaign_id: @campaign.id, next_selector: '#hang-up-link'}
+      = link_to "Hang Up", '#', style: "display: none;", id: 'hang-up-link', class: 'button large round',
+        data: {behavior: 'hangUpTrigger displayNextAction', next_selector: '#hang-up-link'}
     .columns.center.hide-for-medium-up
       = form_for [@campaign, PhoneCall.new] do |call_form|
         .columns.small-4.small-offset-4
@@ -19,6 +21,12 @@
           = call_form.submit "Call #{target.name} from my phone"
 
     .reveal-modal#instruction
-      %h6 Don't know what to say? Try this:
-      .campaign-script= campaign_target.script
-      = link_to "Hang Up", '#', id: 'hang-up-link', class: 'button large round', data: {behavior: 'hangUpTrigger', reveal_id: 'instruction'}
+      .row
+        .columns.center
+          .instructions
+            %h3 Don't know what to say?
+            %h3 The clearest thing you can tell #{@campaign.targets.first.name} is:
+          .script
+            %h2 "#{campaign_target.script}"
+            = link_to "Hang Up", '#', class: 'button large round',
+              data: {behavior: 'hangUpTrigger displayNextAction', next_selector: '#hang-up-link'}

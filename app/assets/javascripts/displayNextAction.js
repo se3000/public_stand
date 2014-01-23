@@ -5,9 +5,6 @@ displayNextAction = function displayNextAction(element) {
     var $target = $(event.target);
     $target.hide();
 
-    var $nextElement = $($target.data('next-selector'));
-    $nextElement.show();
-
-    event.preventDefault();
+    $($target.data('next-selector')).show();
   });
 }
