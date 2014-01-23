@@ -4,7 +4,7 @@
     .left.title= @campaign.name
     .right.title-secondary by #{link_to @organization.name, @organization}
     = render 'layouts/stripes', clear: true
-  .columns.large-11.large-offset-1.small-11.small-offset-1
+  .columns.large-12.small-12
     .campaign-description= @campaign.description
   - @campaign.campaign_targets.each do |campaign_target|
     - target = campaign_target.target
