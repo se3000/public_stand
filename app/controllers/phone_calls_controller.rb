@@ -1,4 +1,5 @@
 class PhoneCallsController < ApplicationController
+  skip_before_filter :ensure_authenticated
 
   def create
     phone_call = PhoneCall.create(Params.clean(params))

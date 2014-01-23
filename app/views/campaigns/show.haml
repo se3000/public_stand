@@ -18,7 +18,7 @@
           = call_form.text_field :from_number
           = call_form.submit "Call #{target.name} from my phone"
 
-    .reveal-modal#instruction{data: {reveal: nil}}
+    .reveal-modal#instruction
       %h6 Don't know what to say? Try this:
       .campaign-script= campaign_target.script
       = link_to "Hang Up", '#', id: 'hang-up-link', class: 'button large round', data: {behavior: 'hangUpTrigger', reveal_id: 'instruction'}
