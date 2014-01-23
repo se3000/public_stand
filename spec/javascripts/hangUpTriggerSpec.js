@@ -12,4 +12,12 @@ describe("hangUpTrigger", function () {
 
     expect(Twilio.Device.disconnectAll).toHaveBeenCalled();
   });
+
+  it('hides the reveal modal', function () {
+    spyOn(jQuery.fn, 'foundation')
+
+    $fixture.find('a').click();
+
+    expect(jQuery.fn.foundation).toHaveBeenCalledWith('reveal', 'close');
+  });
 });

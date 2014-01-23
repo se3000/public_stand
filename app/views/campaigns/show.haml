@@ -10,16 +10,15 @@
     - target = campaign_target.target
     .columns.center.hide-for-small
       = link_to "Call #{target.name} from your computer", '#', class: 'button large round',
-        data: {behavior: 'callTrigger displayNextAction', campaign_id: @campaign.id, "next-selector" => '#hang-up-link'}
-      = link_to "Hang Up", '#', style: "display: none;", id: 'hang-up-link', class: 'button large round',
-        data: {behavior: 'hangUpTrigger displayNextAction'}
+        data: {behavior: 'callTrigger', campaign_id: @campaign.id, reveal_id: 'instruction'}
     .columns.center.hide-for-medium-up
       = form_for [@campaign, PhoneCall.new] do |call_form|
         .columns.small-4.small-offset-4
           = call_form.label :from_number, "Your Phone Number"
           = call_form.text_field :from_number
           = call_form.submit "Call #{target.name} from my phone"
-    .columns.large-11.large-offset-1
+
+    .reveal-modal#instruction{data: {reveal: nil}}
       %h6 Don't know what to say? Try this:
-    .columns.large-10.large-offset-2
       .campaign-script= campaign_target.script
+      = link_to "Hang Up", '#', id: 'hang-up-link', class: 'button large round', data: {behavior: 'hangUpTrigger', reveal_id: 'instruction'}
