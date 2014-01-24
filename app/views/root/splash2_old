@@ -1,0 +1,58 @@
+<div id="organizer-splash">	
+	<div class="row mt">
+		<div class="large-2-centered large-offset-10 columns">
+			<a href="mailto:action@publicstand.com" id="contact-button">
+				<button type="button" class="btn btn-theme btn-lg">Contact Us</button>
+			</a>
+		</div>
+	</div>
+
+	<div id="hello">
+	  <div class="container">
+	   	<div class="row">
+	   	 	<div class="small-12 columns centered">
+	   	 		<h1>Public Stand</h1>
+	   	 		<h2>Imagine your campaign's supporters making advocacy phone calls with a click of a link.</h2>
+	   	 		<h2><a href="javascript:void(0)">Like this one</a> to save the trees in Maine.</h2>
+	   	 		<h2><a href="javascript:void(0)">Or this one</a> to stop killing dead animals.</h2>
+	   		</div>
+	   	</div>
+	  </div> 
+	</div>
+
+	<div id="orange">
+		<div class="container">
+			<div class="row">
+				<div class="large-5 columns centered">
+					<div class="row">
+						<div class="large-6 large-centered columns">
+							<%= image_tag("phone.png") %>
+						</div>
+					</div>
+				</div>
+				<div class="large-7 columns centered">
+					<h3>WHAT WE DO</h3>
+					<p>After filling out the the call campaign's basic information, we give you the http:// call links. You them in emails, social media posts, and websites, and in one click your campaign supporters can be making phone calls.</p>
+					<p>You’ll be provided analytics on call traffic, conversion, and caller geography.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="cta">
+		<div class="row mt centered">
+
+			<div class="large-6 large-offset-1 columns mt">
+					<p class="lead">Interested in having your supporters make phone calls from email, social media, and anywhere else? Drop us a line at <a href="mailto:action@publicstand.com">action@publicstand.com</a></p>
+			</div>
+			
+			<div class="small-12 large-4 columns end mt">
+				<p class="lead">Or sign up for the spiciest of Public Stand updates below</p>
+				<input type="text" placeholder="Email">
+				<button>Signup</button>
+			</div>	
+		</div>
+	</div>
+</div>
+
+
