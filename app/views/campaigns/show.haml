@@ -3,7 +3,7 @@
   .columns.large-12
     .left.title= @campaign.name
     - if can? :manage, @campaign
-      .left= link_to 'Edit', [@organization, @campaign]
+      .left= link_to 'Edit', edit_organization_campaign_path(@organization, @campaign)
     .right.title-secondary by #{link_to @organization.name, @organization}
     = render 'layouts/stripes', clear: true
   .columns.large-12.small-12

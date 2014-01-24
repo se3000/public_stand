@@ -29,7 +29,12 @@ describe "Creating a campaign" do
   it "does not allow other users to edit the campaign" do
     log_in_as gillian
     visit organization_campaign_path(clear_water_initiative, clear_water_campaign)
-    page.should have_link 'Edit'
+    click_link 'Edit'
+
+    fill_in "Name", with: "The Underwoods are killing America!"
+    click_button 'Update Campaign'
+    page.should have_content "Campaign successfully updated"
+    page.should have_content "The Underwoods are killing America!"
     log_out
 
     log_in_as doug

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe OrganizationsController do
   describe "#new" do
-    before { log_in users(:zoe) }
+    before { log_in users(:gillian) }
 
     it "renders a new organization" do
       get :new
@@ -13,7 +13,7 @@ describe OrganizationsController do
   end
 
   describe "#create" do
-    let(:current_user) { users(:zoe) }
+    let(:current_user) { users(:gillian) }
     before { log_in current_user }
 
     context "when the organization is valid" do
@@ -51,9 +51,9 @@ describe OrganizationsController do
   end
 
   describe "#show" do
-    before { log_in users(:zoe) }
+    before { log_in users(:gillian) }
 
-    let(:organization) { Organization.first }
+    let(:organization) { organizations(:clear_water_initiative) }
 
     it "creates a new instance of Authentication" do
       get :show, id: organization.id

@@ -6,6 +6,7 @@ class RootController < ApplicationController
   end
 
   def home
+    render 'home', layout: 'application'
   end
 
   def effective

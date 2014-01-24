@@ -16,7 +16,7 @@ describe RootController do
       it 'redirects them to the welcome page' do
         get :home
 
-        expect(response).to redirect_to dear_internet_path
+        expect(response).to redirect_to organizers_path
       end
     end
   end

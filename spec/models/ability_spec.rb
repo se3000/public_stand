@@ -19,6 +19,8 @@ describe Ability do
     context "when a user is a part of a different organization" do
       it { should be_able_to(:read, campaign) }
       it { should be_able_to(:read, organization) }
+      it { should be_able_to(:create, campaign) }
+      it { should be_able_to(:create, organization) }
 
       it { should_not be_able_to(:manage, campaign) }
       it { should_not be_able_to(:manage, organization) }
