@@ -17,5 +17,8 @@ FixtureBuilder.configure do |fbuilder|
     @claire_campaign_target = CampaignTarget.create(campaign: @clear_water_campaign, target: @claire, script: 'Call that B...')
 
     @unstarted_call = PhoneCall.create(target: @claire, campaign: @clear_water_campaign)
+
+    @dougs_auth = Authentication.create(email: "dstamper@southcarolina.gov", password: 'AwwPeaches', password_confirmation: 'AwwPeaches')
+    @doug = User.create(name: "Doug Stamper", authentication: @dougs_auth)
   end
 end
