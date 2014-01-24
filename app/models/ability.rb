@@ -5,11 +5,10 @@ class Ability
     user ||= User.new
 
     if user.persisted?
-      can :manage, Campaign
-      can :manage, Organization
-    else
-      can :read, Campaign
-      can :read, Organization
+      can :manage, Campaign, organization_id: user.organization_ids
+      can :manage, Organization, id: user.organization_ids
     end
+    can :read, Campaign
+    can :read, Organization
   end
 end
