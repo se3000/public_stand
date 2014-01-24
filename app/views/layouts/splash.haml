@@ -17,13 +17,16 @@
 
   %title= content_for?(:title) ? yield(:title) : "Public Stand"
 
-  = stylesheet_link_tag "foundation.min"
-  = stylesheet_link_tag "splash_pages"
+  = stylesheet_link_tag "application"
   = javascript_include_tag "vendor/custom.modernizr"
   = csrf_meta_tag
 
 %body
-  
+  %header
+    - flash.each do |key, message|
+      %div{ class: "flash #{key}" }
+        .row= message
+
   = yield
 
   = javascript_include_tag "application"

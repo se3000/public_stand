@@ -7,6 +7,9 @@ $main-color: rgb(255,126,0);
 $button-border-color: darken($main-color, 10%);
 @import 'foundation';
 
+#phone {
+  margin-bottom: 40px;
+}
 body {
   background-color: #f2f2f2;
 }
@@ -23,7 +26,6 @@ body {
    margin-bottom: 0;
    font-size: 18px;
    font-weight: bold;
-   border: 5px solid transparent;
    border-radius: 0px;
 }
 
@@ -57,7 +59,7 @@ body {
     left: 0;
   }
 
-  #small-screen-image { 
+  #small-screen-image {
       display: none;
   }
 
@@ -87,7 +89,7 @@ body {
       font-size: 18px;
       border-color: transparent;
     }
-  } 
+  }
 
   form#new_email_subscriber {
     input#email_subscriber_email_address {
@@ -110,7 +112,7 @@ body {
       display: none
     }
 
-    #small-screen-image { 
+    #small-screen-image {
       display: block;
       text-align: center;
       img {
@@ -135,7 +137,7 @@ body {
         margin: auto auto;
       }
     }
-  } 
+  }
 }
 
 #organizer-splash {
@@ -217,7 +219,6 @@ body {
      margin-bottom: 0;
      font-size: 18px;
      font-weight: bold;
-     border: 5px solid transparent;
      border-radius: 0px;
   }
 
@@ -238,7 +239,7 @@ body {
         padding-right: 1em;
         font-size: 100%;
         display: inline-block;
-      } 
+      }
       div {
         display: inline-block;
       }
@@ -300,6 +301,7 @@ body {
 
   #cta {
     padding-top: 50px;
+    text-align: center;
     p {
       letter-spacing: 1px;
       margin-bottom: 1em;

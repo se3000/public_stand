@@ -12,10 +12,6 @@ class RootController < ApplicationController
     render 'effective', layout: false
   end
 
-  def organizer
-    render 'organizer_splash', layout: false
-  end
-
   def lobbyist
     render 'lobbyist', layout: false
   end
