@@ -82,7 +82,10 @@ body {
       line-height: 1.6em;
     }
     input.button {
-      padding: .5em 1em .4em 1em;
+      padding: .7em 1em .7em 1em;
+      background-color: $main-color;
+      font-size: 18px;
+      border-color: transparent;
     }
   } 
 
@@ -155,7 +158,7 @@ body {
   /* Paragraph & Typographic */
   p {
      line-height: 28px;
-     margin-bottom: 25px;
+     margin-bottom: 2em;
   }
 
   .centered {
@@ -218,30 +221,41 @@ body {
      border-radius: 0px;
   }
 
-  .lead {
-     letter-spacing: 1px;
-  }
-
-  .top-bar {
-     font-weight: 800;
-     font-size: 14px;
-     padding-top: 15px;
-     padding-bottom: 15px;
-     a#contact-button {
-        background: $main-color;
-        width: 100%;
-        padding: 2em;  
-
-     }
+  .header {
+    margin-top: 1em;
+    h2 {
+      font-weight: bold;
+    }
+    .signup-box {
+      background-color: #f9f9f9;
+      margin: 0 1em 0 0;
+    }
+    form#new_email_subscriber {
+      text-align: center;
+      input#email_subscriber_email_address {
+        width: 68%;
+        padding-left: 1em;
+        padding-right: 1em;
+        font-size: 100%;
+        display: inline-block;
+      } 
+      div {
+        display: inline-block;
+      }
+      input.btn-theme {
+        padding: 8px 15px;
+        font-size: 15px;
+      }
+    }
   }
 
   /* hello */
   #hello {
      width: 100%;
      padding-top: 100px;
-     padding-bottom: 250px;
+     padding-bottom: 210px;
      h1 {
-        font-size: 5em;
+        font-size: 4em;
         font-weight: 700;
         letter-spacing: 3px;
      }
@@ -261,27 +275,35 @@ body {
 
   #orange {
     background-color: $main-color;
-    padding-top: 3em;
-    padding-bottom: 1em;
+    padding-top: 2em;
+    padding-bottom: 0;
     margin-bottom: 0px;
     img {
-      padding-bottom: 2em;
+      padding-top: 1em;
     }
     h3 {
        color: white;
        font-weight: 400;
+       margin-top: 0;
        margin-bottom: 20px;
        font-weight: bold;
     }
-    p {
+    p,li {
       color: white;
       font-weight: 400;
       font-size: 20px;
+    }
+    li {
+      text-align: left;
     }
   }
 
   #cta {
     padding-top: 50px;
+    p {
+      letter-spacing: 1px;
+      margin-bottom: 1em;
+    }
     input {
       display: inline-block;
       width: 64%;
@@ -289,6 +311,23 @@ body {
       padding-left: 1em;
       padding-right: 1em;
       font-size: 100%;
+    }
+    div {
+      display: inline-block;
+    }
+    input.btn-theme {
+      padding: 8px 15px;
+      font-size: 15px;
+      width: 100%;
+      font-weight: normal;
+    }
+  }
+
+  @media only screen and (max-width: 620px) {
+    #cta {
+      input {
+        width: 100%;
+      }
     }
   }
 }
