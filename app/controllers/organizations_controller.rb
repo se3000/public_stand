@@ -1,5 +1,4 @@
 class OrganizationsController < ApplicationController
-  skip_before_filter :ensure_authenticated
   load_and_authorize_resource
 
   def new
