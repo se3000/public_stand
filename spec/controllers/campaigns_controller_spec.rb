@@ -20,6 +20,17 @@ describe CampaignsController do
     end
   end
 
+  describe "#edit" do
+    let(:campaign) { organization.campaigns.first }
+
+    it "retreives the campaign and organization" do
+      get :edit, organization_id: organization.id, id: campaign.id
+
+      expect(assigns(:organization)).to eq organization
+      expect(assigns(:campaign)).to eq campaign
+    end
+  end
+
   describe "#create" do
     context "when the campaign is valid" do
       let(:campaign_params) { { name: 'May all you pain be campaign' } }
@@ -42,6 +53,36 @@ describe CampaignsController do
         }.not_to change { Campaign.count }
 
         expect(response).to render_template :new
+        expect(assigns(:campaign_target)).to be_a CampaignTarget
+        expect(assigns(:target)).to be_a Target
+      end
+    end
+  end
+
+  describe "#update" do
+    let(:campaign) { organization.campaigns.first }
+
+    context "when the campaign is valid" do
+      let(:campaign_params) { {name: 'May all your pain be campaign'} }
+
+      it "creates a new instance of campaign" do
+        expect {
+          patch :update, organization_id: organization.id, id: campaign.id, campaign: campaign_params
+        }.to change { campaign.reload.name }.to('May all your pain be campaign')
+
+        expect(response).to redirect_to [organization, Campaign.last]
+      end
+    end
+
+    context "when the campaign is invalid" do
+      let(:campaign_params) { { name: nil } }
+
+      it "does not create a new campaign" do
+        expect {
+          patch :update, organization_id: organization.id, id: campaign.id, campaign: campaign_params
+        }.not_to change { Campaign.count }
+
+        expect(response).to render_template :edit
         expect(assigns(:campaign_target)).to be_a CampaignTarget
         expect(assigns(:target)).to be_a Target
       end

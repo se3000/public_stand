@@ -11,11 +11,14 @@ FixtureBuilder.configure do |fbuilder|
     @gillians_membership = Membership.create(member: @gillian, organization: @clear_water_initiative)
 
     @zoes_auth = Authentication.create(email: 'zbarnes@slugline.com', password: 'frankyPanky', password_confirmation: 'frankyPanky')
-    @zoe = User.create(name: "Zoe Barnes", phone_number: "(518)334-6656", zip_code: 11211, authentication: @zoes_auth)
+    @zoe = User.create(name: "Zoe Barnes", phone_number: "5183346656", zip_code: 11211, authentication: @zoes_auth)
 
-    @claire = Target.create(name: "Claire Underwood", phone_number: "(518)334-6656")
+    @claire = Target.create(name: "Claire Underwood", phone_number: "5183346656")
     @claire_campaign_target = CampaignTarget.create(campaign: @clear_water_campaign, target: @claire, script: 'Call that B...')
 
     @unstarted_call = PhoneCall.create(target: @claire, campaign: @clear_water_campaign)
+
+    @dougs_auth = Authentication.create(email: "dstamper@southcarolina.gov", password: 'AwwPeaches', password_confirmation: 'AwwPeaches')
+    @doug = User.create(name: "Doug Stamper", authentication: @dougs_auth)
   end
 end

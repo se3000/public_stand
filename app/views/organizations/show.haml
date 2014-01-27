@@ -1,6 +1,8 @@
 .row
   .column.large-12
     .left.title= @organization.name
+    - if can? :manage, @organization
+      .left= link_to 'Edit', edit_organization_path(@organization)
     = render 'layouts/stripes', clear: true
     %h6= @organization.description
     %h3 Campaigns:

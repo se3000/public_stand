@@ -2,9 +2,10 @@ require 'feature_helper'
 
 describe "Logging in" do
   before do
-    authentication = Authentication.create(email: 'zbarnacles@slugline.com',
+    authentication = Authentication.create({
+                       email: 'zbarnacles@slugline.com',
                        password: 'frankyPanky',
-                       password_confirmation: 'frankyPanky')
+                       password_confirmation: 'frankyPanky'})
     authentication.create_user
   end
 

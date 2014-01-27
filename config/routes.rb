@@ -1,9 +1,10 @@
 PublicStand::Application.routes.draw do
-  root 'root#organizers'
+  root 'root#home'
   get 'login' => 'sessions#new'
   get 'log_out' => 'sessions#destroy'
   get 'sign_up' => 'authentications#new'
   get 'welcome' => 'root#welcome'
+  get 'home' => 'root#home'
 
   get 'splash' => 'root#splash'
   get 'organizers' => 'root#organizers', as: 'organizers'
@@ -19,8 +20,8 @@ PublicStand::Application.routes.draw do
     resources :phone_calls, only: [:create]
   end
   resources :email_subscribers, only: [:create]
-  resources :organizations, only: [:new, :create, :show] do
-    resources :campaigns, only: [:new, :create, :show]
+  resources :organizations, except: [:delete] do
+    resources :campaigns, except: [:delete]
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]

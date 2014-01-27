@@ -1,5 +1,4 @@
 class OrganizationsController < ApplicationController
-  skip_before_filter :ensure_authenticated
   load_and_authorize_resource
 
   def new
@@ -16,6 +15,18 @@ class OrganizationsController < ApplicationController
     else
       flash.now.alert = @organization.errors.full_messages
       render :new
+    end
+  end
+
+  def update
+    @organization = Organization.find(params[:id])
+
+    if @organization.update_attributes(Params.clean(params))
+      flash.notice = "Successfully updated organization"
+      redirect_to @organization
+    else
+      flash.now.alert = @organization.errors.full_messages
+      render :edit
     end
   end
 

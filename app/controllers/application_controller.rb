@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_filter :ensure_authenticated, :sanitize_for_cancan
+  before_filter :sanitize_for_cancan
 
   helper_method :current_user, :logged_in?
 

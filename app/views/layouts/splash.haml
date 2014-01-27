@@ -21,7 +21,7 @@
   = javascript_include_tag "vendor/custom.modernizr"
   = csrf_meta_tag
 
-%body
+%body#splash
   %header
     - flash.each do |key, message|
       %div{ class: "flash #{key}" }

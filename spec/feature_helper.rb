@@ -12,3 +12,7 @@ def log_in_as(auth)
   fill_in 'Password', with: auth.password
   click_button 'Log In'
 end
+
+def log_out
+  visit log_out_path
+end
