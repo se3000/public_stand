@@ -219,14 +219,21 @@ $button-border-color: darken($main-color, 10%);
        padding: 10px 30px;
        margin-bottom: 0;
        font-size: 18px;
-       font-weight: bold;
+       font-weight: normal;
        border-radius: 0px;
     }
 
     .header {
       margin-top: 1em;
+      .columns {
+        padding-top: 0;
+      }
       h2 {
+        margin-top: .3em;
         font-weight: bold;
+      }
+      .logo {
+        padding-top: 0;
       }
       .signup-box {
         background-color: #f9f9f9;
@@ -234,6 +241,7 @@ $button-border-color: darken($main-color, 10%);
       }
       form#new_email_subscriber {
         text-align: center;
+        margin: 1em 0 0;
         input#email_subscriber_email_address {
           width: 68%;
           padding-left: 1em;
@@ -255,7 +263,7 @@ $button-border-color: darken($main-color, 10%);
     #hello {
        width: 100%;
        padding-top: 100px;
-       padding-bottom: 210px;
+       padding-bottom: 200px;
        h1 {
           font-size: 4em;
           font-weight: 700;
@@ -277,9 +285,15 @@ $button-border-color: darken($main-color, 10%);
 
     #orange {
       background-color: $main-color;
-      padding-top: 2em;
+      padding-top: 0;
       padding-bottom: 0;
       margin-bottom: 0px;
+      .container {
+        padding-top: 2em;
+      }
+      .columns {
+        padding-top: 0;
+      }
       img {
         padding-top: 1em;
       }
@@ -301,7 +315,6 @@ $button-border-color: darken($main-color, 10%);
     }
 
     #cta {
-      padding-top: 50px;
       text-align: center;
       p {
         letter-spacing: 1px;
