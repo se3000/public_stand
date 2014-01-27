@@ -19,6 +19,18 @@ class OrganizationsController < ApplicationController
     end
   end
 
+  def update
+    @organization = Organization.find(params[:id])
+
+    if @organization.update_attributes(Params.clean(params))
+      flash.notice = "Successfully updated organization"
+      redirect_to @organization
+    else
+      flash.now.alert = @organization.errors.full_messages
+      render :edit
+    end
+  end
+
   def show
     @organization = Organization.find(params[:id])
   end
