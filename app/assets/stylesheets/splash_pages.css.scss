@@ -340,11 +340,29 @@ $button-border-color: darken($main-color, 10%);
     }
 
     @media only screen and (max-width: 620px) {
+      margin-top: -16px;
+      .header {
+        h2.logo { font-size: 1.8em; }
+        .signup-box { display: none; }
+      }
+      #hello {
+        padding-bottom: 100px;
+        h1 { font-size: 1.8em; }
+        h2 { font-size: 1em; }
+      }
+      #orange{
+        ol { padding-left: 15px; }
+        li, p { font-size: 1em; }
+        p { line-height: 1.6; }
+      }
+
       #cta {
+        p.lead { font-size: 1em }
         input {
           width: 100%;
         }
       }
     }
   }
+
 }
