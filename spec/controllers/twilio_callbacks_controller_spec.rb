@@ -9,9 +9,15 @@ describe TwilioCallbacksController do
         .with(phone_call)
         .and_return(double(:twiml, text: 'XML?'))
 
-      get :outbound_voice, phone_call_id: phone_call.id
+      get :outbound_voice, phone_call_id: phone_call.id, CallSid: '1'
 
       expect(response).to be_success
+    end
+
+    it "updates the SID of the phone call" do
+      expect {
+        get :outbound_voice, phone_call_id: phone_call.id, CallSid: '6688'
+      }.to change{ phone_call.reload.sid }.from(nil).to('6688')
     end
   end
 end

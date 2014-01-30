@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140115012752) do
+ActiveRecord::Schema.define(version: 20140130172110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,23 @@ ActiveRecord::Schema.define(version: 20140115012752) do
     t.datetime "updated_at"
     t.integer  "target_id"
     t.string   "from_number"
+    t.string   "sid"
+    t.string   "twilio_client_from"
+    t.string   "twilio_client_to"
+    t.string   "status"
+    t.string   "direction"
+    t.string   "api_version"
+    t.integer  "call_duration"
+    t.integer  "minutes_billed"
+    t.string   "forwarded_from"
+    t.string   "from_city"
+    t.string   "from_state"
+    t.string   "from_zip"
+    t.string   "from_country"
+    t.string   "to_city"
+    t.string   "to_state"
+    t.string   "to_zip"
+    t.string   "to_country"
   end
 
   create_table "targets", force: true do |t|
