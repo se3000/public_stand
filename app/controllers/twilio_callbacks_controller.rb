@@ -18,8 +18,8 @@ class TwilioCallbacksController < ApplicationController
   class Params
     def self.clean(fresh)
       {
-        twilio_client_from: fresh["From"],
-        twilio_client_to: fresh["To"],
+        twilio_client_from: fresh["From"].gsub(/^client:/, ''),
+        twilio_client_to: fresh["To"].gsub(/^client:/, ''),
         status: fresh["CallStatus"],
         direction: fresh["Direction"],
         api_version: fresh["ApiVersion"],

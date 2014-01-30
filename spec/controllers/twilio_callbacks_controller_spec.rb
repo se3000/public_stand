@@ -26,8 +26,8 @@ describe TwilioCallbacksController do
     let(:params) do
       {
         "CallSid"=>"call SID",
-        "From"=>"from param",
-        "To"=>"to param",
+        "From"=>"client:from param",
+        "To"=>"client:to param",
         "CallStatus"=>"the deets",
         "Direction"=>"1 Direction",
         "ApiVersion"=>"2010-04-01",
