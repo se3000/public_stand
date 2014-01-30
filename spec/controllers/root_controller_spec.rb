@@ -9,6 +9,7 @@ describe RootController do
         get :home
 
         expect(response).to be_success
+        expect(response).to render_template 'home'
       end
     end
 
@@ -16,7 +17,8 @@ describe RootController do
       it 'redirects them to the welcome page' do
         get :home
 
-        expect(response).to redirect_to organizers_path
+        expect(response).to be_success
+        expect(response).to render_template 'organizer_splash'
       end
     end
   end

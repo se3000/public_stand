@@ -8,7 +8,8 @@ class RootController < ApplicationController
     if logged_in?
       render 'home', layout: 'application'
     else
-      redirect_to organizers_path
+      @email_subscriber = EmailSubscriber.new
+      render 'organizer_splash'
     end
   end
 
