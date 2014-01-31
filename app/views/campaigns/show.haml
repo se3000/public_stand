@@ -6,6 +6,13 @@
       .left= link_to 'Edit', edit_organization_campaign_path(@organization, @campaign)
     .right.title-secondary by #{link_to @organization.name, @organization}
     = render 'layouts/stripes', clear: true
+- if @picture_uploader
+  .row
+    .columns.center
+      = direct_upload_form_for @picture_uploader do |f|
+        = f.file_field :picture
+        = f.submit 'Upload New Picture'
+.row
   .columns.large-12.small-12
     .campaign-description= @campaign.description
   - @campaign.campaign_targets.each do |campaign_target|

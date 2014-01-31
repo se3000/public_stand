@@ -70,7 +70,7 @@ describe CampaignsController do
           patch :update, organization_id: organization.id, id: campaign.id, campaign: campaign_params
         }.to change { campaign.reload.name }.to('May all your pain be campaign')
 
-        expect(response).to redirect_to [organization, Campaign.last]
+        expect(response).to redirect_to [organization, campaign]
       end
     end
 
@@ -106,6 +106,24 @@ describe CampaignsController do
       get :show, organization_id: organization.id, id: campaign.id
 
       expect(assigns(:twilio_token)).to eq('twilioToken123')
+    end
+
+    context "when the current user is not an organizer" do
+      before { log_in FactoryGirl.create(:authentication) }
+
+      it "builds a picture uploader" do
+        get :show, organization_id: organization.id, id: campaign.id
+
+        expect(assigns(:picture_uploader)).to be_nil
+      end
+    end
+
+    context "when the current user is an organizer" do
+      it "builds a picture uploader" do
+        get :show, organization_id: organization.id, id: campaign.id
+
+        expect(assigns(:picture_uploader)).to be_a CarrierWaveDirect::Uploader
+      end
     end
   end
 end
