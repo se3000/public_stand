@@ -7,5 +7,7 @@ class Campaign < ActiveRecord::Base
 
   validates :organization, :name, presence: true
 
+  after_create :create_picture
+
   accepts_nested_attributes_for :campaign_targets
 end
