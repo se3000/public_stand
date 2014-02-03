@@ -5,7 +5,7 @@ class Picture < ActiveRecord::Base
 
   def url
     return unless s3_key.present?
-    "http://s3-us-west-2.amazonaws.com/#{ENV['AWS_BUCKET']}/#{s3_key}"
+    "http://#{ENV['AWS_S3_SUBDOMAIN']}.amazonaws.com/#{ENV['AWS_BUCKET']}/#{s3_key}"
   end
 
   def uploader_changed?
