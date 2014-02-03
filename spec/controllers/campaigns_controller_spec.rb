@@ -98,6 +98,7 @@ describe CampaignsController do
       expect(response).to be_success
       expect(assigns(:organization)).to eq organization
       expect(assigns(:campaign)).to eq campaign
+      expect(assigns(:picture)).to be_a Picture
     end
 
     it "builds a new call token" do
@@ -115,14 +116,6 @@ describe CampaignsController do
         get :show, organization_id: organization.id, id: campaign.id
 
         expect(assigns(:picture_uploader)).to be_nil
-      end
-    end
-
-    context "when the current user is an organizer" do
-      it "builds a picture uploader" do
-        get :show, organization_id: organization.id, id: campaign.id
-
-        expect(assigns(:picture_uploader)).to be_a CarrierWaveDirect::Uploader
       end
     end
   end

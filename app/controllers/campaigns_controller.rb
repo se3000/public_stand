@@ -34,7 +34,7 @@ class CampaignsController < ApplicationController
   end
 
   def show
-    build_picture_uploader if logged_in? && @organization.members.include?(current_user)
+    @picture = @campaign.picture || @campaign.create_picture
     @twilio_token = TwilioClient.outgoing_token
   end
 
@@ -48,12 +48,6 @@ class CampaignsController < ApplicationController
   def build_campaign_target
     @campaign_target = @campaign.campaign_targets.build
     @target = @campaign_target.build_target
-  end
-
-  def build_picture_uploader
-    @picture = @campaign.picture
-    @picture_uploader = @picture.uploader
-    @picture_uploader.success_action_redirect = ENV['ROOT_URL'] + "/pictures/#{@picture.id}/s3_update"
   end
 
   class Params
