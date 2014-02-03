@@ -12,8 +12,8 @@ describe Ability do
     context "when a user is a part of an organization" do
       before { FactoryGirl.create(:membership, member: user, organization: organization) }
 
-      it { should be_able_to(:manage, Campaign) }
-      it { should be_able_to(:manage, Organization) }
+      it { should be_able_to(:manage, campaign) }
+      it { should be_able_to(:manage, organization) }
     end
 
     context "when a user is a part of a different organization" do
