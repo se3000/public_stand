@@ -4,5 +4,6 @@ hangUpTrigger = function hangUpTrigger(element) {
   $element.click(function () {
     Twilio.Device.disconnectAll();
     $('#instruction').foundation('reveal', 'close');
+    event.preventDefault();
   });
 }
