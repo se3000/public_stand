@@ -6,5 +6,5 @@
   .columns.center
     = image_tag @picture.url
     = direct_upload_form_for @picture_uploader do |f|
-      = f.file_field :picture
-      = f.submit 'Upload New Picture'
+      = f.file_field :picture, data: {behavior: 'imageUploader'}
+      = f.submit 'Upload New Picture', disabled: 'disabled'
