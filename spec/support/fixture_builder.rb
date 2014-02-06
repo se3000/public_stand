@@ -1,3 +1,5 @@
+Dir[Rails.root.join("spec/factories/**/*.rb")].each { |f| require f }
+
 FixtureBuilder.configure do |fbuilder|
   # rebuild fixtures automatically when these files change:
   fbuilder.files_to_check += Dir["spec/factories/*.rb", "spec/support/fixture_builder.rb"]
@@ -20,5 +22,7 @@ FixtureBuilder.configure do |fbuilder|
 
     @dougs_auth = Authentication.create(email: "dstamper@southcarolina.gov", password: 'AwwPeaches', password_confirmation: 'AwwPeaches')
     @doug = User.create(name: "Doug Stamper", authentication: @dougs_auth)
+
+    @incriminating_photo = FactoryGirl.create(:picture)
   end
 end

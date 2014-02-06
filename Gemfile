@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'bcrypt-ruby'
 gem 'cancan'
+gem 'carrierwave_direct'
 gem 'elementaljs-rails'
 gem 'haml'
 gem 'jquery-rails'

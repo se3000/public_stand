@@ -23,6 +23,9 @@ PublicStand::Application.routes.draw do
   resources :organizations, except: [:delete] do
     resources :campaigns, except: [:delete]
   end
+  resources :pictures, only: [:edit] do
+    get 's3_update' => 'pictures#s3_update'
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
 
