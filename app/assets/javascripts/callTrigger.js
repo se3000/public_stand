@@ -1,8 +1,20 @@
 callTrigger = function callTrigger(element) {
   var $element = $(element);
+  var campaignID = $element.data('campaign-id');
 
   $element.click(function () {
-    var url = '/campaigns/' + $element.data('campaign-id') + '/phone_calls';
+    PublicStand.callCampaign(campaignID);
+  });
+
+  if($element.data('auto-trigger')) {
+    $element.click();
+    $element.hide();
+  }
+}
+
+PublicStand = {
+  callCampaign: function callCampaign(campaignID) {
+    var url = '/campaigns/' + campaignID + '/phone_calls';
     $.ajax({
       type: 'POST',
       url: url,
@@ -15,10 +27,6 @@ callTrigger = function callTrigger(element) {
         Twilio.Device.connect({phone_call_id: data.phone_call_id});
       }
     });
-  });
-
-  if($element.data('auto-trigger')) {
-    $element.click();
-    $element.hide();
   }
 }
+
