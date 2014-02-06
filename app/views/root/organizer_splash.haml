@@ -1,19 +1,6 @@
-
-/ %nav.top-bar{data:{"topbar" => true}}
-/   %ul.title-area
-/     %li.name
-/       %h1.toggle-topbar.menu-icon
-/         = link_to "Public Stand", "#"
-
-/   %section.top-bar-section
-/     %ul.right
-/       %li
-/         = form_for @email_subscriber do |subscriber_form|
-/           = subscriber_form.text_field :email_address, placeholder: 'Your email address'
-/           = link_to "Signup", email_subscribers_path, class: "btn btn-theme"
 #organizer-splash
   .header.container
-    .row
+    .row.header-row
       .large-3.columns.logo
         %h2 Public Stand
       .signup-box.large-4.large-offset-5.columns

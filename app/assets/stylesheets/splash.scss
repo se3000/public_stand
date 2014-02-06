@@ -1,33 +1,14 @@
-@import "foundation/foundation-global";
-$row-width: 83em;
-$topbar-bg: #f2f2f2;
-$topbar-dropdown-bg: #f2f2f2;
-$topbar-height: 100%;
-$main-color: rgb(255,126,0);
-$button-border-color: darken($main-color, 10%);
-@import 'foundation';
+@import 'foundation_and_overrides';
 
 #splash {
+  .header-row {
+    padding: 0 0.9375em;
+  }
   #phone {
     margin-bottom: 40px;
   }
   body {
     background-color: #f2f2f2;
-  }
-
-
-  .btn-theme {
-     color: #ffffff;
-     background-color: $main-color;
-     border-color: transparent;
-     display: inline-block;
-  }
-
-  .btn {
-     margin-bottom: 0;
-     font-size: 18px;
-     font-weight: bold;
-     border-radius: 0px;
   }
 
   #dear-internet {

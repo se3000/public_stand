@@ -13,5 +13,19 @@ form {
     @extend .button;
     @extend .round;
   }
+
 }
 
+.btn-theme {
+   color: #ffffff;
+   background-color: $main-color;
+   border-color: transparent;
+   display: inline-block;
+}
+
+.btn {
+   margin-bottom: 0;
+   font-size: 18px;
+   font-weight: bold;
+   border-radius: 0px;
+}
