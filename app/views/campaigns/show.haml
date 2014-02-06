@@ -20,7 +20,11 @@
     - target = campaign_target.target
     .columns.center.hide-for-small
       = link_to "Call #{target.name} from your computer", '#', class: 'button large round', id: 'call-link',
-        data: {behavior: 'callTrigger displayNextAction', reveal_id: 'instruction', campaign_id: @campaign.id, next_selector: '#hang-up-link'}
+        data: { behavior: 'callTrigger displayNextAction',
+        auto_trigger: true,
+        reveal_id: 'instruction',
+        campaign_id: @campaign.id,
+        next_selector: '#hang-up-link' }
       = link_to "Hang Up", '#', style: "display: none;", id: 'hang-up-link', class: 'button large round',
         data: {behavior: 'hangUpTrigger displayNextAction', next_selector: '#hang-up-link'}
     .columns.center.hide-for-medium-up
