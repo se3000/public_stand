@@ -19,5 +19,6 @@ callTrigger = function callTrigger(element) {
 
   if($element.data('auto-trigger')) {
     $element.click();
+    $element.hide();
   }
 }
