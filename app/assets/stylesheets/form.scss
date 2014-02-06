@@ -13,19 +13,22 @@ form {
     @extend .button;
     @extend .round;
   }
-
-}
-
-.btn-theme {
-   color: #ffffff;
-   background-color: $main-color;
-   border-color: transparent;
-   display: inline-block;
 }
 
 .btn {
-   margin-bottom: 0;
-   font-size: 18px;
-   font-weight: bold;
-   border-radius: 0px;
+  color: $lightest-background;
+  background-color: $main-color;
+  display: inline-block;
+  margin-bottom: 0;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 8px 15px;
+  border: 1px solid $main-color;
+  box-shadow: rgba(255, 255, 255, 0.498039) 0px 1px 0px 0px inset;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.498039) 0px 1px 0px 0px inset;
+  -moz-box-shadow: rgba(255, 255, 255, 0.498039) 0px 1px 0px 0px inset;
+
+  &:hover {
+    color: $lightest-background;
+  }
 }
