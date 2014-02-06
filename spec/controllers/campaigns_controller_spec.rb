@@ -92,13 +92,12 @@ describe CampaignsController do
   describe "#show" do
     let(:campaign) { organization.campaigns.first }
 
-    it "builds a new campaign" do
+    it "displays the campaign" do
       get :show, organization_id: organization.id, id: campaign.id
 
       expect(response).to be_success
       expect(assigns(:organization)).to eq organization
       expect(assigns(:campaign)).to eq campaign
-      expect(assigns(:picture)).to be_a Picture
     end
 
     it "builds a new call token" do
@@ -116,6 +115,22 @@ describe CampaignsController do
         get :show, organization_id: organization.id, id: campaign.id
 
         expect(assigns(:picture_uploader)).to be_nil
+      end
+    end
+
+    context "when the auto param is set" do
+      it "builds a picture uploader" do
+        get :show, auto: true, organization_id: organization.id, id: campaign.id
+
+        expect(assigns(:auto_trigger)).to be_true
+      end
+    end
+
+    context "when the auto param is false" do
+      it "builds a picture uploader" do
+        get :show, auto: false, organization_id: organization.id, id: campaign.id
+
+        expect(assigns(:auto_trigger)).to be_false
       end
     end
   end

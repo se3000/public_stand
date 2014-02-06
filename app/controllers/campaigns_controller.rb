@@ -34,8 +34,9 @@ class CampaignsController < ApplicationController
   end
 
   def show
-    @picture = @campaign.picture || @campaign.create_picture
+    @picture = @campaign.picture
     @twilio_token = TwilioClient.outgoing_token
+    @auto_trigger = !!params[:auto]
   end
 
 

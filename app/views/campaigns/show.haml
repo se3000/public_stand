@@ -7,7 +7,7 @@
     .right.title-secondary by #{link_to @organization.name, @organization}
     = render 'layouts/stripes', clear: true
 .row
-  - if @picture.url
+  - if @picture.present?
     .columns.center
       = image_tag @picture.url
   - if can? :edit, @picture
@@ -21,7 +21,7 @@
     .columns.center.hide-for-small
       = link_to "Call #{target.name} from your computer", '#', class: 'button large round', id: 'call-link',
         data: { behavior: 'callTrigger displayNextAction',
-        auto_trigger: true,
+        auto_trigger: @auto_trigger,
         reveal_id: 'instruction',
         campaign_id: @campaign.id,
         next_selector: '#hang-up-link' }
