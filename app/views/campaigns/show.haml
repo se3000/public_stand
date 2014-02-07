@@ -23,10 +23,7 @@
         data: { behavior: 'callTrigger',
         auto_trigger: @auto_trigger,
         reveal_id: 'instruction',
-        campaign_id: @campaign.id,
-        next_selector: '#hang-up-link' }
-      = link_to "Hang Up", '#', style: "display: none;", id: 'hang-up-link', class: 'btn',
-        data: {behavior: 'hangUpTrigger displayNextAction'}
+        campaign_id: @campaign.id }
     .columns.center.hide-for-medium-up
       = form_for [@campaign, PhoneCall.new] do |call_form|
         .columns.small-4.small-offset-4
@@ -38,9 +35,13 @@
       .row
         .columns.center
           .instructions
-            %h3 Don't know what to say?
-            %h3 The clearest thing you can tell #{@campaign.targets.first.name} is:
-          .script
-            %h2 "#{campaign_target.script}"
-            = link_to "Hang Up", '#', class: 'btn',
+            .step-1
+              %h3 Please press "Accept" on your browser's microphone prompt and we'll kick off the call.
+              %h3 Thanks!
+            .step-2{hidden: 'hidden'}
+              %h3 Don't know what to say?
+              %h3 The clearest thing you can tell #{@campaign.targets.first.name} is:
+              .script
+                %h2 "#{campaign_target.script}"
+            = link_to "Hang Up", '#', class: 'hang-up-btn btn disabled',
               data: {behavior: 'hangUpTrigger displayNextAction'}

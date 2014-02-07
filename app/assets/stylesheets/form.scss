@@ -31,4 +31,10 @@ form {
   &:hover {
     color: $lightest-background;
   }
+
+  &.disabled {
+    border: 1px solid #ddd;
+    background-color: #ddd;
+    color: #aaa;
+  }
 }
