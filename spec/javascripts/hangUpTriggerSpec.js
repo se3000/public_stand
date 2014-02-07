@@ -1,23 +1,47 @@
 describe("hangUpTrigger", function () {
   var $fixture;
 
-  beforeEach(function () {
-    $fixture = setFixture('<a href="#" data-behavior="hangUpTrigger">link</a>');
+  describe('when the element is "enabled"', function () {
+    beforeEach(function () {
+      $fixture = setFixture('<a href="#" data-behavior="hangUpTrigger">link</a>');
+    });
+
+    it('connects through Twilio on click', function () {
+      spyOn(Twilio.Device, 'disconnectAll')
+
+      $fixture.find('a').click();
+
+      expect(Twilio.Device.disconnectAll).toHaveBeenCalled();
+    });
+
+    it('hides the reveal modal', function () {
+      spyOn(jQuery.fn, 'foundation')
+
+      $fixture.find('a').click();
+
+      expect(jQuery.fn.foundation).toHaveBeenCalledWith('reveal', 'close');
+    });
   });
 
-  it('connects through Twilio on click', function () {
-    spyOn(Twilio.Device, 'disconnectAll')
+  describe('when the element is "disabled"', function () {
+    beforeEach(function () {
+      $fixture = setFixture('<a href="#" class="disabled" data-behavior="hangUpTrigger">link</a>');
+    });
 
-    $fixture.find('a').click();
+    it('connects through Twilio on click', function () {
+      spyOn(Twilio.Device, 'disconnectAll')
 
-    expect(Twilio.Device.disconnectAll).toHaveBeenCalled();
-  });
+      $fixture.find('a').click();
 
-  it('hides the reveal modal', function () {
-    spyOn(jQuery.fn, 'foundation')
+      expect(Twilio.Device.disconnectAll).not.toHaveBeenCalled();
+    });
 
-    $fixture.find('a').click();
+    it('hides the reveal modal', function () {
+      spyOn(jQuery.fn, 'foundation')
 
-    expect(jQuery.fn.foundation).toHaveBeenCalledWith('reveal', 'close');
+      $fixture.find('a').click();
+
+      expect(jQuery.fn.foundation).not.toHaveBeenCalled();
+    });
   });
 });
