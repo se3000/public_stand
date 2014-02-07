@@ -16,7 +16,8 @@
 //= require elemental
 //= require_tree .
 
-jQuery(document).foundation();
+jQuery(document).foundation()
+  .foundation('reveal', {closeOnBackgroundClick: false});
 
 $(document).ready(function() {
   Elemental.load(document);
