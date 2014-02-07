@@ -3,60 +3,50 @@ describe("callTrigger", function () {
 
   describe("after the page loads", function () {
     beforeEach(function () {
-      $fixture = setFixture('<a href="#" data-behavior="callTrigger">link</a>');
+      $fixture = setFixture('<a href="#" data-behavior="callTrigger" data-campaign-id="3">link</a>');
       $element = $fixture.find('a');
-
-      spyOn(jQuery, 'ajax').and.callFake(function (options) {
-        options.success({twilio_token: 'TwiML', phone_call_id: 42}, 'textStatus', 'jqXHR');
-      });
     });
 
     describe("on 'success'", function () {
-      it('connects with a Twilio Device', function () {
-        spyOn(Twilio.Device, 'connect');
+      it('displays instructions', function () {
+        spyOn(PublicStand, 'displayInstructions');
 
         $element.click();
 
-        expect(Twilio.Device.connect).toHaveBeenCalledWith({phone_call_id: 42});
+        expect(PublicStand.displayInstructions).toHaveBeenCalled();
       });
 
-      it('sets up a Twilio Device and calls', function () {
-        spyOn(Twilio.Device, 'setup');
+      it('initiates a call', function () {
+        spyOn(PublicStand, 'callCampaign');
 
         $element.click();
 
-        expect(Twilio.Device.setup).toHaveBeenCalledWith('TwiML');
+        expect(PublicStand.callCampaign).toHaveBeenCalledWith(3);
       });
     });
   });
 
   describe("on page load", function () {
-    beforeEach(function () {
-      spyOn(jQuery, 'ajax').and.callFake(function (options) {
-        options.success({twilio_token: 'TwiML', phone_call_id: 42}, 'textStatus', 'jqXHR');
-      });
-    });
-
     describe('when the trigger is set to true', function () {
       beforeEach(function () {
-        $fixture = setFixture('<a data-behavior="callTrigger" data-auto-trigger="true" id="element">Call</a>');
+        $fixture = setFixture('<a data-behavior="callTrigger" data-auto-trigger="true" data-campaign-id="3" id="element">Call</a>');
         $element = $fixture.find('a').show();
       });
 
-      it('initiates a call', function () {
-        spyOn(Twilio.Device, 'connect');
+      it('displays instructions', function () {
+        spyOn(PublicStand, 'displayInstructions');
 
         Elemental.load();
 
-        expect(Twilio.Device.connect).toHaveBeenCalledWith({phone_call_id: 42});
+        expect(PublicStand.displayInstructions).toHaveBeenCalled();
       });
 
-      it('hides the button', function () {
-        expect($element.is(':visible')).toBeTruthy();
+      it('initiates a call', function () {
+        spyOn(PublicStand, 'callCampaign');
 
         Elemental.load();
 
-        expect($element.is(':visible')).toBeFalsy();
+        expect(PublicStand.callCampaign).toHaveBeenCalledWith(3);
       });
     });
 
@@ -66,11 +56,11 @@ describe("callTrigger", function () {
       });
 
       it('does not initiate a call', function () {
-        spyOn(Twilio.Device, 'connect');
+        spyOn(PublicStand, 'callCampaign');
 
         Elemental.load();
 
-        expect(Twilio.Device.connect).not.toHaveBeenCalled();
+        expect(PublicStand.callCampaign).not.toHaveBeenCalled();
       });
     });
   })
