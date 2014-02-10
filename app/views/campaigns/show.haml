@@ -39,11 +39,14 @@
               %h3 Thanks!
             .step-2{hidden: 'hidden'}
               %h3 Don't know what to say?
-              %h3 The clearest thing you can tell #{@campaign.targets.first.name} is:
+              %h3 The clearest thing you can tell #{target.name} is:
               .script
                 %h2 "#{campaign_target.script}"
             = link_to "Hang Up", '#', class: 'hang-up-btn btn disabled',
               data: {behavior: 'hangUpTrigger displayNextAction'}
+
+    .campaign-target-info
+      %h2 Average Call Time: #{campaign_target.average_call_time}
 
   - share_url = organization_campaign_url(@organization, @campaign)
   = facebook_share_button(share_url)
