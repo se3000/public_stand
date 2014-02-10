@@ -45,8 +45,10 @@
             = link_to "Hang Up", '#', class: 'hang-up-btn btn disabled',
               data: {behavior: 'hangUpTrigger displayNextAction'}
 
+    -
     .campaign-target-info
-      %h2 Average Call Time: #{campaign_target.average_call_time}
+      - average_time = campaign_target.average_call_time || "0:00 (No calls completed yet)"
+      %h2 Average Call Time: #{average_time}
 
   - share_url = organization_campaign_url(@organization, @campaign)
   = facebook_share_button(share_url)

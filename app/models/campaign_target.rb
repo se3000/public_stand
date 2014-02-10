@@ -6,9 +6,13 @@ class CampaignTarget < ActiveRecord::Base
 
   accepts_nested_attributes_for :target
 
+  def phone_calls
+    PhoneCall.where(campaign_id: campaign_id, target_id: target_id)
+  end
+
   def average_call_time
-    return unless phone_calls.any?
-    average = phone_calls.completed.average(:call_duration)
+    return unless completed_phone_calls.any?
+    average = completed_phone_calls.average(:call_duration)
     minutes = average.to_i / 60
     seconds = (average % 60).to_i
     "#{minutes}:#{seconds}"
@@ -16,7 +20,7 @@ class CampaignTarget < ActiveRecord::Base
 
   private
 
-  def phone_calls
-    PhoneCall.where(campaign_id: campaign_id, target_id: target_id)
+  def completed_phone_calls
+    @completed_phone_call ||= phone_calls.completed
   end
 end

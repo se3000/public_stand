@@ -9,8 +9,21 @@ describe CampaignTarget do
     it { should_not have_valid(:target).when(nil) }
   end
 
+  describe "#phone_calls" do
+    subject { campaign_target.phone_calls }
+
+    let(:campaign_target) { campaign_targets(:claire_campaign_target) }
+    let(:match) { FactoryGirl.create(:phone_call, campaign: campaign_target.campaign, target: campaign_target.target) }
+    let(:campaign_match) { FactoryGirl.create(:phone_call, campaign: campaign_target.campaign) }
+    let(:target_match) { FactoryGirl.create(:phone_call, campaign: campaign_target.campaign) }
+
+    it { should include match }
+    it { should_not include campaign_match }
+    it { should_not include target_match }
+  end
+
   describe "#average_call_time" do
-    subject(:campaign_target) { campaign_targets(:claire_campaign_target) }
+    subject(:campaign_target) { FactoryGirl.create(:campaign_target) }
 
     context "when there are phone calls" do
       before do
