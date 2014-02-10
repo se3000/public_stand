@@ -57,6 +57,9 @@ class CampaignsController < ApplicationController
         :name,
         :description,
         campaign_targets_attributes: [
+          :id,
+          :campaign_id,
+          :target_id,
           :script,
           target_attributes: [:name, :phone_number]
         ]

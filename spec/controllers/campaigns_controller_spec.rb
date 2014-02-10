@@ -148,6 +148,9 @@ describe "CampaignsController::Params" do
           description: 'Hilarity ensues as Sebastian(Dwayne Johnson) tries to convince politicians, and the world, that Independents are people too.',
           release_date: 'November 11th, 2014',
           campaign_targets_attributes: [{
+            id: 1,
+            campaign_id: 2,
+            target_id: 3,
             script: 'hey',
             target_attributes: [{name: 'a', phone_number: '1', other: 'b'}]
           }]
@@ -159,7 +162,11 @@ describe "CampaignsController::Params" do
         name: 'No Campaign, No Gain.',
         description: 'Hilarity ensues as Sebastian(Dwayne Johnson) tries to convince politicians, and the world, that Independents are people too.',
         campaign_targets_attributes: [{
-          script: 'hey', target_attributes: [{name: 'a', phone_number: '1'}]
+          id: 1,
+          campaign_id: 2,
+          target_id: 3,
+          script: 'hey',
+          target_attributes: [{name: 'a', phone_number: '1'}]
         }]
       }.with_indifferent_access)
     }

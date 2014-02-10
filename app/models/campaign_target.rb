@@ -1,6 +1,6 @@
 class CampaignTarget < ActiveRecord::Base
   belongs_to :campaign, inverse_of: :campaign_targets
-  belongs_to :target
+  belongs_to :target, inverse_of: :campaign_targets
 
   validates :campaign, :target, presence: true
 
