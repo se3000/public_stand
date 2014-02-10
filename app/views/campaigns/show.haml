@@ -45,4 +45,6 @@
             = link_to "Hang Up", '#', class: 'hang-up-btn btn disabled',
               data: {behavior: 'hangUpTrigger displayNextAction'}
 
-  = facebook_share_button(organization_campaign_url(@organization, @campaign))
+  - share_url = organization_campaign_url(@organization, @campaign)
+  = facebook_share_button(share_url)
+  = tweet_button(share_url, @campaign.name)
