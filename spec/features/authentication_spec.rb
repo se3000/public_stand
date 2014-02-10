@@ -2,9 +2,10 @@ require 'feature_helper'
 
 describe "Logging in" do
   before do
-    authentication = Authentication.create(email: 'zbarnacles@slugline.com',
+    authentication = Authentication.create({
+                       email: 'zbarnacles@slugline.com',
                        password: 'frankyPanky',
-                       password_confirmation: 'frankyPanky')
+                       password_confirmation: 'frankyPanky'})
     authentication.create_user
   end
 
@@ -29,7 +30,7 @@ describe "Signing up" do
     click_button 'Sign Up'
     page.should have_content "Congratulations! You're awesome!"
 
-    page.should have_content "You aren't a part of any organizations. Create an organization"
+    page.should have_content "You aren't a part of any organizations. Create a new organization"
   end
 end
 

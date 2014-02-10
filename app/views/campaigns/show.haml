@@ -1,10 +1,50 @@
+= javascript_include_tag "//static.twilio.com/libs/twiliojs/1.1/twilio.min.js"
 .row
-  %h1= @campaign.name
-  %h2 by #{link_to @organization.name, @organization}
-  %h3= @campaign.description
-
+  .columns.large-12
+    .left.title= @campaign.name
+    - if can? :manage, @campaign
+      .left= link_to 'Edit', edit_organization_campaign_path(@organization, @campaign)
+    .right.title-secondary by #{link_to @organization.name, @organization}
+    = render 'layouts/stripes', clear: true
+.row
+  - if @picture.present?
+    .columns.center
+      = image_tag @picture.url
+  - if can? :edit, @picture
+    .columns.center
+      = link_to 'Edit Image', edit_picture_path(@picture)
+.row
+  .columns.large-12.small-12
+    .campaign-description= @campaign.description
   - @campaign.campaign_targets.each do |campaign_target|
     - target = campaign_target.target
-    %p= link_to "Call #{target.name}", '#'
-    %p= link_to target.phone_number, '#'
-    %p= campaign_target.script
+    .columns.center.hide-for-small
+      = link_to "Call #{target.name} from your computer", '#', class: 'btn', id: 'call-link',
+        data: { behavior: 'callTrigger',
+        auto_trigger: @auto_trigger,
+        campaign_id: @campaign.id }
+    .columns.center.hide-for-medium-up
+      = form_for [@campaign, PhoneCall.new] do |call_form|
+        .columns.small-4.small-offset-4
+          = call_form.label :from_number, "Your Phone Number"
+          = call_form.text_field :from_number
+          = call_form.submit "Call #{target.name} from my phone"
+
+    .reveal-modal#instruction
+      .row
+        .columns.center
+          .instructions
+            .step-1
+              %h3 Please press "Allow" on your browser's microphone prompt and we'll kick off the call.
+              %h3 Thanks!
+            .step-2{hidden: 'hidden'}
+              %h3 Don't know what to say?
+              %h3 The clearest thing you can tell #{@campaign.targets.first.name} is:
+              .script
+                %h2 "#{campaign_target.script}"
+            = link_to "Hang Up", '#', class: 'hang-up-btn btn disabled',
+              data: {behavior: 'hangUpTrigger displayNextAction'}
+
+  - share_url = organization_campaign_url(@organization, @campaign)
+  = facebook_share_button(share_url)
+  = tweet_button(share_url, @campaign.name)

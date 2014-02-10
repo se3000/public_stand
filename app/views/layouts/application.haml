@@ -22,6 +22,7 @@
   = csrf_meta_tag
 
 %body
+  .fb-root
   .light-background.contain-to-grid
     %nav.top-bar
       %ul.title-area
@@ -36,15 +37,12 @@
             - else
               = link_to "Log In", login_path
           %li.divider
-  .stripes
-    .alert-stripe
-    .blank-stripe
-    .primary-stripe
+  = render 'layouts/stripes'
 
   %header
-    .flash
-      - flash.each do |key, message|
-        = message
+    - flash.each do |key, message|
+      %div{ class: "flash #{key}" }
+        .row= message
 
   = yield
 

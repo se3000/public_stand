@@ -1,0 +1,67 @@
+describe("callTrigger", function () {
+  var $fixture, $element;
+
+  describe("after the page loads", function () {
+    beforeEach(function () {
+      $fixture = setFixture('<a href="#" data-behavior="callTrigger" data-campaign-id="3">link</a>');
+      $element = $fixture.find('a');
+    });
+
+    describe("on 'success'", function () {
+      it('displays instructions', function () {
+        spyOn(PublicStand, 'displayInstructions');
+
+        $element.click();
+
+        expect(PublicStand.displayInstructions).toHaveBeenCalled();
+      });
+
+      it('initiates a call', function () {
+        spyOn(PublicStand, 'callCampaign');
+
+        $element.click();
+
+        expect(PublicStand.callCampaign).toHaveBeenCalledWith(3);
+      });
+    });
+  });
+
+  describe("on page load", function () {
+    describe('when the trigger is set to true', function () {
+      beforeEach(function () {
+        $fixture = setFixture('<a data-behavior="callTrigger" data-auto-trigger="true" data-campaign-id="3" id="element">Call</a>');
+        $element = $fixture.find('a').show();
+      });
+
+      it('displays instructions', function () {
+        spyOn(PublicStand, 'displayInstructions');
+
+        Elemental.load();
+
+        expect(PublicStand.displayInstructions).toHaveBeenCalled();
+      });
+
+      it('initiates a call', function () {
+        spyOn(PublicStand, 'callCampaign');
+
+        Elemental.load();
+
+        expect(PublicStand.callCampaign).toHaveBeenCalledWith(3);
+      });
+    });
+
+    describe('when the trigger is set to false', function () {
+      beforeEach(function () {
+        setFixture('<a data-behavior="callTrigger" data-auto-trigger="false" id="element">Call</a>');
+      });
+
+      it('does not initiate a call', function () {
+        spyOn(PublicStand, 'callCampaign');
+
+        Elemental.load();
+
+        expect(PublicStand.callCampaign).not.toHaveBeenCalled();
+      });
+    });
+  })
+});

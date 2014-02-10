@@ -1,0 +1,10 @@
+.row
+  .columns.large-12
+    .left.title= link_to @campaign.name, [@organization, @campaign]
+    = render 'layouts/stripes', clear: true
+.row
+  .columns.center
+    = image_tag @picture.url
+    = direct_upload_form_for @picture_uploader do |f|
+      = f.file_field :picture, data: {behavior: 'imageUploader'}
+      = f.submit 'Upload New Picture', disabled: 'disabled'

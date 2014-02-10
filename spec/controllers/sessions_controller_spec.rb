@@ -16,8 +16,35 @@ describe SessionsController do
       it "should redirect to the next page" do
         post :create, email: email, password: password
 
-        response.should be_redirect
         expect(session[:authentication_id]).to eq authentication.id
+      end
+
+      context "when the user has a single organization" do
+        let(:organization) { FactoryGirl.create(:organization) }
+
+        before do
+          authentication.user.memberships.create(organization: organization)
+        end
+
+        it "redirects to the organization page" do
+          post :create, email: email, password: password
+
+          expect(response).to redirect_to organization_path(organization)
+        end
+      end
+
+      context "when the user doesnot have 1 organization" do
+        let(:authentication) do
+          FactoryGirl.create(:authentication).tap do |auth|
+            auth.create_user
+          end
+        end
+
+        it "redirects to the root page" do
+          post :create, email: email, password: password
+
+          expect(response).to redirect_to root_path
+        end
       end
     end
 

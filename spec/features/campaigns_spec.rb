@@ -2,7 +2,9 @@ require 'feature_helper'
 
 describe "Creating a campaign" do
   let(:gillian) { users(:gillian) }
+  let(:doug) { users(:doug) }
   let(:clear_water_initiative) { gillian.organizations.first }
+  let(:clear_water_campaign) { clear_water_initiative.campaigns.first }
 
   it "associates the user that creates the organization with the organization" do
     log_in_as gillian
@@ -21,7 +23,22 @@ describe "Creating a campaign" do
     page.should have_content "Down with the Underwoods"
     page.should have_content "Claire Underwood is evil. Who knows about Frank? And Carrie Underwood just sucks."
     page.should have_content "Call Claire Underwood"
-    page.should have_content "(123)456-7890"
     page.should have_content "Hey Claire,\n\nShut it!\n\n\nLove,\n{{your name here}}"
+  end
+
+  it "does not allow other users to edit the campaign" do
+    log_in_as gillian
+    visit organization_campaign_path(clear_water_initiative, clear_water_campaign)
+    click_link 'Edit'
+
+    fill_in "Name", with: "The Underwoods are killing America!"
+    click_button 'Update Campaign'
+    page.should have_content "Campaign successfully updated"
+    page.should have_content "The Underwoods are killing America!"
+    log_out
+
+    log_in_as doug
+    visit organization_campaign_path(clear_water_initiative, clear_water_campaign)
+    page.should_not have_link 'Edit'
   end
 end

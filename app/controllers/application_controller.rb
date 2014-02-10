@@ -1,17 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_filter :ensure_authenticated
+  before_filter :sanitize_for_cancan
 
   helper_method :current_user, :logged_in?
-
 
   private
 
   def ensure_authenticated
     unless logged_in?
       flash.alert = "You must be logged in to access this page"
-      redirect_to welcome_path
+      redirect_to login_path
     end
   end
 
@@ -25,5 +24,11 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     current_auth.present?
+  end
+
+  def sanitize_for_cancan #https://github.com/ryanb/cancan/issues/835#issuecomment-18663815
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
   end
 end

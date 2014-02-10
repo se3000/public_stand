@@ -4,18 +4,35 @@ PublicStand::Application.routes.draw do
   get 'log_out' => 'sessions#destroy'
   get 'sign_up' => 'authentications#new'
   get 'welcome' => 'root#welcome'
+  get 'home' => 'root#home'
+
   get 'splash' => 'root#splash'
-  get 'organizer' => 'root#organizer'
+  get 'organizers' => 'root#organizers', as: 'organizers'
   get 'lobbyist' => 'root#lobbyist'
   get 'effective' => 'root#effective'
   get 'stand' => 'root#stand'
 
+  get 'dear-internet' => 'root#dear_internet'
+  get 'supporters' => 'root#supporters'
+  get 'organizers' => 'root#organizers'
+
+
   resources :authentications, only: [:new, :create]
-  resources :organizations, only: [:new, :create, :show] do
-    resources :campaigns, only: [:new, :create, :show]
+  resources :campaigns, only: [] do
+    resources :phone_calls, only: [:create]
+  end
+  resources :email_subscribers, only: [:create]
+  resources :organizations, except: [:delete] do
+    resources :campaigns, except: [:delete]
+  end
+  resources :pictures, only: [:edit] do
+    get 's3_update' => 'pictures#s3_update'
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
+
+  get 'twilio_outbound_voice_callback' => 'twilio_callbacks#outbound_voice'
+  get 'twilio_voice_status_callback' => 'twilio_callbacks#voice_status'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,18 +1,20 @@
 class RootController < ApplicationController
-  skip_before_filter :ensure_authenticated, except: [:home]
+  layout "splash"
 
   def welcome
   end
 
   def home
+    if logged_in?
+      render 'home', layout: 'application'
+    else
+      @email_subscriber = EmailSubscriber.new
+      render 'organizer_splash'
+    end
   end
 
   def effective
     render 'effective', layout: false
-  end
-
-  def organizer
-    render 'organizer', layout: false
   end
 
   def lobbyist
@@ -27,10 +29,18 @@ class RootController < ApplicationController
     render 'stand', layout: false
   end
 
+  def dear_internet
+    @email_subscriber = EmailSubscriber.new
+    render 'dear_internet'
+  end
 
-  private
+  def supporters
+    @email_subscriber = EmailSubscriber.new
+    render 'supporter_splash'
+  end
 
-  def ensure_authenticated
-    redirect_to welcome_path unless logged_in?
+  def organizers
+    @email_subscriber = EmailSubscriber.new
+    render 'organizer_splash'
   end
 end

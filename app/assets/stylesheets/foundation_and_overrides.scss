@@ -1013,5 +1013,13 @@ $topbar-bg: $light-background;
 $topbar-menu-link-color: $primary-color;
 $topbar-link-color: $primary-color;
 $topbar-dropdown-bg: $light-background;
+$column-gutter: 0;
 
 @import 'foundation';
+
+h1 {
+  margin: 0;
+}
+.columns {
+  padding-top: 1.875em;
+}

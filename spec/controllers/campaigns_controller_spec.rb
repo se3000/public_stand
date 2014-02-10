@@ -20,6 +20,17 @@ describe CampaignsController do
     end
   end
 
+  describe "#edit" do
+    let(:campaign) { organization.campaigns.first }
+
+    it "retreives the campaign and organization" do
+      get :edit, organization_id: organization.id, id: campaign.id
+
+      expect(assigns(:organization)).to eq organization
+      expect(assigns(:campaign)).to eq campaign
+    end
+  end
+
   describe "#create" do
     context "when the campaign is valid" do
       let(:campaign_params) { { name: 'May all you pain be campaign' } }
@@ -48,15 +59,79 @@ describe CampaignsController do
     end
   end
 
+  describe "#update" do
+    let(:campaign) { organization.campaigns.first }
+
+    context "when the campaign is valid" do
+      let(:campaign_params) { {name: 'May all your pain be campaign'} }
+
+      it "creates a new instance of campaign" do
+        expect {
+          patch :update, organization_id: organization.id, id: campaign.id, campaign: campaign_params
+        }.to change { campaign.reload.name }.to('May all your pain be campaign')
+
+        expect(response).to redirect_to [organization, campaign]
+      end
+    end
+
+    context "when the campaign is invalid" do
+      let(:campaign_params) { { name: nil } }
+
+      it "does not create a new campaign" do
+        expect {
+          patch :update, organization_id: organization.id, id: campaign.id, campaign: campaign_params
+        }.not_to change { Campaign.count }
+
+        expect(response).to render_template :edit
+        expect(assigns(:campaign_target)).to be_a CampaignTarget
+        expect(assigns(:target)).to be_a Target
+      end
+    end
+  end
+
   describe "#show" do
     let(:campaign) { organization.campaigns.first }
 
-    it "builds a new campaign" do
+    it "displays the campaign" do
       get :show, organization_id: organization.id, id: campaign.id
 
       expect(response).to be_success
       expect(assigns(:organization)).to eq organization
       expect(assigns(:campaign)).to eq campaign
+    end
+
+    it "builds a new call token" do
+      TwilioClient.better_receive(:outgoing_token).and_return('twilioToken123')
+
+      get :show, organization_id: organization.id, id: campaign.id
+
+      expect(assigns(:twilio_token)).to eq('twilioToken123')
+    end
+
+    context "when the current user is not an organizer" do
+      before { log_in FactoryGirl.create(:authentication) }
+
+      it "builds a picture uploader" do
+        get :show, organization_id: organization.id, id: campaign.id
+
+        expect(assigns(:picture_uploader)).to be_nil
+      end
+    end
+
+    context "when the auto param is set" do
+      it "builds a picture uploader" do
+        get :show, auto: true, organization_id: organization.id, id: campaign.id
+
+        expect(assigns(:auto_trigger)).to be_true
+      end
+    end
+
+    context "when the auto param is false" do
+      it "builds a picture uploader" do
+        get :show, auto: false, organization_id: organization.id, id: campaign.id
+
+        expect(assigns(:auto_trigger)).to be_false
+      end
     end
   end
 end

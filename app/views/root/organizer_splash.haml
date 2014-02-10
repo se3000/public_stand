@@ -1,0 +1,56 @@
+#organizer-splash
+  .header.container
+    .row
+      .large-3.columns.logo
+        %h2 Public Stand
+      .signup-box.large-4.large-offset-5.columns
+        = form_for @email_subscriber do |subscriber_form|
+          = subscriber_form.text_field :email_address, placeholder: 'Your email address'
+          = button_to "Signup", email_subscribers_path, class: "btn btn-theme"
+  #hello
+    .container
+      .row
+        .small-12.columns.centered
+          %h1 Phone Calls From Everywhere
+          %h2
+            Have your campaign's supporters call from emails, social media posts, and websites.
+            %br
+            Desktop or mobile.
+          / %h2
+          /   = link_to "Click here", "javascript:void(0)"
+          /   to see how easy it is.
+
+  #orange
+    .container
+      .row
+        .large-5.columns.centered
+          .row
+            .small-7.large-6.small-centered.columns
+              = image_tag "phone.png", id: 'phone'
+        .large-7.columns.centered
+          %h3 How it works
+          %ol
+            %li Create your dedicated call campaign page. This takes 3 minutes.
+            %li Link to your campaign page from emails, social media posts, and websites.
+            %li Watch your supporters start calls in one click.
+          %p You’ll have access to all pertinent data for your campaign's calls, including call traffic, conversion, and caller geography.
+
+  #cta
+    .row.centered
+      .large-6.large-offset-1.columns
+        %p.lead
+          Interested in having your supporters make phone calls with a click or two? Let's get in touch.
+        = form_for @email_subscriber do |subscriber_form|
+          = subscriber_form.text_field :email_address, placeholder: 'Your email address'
+          = button_to "Signup", email_subscribers_path, class: "btn btn-theme"
+
+      .small-12.large-4.columns.end
+        %p.lead
+          Rarin' to get going?
+          %br
+          Drop us a line at
+        %p.lead
+          = link_to "team@publicstand.com", "mailto:team@publicstand.com"
+
+
+
