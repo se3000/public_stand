@@ -27,7 +27,7 @@ describe PhoneCall do
   end
 
   describe "on create" do
-    let(:phone_call) { FactoryGirl.build(:phone_call) }
+    let(:phone_call) { PhoneCall.new(campaign: Campaign.last, target: Target.last) }
     it "generates a  twilio token before" do
       expect(phone_call.twilio_token).to be_nil
 

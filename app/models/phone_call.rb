@@ -18,6 +18,6 @@ class PhoneCall < ActiveRecord::Base
   private
 
   def generate_twilio_token
-    self.twilio_token = TwilioClient.outgoing_token
+    self.twilio_token ||= TwilioClient.outgoing_token
   end
 end
