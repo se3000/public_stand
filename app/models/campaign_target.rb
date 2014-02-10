@@ -8,7 +8,7 @@ class CampaignTarget < ActiveRecord::Base
 
   def average_call_time
     return unless phone_calls.any?
-    average = phone_calls.where(status: 'completed').average(:call_duration)
+    average = phone_calls.completed.average(:call_duration)
     minutes = average.to_i / 60
     seconds = (average % 60).to_i
     "#{minutes}:#{seconds}"
