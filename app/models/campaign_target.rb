@@ -15,7 +15,7 @@ class CampaignTarget < ActiveRecord::Base
     average = completed_phone_calls.average(:call_duration)
     minutes = average.to_i / 60
     seconds = (average % 60).to_i
-    "#{minutes}:#{seconds}"
+    "#{minutes}:#{0 if seconds < 10}#{seconds}"
   end
 
   private

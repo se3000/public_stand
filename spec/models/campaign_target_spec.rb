@@ -27,11 +27,11 @@ describe CampaignTarget do
 
     context "when there are phone calls" do
       before do
-        FactoryGirl.create(:phone_call, call_duration: 120, status: 'completed', campaign: campaign_target.campaign, target: campaign_target.target)
-        FactoryGirl.create(:phone_call, call_duration: 90, status: 'completed', campaign: campaign_target.campaign, target: campaign_target.target)
+        FactoryGirl.create(:phone_call, call_duration: 10, status: 'completed', campaign: campaign_target.campaign, target: campaign_target.target)
+        FactoryGirl.create(:phone_call, call_duration: 0, status: 'completed', campaign: campaign_target.campaign, target: campaign_target.target)
       end
 
-      its(:average_call_time) { should == '1:45' }
+      its(:average_call_time) { should == '0:05' }
     end
 
     context "when there are no phone calls" do
