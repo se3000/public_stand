@@ -1,50 +1,53 @@
-= javascript_include_tag "//static.twilio.com/libs/twiliojs/1.1/twilio.min.js"
+= content_for(:custom_head) do
+  = javascript_include_tag "//static.twilio.com/libs/twiliojs/1.1/twilio.min.js"
+  %meta{property: 'og:title', content: @campaign.name}
+  %meta{property: 'og:description', content: @campaign.description}
 .row
   .columns.large-12
-    .left.title= @campaign.name
+    %h1.left= @campaign.name
     - if can? :manage, @campaign
-      .left= link_to 'Edit', edit_organization_campaign_path(@organization, @campaign)
-    .right.title-secondary by #{link_to @organization.name, @organization}
-    = render 'layouts/stripes', clear: true
+      .right
+        %div
+          = link_to 'Edit Campaign', edit_organization_campaign_path(@organization, @campaign)
+        %div
+          = link_to 'Edit Image', edit_picture_path(@picture)
+  .image-bar
+    = image_tag @picture.url
 .row
-  - if @picture.present?
-    .columns.center
-      = image_tag @picture.url
-  - if can? :edit, @picture
-    .columns.center
-      = link_to 'Edit Image', edit_picture_path(@picture)
-.row
-  .columns.large-12.small-12
+  .columns.large-9.small-12
+    %h3 by #{link_to @organization.name, @organization}
     .campaign-description= @campaign.description
-  - @campaign.campaign_targets.each do |campaign_target|
-    - target = campaign_target.target
-    .columns.center.hide-for-small
-      = link_to "Call #{target.name} from your computer", '#', class: 'btn', id: 'call-link',
-        data: { behavior: 'callTrigger',
-        auto_trigger: @auto_trigger,
-        campaign_id: @campaign.id }
-    .columns.center.hide-for-medium-up
-      = form_for [@campaign, PhoneCall.new] do |call_form|
-        .columns.small-4.small-offset-4
+    - @campaign.campaign_targets.each do |campaign_target|
+      - target = campaign_target.target
+      .center
+        = link_to "Call #{target.name} from your computer", '#', class: 'btn', id: 'call-link',
+          data: { behavior: 'callTrigger',
+          auto_trigger: @auto_trigger,
+          campaign_id: @campaign.id }
+      .center.hide-for-medium-up.small-4.small-offset-4
+        = form_for [@campaign, @phone_call] do |call_form|
           = call_form.label :from_number, "Your Phone Number"
           = call_form.text_field :from_number
           = call_form.submit "Call #{target.name} from my phone"
+      .reveal-modal#instruction
+        .row
+          .columns.center
+            .instructions
+              .step-1
+                %h3 Please press "Allow" on your browser's microphone prompt and we'll kick off the call.
+                %h3 Thanks!
+              .step-2{hidden: 'hidden'}
+                %h3 Don't know what to say?
+                %h3 The clearest thing you can tell #{target.name} is:
+                .script
+                  %h2 "#{campaign_target.script}"
+              = link_to "Hang Up", '#', class: 'hang-up-btn btn disabled',
+                data: {behavior: 'hangUpTrigger displayNextAction'}
 
-    .reveal-modal#instruction
-      .row
-        .columns.center
-          .instructions
-            .step-1
-              %h3 Please press "Allow" on your browser's microphone prompt and we'll kick off the call.
-              %h3 Thanks!
-            .step-2{hidden: 'hidden'}
-              %h3 Don't know what to say?
-              %h3 The clearest thing you can tell #{@campaign.targets.first.name} is:
-              .script
-                %h2 "#{campaign_target.script}"
-            = link_to "Hang Up", '#', class: 'hang-up-btn btn disabled',
-              data: {behavior: 'hangUpTrigger displayNextAction'}
-
-  - share_url = organization_campaign_url(@organization, @campaign)
-  = facebook_share_button(share_url)
-  = tweet_button(share_url, @campaign.name)
+  .columns.campaign-target-info.large-3.small-12.light-background
+    - campaign_target = @campaign.campaign_targets.first
+    %h4= "Average Call Time: #{average_call_time_of(campaign_target)}"
+    .social
+      - share_url = organization_campaign_url(@organization, @campaign)
+      = facebook_share_button(share_url)
+      = tweet_button(share_url, @campaign.name)

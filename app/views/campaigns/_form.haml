@@ -15,6 +15,9 @@
           = target_form.label :phone_number, "Phone Number"
           = target_form.text_field :phone_number
 
+        = campaign_target_form.hidden_field :id
+        = campaign_target_form.hidden_field :campaign_id
+        = campaign_target_form.hidden_field :target_id
         = campaign_target_form.label :script, "Script"
         = campaign_target_form.text_area :script
 

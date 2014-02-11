@@ -37,6 +37,7 @@ class CampaignsController < ApplicationController
     @picture = @campaign.picture
     @twilio_token = TwilioClient.outgoing_token
     @auto_trigger = !!params[:auto]
+    @phone_call = @campaign.phone_calls.build
   end
 
 
@@ -57,6 +58,9 @@ class CampaignsController < ApplicationController
         :name,
         :description,
         campaign_targets_attributes: [
+          :id,
+          :campaign_id,
+          :target_id,
           :script,
           target_attributes: [:name, :phone_number]
         ]

@@ -8,14 +8,11 @@
 
 %head
   %meta{ :charset => "utf-8" }
-
-  -# Uncomment to make IE8 render like IE7
-  -# meta http-equiv="X-UA-Compatible" content="IE=7"
-
   -# Set the viewport width to device width for mobile
   %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
 
   %title= content_for?(:title) ? yield(:title) : "Public Stand"
+  = content_for(:custom_head)
 
   = stylesheet_link_tag "application"
   = javascript_include_tag "vendor/custom.modernizr"
@@ -23,11 +20,18 @@
 
 %body
   .fb-root
-  .light-background.contain-to-grid
+  %header
+    - flash.each do |key, message|
+      %div{ class: "flash #{key}" }
+        .row= message
+
+  = yield
+
+  #footer.light-background.contain-to-grid
     %nav.top-bar
       %ul.title-area
         %li
-          %h3= link_to 'Public Stand', root_path
+          %h3 Powered by #{link_to 'Public Stand', root_path}
       %section.top-bar-section
         %ul.right
           %li.divider
@@ -37,13 +41,4 @@
             - else
               = link_to "Log In", login_path
           %li.divider
-  = render 'layouts/stripes'
-
-  %header
-    - flash.each do |key, message|
-      %div{ class: "flash #{key}" }
-        .row= message
-
-  = yield
-
   = javascript_include_tag "application"
