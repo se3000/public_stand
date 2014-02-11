@@ -20,11 +20,18 @@
 
 %body
   .fb-root
-  .light-background.contain-to-grid
+  %header
+    - flash.each do |key, message|
+      %div{ class: "flash #{key}" }
+        .row= message
+
+  = yield
+
+  #footer.light-background.contain-to-grid
     %nav.top-bar
       %ul.title-area
         %li
-          %h3= link_to 'Public Stand', root_path
+          %h3 Powered by #{link_to 'Public Stand', root_path}
       %section.top-bar-section
         %ul.right
           %li.divider
@@ -34,13 +41,4 @@
             - else
               = link_to "Log In", login_path
           %li.divider
-  = render 'layouts/stripes'
-
-  %header
-    - flash.each do |key, message|
-      %div{ class: "flash #{key}" }
-        .row= message
-
-  = yield
-
   = javascript_include_tag "application"

@@ -8,7 +8,7 @@
     - if can? :manage, @campaign
       .right
         %div
-          = link_to 'Edit', edit_organization_campaign_path(@organization, @campaign)
+          = link_to 'Edit Campaign', edit_organization_campaign_path(@organization, @campaign)
         %div
           = link_to 'Edit Image', edit_picture_path(@picture)
   .image-bar
@@ -44,7 +44,7 @@
               = link_to "Hang Up", '#', class: 'hang-up-btn btn disabled',
                 data: {behavior: 'hangUpTrigger displayNextAction'}
 
-  .columns.campaign-target-info.large-3.small-12
+  .columns.campaign-target-info.large-3.small-12.light-background
     - campaign_target = @campaign.campaign_targets.first
     %h4= "Average Call Time: #{average_call_time_of(campaign_target)}"
     .social
