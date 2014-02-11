@@ -10,7 +10,7 @@ class PhoneCall < ActiveRecord::Base
 
   delegate :phone_number, to: :target, prefix: true
 
-  scope :completed, where(status: 'completed')
+  scope :completed, ->{ where(status: 'completed') }
 
   def start
     TwilioClient.begin_call(self)
