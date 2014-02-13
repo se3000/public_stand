@@ -1,7 +1,9 @@
 @import 'foundation_and_overrides';
 
 #splash {
+  
   .row {
+    max-width: 83em;
     padding: 0 0.9375em;
   }
   #phone {
