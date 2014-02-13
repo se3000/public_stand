@@ -10,13 +10,11 @@
         %div
           = link_to 'Edit Campaign', edit_organization_campaign_path(@organization, @campaign)
         %div
-          = link_to 'Edit Image', edit_picture_path(@picture)
-  .image-bar
-    = image_tag @picture.url
-.row
-  .columns.large-9.small-12
-    %h3 by #{link_to @organization.name, @organization}
-    .campaign-description= @campaign.description
+          //= link_to 'Edit Image', edit_picture_path(@picture)
+  .columns.small-12.large-7
+    .image-bar
+      = image_tag "http://media.npr.org/assets/img/2014/02/12/NIF_wide-363b27a25b03804d468852d491e240a7f36ad055-s40-c85.jpg"
+  .columns.small-12.large-5
     - @campaign.campaign_targets.each do |campaign_target|
       - target = campaign_target.target
       .center
@@ -24,11 +22,14 @@
           data: { behavior: 'callTrigger',
           auto_trigger: @auto_trigger,
           campaign_id: @campaign.id }
-      .center.hide-for-medium-up.small-4.small-offset-4
-        = form_for [@campaign, @phone_call] do |call_form|
-          = call_form.label :from_number, "Your Phone Number"
-          = call_form.text_field :from_number
-          = call_form.submit "Call #{target.name} from my phone"
+      .campaign-target-info.light-background.hide-for-small
+        - campaign_target = @campaign.campaign_targets.first
+        %h4= "Average Call Time: #{average_call_time_of(campaign_target)}"
+        .social
+          - share_url = organization_campaign_url(@organization, @campaign)
+          = facebook_share_button(share_url)
+          = tweet_button(share_url, @campaign.name)
+
       .reveal-modal#instruction
         .row
           .columns.center
@@ -43,11 +44,21 @@
                   %h2 "#{campaign_target.script}"
               = link_to "Hang Up", '#', class: 'hang-up-btn btn disabled',
                 data: {behavior: 'hangUpTrigger displayNextAction'}
+.row
+  .columns.small-12.large-7.end
+    %h3 by #{link_to @organization.name, @organization}
+    .campaign-description
+      = @campaign.description
+.row
+  .columns.small-12
+    - @campaign.campaign_targets.each do |campaign_target|
+      - target = campaign_target.target
+      .center.hide-for-small
+        = link_to "Call #{target.name} from your computer", '#', class: 'btn', id: 'call-link',
+          data: { behavior: 'callTrigger',
+          auto_trigger: @auto_trigger,
+          campaign_id: @campaign.id }
+      
+    
 
-  .columns.campaign-target-info.large-3.small-12.light-background
-    - campaign_target = @campaign.campaign_targets.first
-    %h4= "Average Call Time: #{average_call_time_of(campaign_target)}"
-    .social
-      - share_url = organization_campaign_url(@organization, @campaign)
-      = facebook_share_button(share_url)
-      = tweet_button(share_url, @campaign.name)
+  
