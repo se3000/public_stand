@@ -16,7 +16,14 @@ $row-width: 62.5em;
 }
 
 .image-bar {
-  img {
-    width: 100%;
-  }
+ }
+
+#call-link {
+  margin-bottom: 1em;
+}
+
+.campaign-target-info {
+  font-size: 1em;
+  margin-top: 2em;
+  padding: 1em;
 }
