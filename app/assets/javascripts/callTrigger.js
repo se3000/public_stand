@@ -6,6 +6,7 @@ callTrigger = function callTrigger(element) {
     PublicStand.displayInstructions();
     PublicStand.callCampaign(campaignID);
     $element.hide();
+    return false;
   }
 
   $element.click(startCall)
