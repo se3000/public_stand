@@ -827,22 +827,15 @@ exports.Device = Device; });
     function Dialog() {
         var screen = document.createElement("div");
         var dialog = document.createElement("div");
+        var instruction = document.createElement("div");
         var close = document.createElement("button");
 
-        screen.style.position = "fixed";
-        screen.style.zIndex = "99999";
-        screen.style.top = "0";
-        screen.style.left = "0";
-        screen.style.width = "1px";
-        screen.style.height = "1px";
-        screen.style.overflow = "hidden";
-        screen.style.visibility = "hidden";
-
-        dialog.style.margin = "10% auto 0";
-        dialog.style.width = "215px";
-        dialog.style.borderRadius = "8px";
-        dialog.style.backgroundColor = "#f8f8f8";
-        dialog.style.border = "8px solid rgb(160, 160, 160)";
+        //PS
+        screen.id = "ps-flash-grandparent";
+        dialog.id = "ps-flash-parent";
+        instruction.id = "ps-flash-instruction";
+        close.id = 'ps-flash-close';
+        close.className = "btn";
 
         var self = this;
         var hideFn = function() {
@@ -852,14 +845,16 @@ exports.Device = Device; });
             }
         };
 
-        close.appendChild(document.createTextNode("Close"));
+        close.appendChild(document.createTextNode("Continue Call"));
         if (window.addEventListener) {
             close.addEventListener("click", hideFn, false);
         } else {
             close.attachEvent("onclick", hideFn);
         }
 
+        instruction.appendChild(document.createTextNode("Please select \"Allow\" from the Flash options before continuing your call."));
         screen.appendChild(dialog);
+        dialog.appendChild(instruction);
         dialog.appendChild(close);
 
         this.screen = screen;
@@ -3876,6 +3871,7 @@ var classMethods = {
      *
      * @param {array} options Initialization options.
      */
+    // PS
     initialize: function(options) {
         if (!swfobject.hasFlashPlayerVersion("10.0.0"))
             throw new util.Exception("Flash Player >= 10.0.0 is required.");
