@@ -2635,21 +2635,25 @@ exports.getSystemInfo = getSystemInfo; });
 exports.EventStream = require("twilio/eventstream").EventStream;
 exports.Connection = require("twilio/connection").Connection;
 exports.require = require; });
-    var TWILIO_ROOT = typeof TWILIO_ROOT != "undefined" ?  TWILIO_ROOT : (function(){
-        var prot = window.location.protocol || "http:",
-            uri = "//static.twilio.com/libs/twiliojs/1.0/",
-            scripts = document.getElementsByTagName("script"),
-            re = /(\w+:)?(\/\/.*)(twilio.min.js|twilio.js)/;
-        for (var i = 0; i < scripts.length; i++) {
-            var match = scripts[i].src.match(re);
-            if (match) {
-                prot = (match[1] || prot);
-                uri = match[2];
-                break;
-            }
-        }
-        return prot + uri;
-    })();
+    var TWILIO_ROOT = typeof TWILIO_ROOT != "undefined" ?  TWILIO_ROOT : "https://static.twilio.com/libs/twiliojs/refs/e02c42e/";
+      //
+      // PS: This function used to be how they'd determine what the root was
+      //
+      // (function(){
+        // var prot = window.location.protocol || "http:",
+            // uri = "//static.twilio.com/libs/twiliojs/1.0/",
+            // scripts = document.getElementsByTagName("script"),
+            // re = /(\w+:)?(\/\/.*)(twilio.min.js|twilio.js)/;
+        // for (var i = 0; i < scripts.length; i++) {
+            // var match = scripts[i].src.match(re);
+            // if (match) {
+                // prot = (match[1] || prot);
+                // uri = match[2];
+                // break;
+            // }
+        // }
+        // return prot + uri;
+    // })();
     var NS_BEEP = "Twilio",
         NS_SOUND = "Twilio",
         NS_MEDIASTREAM = "Twilio",
