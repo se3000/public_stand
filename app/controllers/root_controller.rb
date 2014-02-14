@@ -29,11 +29,6 @@ class RootController < ApplicationController
     render 'stand', layout: false
   end
 
-  def dear_internet
-    @email_subscriber = EmailSubscriber.new
-    render 'dear_internet'
-  end
-
   def supporters
     @email_subscriber = EmailSubscriber.new
     render 'supporter_splash'

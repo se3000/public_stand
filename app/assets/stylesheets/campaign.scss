@@ -1,9 +1,10 @@
 @import 'variables';
+$row-width: 62.5em;
 
 .campaign-description {
-  font-size: 1.4375em;
+  font-size: 1.2em;
+  line-height: 1.6;
   margin-bottom: 1em;
-  white-space: pre-line;
 }
 
 #instruction {
@@ -14,8 +15,8 @@
   }
 }
 
-.image-bar {
-  img {
-    width: 100%;
-  }
+.campaign-target-info {
+  font-size: 1em;
+  margin-top: 2em;
+  padding: 1em;
 }
