@@ -45,12 +45,32 @@ describe('PublicStand', function () {
   });
 
   describe('#displayInstructions', function () {
-    it('reveals instructions', function () {
-      spyOn($.fn, 'foundation');
+    describe('when the flash dialog exists', function () {
+      beforeEach(function () {
+        setFixture("<div id='ps-flash-grandparent'>1</div>");
+      });
 
-      PublicStand.displayInstructions();
+      it('reveals webRTC instructions', function () {
+        spyOn($.fn, 'foundation');
 
-      expect($.fn.foundation).toHaveBeenCalledWith('reveal', 'open');
+        PublicStand.displayInstructions();
+
+        expect($.fn.foundation).not.toHaveBeenCalledWith('reveal', 'open');
+      });
+    });
+
+    describe('when the flash dialog does not exist', function () {
+      beforeEach(function () {
+        setFixture("<div id='null'>1</div>");
+      });
+
+      it('reveals webRTC instructions', function () {
+        spyOn($.fn, 'foundation');
+
+        PublicStand.displayInstructions();
+
+        expect($.fn.foundation).toHaveBeenCalledWith('reveal', 'open');
+      });
     });
   });
 });

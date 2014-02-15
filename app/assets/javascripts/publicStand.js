@@ -22,7 +22,8 @@ PublicStand = {
   },
 
   displayInstructions: function() {
-    $('#instruction').foundation('reveal', 'open');
+    if ($('#ps-flash-grandparent').length === 0) {
+      $('#instruction').foundation('reveal', 'open');
+    }
   }
 }
-
