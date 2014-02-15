@@ -8,10 +8,11 @@
     - if can? :manage, @campaign
       .right
         = link_to 'Edit Campaign', edit_organization_campaign_path(@organization, @campaign)
-        /%div /= link_to 'Edit Image', edit_picture_path(@picture)
   .columns.small-12.large-7
     .image-bar
       = image_tag "http://media.npr.org/assets/img/2014/02/12/NIF_wide-363b27a25b03804d468852d491e240a7f36ad055-s40-c85.jpg"
+      - if can? :manage, @campaign
+        %div= link_to 'Edit Image', edit_picture_path(@picture)
   .columns.small-12.large-5
     - @campaign.campaign_targets.each do |campaign_target|
       - target = campaign_target.target

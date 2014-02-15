@@ -1,6 +1,10 @@
 @import 'variables';
 $row-width: 62.5em;
 
+body {
+  color: #4b4f4f;
+}
+
 .campaign-description {
   font-size: 1.2em;
   line-height: 1.6;
