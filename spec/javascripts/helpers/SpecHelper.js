@@ -1,5 +1,6 @@
 afterEach(function () {
   $('#jasmine_content').empty();
+  $('#ps-flash-grandparent').remove();
 });
 
 setFixture = function setFixture(newFixture) {
