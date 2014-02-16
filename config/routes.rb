@@ -3,14 +3,8 @@ PublicStand::Application.routes.draw do
   get 'login' => 'sessions#new'
   get 'log_out' => 'sessions#destroy'
   get 'sign_up' => 'authentications#new'
-  get 'welcome' => 'root#welcome'
   get 'home' => 'root#home'
-
-  get 'splash' => 'root#splash'
-  get 'organizers' => 'root#organizers', as: 'organizers'
-  get 'lobbyist' => 'root#lobbyist'
-  get 'effective' => 'root#effective'
-  get 'stand' => 'root#stand'
+  get 'dear-internet' => 'root#dear_internet'
 
   resources :authentications, only: [:new, :create]
   resources :campaigns, only: [] do
