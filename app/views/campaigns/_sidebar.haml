@@ -1,0 +1,12 @@
+- campaign.campaign_targets.each do |campaign_target|
+  - target = campaign_target.target
+  .center
+    = in_browser_call_button(campaign_target)
+  .center= link_to "To connect with your cell phone, click here", "#"
+
+  .campaign-target-info.light-background.hide-for-small
+    %p= "Average Call Time: #{average_call_time_of(campaign_target)}"
+    .social.center
+      - share_url = organization_campaign_url(organization, campaign)
+      = facebook_share_button(share_url)
+      = tweet_button(share_url, campaign.name)

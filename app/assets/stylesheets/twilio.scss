@@ -1,0 +1,33 @@
+#ps-flash-grandparent {
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  visibility: hidden;
+
+  #ps-flash-parent {
+    margin: 10% auto 0;
+    width: 230px;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    border: 8px solid rgb(160, 160, 160);
+
+    #ps-flash-instruction {
+      margin: 10px auto;
+      text-align: center;
+    }
+
+    #ps-flash-close {
+      display: block;
+      margin: 5px auto;
+    }
+
+    #__connectionFlash__ {
+      height: 138px !important;
+      max-width: none;
+    }
+  }
+}

@@ -1,10 +1,6 @@
 @import 'variables';
 $row-width: 62.5em;
 
-body {
-  color: #4b4f4f;
-}
-
 .campaign-description {
   font-size: 1.2em;
   line-height: 1.6;
@@ -19,13 +15,10 @@ body {
   }
 }
 
-.image-bar {
- }
-
-#call-link {
-  margin-bottom: 1em;
+.campaign-target-info {
+  font-size: 1em;
+  margin-top: 2em;
   padding: 1em;
-  font-size: 1.2em;
 }
 
 .campaign-target-info {
