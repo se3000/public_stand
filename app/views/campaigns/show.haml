@@ -2,13 +2,9 @@
   %meta{property: 'og:title', content: @campaign.name}
   %meta{property: 'og:description', content: @campaign.description}
 
-%nav.top-bar{:data => {'topbar' => true}}
-  %ul.title-area
-    %li.name
-  %section.top-bar-section
-    .left
-      %li
-        %h1= @campaign.name
+.contain-to-grid
+  %nav.top-bar{:data => {'topbar' => true}}
+    %h1.left= @campaign.name
 
 .row
   .columns.small-12.large-8
@@ -24,9 +20,16 @@
     = image_tag "phone_icon_circles.png", class: "center-block"
     - @campaign.campaign_targets.each do |campaign_target|
       - target = campaign_target.target
-      .cta.center.hide-for-small
-        .in-browser-cta= in_browser_call_button(campaign_target, auto_trigger: @auto_trigger)
-        .mobile-cta.center= link_to "To connect with your cell phone, click here", "#"
+      .in-browser-cta.hide-for-small
+        %p Call from your computer
+        = in_browser_call_button(campaign_target, auto_trigger: @auto_trigger)
+      -# .mobile-cta.center= link_to "To connect with your cell phone, click here", "#"
+      %p or
+      .in-browser-cta
+        %p Connect with your phone
+        = form_for [@campaign, @phone_call] do |call_form|
+          = call_form.text_field :from_number, placeholder: "Your Phone Number"
+          .cta-button= call_form.submit "Call #{target.name} from my phone", class: 'btn'
       .campaign-target-info.hide-for-small
         %p.center
           = "Calls made: 5"

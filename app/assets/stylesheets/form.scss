@@ -38,3 +38,27 @@ form {
     color: #aaa;
   }
 }
+
+a.btn, form input[type='submit'].btn {
+  color: $lightest-background;
+  background-color: $main-color;
+  display: inline-block;
+  margin-bottom: 0;
+  font-size: 15px;
+  font-weight: normal;
+  padding: 8px 15px;
+  border: 1px solid $main-color;
+  box-shadow: rgba(255, 255, 255, 0.498039) 0px 1px 0px 0px inset;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.498039) 0px 1px 0px 0px inset;
+  -moz-box-shadow: rgba(255, 255, 255, 0.498039) 0px 1px 0px 0px inset;
+
+  &:hover {
+    color: $lightest-background;
+  }
+
+  &.disabled {
+    border: 1px solid #ddd;
+    background-color: #ddd;
+    color: #aaa;
+  }
+}
