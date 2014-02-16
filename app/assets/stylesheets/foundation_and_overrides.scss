@@ -1017,9 +1017,10 @@ $topbar-dropdown-bg: $light-background;
 
 @import 'foundation';
 
-h1 {
-  margin: 0;
-}
 .columns {
   padding-top: 1.875em;
+}
+
+.contain-to-grid .top-bar {
+  margin-top: 1em;
 }

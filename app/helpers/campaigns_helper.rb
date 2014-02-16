@@ -4,7 +4,8 @@ module CampaignsHelper
   end
 
   def in_browser_call_button(campaign_target, options = {})
-    link_to("Call from your computer", '#', {
+    link_to("Connect", '#', {
+      class: 'cta-btn btn',
       data: {
         behavior: 'callTrigger',
         campaign_id: campaign_target.campaign_id,

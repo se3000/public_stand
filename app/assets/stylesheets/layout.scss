@@ -1,4 +1,4 @@
-@import 'foundation_and_overrides';
+@import 'variables';
 
 .stripes {
   width: 100%;
@@ -58,6 +58,11 @@ header {
   font-size: 1.5625em;
   margin-top: 1em;
   font-weight: bold;
+}
+
+.top-bar {
+  padding: 0 15px;
+  margin-top: 10px;
 }
 
 #footer {
