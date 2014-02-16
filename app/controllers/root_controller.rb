@@ -1,9 +1,6 @@
 class RootController < ApplicationController
   layout "splash"
 
-  def welcome
-  end
-
   def home
     if logged_in?
       render 'home', layout: 'application'
@@ -13,29 +10,8 @@ class RootController < ApplicationController
     end
   end
 
-  def effective
-    render 'effective', layout: false
-  end
-
-  def lobbyist
-    render 'lobbyist', layout: false
-  end
-
-  def splash
-    render 'splash', layout: false
-  end
-
-  def stand
-    render 'stand', layout: false
-  end
-
-  def supporters
+  def dear_internet
     @email_subscriber = EmailSubscriber.new
-    render 'supporter_splash'
-  end
-
-  def organizers
-    @email_subscriber = EmailSubscriber.new
-    render 'organizer_splash'
+    render 'dear_internet'
   end
 end
