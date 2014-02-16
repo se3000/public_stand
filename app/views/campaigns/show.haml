@@ -1,25 +1,41 @@
 = content_for(:custom_head) do
   %meta{property: 'og:title', content: @campaign.name}
   %meta{property: 'og:description', content: @campaign.description}
+
+%nav.top-bar{:data => {'topbar' => true}} 
+  %ul.title-area
+    %li.name
+  %section.top-bar-section
+    .left
+      %li 
+        %h1= @campaign.name
+      
 .row
-  .columns.large-12
-    %h1.center= @campaign.name
-.row
-  .columns.small-12.large-7
+  .columns.small-12.large-8
+    / %h1= @campaign.name
     .image-bar
-      = image_tag @picture.url
+      = image_tag "http://d22r54gnmuhwmk.cloudfront.net/photos/8/nh/oe/GuNhOegRdFMIQgq-556x313-noPad.jpg", class: "shadow"
     %h3 by #{@organization.name}
     .campaign-description
       = @campaign.description
-  .columns.small-12.large-5
-    = render 'sidebar', campaign: @campaign, organization: @organization
-.row
-  .columns.small-12
+    / .columns.small-12.large-5
+    /   = render 'sidebar', campaign: @campaign, organization: @organization
+  .cta-banner.shadow.columns.small-12.large-4
+    = image_tag "phone_icon_circles.png", class: "center-block"
     - @campaign.campaign_targets.each do |campaign_target|
       - target = campaign_target.target
-      .center.hide-for-small
-        = in_browser_call_button(campaign_target, auto_trigger: @auto_trigger)
-        .center= link_to "To connect with your cell phone, click here", "#"
+      .cta.center.hide-for-small
+        .in-browser-cta= in_browser_call_button(campaign_target, auto_trigger: @auto_trigger)
+        .mobile-cta.center= link_to "To connect with your cell phone, click here", "#"
+      .campaign-target-info.hide-for-small
+        %p.center
+          = "Calls made: 5"
+          %br
+          = "Average Call Duration: #{average_call_time_of(campaign_target)}"
+        .social.center
+          - share_url = organization_campaign_url(@organization, @campaign)
+          = facebook_share_button(share_url)
+          = tweet_button(share_url, @campaign.name)
 
 .reveal-modal#instruction
   - campaign_target = @campaign.campaign_targets.first

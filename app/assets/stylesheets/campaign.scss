@@ -1,10 +1,45 @@
 @import 'variables';
-$row-width: 62.5em;
+
+
+.h1{
+  background-color: darkorange;
+  padding: 1em;
+  width: 636px;
+}
+
+.shadow {
+  -moz-box-shadow:    6px 7px 36px 4px #ccc;
+  -webkit-box-shadow: 6px 7px 36px 4px #ccc;
+  box-shadow:         6px 7px 36px 4px #ccc;
+}
+
+.image-bar{
+  margin: 1.5em 0 2em 0;
+}
 
 .campaign-description {
   font-size: 1.2em;
   line-height: 1.6;
   margin-bottom: 1em;
+}
+
+.cta-banner {
+  background-color: #a5b9d6;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  img { height: 200px; }
+  .in-browser-cta {
+    padding: .5em;
+    background-color: #b6c6de;
+    a { 
+      color: darkorange; 
+      font-size: 2em;
+      font-weight: 500;
+    }
+  }
+  .mobile-cta{
+    padding: .5em;
+  }
 }
 
 #instruction {
@@ -16,13 +51,7 @@ $row-width: 62.5em;
 }
 
 .campaign-target-info {
-  font-size: 1em;
-  margin-top: 2em;
+  font-size: 1.2em;
   padding: 1em;
 }
 
-.campaign-target-info {
-  font-size: 1em;
-  margin-top: 2em;
-  padding: 1em;
-}
