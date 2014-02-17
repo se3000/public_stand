@@ -42,12 +42,31 @@ describe('PublicStand', function () {
 
       expect($('.step-2').is(':visible')).toBeTruthy();
     });
+
+    it('displays instructions when the device is ready', function () {
+      spyOn(PublicStand, 'displayInstructions');
+
+      spyOn(Twilio.Device, 'ready').and.callFake(function (callback) {
+        callback();
+      });
+      PublicStand.callCampaign(campaignID);
+
+      expect(PublicStand.displayInstructions).toHaveBeenCalled();
+    });
   });
 
   describe('#displayInstructions', function () {
     describe('when the flash dialog exists', function () {
+      var grandparent, parent;
+
       beforeEach(function () {
-        setFixture("<div id='ps-flash-grandparent'>1</div>");
+        setFixture("<div id='ps-flash-grandparent' style='margin: 0;'>" +
+                     "<div style='margin: 0;'>" +
+                       "<object id='__connectionFlash__'>1</object>" +
+                     "</div>" +
+                   "</div>");
+        grandparent = $('#ps-flash-grandparent');
+        parent = grandparent.find('div');
       });
 
       it('reveals webRTC instructions', function () {
@@ -55,7 +74,17 @@ describe('PublicStand', function () {
 
         PublicStand.displayInstructions();
 
-        expect($.fn.foundation).not.toHaveBeenCalledWith('reveal', 'open');
+        expect($.fn.foundation).toHaveBeenCalledWith('reveal', 'open');
+      });
+
+      it('removes styles from the flash containers', function () {
+        expect(grandparent.attr('style')).toEqual('margin: 0;');
+        expect(parent.attr('style')).toBeTruthy();
+
+        PublicStand.displayInstructions();
+
+        expect(grandparent.attr('style')).not.toEqual('margin: 0;');
+        expect(parent.attr('style')).toBeFalsy();
       });
     });
 

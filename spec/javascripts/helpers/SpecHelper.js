@@ -15,6 +15,7 @@ Twilio = {
   Device: {
     connect: function() {},
     disconnectAll: function() {},
-    setup: function() {}
+    setup: function() {},
+    ready: function() {}
   }
 }

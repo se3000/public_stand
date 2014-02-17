@@ -8,14 +8,6 @@ describe("callTrigger", function () {
     });
 
     describe("on 'success'", function () {
-      it('displays instructions', function () {
-        spyOn(PublicStand, 'displayInstructions');
-
-        $element.click();
-
-        expect(PublicStand.displayInstructions).toHaveBeenCalled();
-      });
-
       it('initiates a call', function () {
         spyOn(PublicStand, 'callCampaign');
 
@@ -31,14 +23,6 @@ describe("callTrigger", function () {
       beforeEach(function () {
         $fixture = setFixture('<a data-behavior="callTrigger" data-auto-trigger="true" data-campaign-id="3" id="element">Call</a>');
         $element = $fixture.find('a').show();
-      });
-
-      it('displays instructions', function () {
-        spyOn(PublicStand, 'displayInstructions');
-
-        Elemental.load();
-
-        expect(PublicStand.displayInstructions).toHaveBeenCalled();
       });
 
       it('initiates a call', function () {
