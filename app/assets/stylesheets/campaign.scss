@@ -33,16 +33,45 @@ body {
   padding-right: 0 !important;
   img { height: 200px; }
   .in-browser-cta {
-    padding: .5em;
-    background-color: #b6c6de;
+    
     a {
-      color: darkorange;
-      font-size: 2em;
-      font-weight: 500;
+      line-height: 4em;
+      height: 4em;
+      margin-bottom: 0;
+      // color: darkorange;
+      // font-size: 2em;
+      // font-weight: 500;
+    }
+    p {
+      background-color: #b6c6de;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      margin-bottom: 0;
     }
   }
-  .mobile-cta{
-    padding: .5em;
+
+  #or{
+    font-size: 1.5em;
+    padding: 0.5em;
+  }
+  .browser-to-mobile-cta{
+    background-color: #b6c6de;
+    input {
+      margin-bottom: .5em;
+    }
+    p {
+      padding-top: 1em;
+      padding-bottom: 1em;
+      margin-bottom: 0;
+    }
+    .button {
+      margin-bottom: 0;
+      line-height: 7em;
+      height: 7em;
+    }
+    .columns {
+      padding-top: 0;
+    }
   }
 }
 
