@@ -5,7 +5,8 @@ module CampaignsHelper
 
   def in_browser_call_button(campaign_target, options = {})
     link_to("Connect", '#', {
-      class: 'cta-btn btn',
+      #class: 'cta-btn btn',
+      class: 'button postfix',
       data: {
         behavior: 'callTrigger',
         campaign_id: campaign_target.campaign_id,
