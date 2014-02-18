@@ -7,7 +7,7 @@
     %h1.left= @campaign.name
 
 .row
-  .columns.small-12.large-8
+  .columns.small-12.large-7
     / %h1= @campaign.name
     .image-bar
       = image_tag "http://d22r54gnmuhwmk.cloudfront.net/photos/8/nh/oe/GuNhOegRdFMIQgq-556x313-noPad.jpg", class: "shadow"
@@ -16,7 +16,7 @@
       = @campaign.description
     / .columns.small-12.large-5
     /   = render 'sidebar', campaign: @campaign, organization: @organization
-  .cta-banner.shadow.columns.small-12.large-4
+  .cta-banner.shadow.columns.small-12.large-4.large-offset-1
     = image_tag "phone_icon_circles.png", class: "center-block"
     - @campaign.campaign_targets.each do |campaign_target|
       - target = campaign_target.target
