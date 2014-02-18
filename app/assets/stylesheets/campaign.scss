@@ -27,12 +27,14 @@
   background-color: #a5b9d6;
   padding-left: 0 !important;
   padding-right: 0 !important;
+  top: -7em;
   img { height: 200px; }
+  
   .in-browser-cta {
     
     a {
-      line-height: 4em;
-      height: 4em;
+      line-height: 4.5em;
+      height: 4.5em;
       margin-bottom: 0;
       // color: darkorange;
       // font-size: 2em;
@@ -40,30 +42,32 @@
     }
     p {
       background-color: #b6c6de;
-      padding-top: 1em;
-      padding-bottom: 1em;
+      padding: 1em 0.5em 1em 0.5em;
       margin-bottom: 0;
+      font-size: 1.1em;
+      color: $primary-color;
     }
   }
 
   #or{
     font-size: 1.5em;
-    padding: 0.5em;
+    padding: -9.5em;
   }
   .browser-to-mobile-cta{
     background-color: #b6c6de;
     input {
-      margin-bottom: .5em;
+      margin-bottom: 0;
     }
     p {
-      padding-top: 1em;
-      padding-bottom: 1em;
+      padding: 1em 0.5em 1em 0.5em;
       margin-bottom: 0;
+      font-size: 1.1em;
+      color: $primary-color
     }
     .button {
       margin-bottom: 0;
-      line-height: 7em;
-      height: 7em;
+      line-height: 7.2em;
+      height: 7.2em;
     }
     .columns {
       padding-top: 0;
