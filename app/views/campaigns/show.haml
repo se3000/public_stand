@@ -8,35 +8,28 @@
 
 .row
   .columns.small-12.large-7
-    / %h1= @campaign.name
     .image-bar
       = image_tag "http://d22r54gnmuhwmk.cloudfront.net/photos/8/nh/oe/GuNhOegRdFMIQgq-556x313-noPad.jpg", class: "shadow"
     %h3 by #{@organization.name}
     .campaign-description
       = @campaign.description
-    / .columns.small-12.large-5
-    /   = render 'sidebar', campaign: @campaign, organization: @organization
   .cta-banner.shadow.columns.small-12.large-4.large-offset-1
     = image_tag "phone_icon_circles.png", class: "center-block"
     - @campaign.campaign_targets.each do |campaign_target|
       - target = campaign_target.target
-      .in-browser-cta.hide-for-small
-        .row.collapse
-          .small-8.columns
-            %p Call from your computer
-          .small-4.columns
-            = in_browser_call_button(campaign_target, auto_trigger: @auto_trigger)
+      .in-browser-cta.hide-for-small.row.collapse
+        .small-12.columns
+          = in_browser_call_button(campaign_target, auto_trigger: @auto_trigger)
 
-      -# .mobile-cta.center= link_to "To connect with your cell phone, click here", "#"
-      %p.center#or or
-      .browser-to-mobile-cta
-        .row.collapse
-          = form_for [@campaign, @phone_call] do |call_form|
-            .small-8.columns
-              %p Connect with your phone
-              = call_form.text_field :from_number, placeholder: "Your Phone Number"
-            .small-4.columns
-              .button.postfix= call_form.submit "Connect"
+      .row.center.hide-for-small#or or
+
+      .in-browser-cta.row.collapse
+        .small-12.columns.tight-top
+          = link_to "Have us call you", '#', class: 'button postfix'
+          -# = form_for [@campaign, @phone_call] do |call_form|
+            -# .small-8.columns
+              -# %p Connect with your phone
+              -# = call_form.text_field :from_number, placeholder: "Your Phone Number"
       .campaign-target-info.hide-for-small
         %p.center
           = "Calls made: 5"
