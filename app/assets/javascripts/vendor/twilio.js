@@ -912,8 +912,8 @@ exports.Device = Device; });
             // PS
             // this.closeCb = closeCb;
             // this.screen.style.visibility = "visible";
-            this.screen.style.width = "100%";
-            this.screen.style.height = "auto";
+            // this.screen.style.width = "100%";
+            // this.screen.style.height = "auto";
 
             // Firefox uses subpixel units for positioning which is incompatible
             // with Flash components: they are visible but unresponsive to user
