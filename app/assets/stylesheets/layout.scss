@@ -1,24 +1,24 @@
 @import 'variables';
 
-
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
 
   #container {
+    padding-top: 1em;
     min-height: 100%;
     position: relative;
 
     #body {
-      padding-bottom: 64px;
+      padding-bottom: 32px;
     }
 
     #footer {
       width: 100%;
       position: absolute;
       bottom: 0;
-      height: 64px;
+      height: 32px;
     }
   }
 }
