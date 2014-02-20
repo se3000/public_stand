@@ -828,7 +828,7 @@ exports.Device = Device; });
     files["lib/twilio/dialog.js"] = (function(require, exports){ var Dialog = (function() {
     function Dialog() {
         var screen = document.createElement("div");
-        var dialog = document.createElement("div");
+        var dialog = document.createElement("h3");
         var instruction = document.createElement("div");
         var close = document.createElement("button");
 
