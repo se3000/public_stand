@@ -10,6 +10,7 @@ PublicStand = {
       },
       success: function (data, textStatus, jqXHR) {
         Twilio.Device.setup(data.twilio_token);
+        Twilio.Device.ready(PublicStand.displayInstructions);
         Twilio.Device.connect(function () {
           var $instruction = $('#instruction');
           $('.step-1').hide();
@@ -22,8 +23,12 @@ PublicStand = {
   },
 
   displayInstructions: function() {
-    if ($('#ps-flash-grandparent').length === 0) {
+    if ($('#__connectionFlash__').length === 0) {
       $('#instruction').foundation('reveal', 'open');
+    } else {
+      var $container = $('#ps-flash-grandparent');
+      $container.children().andSelf().removeAttr('style');
+      $container.foundation('reveal', 'open');
     }
   }
 }
