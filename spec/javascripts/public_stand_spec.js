@@ -130,4 +130,36 @@ describe('PublicStand', function () {
       });
     });
   });
+
+  describe('#setWalkthrough', function () {
+    describe("when given 'flash'", function () {
+      beforeEach(function () {
+        PublicStand.setWalkthrough('flash');
+      });
+
+      it("uses the mobile walkthrough", function () {
+        expect(PublicStand.walkthrough).toEqual(PublicStand.flashWalkthrough);
+      });
+    });
+
+    describe("when given 'mobile'", function () {
+      beforeEach(function () {
+        PublicStand.setWalkthrough('mobile');
+      });
+
+      it("uses the mobile walkthrough", function () {
+        expect(PublicStand.walkthrough).toEqual(PublicStand.mobileWalkthrough);
+      });
+    });
+
+    describe("when given 'webRTC'", function () {
+      beforeEach(function () {
+        PublicStand.setWalkthrough('webRTC');
+      });
+
+      it("uses the mobile walkthrough", function () {
+        expect(PublicStand.walkthrough).toEqual(PublicStand.webRTCWalkthrough);
+      });
+    });
+  });
 });

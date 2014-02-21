@@ -36,5 +36,16 @@ PublicStand = {
       this.walkthrough = PublicStand.flashWalkthrough;
     }
     return this.walkthrough;
+  },
+
+  setWalkthrough: function (type) {
+    if (type === 'flash') {
+      this.walkthrough = PublicStand.flashWalkthrough;
+    } else if (type === 'mobile') {
+      this.walkthrough = PublicStand.mobileWalkthrough;
+    } else if (type === 'webRTC') {
+      this.walkthrough = PublicStand.webRTCWalkthrough;
+    }
+    return this.walkthrough;
   }
 }
