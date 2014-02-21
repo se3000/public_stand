@@ -16,22 +16,14 @@ describe('PublicStand.webRTCWalkthrough', function () {
   });
 
   describe('#displayInstructions', function () {
-    it('reveals the first webRTC', function () {
-      expect($step1.is(':visible')).toBeFalsy();
+    it('reveals the first step of webRTC instructions', function () {
+      spyOn($.fn, 'foundation').and.callFake(function () {
+        expect(this[0].id).toEqual('webrtc-instructions');
+      });
 
       webRTC.displayInstructions();
 
-      expect($step1.is(':visible')).toBeTruthy();
-      expect($step2.is(':visible')).toBeFalsy();
-      expect($step3.is(':visible')).toBeFalsy();
-    });
-
-    it('reveals the webRTC instructions', function () {
-      expect($instructions.is(':visible')).toBeFalsy();
-
-      webRTC.displayInstructions();
-
-      expect($instructions.is(':visible')).toBeTruthy();
+      expect($.fn.foundation).toHaveBeenCalledWith('reveal', 'open');
     });
   });
 
