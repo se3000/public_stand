@@ -1,0 +1,16 @@
+.reveal-modal#webrtc-instructions
+  - campaign_target = @campaign.campaign_targets.first
+  - target = campaign_target.target
+  .row
+    .columns.center
+      .instructions
+        .step-1
+          %h3 Please press "Allow" on your browser's microphone prompt and we'll kick off the call.
+          %h3 Thanks!
+        .step-2{hidden: 'hidden'}
+          %h3 Don't know what to say?
+          %h3 The clearest thing you can tell #{target.name} is:
+          .script
+            %h2 "#{campaign_target.script}"
+        = link_to "Hang Up", '#', class: 'hang-up-btn btn disabled',
+          data: {behavior: 'hangUpTrigger displayNextAction'}
