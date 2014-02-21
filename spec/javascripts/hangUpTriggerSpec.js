@@ -14,12 +14,15 @@ describe("hangUpTrigger", function () {
       expect(Twilio.Device.disconnectAll).toHaveBeenCalled();
     });
 
-    it('hides the reveal modal', function () {
-      spyOn(jQuery.fn, 'foundation')
+    it('displays the next action', function () {
+      spyOn(PublicStand, 'displayNextStep');
+      spyOn(Twilio.Device, 'disconnect').and.callFake(function (callback) {
+        callback();
+      });
 
       $fixture.find('a').click();
 
-      expect(jQuery.fn.foundation).toHaveBeenCalledWith('reveal', 'close');
+      expect(PublicStand.displayNextStep).toHaveBeenCalled();
     });
   });
 
@@ -34,14 +37,6 @@ describe("hangUpTrigger", function () {
       $fixture.find('a').click();
 
       expect(Twilio.Device.disconnectAll).not.toHaveBeenCalled();
-    });
-
-    it('hides the reveal modal', function () {
-      spyOn(jQuery.fn, 'foundation')
-
-      $fixture.find('a').click();
-
-      expect(jQuery.fn.foundation).not.toHaveBeenCalled();
     });
   });
 });

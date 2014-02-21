@@ -14,9 +14,10 @@ setFixture = function setFixture(newFixture) {
 
 Twilio = {
   Device: {
-    connect: function() {},
-    disconnectAll: function() {},
-    setup: function() {},
-    ready: function() {}
+    connect: function () {},
+    disconnect: function () {},
+    disconnectAll: function () {},
+    setup: function () {},
+    ready: function () {}
   }
 }
