@@ -1,6 +1,7 @@
 afterEach(function () {
   $('#jasmine_content').empty();
   $('#ps-flash-grandparent').remove();
+  PublicStand.walkthrough = undefined;
 });
 
 setFixture = function setFixture(newFixture) {

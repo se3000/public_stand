@@ -56,7 +56,7 @@ describe('PublicStand', function () {
   });
 
   describe('#displayInstructions', function () {
-    describe('when the flash dialog exists', function () {
+    describe('when the flash object exists', function () {
       var grandparent, parent;
 
       beforeEach(function () {
@@ -69,22 +69,12 @@ describe('PublicStand', function () {
         parent = grandparent.find('div');
       });
 
-      it('reveals webRTC instructions', function () {
-        spyOn($.fn, 'foundation');
+      it('reveals Flash instructions', function () {
+        spyOn(PublicStand.flashWalkthrough, 'displayInstructions');
 
         PublicStand.displayInstructions();
 
-        expect($.fn.foundation).toHaveBeenCalledWith('reveal', 'open');
-      });
-
-      it('removes styles from the flash containers', function () {
-        expect(grandparent.attr('style')).toEqual('margin: 0;');
-        expect(parent.attr('style')).toBeTruthy();
-
-        PublicStand.displayInstructions();
-
-        expect(grandparent.attr('style')).not.toEqual('margin: 0;');
-        expect(parent.attr('style')).toBeFalsy();
+        expect(PublicStand.flashWalkthrough.displayInstructions).toHaveBeenCalled();
       });
     });
 
@@ -93,12 +83,12 @@ describe('PublicStand', function () {
         setFixture("<div id='null'>1</div>");
       });
 
-      it('reveals webRTC instructions', function () {
-        spyOn($.fn, 'foundation');
+      it('reveals WebRTC instructions', function () {
+        spyOn(PublicStand.webRTCWalkthrough, 'displayInstructions');
 
         PublicStand.displayInstructions();
 
-        expect($.fn.foundation).toHaveBeenCalledWith('reveal', 'open');
+        expect(PublicStand.webRTCWalkthrough.displayInstructions).toHaveBeenCalled();
       });
     });
   });

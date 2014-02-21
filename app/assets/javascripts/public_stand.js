@@ -9,8 +9,8 @@ PublicStand = {
         xhr.setRequestHeader('X-CSRF-Token', csrfToken);
       },
       success: function (data, textStatus, jqXHR) {
-        Twilio.Device.setup(data.twilio_token);
         Twilio.Device.ready(PublicStand.displayInstructions);
+        Twilio.Device.setup(data.twilio_token);
 
         Twilio.Device.connect(PublicStand.displayNextStep);
         Twilio.Device.connect({phone_call_id: data.phone_call_id});
@@ -29,6 +29,7 @@ PublicStand = {
   getWalkthrough: function () {
     if (this.walkthrough)
       return this.walkthrough;
+
     if ($('#__connectionFlash__').length === 0) {
       this.walkthrough = PublicStand.webRTCWalkthrough;
     } else {
