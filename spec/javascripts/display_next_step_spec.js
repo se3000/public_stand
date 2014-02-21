@@ -1,12 +1,12 @@
-describe("displayNextAction", function () {
+describe("displayNextStep", function () {
   var $fixture, $element;
 
   describe('on a "non-disabled" element', function () {
     beforeEach(function () {
-      var fixture = "<a data-behavior='displayNextAction' data-next-selector='#next-link'>link</a>" +
+      var fixture = "<a data-behavior='displayNextStep' data-next-selector='#next-link'>link</a>" +
         "<a id='next-link' hidden='hidden'>next link</a>";
       $fixture = setFixture(fixture);
-      $element = $fixture.find('a[data-behavior="displayNextAction"]');
+      $element = $fixture.find('a[data-behavior="displayNextStep"]');
       $nextElement = $fixture.find('#next-link');
     });
 
@@ -21,11 +21,10 @@ describe("displayNextAction", function () {
 
   describe('when the element is marked as disabled', function () {
     beforeEach(function () {
-      var fixture = "<a class='disabled' data-behavior='displayNextAction' data-next-selector='#next-link'>link</a>" +
+      var fixture = "<a class='disabled' data-behavior='displayNextStep' data-next-selector='#next-link'>link</a>" +
         "<a id='next-link' hidden='hidden'>next link</a>";
       $fixture = setFixture(fixture);
-      $element = $fixture.find('a[data-behavior="displayNextAction"]');
-      $nextElement = $fixture.find('#next-link');
+      $element = $fixture.find('a[data-behavior="displayNextStep"]');
     });
 
     it("does not call displayNextStep on PublicStand", function () {

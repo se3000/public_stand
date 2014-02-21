@@ -1,4 +1,4 @@
-displayNextAction = function displayNextAction(element) {
+displayNextStep = function displayNextStep(element) {
   var $element = $(element);
 
   $element.click(function (event) {
