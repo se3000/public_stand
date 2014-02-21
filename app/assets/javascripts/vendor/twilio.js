@@ -909,8 +909,9 @@ exports.Device = Device; });
          * Shows the dialog.
          */
         show: function(closeCb) {
+            this.closeCb = closeCb;
+
             // PS
-            // this.closeCb = closeCb;
             // this.screen.style.visibility = "visible";
             // this.screen.style.width = "100%";
             // this.screen.style.height = "auto";
