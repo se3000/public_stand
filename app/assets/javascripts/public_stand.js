@@ -10,30 +10,30 @@ PublicStand = {
       },
       success: function (data, textStatus, jqXHR) {
         Twilio.Device.setup(data.twilio_token);
-        Twilio.Device.ready(function () {
-          PublicStand.displayInstructions();
-        });
-        Twilio.Device.connect(PublicStand.displayNextInstructions);
+        Twilio.Device.ready(PublicStand.displayInstructions);
+
+        Twilio.Device.connect(PublicStand.displayNextStep);
         Twilio.Device.connect({phone_call_id: data.phone_call_id});
       }
     });
   },
 
-  displayInstructions: function () {
-    var walkthrough = PublicStand.webRTCWalkthrough;
-    if ($('#__connectionFlash__').length === 0) {
-      walkthrough.displayInstructions();
-    } else {
-      var $container = $('#ps-flash-grandparent');
-      $container.children().andSelf().removeAttr('style');
-      $container.foundation('reveal', 'open');
-    }
+  displayInstructions: function() {
+    PublicStand.getWalkthrough().displayInstructions();
   },
 
-  displayNextInstructions: function () {
-    var walkthrough = PublicStand.webRTCWalkthrough
-    walkthrough.displayNextStep();
+  displayNextStep: function() {
+    PublicStand.getWalkthrough().displayNextStep();
+  },
 
-    $('.hang-up-btn').removeClass('disabled');
+  getWalkthrough: function () {
+    if (this.walkthrough)
+      return this.walkthrough;
+    if ($('#__connectionFlash__').length === 0) {
+      this.walkthrough = PublicStand.webRTCWalkthrough;
+    } else {
+      this.walkthrough = PublicStand.flashWalkthrough;
+    }
+    return this.walkthrough;
   }
 }

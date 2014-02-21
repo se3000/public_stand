@@ -1,43 +1,45 @@
-describe('PublicStand.webRTCWalkthrough', function () {
-  var webRTC = PublicStand.webRTCWalkthrough;
+describe('PublicStand.flashWalkthrough', function () {
+  var walkthrough = PublicStand.flashWalkthrough;
   var $instructions, $step1, $step2, $step3;
 
+  resetSteps = function () {
+    $instructions = $('#ps-flash-grandparent');
+    $step1 = $('#ps-flash-parent');
+    $step2 = $('.step-2');
+    $step3 = $('.step-3');
+  }
+
   beforeEach(function () {
-    setFixture("<div class='reveal-modal' id='webrtc-instructions' style='visibility: hidden;'>\
-                 <div class='step-1'/>\
+    setFixture("<div class='reveal-modal' id='ps-flash-grandparent' style='visibility: hidden;'>\
+                 <div id='ps-flash-parent'/>\
+               </div>\
+               <div id='flash-instructions-container'>\
                  <div class='step-2'/>\
                  <div class='step-3'/>\
                </div>");
-    $instructions = $('#webrtc-instructions');
-    $step1 = $('.step-1');
-    $step2 = $('.step-2');
-    $step3 = $('.step-3');
-    $instructions.children().andSelf().hide();
+    $oldInstructions = $('#flash-instructions-container');
+    resetSteps();
+    $oldInstructions.children().andSelf().hide();
+    $instructions.hide();
   });
 
   describe('#displayInstructions', function () {
-    it('reveals the first webRTC', function () {
-      expect($step1.is(':visible')).toBeFalsy();
+    it('removes the Flash old instruction container', function () {
+      expect($('#flash-instructions-container')[0]).toBeTruthy();
 
-      webRTC.displayInstructions();
+      walkthrough.displayInstructions();
 
-      expect($step1.is(':visible')).toBeTruthy();
-      expect($step2.is(':visible')).toBeFalsy();
-      expect($step3.is(':visible')).toBeFalsy();
-    });
-
-    it('reveals the webRTC instructions', function () {
-      expect($instructions.is(':visible')).toBeFalsy();
-
-      webRTC.displayInstructions();
-
-      expect($instructions.is(':visible')).toBeTruthy();
+      expect($('#flash-instructions-container')[0]).toBeFalsy();
+      expect($instructions.children().length).toEqual(3)
     });
   });
 
   describe('#displayNextStep', function () {
     beforeEach(function () {
+      walkthrough.displayInstructions();
       $instructions.show();
+      $instructions.children().hide();
+      resetSteps();
     });
 
     describe('when the first step is visible', function () {
@@ -50,7 +52,7 @@ describe('PublicStand.webRTCWalkthrough', function () {
         expect($step2.is(':visible')).toBeFalsy();
         expect($step3.is(':visible')).toBeFalsy();
 
-        webRTC.displayNextStep();
+        walkthrough.displayNextStep();
 
         expect($step1.is(':visible')).toBeFalsy();
         expect($step2.is(':visible')).toBeTruthy();
@@ -68,7 +70,7 @@ describe('PublicStand.webRTCWalkthrough', function () {
         expect($step2.is(':visible')).toBeTruthy();
         expect($step3.is(':visible')).toBeFalsy();
 
-        webRTC.displayNextStep();
+        walkthrough.displayNextStep();
 
         expect($step1.is(':visible')).toBeFalsy();
         expect($step2.is(':visible')).toBeFalsy();
