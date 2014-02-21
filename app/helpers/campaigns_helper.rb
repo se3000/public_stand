@@ -8,6 +8,7 @@ module CampaignsHelper
       class: 'button postfix',
       data: {
         behavior: 'callTrigger',
+        call_type: 'browser',
         campaign_id: campaign_target.campaign_id,
         auto_trigger: options[:auto_trigger]
       }

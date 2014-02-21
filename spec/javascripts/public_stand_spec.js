@@ -55,18 +55,14 @@ describe('PublicStand', function () {
     });
   });
 
-  describe('#displayInstructions', function () {
-    describe('when the flash object exists', function () {
-      var grandparent, parent;
-
+  describe('#walkthrough', function () {
+    describe("when set to flash", function () {
       beforeEach(function () {
-        setFixture("<div id='ps-flash-grandparent' style='margin: 0;'>" +
-                     "<div style='margin: 0;'>" +
-                       "<object id='__connectionFlash__'>1</object>" +
-                     "</div>" +
-                   "</div>");
-        grandparent = $('#ps-flash-grandparent');
-        parent = grandparent.find('div');
+        PublicStand.setWalkthrough('flash');
+      });
+
+      it("uses the mobile walkthrough", function () {
+        expect(PublicStand.walkthrough).toEqual(PublicStand.flashWalkthrough);
       });
 
       it('reveals Flash instructions', function () {
@@ -75,36 +71,6 @@ describe('PublicStand', function () {
         PublicStand.displayInstructions();
 
         expect(PublicStand.flashWalkthrough.displayInstructions).toHaveBeenCalled();
-      });
-    });
-
-    describe('when the flash dialog does not exist', function () {
-      beforeEach(function () {
-        setFixture("<div id='null'>1</div>");
-      });
-
-      it('reveals WebRTC instructions', function () {
-        spyOn(PublicStand.webRTCWalkthrough, 'displayInstructions');
-
-        PublicStand.displayInstructions();
-
-        expect(PublicStand.webRTCWalkthrough.displayInstructions).toHaveBeenCalled();
-      });
-    });
-  });
-
-  describe('#displayNextStep', function () {
-    describe('when the flash object exists', function () {
-      var grandparent, parent;
-
-      beforeEach(function () {
-        setFixture("<div id='ps-flash-grandparent' style='margin: 0;'>" +
-                     "<div style='margin: 0;'>" +
-                       "<object id='__connectionFlash__'>1</object>" +
-                     "</div>" +
-                   "</div>");
-        grandparent = $('#ps-flash-grandparent');
-        parent = grandparent.find('div');
       });
 
       it('reveals the next Flash step', function () {
@@ -116,9 +82,47 @@ describe('PublicStand', function () {
       });
     });
 
-    describe('when the flash dialog does not exist', function () {
+    describe("when set to mobile", function () {
       beforeEach(function () {
-        setFixture("<div id='null'>1</div>");
+        PublicStand.setWalkthrough('mobile');
+      });
+
+      it("uses the mobile walkthrough", function () {
+        expect(PublicStand.walkthrough).toEqual(PublicStand.mobileWalkthrough);
+      });
+
+      xit('reveals WebRTC instructions', function () {
+        spyOn(PublicStand.webRTCWalkthrough, 'displayInstructions');
+
+        PublicStand.displayInstructions();
+
+        expect(PublicStand.mobileWalkthrough.displayInstructions).toHaveBeenCalled();
+      });
+
+      xit('reveals the next WebRTC step', function () {
+        spyOn(PublicStand.webRTCWalkthrough, 'displayNextStep');
+
+        PublicStand.displayNextStep();
+
+        expect(PublicStand.mobileWalkthrough.displayNextStep).toHaveBeenCalled();
+      });
+    });
+
+    describe("when set to webRTC", function () {
+      beforeEach(function () {
+        PublicStand.setWalkthrough('webRTC');
+      });
+
+      it("uses the mobile walkthrough", function () {
+        expect(PublicStand.walkthrough).toEqual(PublicStand.webRTCWalkthrough);
+      });
+
+      it('reveals WebRTC instructions', function () {
+        spyOn(PublicStand.webRTCWalkthrough, 'displayInstructions');
+
+        PublicStand.displayInstructions();
+
+        expect(PublicStand.webRTCWalkthrough.displayInstructions).toHaveBeenCalled();
       });
 
       it('reveals the next WebRTC step', function () {
@@ -127,38 +131,6 @@ describe('PublicStand', function () {
         PublicStand.displayNextStep();
 
         expect(PublicStand.webRTCWalkthrough.displayNextStep).toHaveBeenCalled();
-      });
-    });
-  });
-
-  describe('#setWalkthrough', function () {
-    describe("when given 'flash'", function () {
-      beforeEach(function () {
-        PublicStand.setWalkthrough('flash');
-      });
-
-      it("uses the mobile walkthrough", function () {
-        expect(PublicStand.walkthrough).toEqual(PublicStand.flashWalkthrough);
-      });
-    });
-
-    describe("when given 'mobile'", function () {
-      beforeEach(function () {
-        PublicStand.setWalkthrough('mobile');
-      });
-
-      it("uses the mobile walkthrough", function () {
-        expect(PublicStand.walkthrough).toEqual(PublicStand.mobileWalkthrough);
-      });
-    });
-
-    describe("when given 'webRTC'", function () {
-      beforeEach(function () {
-        PublicStand.setWalkthrough('webRTC');
-      });
-
-      it("uses the mobile walkthrough", function () {
-        expect(PublicStand.walkthrough).toEqual(PublicStand.webRTCWalkthrough);
       });
     });
   });

@@ -3,17 +3,40 @@ describe("callTrigger", function () {
 
   describe("after the page loads", function () {
     beforeEach(function () {
-      $fixture = setFixture('<a href="#" data-behavior="callTrigger" data-campaign-id="3">link</a>');
+      $fixture = setFixture('<a href="#" data-behavior="callTrigger" data-campaign-id="3" data-call-type="tinCan">link</a>');
       $element = $fixture.find('a');
     });
 
-    describe("on 'success'", function () {
+    describe("on click", function () {
       it('initiates a call', function () {
         spyOn(PublicStand, 'callCampaign');
 
         $element.click();
 
         expect(PublicStand.callCampaign).toHaveBeenCalledWith(3);
+      });
+
+      it('sets the walkthrough type', function () {
+        spyOn(PublicStand, 'setWalkthrough');
+
+        $element.click();
+
+        expect(PublicStand.setWalkthrough).toHaveBeenCalledWith('tinCan');
+      });
+
+      describe('when there call type is set to browser', function () {
+        beforeEach(function () {
+          $element.data('call-type', 'browser');
+        });
+
+        it('sets the walkthrough type to what the browser requires', function () {
+          spyOn(PublicStand, 'browserCallType').and.returnValue('carrierPidgeon')
+          spyOn(PublicStand, 'setWalkthrough');
+
+          $element.click();
+
+          expect(PublicStand.setWalkthrough).toHaveBeenCalledWith('carrierPidgeon');
+        });
       });
     });
   });

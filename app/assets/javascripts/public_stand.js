@@ -1,4 +1,23 @@
 PublicStand = {
+  browserCallType: function () {
+    if (navigator.userAgent.match(/Chrome/)) {
+      return 'webRTC';
+    } else {
+      return 'flash';
+    }
+  },
+
+  setWalkthrough: function (type) {
+    if (type === 'flash') {
+      this.walkthrough = PublicStand.flashWalkthrough;
+    } else if (type === 'mobile') {
+      this.walkthrough = PublicStand.mobileWalkthrough;
+    } else if (type === 'webRTC') {
+      this.walkthrough = PublicStand.webRTCWalkthrough;
+    }
+    return this.walkthrough;
+  },
+
   callCampaign: function callCampaign(campaignID) {
     var url = '/campaigns/' + campaignID + '/phone_calls';
     $.ajax({
@@ -19,33 +38,10 @@ PublicStand = {
   },
 
   displayInstructions: function() {
-    PublicStand.getWalkthrough().displayInstructions();
+    PublicStand.walkthrough.displayInstructions();
   },
 
   displayNextStep: function() {
-    PublicStand.getWalkthrough().displayNextStep();
-  },
-
-  getWalkthrough: function () {
-    if (this.walkthrough)
-      return this.walkthrough;
-
-    if ($('#__connectionFlash__').length === 0) {
-      this.walkthrough = PublicStand.webRTCWalkthrough;
-    } else {
-      this.walkthrough = PublicStand.flashWalkthrough;
-    }
-    return this.walkthrough;
-  },
-
-  setWalkthrough: function (type) {
-    if (type === 'flash') {
-      this.walkthrough = PublicStand.flashWalkthrough;
-    } else if (type === 'mobile') {
-      this.walkthrough = PublicStand.mobileWalkthrough;
-    } else if (type === 'webRTC') {
-      this.walkthrough = PublicStand.webRTCWalkthrough;
-    }
-    return this.walkthrough;
+    PublicStand.walkthrough.displayNextStep();
   }
 }
