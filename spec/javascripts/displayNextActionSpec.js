@@ -10,20 +10,12 @@ describe("displayNextAction", function () {
       $nextElement = $fixture.find('#next-link');
     });
 
-    it("hides itself on click", function () {
-      expect($element.is(':visible')).toBeTruthy();
+    it("calls displayNextStep on PublicStand", function () {
+      spyOn(PublicStand, 'displayNextStep');
 
       $element.click();
 
-      expect($element.is(':visible')).toBeFalsy();
-    });
-
-    it("displays the next-selector on click", function () {
-      expect($nextElement.is(':visible')).toBeFalsy();
-
-      $element.click();
-
-      expect($nextElement.is(':visible')).toBeTruthy();
+      expect(PublicStand.displayNextStep).toHaveBeenCalled();
     });
   });
 
@@ -36,20 +28,12 @@ describe("displayNextAction", function () {
       $nextElement = $fixture.find('#next-link');
     });
 
-    it("hides itself on click", function () {
-      expect($element.is(':visible')).toBeTruthy();
+    it("does not call displayNextStep on PublicStand", function () {
+      spyOn(PublicStand, 'displayNextStep');
 
       $element.click();
 
-      expect($element.is(':visible')).toBeTruthy();
-    });
-
-    it("displays the next-selector on click", function () {
-      expect($nextElement.is(':visible')).toBeFalsy();
-
-      $element.click();
-
-      expect($nextElement.is(':visible')).toBeFalsy();
+      expect(PublicStand.displayNextStep).not.toHaveBeenCalled();
     });
   });
 });
