@@ -3,7 +3,8 @@ describe('PublicStand.flashWalkthrough', function () {
   var $instructions, $step1, $step2, $step3;
 
   resetSteps = function () {
-    $instructions = $('#ps-flash-grandparent');
+    $oldInstructions = $('#ps-flash-grandparent');
+    $instructions = $('#flash-instructions');
     $step1 = $('#ps-flash-parent');
     $step2 = $('.step-2');
     $step3 = $('.step-3');
@@ -13,66 +14,68 @@ describe('PublicStand.flashWalkthrough', function () {
     setFixture("<div class='reveal-modal' id='ps-flash-grandparent' style='visibility: hidden;'>\
                  <div id='ps-flash-parent'/>\
                </div>\
-               <div id='flash-instructions-container'>\
+               <div id='flash-instructions'>\
                  <div class='step-2'/>\
-                 <div class='step-3'/>\
+                 <div class='step-3' hidden='hidden'/>\
                </div>");
-    $oldInstructions = $('#flash-instructions-container');
     resetSteps();
-    $oldInstructions.children().andSelf().hide();
     $instructions.hide();
   });
 
   describe('#displayInstructions', function () {
-    it('removes the Flash old instruction container', function () {
-      expect($('#flash-instructions-container')[0]).toBeTruthy();
+    it('reveals the first set of flash instructions', function () {
+      spyOn($.fn, 'foundation').and.callFake(function () {
+        expect(this[0].id).toEqual("ps-flash-grandparent");
+      });
 
       walkthrough.displayInstructions();
 
-      expect($('#flash-instructions-container')[0]).toBeFalsy();
-      expect($instructions.children().length).toEqual(3)
+      expect($.fn.foundation).toHaveBeenCalledWith('reveal', 'open');
     });
   });
 
   describe('#displayNextStep', function () {
     beforeEach(function () {
       walkthrough.displayInstructions();
-      $instructions.show();
-      $instructions.children().hide();
       resetSteps();
     });
 
-    describe('when the first step is visible', function () {
+    describe('when the first step is not completed', function () {
       beforeEach(function () {
-        $step1.show();
+        $oldInstructions.removeClass('completed');
       });
 
       it('displays the second step', function () {
-        expect($step1.is(':visible')).toBeTruthy();
-        expect($step2.is(':visible')).toBeFalsy();
-        expect($step3.is(':visible')).toBeFalsy();
+        expect($oldInstructions.hasClass('completed')).toBeFalsy();
 
         walkthrough.displayNextStep();
 
-        expect($step1.is(':visible')).toBeFalsy();
-        expect($step2.is(':visible')).toBeTruthy();
-        expect($step3.is(':visible')).toBeFalsy();
+        expect($oldInstructions.hasClass('completed')).toBeTruthy();
+      });
+
+      it('reveals the second set of flash instructions', function () {
+        spyOn($.fn, 'foundation').and.callFake(function () {
+          expect(this[0].id).toEqual('flash-instructions');
+        });
+
+        walkthrough.displayNextStep();
+
+        expect($.fn.foundation).toHaveBeenCalledWith('reveal', 'open');
       });
     });
 
-    describe('when the second step is visible', function () {
+    describe('when the first step is marked as having been completed', function () {
       beforeEach(function () {
-        $step2.show();
+        $instructions.show();
+        $oldInstructions.addClass('completed');
       });
 
       it('displays the third step', function () {
-        expect($step1.is(':visible')).toBeFalsy();
         expect($step2.is(':visible')).toBeTruthy();
         expect($step3.is(':visible')).toBeFalsy();
 
         walkthrough.displayNextStep();
 
-        expect($step1.is(':visible')).toBeFalsy();
         expect($step2.is(':visible')).toBeFalsy();
         expect($step3.is(':visible')).toBeTruthy();
       });

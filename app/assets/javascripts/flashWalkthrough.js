@@ -1,28 +1,19 @@
 PublicStand.flashWalkthrough = {
   displayInstructions: function () {
-    var $instructions = $('#ps-flash-grandparent');
-    var $oldInstructions = $('#flash-instructions-container');
-
-    $oldInstructions.children().hide();
-    $instructions.children().andSelf().removeAttr('style');
-    $instructions.append($oldInstructions.html());
-    $instructions.foundation('reveal', 'open');
-    $instructions.find('.step-2, .step-3').hide();
-    $oldInstructions.remove();
+    $('#ps-flash-grandparent').foundation('reveal', 'open');
   },
 
   displayNextStep: function () {
-    var $instructions = $('#ps-flash-grandparent');
-    var $step1 = $instructions.find('#ps-flash-parent');
+    var $oldInstructions = $('#ps-flash-grandparent');
+    var $instructions = $('#flash-instructions');
     var $step2 = $instructions.find('.step-2');
-    var $step3 = $instructions.find('.step-3');
 
-    if ($step1.is(':visible')) {
-      $step1.hide();
-      $step2.show();
+    if (! $oldInstructions.hasClass('completed')) {
+      $instructions.foundation('reveal', 'open');
+      $oldInstructions.addClass('completed'); //FIXME: Hiding seems to break the Twilio Flash
     } else if ($step2.is(':visible')) {
       $step2.hide();
-      $step3.show();
+      $instructions.find('.step-3').show();
     }
   }
 }
