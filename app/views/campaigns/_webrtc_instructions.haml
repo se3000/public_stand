@@ -8,3 +8,5 @@
           = link_to "Hang Up", '#', class: 'hang-up-btn btn disabled'
         .step-2{hidden: 'hidden'}
           = render 'talking_points', campaign_target: @campaign.campaign_targets.first
+        .step-3{hidden: 'hidden'}
+          = render 'social_sharing'
