@@ -92,4 +92,42 @@ describe('PublicStand', function () {
       });
     });
   });
+
+  describe('#displayNextStep', function () {
+    describe('when the flash object exists', function () {
+      var grandparent, parent;
+
+      beforeEach(function () {
+        setFixture("<div id='ps-flash-grandparent' style='margin: 0;'>" +
+                     "<div style='margin: 0;'>" +
+                       "<object id='__connectionFlash__'>1</object>" +
+                     "</div>" +
+                   "</div>");
+        grandparent = $('#ps-flash-grandparent');
+        parent = grandparent.find('div');
+      });
+
+      it('reveals the next Flash step', function () {
+        spyOn(PublicStand.flashWalkthrough, 'displayNextStep');
+
+        PublicStand.displayNextStep();
+
+        expect(PublicStand.flashWalkthrough.displayNextStep).toHaveBeenCalled();
+      });
+    });
+
+    describe('when the flash dialog does not exist', function () {
+      beforeEach(function () {
+        setFixture("<div id='null'>1</div>");
+      });
+
+      it('reveals the next WebRTC step', function () {
+        spyOn(PublicStand.webRTCWalkthrough, 'displayNextStep');
+
+        PublicStand.displayNextStep();
+
+        expect(PublicStand.webRTCWalkthrough.displayNextStep).toHaveBeenCalled();
+      });
+    });
+  });
 });
