@@ -23,21 +23,6 @@ describe("callTrigger", function () {
 
         expect(PublicStand.setWalkthrough).toHaveBeenCalledWith('tinCan');
       });
-
-      describe('when there call type is set to browser', function () {
-        beforeEach(function () {
-          $element.data('call-type', 'browser');
-        });
-
-        it('sets the walkthrough type to what the browser requires', function () {
-          spyOn(PublicStand, 'browserCallType').and.returnValue('carrierPidgeon')
-          spyOn(PublicStand, 'setWalkthrough');
-
-          $element.click();
-
-          expect(PublicStand.setWalkthrough).toHaveBeenCalledWith('carrierPidgeon');
-        });
-      });
     });
   });
 

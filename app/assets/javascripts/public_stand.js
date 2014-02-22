@@ -1,5 +1,5 @@
 PublicStand = {
-  browserCallType: function () {
+  browserCapability: function () {
     if (navigator.userAgent.match(/Chrome/)) {
       return 'webRTC';
     } else {
@@ -8,12 +8,12 @@ PublicStand = {
   },
 
   setWalkthrough: function (type) {
-    if (type === 'flash') {
-      this.walkthrough = PublicStand.flashWalkthrough;
-    } else if (type === 'mobile') {
+    if (type === 'mobile') {
       this.walkthrough = PublicStand.mobileWalkthrough;
-    } else if (type === 'webRTC') {
+    } else if (PublicStand.browserCapability() === 'webRTC') {
       this.walkthrough = PublicStand.webRTCWalkthrough;
+    } else {
+      this.walkthrough = PublicStand.flashWalkthrough;
     }
     return this.walkthrough;
   },

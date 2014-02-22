@@ -7,20 +7,16 @@ callTrigger = function callTrigger(element) {
   }
 
   function setWalkthrough() {
-    var callType = $element.data('call-type');
-    if (callType === 'browser') {
-      callType = PublicStand.browserCallType();
-    }
-    PublicStand.setWalkthrough(callType);
   }
 
   $element.click(function (event) {
-    setWalkthrough();
+    PublicStand.setWalkthrough($element.data('call-type'));
     startCall();
     event.preventDefault();
   });
 
   if($element.data('auto-trigger')) {
+    PublicStand.setWalkthrough($element.data('call-type'));
     startCall();
   }
 }
