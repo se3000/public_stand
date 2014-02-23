@@ -15,6 +15,18 @@ module CampaignsHelper
     })
   end
 
+  def mobile_call_button(campaign_target, options = {})
+    link_to("Have us call you", '#', {
+      class: 'button postfix',
+      data: {
+        behavior: 'callTrigger',
+        call_type: 'mobile',
+        campaign_id: campaign_target.campaign_id,
+        auto_trigger: options[:auto_trigger]
+      }
+    })
+  end
+
   def hang_up_button
     link_to("Hang Up", '#', {
       class: 'hang-up-btn btn disabled',

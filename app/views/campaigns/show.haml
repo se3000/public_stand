@@ -26,7 +26,7 @@
 
       .in-browser-cta.row.collapse
         .small-12.columns.tight-top
-          = link_to "Call from your phone", '#', class: 'button postfix'
+          = mobile_call_button(campaign_target, auto_trigger: @auto_trigger)
       .campaign-target-info.hide-for-small
         %p.center
           = "Calls made: 5"
