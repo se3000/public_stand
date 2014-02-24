@@ -27,11 +27,12 @@ body {
   margin-bottom: 1em;
 }
 
-.cta-banner {
+.cta-banner.columns {
   background-color: $cta-background;
+  padding-top: 50px;
   padding-left: 0 !important;
   padding-right: 0 !important;
-  top: -8em;
+  top: -10em;
   -moz-box-shadow:    4px -7px 20px -10px #222;
   -webkit-box-shadow: 4px -7px 20px -10px #222;
   box-shadow:         4px -7px 20px -10px #222;
