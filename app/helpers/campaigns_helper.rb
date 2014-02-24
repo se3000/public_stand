@@ -26,11 +26,4 @@ module CampaignsHelper
       }
     })
   end
-
-  def hang_up_button
-    link_to("Hang Up", '#', {
-      class: 'hang-up-btn btn disabled',
-      data: {behavior: 'hangUpTrigger'}
-    })
-  end
 end
