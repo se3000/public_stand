@@ -37,11 +37,11 @@ body {
   .in-browser-cta {
 
     a {
-      line-height: 4.5em;
-      height: 4.5em;
+      line-height: 4em;
+      height: 4em;
       margin-bottom: 0;
       // color: darkorange;
-      // font-size: 2em;
+      font-size: 1.2em;
       // font-weight: 500;
     }
     p {
@@ -75,6 +75,10 @@ body {
       line-height: 7.2em;
       height: 7.2em;
     }
+  }
+  .campaign-target-info {
+    margin: 1em 0 1em 0;
+    p { margin-bottom: 1em}
   }
 }
 
