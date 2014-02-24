@@ -70,3 +70,12 @@ header {
   padding: 0 15px;
   margin-top: 10px;
 }
+
+#footer {
+  .top-bar {
+    h1, h2, h3, h4, h5, h6 {
+      line-height: 2em;
+      margin: 0;
+    }
+  }
+}
