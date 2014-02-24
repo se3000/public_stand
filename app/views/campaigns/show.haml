@@ -14,28 +14,8 @@
     %h3 by #{@organization.name}
     .campaign-description
       = @campaign.description
-  .cta-banner.shadow.columns.small-12.large-4.large-offset-1
-    = image_tag "phone_icon_circles.png", class: "center-block"
-    - @campaign.campaign_targets.each do |campaign_target|
-      - target = campaign_target.target
-      .in-browser-cta.hide-for-small.row.collapse
-        .small-12.columns
-          = in_browser_call_button(campaign_target, auto_trigger: @auto_trigger)
-
-      .row.center.hide-for-small#or or
-
-      .in-browser-cta.row.collapse
-        .small-12.columns.tight-top
-          = mobile_call_button(campaign_target, auto_trigger: @auto_trigger)
-      .campaign-target-info.hide-for-small
-        %p.center
-          = "Calls made: 5"
-          %br
-          = "Average Call Duration: #{average_call_time_of(campaign_target)}"
-        .social.center
-          - share_url = organization_campaign_url(@organization, @campaign)
-          = facebook_share_button(share_url)
-          = tweet_button(share_url, @campaign.name)
+  .cta-banner.columns.small-12.large-4.large-offset-1
+    = render 'sidebar'
 
 = render 'webrtc_instructions'
 = render 'flash_instructions'
