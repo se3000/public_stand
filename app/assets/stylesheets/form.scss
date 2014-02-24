@@ -56,6 +56,19 @@ a.btn, form input[type='submit'].btn {
     color: $lightest-background;
   }
 
+  &.large {
+    font-size: 36px;
+    line-height: 72px;
+  }
+
+  &.hang-up {
+    background-color: red;
+    border: 1px solid red;
+    &:hover {
+      background-color: rgb(255, 50, 50);
+    }
+  }
+
   &.disabled {
     border: 1px solid #ddd;
     background-color: #ddd;
