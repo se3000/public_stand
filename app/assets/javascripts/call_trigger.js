@@ -3,7 +3,6 @@ callTrigger = function callTrigger(element) {
 
   function startCall(event) {
     PublicStand.callCampaign($element.data('campaign-id'));
-    $element.hide();
   }
 
   function setWalkthrough() {
