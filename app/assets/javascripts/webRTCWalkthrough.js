@@ -1,6 +1,7 @@
 PublicStand.webRTCWalkthrough = {
   displayInstructions: function () {
     $('#webrtc-instructions').foundation('reveal', 'open');
+    $('#webrtc-arrow').show();
   },
 
   displayNextStep: function () {
@@ -10,6 +11,7 @@ PublicStand.webRTCWalkthrough = {
 
     if ($step1.is(':visible')) {
       $step1.hide();
+      $('#webrtc-arrow').hide();
       $step2.show();
     } else if ($step2.is(':visible')) {
       $step2.hide();

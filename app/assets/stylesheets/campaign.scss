@@ -154,3 +154,19 @@ $ribbon-size: 167px;
   -moz-transform: rotate(30deg);
   transform: rotate(30deg);
 }
+
+#webrtc-arrow {
+  position: fixed;
+  left: 92%;
+  top: 10px;
+
+  width: 5%;
+  height: 100px;
+
+  background-image: url('Red Arrow.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  z-index: 1000;
+  display: none;
+}
