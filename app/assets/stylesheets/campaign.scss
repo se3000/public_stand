@@ -1,6 +1,5 @@
 @import 'variables';
 
-
 .h1{
   background-color: darkorange;
   padding: 1em;
@@ -18,6 +17,10 @@
   width: 100%;
 }
 
+body {
+  color: #4b4f4f;
+}
+
 .campaign-description {
   font-size: 1.2em;
   line-height: 1.6;
@@ -30,9 +33,9 @@
   padding-right: 0 !important;
   top: -7em;
   img { height: 200px; }
-  
+
   .in-browser-cta {
-    
+
     a {
       line-height: 4.5em;
       height: 4.5em;
@@ -45,15 +48,18 @@
       background-color: #b6c6de;
       padding: 1em 0.5em 1em 0.5em;
       margin-bottom: 0;
-      font-size: 1.1em;
       color: $primary-color;
+    }
+    .columns.tight-top {
+      padding-top: 0;
     }
   }
 
   #or{
     font-size: 1.5em;
-    padding: -9.5em;
+    padding: 0.5em;
   }
+
   .browser-to-mobile-cta{
     background-color: #b6c6de;
     input {
@@ -62,16 +68,12 @@
     p {
       padding: 1em 0.5em 1em 0.5em;
       margin-bottom: 0;
-      font-size: 1.1em;
       color: $primary-color
     }
     .button {
       margin-bottom: 0;
       line-height: 7.2em;
       height: 7.2em;
-    }
-    .columns {
-      padding-top: 0;
     }
   }
 }
@@ -84,8 +86,12 @@
   }
 }
 
-.campaign-target-info {
-  font-size: 1.2em;
+.image-bar {
+}
+
+#call-link {
+  margin-bottom: 1em;
   padding: 1em;
+  font-size: 1.2em;
 }
 

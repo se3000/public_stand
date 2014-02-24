@@ -1,20 +1,22 @@
 callTrigger = function callTrigger(element) {
   var $element = $(element);
-  var campaignID = $element.data('campaign-id');
 
   function startCall(event) {
-    PublicStand.callCampaign(campaignID);
-    PublicStand.displayInstructions();
+    PublicStand.callCampaign($element.data('campaign-id'));
     $element.hide();
-    return false;
+  }
+
+  function setWalkthrough() {
   }
 
   $element.click(function (event) {
-    startCall()
+    PublicStand.setWalkthrough($element.data('call-type'));
+    startCall();
     event.preventDefault();
   });
 
   if($element.data('auto-trigger')) {
+    PublicStand.setWalkthrough($element.data('call-type'));
     startCall();
   }
 }

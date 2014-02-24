@@ -1,0 +1,10 @@
+.reveal-modal#flash-instructions
+  - campaign_target = @campaign.campaign_targets.first
+  - target = campaign_target.target
+  .row
+    .columns.center
+      .instructions
+        .step-2
+          = render 'talking_points', campaign_target: @campaign.campaign_targets.first
+        .step-3{hidden: 'hidden'}
+          = render 'social_sharing'

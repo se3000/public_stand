@@ -1,0 +1,12 @@
+.reveal-modal#webrtc-instructions
+  .row
+    .columns.center
+      .instructions
+        .step-1
+          %h3 Please press "Allow" on your browser's microphone prompt and we'll kick off the call.
+          %h3 Thanks!
+          = link_to "Hang Up", '#', class: 'hang-up-btn btn disabled'
+        .step-2{hidden: 'hidden'}
+          = render 'talking_points', campaign_target: @campaign.campaign_targets.first
+        .step-3{hidden: 'hidden'}
+          = render 'social_sharing'

@@ -4,14 +4,21 @@ module CampaignsHelper
   end
 
   def in_browser_call_button(campaign_target, options = {})
-    link_to("Connect", '#', {
-      #class: 'cta-btn btn',
+    link_to("Call from your computer", '#', {
       class: 'button postfix',
       data: {
         behavior: 'callTrigger',
+        call_type: 'browser',
         campaign_id: campaign_target.campaign_id,
         auto_trigger: options[:auto_trigger]
       }
+    })
+  end
+
+  def hang_up_button
+    link_to("Hang Up", '#', {
+      class: 'hang-up-btn btn disabled',
+      data: {behavior: 'hangUpTrigger'}
     })
   end
 end

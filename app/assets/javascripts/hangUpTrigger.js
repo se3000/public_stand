@@ -3,8 +3,8 @@ hangUpTrigger = function hangUpTrigger(element) {
 
   $element.click(function (event) {
     if (! $element.hasClass('disabled')) {
+      Twilio.Device.disconnect(PublicStand.displayNextStep);
       Twilio.Device.disconnectAll();
-      $('#instruction').foundation('reveal', 'close');
     }
     event.preventDefault();
   });

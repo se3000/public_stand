@@ -1,33 +1,33 @@
 #ps-flash-grandparent {
-  position: fixed;
-  z-index: 99999;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+  margin: 0 auto;
+  position: absolute;
   visibility: hidden;
+  z-index: 99;
+  top: 50px;
+  left: 10%;
+  width: 80%;
 
   #ps-flash-parent {
-    margin: 10% auto 0;
-    width: 230px;
-    border-radius: 8px;
-    background-color: #f8f8f8;
-    border: 8px solid rgb(160, 160, 160);
+    margin: 0 auto;
+    padding: 20px;
 
     #ps-flash-instruction {
-      margin: 10px auto;
       text-align: center;
-    }
-
-    #ps-flash-close {
-      display: block;
-      margin: 5px auto;
+      vertical-align: top;
     }
 
     #__connectionFlash__ {
       height: 138px !important;
-      max-width: none;
+    }
+
+    #ps-flash-close {
+    }
+
+    #ps-flash-instruction,
+    #__connectionFlash__,
+    #ps-flash-close {
+      display: block;
+      margin: 20px auto;
     }
   }
 }

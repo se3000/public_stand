@@ -1,19 +1,25 @@
 @import 'variables';
 
-.stripes {
-  width: 100%;
-  &.clear{
-    clear: both;
-  }
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 
-  .alert-stripe {
-    border-bottom: solid 3px $alert-color;
-  }
-  .blank-stripe {
-    border-bottom: solid 3px white;
-  }
-  .primary-stripe {
-    border-bottom: solid 3px $primary-color;
+  #container {
+    padding-top: 1em;
+    min-height: 100%;
+    position: relative;
+
+    #body {
+      padding-bottom: 32px;
+    }
+
+    #footer {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      height: 32px;
+    }
   }
 }
 
@@ -63,8 +69,4 @@ header {
 .top-bar {
   padding: 0 15px;
   margin-top: 10px;
-}
-
-#footer {
-  margin-top: 150px;
 }

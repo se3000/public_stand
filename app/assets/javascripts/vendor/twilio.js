@@ -574,7 +574,9 @@ Device.prototype = {
         // IE9: after showing and hiding the dialog once,
         // often we end up with a blank permissions dialog
         // the next time around. This makes it show back up
-        Device.dialog.screen.style.width = "200%";
+
+        // PS styling change
+        // Device.dialog.screen.style.width = "200%";
     },
     connect: function(params) {
         if (typeof params == "function") {
@@ -826,7 +828,7 @@ exports.Device = Device; });
     files["lib/twilio/dialog.js"] = (function(require, exports){ var Dialog = (function() {
     function Dialog() {
         var screen = document.createElement("div");
-        var dialog = document.createElement("div");
+        var dialog = document.createElement("h3");
         var instruction = document.createElement("div");
         var close = document.createElement("button");
 
@@ -908,19 +910,24 @@ exports.Device = Device; });
          */
         show: function(closeCb) {
             this.closeCb = closeCb;
-            this.screen.style.width = "100%";
-            this.screen.style.height = "auto";
-            this.screen.style.visibility = "visible";
+
+            // PS
+            // this.screen.style.visibility = "visible";
+            // this.screen.style.width = "100%";
+            // this.screen.style.height = "auto";
+
             // Firefox uses subpixel units for positioning which is incompatible
             // with Flash components: they are visible but unresponsive to user
             // inputs. The workaround is to add a subpixel left margin to the flash
             // component's container. This is a known bug:
             // http://bugs.adobe.com/jira/browse/FP-4656.
-            var dw = this.dialog.style.width.replace("px", "") | 0,
-                ww = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
-                wh = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-            this.dialog.style.marginLeft = (((ww - dw) / 2) | 0) + "px";
-            this.dialog.style.marginTop = ((wh * .1) | 0) + "px";
+
+            //PS style issues
+            // var dw = this.dialog.style.width.replace("px", "") | 0,
+                // ww = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+                // wh = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            // this.dialog.style.marginLeft = (((ww - dw) / 2) | 0) + "px";
+            // this.dialog.style.marginTop = ((wh * .1) | 0) + "px";
         },
         /**
          * Hides the dialog.
