@@ -28,11 +28,15 @@ PublicStand = {
         xhr.setRequestHeader('X-CSRF-Token', csrfToken);
       },
       success: function (data, textStatus, jqXHR) {
-        Twilio.Device.ready(PublicStand.displayInstructions);
-        Twilio.Device.setup(data.twilio_token);
+        if (PublicStand.walkthrough === PublicStand.mobileWalkthrough) {
+          PublicStand.displayInstructions();
+        } else {
+          Twilio.Device.ready(PublicStand.displayInstructions);
+          Twilio.Device.setup(data.twilio_token);
 
-        Twilio.Device.connect(PublicStand.displayNextStep);
-        Twilio.Device.connect({phone_call_id: data.phone_call_id});
+          Twilio.Device.connect(PublicStand.displayNextStep);
+          Twilio.Device.connect({phone_call_id: data.phone_call_id});
+        }
       }
     });
   },

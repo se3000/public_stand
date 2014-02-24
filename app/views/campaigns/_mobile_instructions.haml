@@ -8,7 +8,7 @@
           %p Connect with your phone
           = form_for [@campaign, @phone_call] do |call_form|
             = call_form.text_field :from_number, placeholder: "Your Phone Number"
-            = call_form.submit "Call Me"
+            = call_form.submit "Call Me", class: 'button'
         -# .step-2{hidden: 'hidden'}
           -# %h3 Don't know what to say?
           -# %h3 The clearest thing you can tell #{target.name} is:
