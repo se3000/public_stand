@@ -37,9 +37,9 @@
           %section.top-bar-section
             %ul.right
               %li.divider
-              - if can? :manage, @campaign
+              - if @campaign && @campaign.persisted? && can?(:manage, @campaign)
                 %li.divider
-                %li= link_to 'Edit Campaign', edit_organization_campaign_path(@campaign.organization, @campaign)
+                  %li= link_to 'Edit Campaign', edit_organization_campaign_path(@campaign.organization, @campaign)
                 %li.divider
                 %li= link_to 'Edit Image', edit_picture_path(@campaign.picture)
               %li
