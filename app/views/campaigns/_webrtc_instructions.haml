@@ -8,7 +8,7 @@
             Press
             %span “Allow”
             at the top of the screen so we can use your microphone and kick off the phone call.
-          = link_to "Hang Up", '#', class: 'hang-up-btn btn disabled'
+          = link_to "Hang Up", '#', class: 'hang-up-btn btn disabled', data: {behavior: 'hangUpTrigger'}
         .step-2{hidden: 'hidden'}
           = render 'talking_points', campaign_target: @campaign.campaign_targets.first
         .step-3{hidden: 'hidden'}
