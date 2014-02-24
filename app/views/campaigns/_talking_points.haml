@@ -1,7 +1,7 @@
 - target = campaign_target.target
-%h3 Don't know what to say?
-%h3 The clearest thing you can tell #{target.name} is:
+%h2 Don't know what to say?
+%h4 The clearest thing you can tell #{target.name} is:
 .script
-  %h2 "#{campaign_target.script}"
+  %h4 "#{campaign_target.script}"
   = link_to "Hang Up", '#', class: 'hang-up-btn btn',
     data: {behavior: 'hangUpTrigger displayNextStep'}

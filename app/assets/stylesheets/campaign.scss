@@ -82,13 +82,34 @@ body {
   }
 }
 
-#instruction {
-  .instructions {
-    h3 {
-      color: $secondary-color;
+
+.instructions {
+  font-size: 1.5em;
+  font-weight: 500;
+  p {
+    font-size: 1.2em;
+  }
+  span {
+    font-weight: bold;
+  }
+
+  h3 {
+    color: $secondary-color;
+  }
+  .step-2 {
+    h2 { color: $secondary-color; }
+    h4 { font-weight: 500; }
+    .script{
+      h4 { font-weight: 600; }
     }
   }
+
+  .hang-up-btn {
+    margin-top: 1em;
+  }
 }
+
+
 
 .image-bar {
 }

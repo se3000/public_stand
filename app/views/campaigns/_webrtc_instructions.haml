@@ -1,10 +1,13 @@
-.reveal-modal#webrtc-instructions
+.reveal-modal.large#webrtc-instructions
   .row
     .columns.center
       .instructions
         .step-1
-          %h3 Please press "Allow" on your browser's microphone prompt and we'll kick off the call.
-          %h3 Thanks!
+          %h2 This is going to be neat...
+          %p 
+            Press 
+            %span “Allow” 
+            at the top of the screen so we can use your microphone and kick off the phone call.
           = link_to "Hang Up", '#', class: 'hang-up-btn btn disabled'
         .step-2{hidden: 'hidden'}
           = render 'talking_points', campaign_target: @campaign.campaign_targets.first
