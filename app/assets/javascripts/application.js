@@ -14,6 +14,7 @@
 //= require foundation
 //= require turbolinks
 //= require elemental
+//= require public_stand
 //= require_tree .
 
 jQuery(document).foundation()
@@ -21,5 +22,5 @@ jQuery(document).foundation()
 
 $(document).ready(function() {
   Elemental.load(document);
-  $('$ps-flash-grandparent').addClass('reveal-modal');
+  $('#ps-flash-grandparent').addClass('reveal-modal');
 });

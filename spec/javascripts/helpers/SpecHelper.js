@@ -1,6 +1,7 @@
 afterEach(function () {
   $('#jasmine_content').empty();
   $('#ps-flash-grandparent').remove();
+  PublicStand.walkthrough = undefined;
 });
 
 setFixture = function setFixture(newFixture) {
@@ -13,9 +14,10 @@ setFixture = function setFixture(newFixture) {
 
 Twilio = {
   Device: {
-    connect: function() {},
-    disconnectAll: function() {},
-    setup: function() {},
-    ready: function() {}
+    connect: function () {},
+    disconnect: function () {},
+    disconnectAll: function () {},
+    setup: function () {},
+    ready: function () {}
   }
 }

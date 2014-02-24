@@ -1,39 +1,22 @@
 = content_for(:custom_head) do
   %meta{property: 'og:title', content: @campaign.name}
   %meta{property: 'og:description', content: @campaign.description}
-.row
-  .columns.large-12
-    %h1.center= @campaign.name
+
+.contain-to-grid
+  %nav.top-bar{:data => {'topbar' => true}}
+    %h1.left= @campaign.name
+
 .row
   .columns.small-12.large-7
+    / %h1= @campaign.name
     .image-bar
-      = image_tag @picture.url
+      = image_tag "http://2.bp.blogspot.com/-Snh94stTAN8/TmzI0pFKonI/AAAAAAAABtc/GLaosExZFaI/s1600/st.vincent-cruel.png", class: "shadow"
     %h3 by #{@organization.name}
     .campaign-description
       = @campaign.description
-  .columns.small-12.large-5
-    = render 'sidebar', campaign: @campaign, organization: @organization
-.row
-  .columns.small-12
-    - @campaign.campaign_targets.each do |campaign_target|
-      - target = campaign_target.target
-      .center.hide-for-small
-        = in_browser_call_button(campaign_target, auto_trigger: @auto_trigger)
-        .center= link_to "To connect with your cell phone, click here", "#"
+  .cta-banner.columns.small-12.large-4.large-offset-1
+    = render 'sidebar'
 
-.reveal-modal#instruction
-  - campaign_target = @campaign.campaign_targets.first
-  - target = campaign_target.target
-  .row
-    .columns.center
-      .instructions
-        .step-1
-          %h3 Please press "Allow" on your browser's microphone prompt and we'll kick off the call.
-          %h3 Thanks!
-        .step-2{hidden: 'hidden'}
-          %h3 Don't know what to say?
-          %h3 The clearest thing you can tell #{target.name} is:
-          .script
-            %h2 "#{campaign_target.script}"
-        = link_to "Hang Up", '#', class: 'hang-up-btn btn disabled',
-          data: {behavior: 'hangUpTrigger displayNextAction'}
+= render 'webrtc_instructions'
+= render 'flash_instructions'
+= render 'mobile_instructions'

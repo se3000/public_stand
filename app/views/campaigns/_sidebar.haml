@@ -1,12 +1,23 @@
-- campaign.campaign_targets.each do |campaign_target|
+= image_tag "phone_icon_circles.png", class: "center-block"
+- @campaign.campaign_targets.each do |campaign_target|
   - target = campaign_target.target
-  .center
-    = in_browser_call_button(campaign_target)
-  .center= link_to "To connect with your cell phone, click here", "#"
+  .in-browser-cta.hide-for-small.row.collapse
+    .small-12.columns
+      = in_browser_call_button(campaign_target, auto_trigger: @auto_trigger)
 
-  .campaign-target-info.light-background.hide-for-small
-    %p= "Average Call Time: #{average_call_time_of(campaign_target)}"
+  .row.center.hide-for-small#or or
+
+  .in-browser-cta.row.collapse
+    .small-12.columns.tight-top
+      = mobile_call_button(campaign_target, auto_trigger: @auto_trigger)
+  .campaign-target-info.hide-for-small
+    %p.center
+      = "Calls made: 5"
+      %br
+      = "Average Call Duration: #{average_call_time_of(campaign_target)}"
     .social.center
-      - share_url = organization_campaign_url(organization, campaign)
+      - share_url = organization_campaign_url(@organization, @campaign)
       = facebook_share_button(share_url)
-      = tweet_button(share_url, campaign.name)
+      = tweet_button(share_url, @campaign.name)
+.ribbon-left
+.ribbon-right
