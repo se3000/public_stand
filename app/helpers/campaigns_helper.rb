@@ -16,7 +16,7 @@ module CampaignsHelper
   end
 
   def mobile_call_button(campaign_target, options = {})
-    link_to("Have us call you", '#', {
+    link_to("Call from your phone", '#', {
       class: 'button postfix',
       data: {
         behavior: 'callTrigger',
