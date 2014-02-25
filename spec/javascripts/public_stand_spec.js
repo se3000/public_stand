@@ -42,17 +42,6 @@ describe('PublicStand', function () {
 
       expect($('.step-2').is(':visible')).toBeTruthy();
     });
-
-    it('displays instructions when the device is ready', function () {
-      spyOn(PublicStand, 'displayInstructions');
-
-      spyOn(Twilio.Device, 'ready').and.callFake(function (callback) {
-        callback();
-      });
-      PublicStand.callCampaign(campaignID);
-
-      expect(PublicStand.displayInstructions).toHaveBeenCalled();
-    });
   });
 
   describe('#walkthrough', function () {

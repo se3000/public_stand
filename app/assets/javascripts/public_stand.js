@@ -31,11 +31,7 @@ PublicStand = {
         if (PublicStand.walkthrough === PublicStand.mobileWalkthrough) {
           PublicStand.displayInstructions();
         } else {
-          Twilio.Device.ready(PublicStand.displayInstructions);
-          Twilio.Device.setup(data.twilio_token);
-
-          Twilio.Device.connect(PublicStand.displayNextStep);
-          Twilio.Device.connect({phone_call_id: data.phone_call_id});
+          BrowserCall.start(data);
         }
       }
     });

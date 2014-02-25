@@ -13,17 +13,6 @@ describe("hangUpTrigger", function () {
 
       expect(Twilio.Device.disconnectAll).toHaveBeenCalled();
     });
-
-    it('displays the next action', function () {
-      spyOn(PublicStand, 'displayNextStep');
-      spyOn(Twilio.Device, 'disconnect').and.callFake(function (callback) {
-        callback();
-      });
-
-      $fixture.find('a').click();
-
-      expect(PublicStand.displayNextStep).toHaveBeenCalled();
-    });
   });
 
   describe('when the element is "disabled"', function () {
