@@ -7,13 +7,13 @@
     %h1.left= @campaign.name
 
 .row
-  .columns.small-12.large-7
+  .large-7.columns
     .image-bar
       = image_tag @picture.url, class: 'shadow'
-    %h3 by #{@organization.name}
+    %h4 by #{@organization.name}
     .campaign-description
       = @campaign.description
-  .cta-banner.shadow.columns.small-12.large-4.large-offset-1
+  .cta-banner.shadow.large-4.large-offset-1.columns
     = render 'sidebar'
 
 = render 'webrtc_instructions'

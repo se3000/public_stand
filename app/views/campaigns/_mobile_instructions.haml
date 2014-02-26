@@ -1,11 +1,11 @@
-.reveal-modal#mobile-instructions
+.reveal-modal.large#mobile-instructions
   - campaign_target = @campaign.campaign_targets.first
   - target = campaign_target.target
   .row
     .columns.center
       .instructions
         .step-1
-          %p Connect with your phone
+          %p We'll call and connect you
           = form_for [@campaign, @phone_call] do |call_form|
             = call_form.text_field :from_number, placeholder: "Your Phone Number"
             = call_form.submit "Call Me", class: 'button'

@@ -1,7 +1,6 @@
 @import 'variables';
 
 .h1{
-  background-color: darkorange;
   padding: 1em;
   width: 636px;
 }
@@ -33,7 +32,11 @@ body {
   padding-top: 50px;
   padding-left: 0 !important;
   padding-right: 0 !important;
-  top: -10em;
+  top: -9em;
+  @media only screen and (max-width: 767px) {
+    top: 0;
+    padding-top: 0;
+  }
 
   img { height: 200px; }
 
@@ -96,6 +99,16 @@ body {
 
   h3 {
     color: $secondary-color;
+  }
+  .step-1 {
+    #phone_call_from_number {
+      width: 50%;
+      margin: 0 auto 1em auto;
+      text-align: center;
+    }
+    input.button{
+      margin-bottom: 0;
+    }
   }
   .step-2 {
     h2 { color: $secondary-color; }
