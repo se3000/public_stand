@@ -11,4 +11,5 @@
             = call_form.submit "Call Me", class: 'button'
         .step-2{hidden: 'hidden'}
           = render 'talking_points', campaign_target: @campaign.campaign_targets.first
+          %br
           = render 'social_sharing'

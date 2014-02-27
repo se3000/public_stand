@@ -11,6 +11,7 @@
           = link_to "Hang Up", '#', class: 'btn large disabled', data: {behavior: 'hangUpTrigger'}
         .step-2{hidden: 'hidden'}
           = render 'talking_points', campaign_target: @campaign.campaign_targets.first
+          = link_to "Hang Up", '#', class: 'hang-up btn large', data: {behavior: 'hangUpTrigger'}
         .step-3{hidden: 'hidden'}
           = render 'social_sharing'
 #webrtc-arrow

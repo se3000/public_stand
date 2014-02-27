@@ -6,5 +6,6 @@
       .instructions
         .step-2
           = render 'talking_points', campaign_target: @campaign.campaign_targets.first
+          = link_to "Hang Up", '#', class: 'hang-up btn large', data: {behavior: 'hangUpTrigger'}
         .step-3{hidden: 'hidden'}
           = render 'social_sharing'
