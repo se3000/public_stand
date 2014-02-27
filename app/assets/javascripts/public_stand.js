@@ -7,6 +7,14 @@ PublicStand = {
     }
   },
 
+  browserOS: function () {
+    if (navigator.userAgent.match(/Windows/)) {
+      return 'windows';
+    } else {
+      return 'unix';
+    }
+  },
+
   setWalkthrough: function setWalkthrough(type) {
     if (type === 'mobile') {
       this.walkthrough = PublicStand.mobileWalkthrough;

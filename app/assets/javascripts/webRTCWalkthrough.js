@@ -5,7 +5,7 @@ PublicStand.webRTCWalkthrough = {
 
   displayInstructions: function displayInstructions() {
     $('#webrtc-instructions').foundation('reveal', 'open');
-    $('#webrtc-arrow').show();
+    this.displayArrow();
   },
 
   displayNextStep: function displayNextStep() {
@@ -21,5 +21,15 @@ PublicStand.webRTCWalkthrough = {
       $step2.hide();
       $instructions.find('.step-3').show();
     }
+  },
+
+  displayArrow: function () {
+    var $arrow = $('#webrtc-arrow');
+    if (PublicStand.browserOS() == 'windows') {
+      $arrow.css('left', '345px');
+    } else {
+      $arrow.css('right', '60px');
+    }
+    $arrow.show();
   }
 }

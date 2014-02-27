@@ -46,6 +46,35 @@ describe('PublicStand.webRTCWalkthrough', function () {
 
         expect($arrow.is(":visible")).toBeTruthy();
       });
+
+      describe('when the browser is running in Windows', function () {
+        beforeEach(function () { spyOn(PublicStand, 'browserOS').and.returnValue('windows') });
+
+        it('sets the style for the left', function () {
+          expect($arrow.css('left')).toEqual('auto');
+          expect($arrow.css('right')).toEqual('auto');
+
+          walkthrough.displayInstructions();
+
+          expect($arrow.css('left')).toEqual('345px');
+          expect($arrow.css('right')).toEqual('auto');
+        });
+      });
+
+      describe('when the browser is running in anything other than windows', function () {
+        beforeEach(function () { spyOn(PublicStand, 'browserOS').and.returnValue('unix') });
+
+        it('removes the style for the right', function () {
+          expect($arrow.css('right')).toEqual('auto');
+          expect($arrow.css('left')).toEqual('auto');
+
+          walkthrough.displayInstructions();
+
+
+          expect($arrow.css('right')).toEqual('60px');
+          expect($arrow.css('left')).toEqual('auto');
+        });
+      });
     });
 
     describe('#displayNextStep', function () {
