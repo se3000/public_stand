@@ -31,7 +31,7 @@ PublicStand = {
         if (PublicStand.walkthrough === PublicStand.mobileWalkthrough) {
           PublicStand.start();
         } else {
-          BrowserCall.start(data);
+          BrowserCall.startCall(data);
         }
       }
     });

@@ -2,7 +2,22 @@ describe('BrowserCall', function () {
   var twilioToken = 'TwiML';
   var phoneCallID = 42;
 
-  describe('#start', function () {
+  describe('#startCall', function () {
+    var campaignID = 17;
+
+    it('calls connectWithTwilio on success', function () {
+      spyOn(BrowserCall, 'connectWithTwilio');
+      spyOn(jQuery, 'ajax').and.callFake(function (options) {
+        options.success({twilio_token: 'TwiML', phone_call_id: 42}, 'textStatus', 'jqXHR');
+      });
+
+      BrowserCall.startCall(campaignID);
+
+      expect(BrowserCall.connectWithTwilio).toHaveBeenCalledWith({twilio_token: 'TwiML', phone_call_id: 42}, 'textStatus', 'jqXHR');
+    });
+  });
+
+  describe('#connectWithTwilio', function () {
     beforeEach(function () {
       PublicStand.setWalkthrough('mobile');
     });
@@ -10,7 +25,7 @@ describe('BrowserCall', function () {
     it('connects with a Twilio Device', function () {
       spyOn(Twilio.Device, 'connect');
 
-      BrowserCall.start({phone_call_id: phoneCallID, twilio_token: twilioToken});
+      BrowserCall.connectWithTwilio({phone_call_id: phoneCallID, twilio_token: twilioToken});
 
       expect(Twilio.Device.connect).toHaveBeenCalledWith({phone_call_id: 42});
     });
@@ -18,7 +33,7 @@ describe('BrowserCall', function () {
     it('sets up a Twilio Device and calls', function () {
       spyOn(Twilio.Device, 'setup');
 
-      BrowserCall.start({phone_call_id: phoneCallID, twilio_token: twilioToken});
+      BrowserCall.connectWithTwilio({phone_call_id: phoneCallID, twilio_token: twilioToken});
 
       expect(Twilio.Device.setup).toHaveBeenCalledWith('TwiML');
     });
@@ -29,7 +44,7 @@ describe('BrowserCall', function () {
         callback();
       });
 
-      BrowserCall.start({phone_call_id: phoneCallID, twilio_token: twilioToken});
+      BrowserCall.connectWithTwilio({phone_call_id: phoneCallID, twilio_token: twilioToken});
 
       expect(PublicStand.walkthrough.displayInstructions).toHaveBeenCalled();
     });
@@ -42,7 +57,7 @@ describe('BrowserCall', function () {
         }
       });
 
-      BrowserCall.start({phone_call_id: phoneCallID, twilio_token: twilioToken});
+      BrowserCall.connectWithTwilio({phone_call_id: phoneCallID, twilio_token: twilioToken});
 
       expect(PublicStand.walkthrough.displayNextStep).toHaveBeenCalled();
     });
@@ -53,7 +68,7 @@ describe('BrowserCall', function () {
         callback();
       });
 
-      BrowserCall.start({phone_call_id: phoneCallID, twilio_token: twilioToken});
+      BrowserCall.connectWithTwilio({phone_call_id: phoneCallID, twilio_token: twilioToken});
 
       expect(PublicStand.walkthrough.displayNextStep).toHaveBeenCalled();
     });
