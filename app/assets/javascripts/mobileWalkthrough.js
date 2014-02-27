@@ -1,9 +1,9 @@
 PublicStand.mobileWalkthrough = {
-  displayInstructions: function () {
+  displayInstructions: function displayInstructions() {
     $('#mobile-instructions').foundation('reveal', 'open');
   },
 
-  displayNextStep: function () {
+  displayNextStep: function displayNextStep() {
     var $instructions = $('#mobile-instructions');
     var $step1 = $instructions.find('.step-1');
     var $step2 = $instructions.find('.step-2');
@@ -14,7 +14,7 @@ PublicStand.mobileWalkthrough = {
     }
   },
 
-  start: function (campaignID) {
+  start: function start(campaignID) {
     this.displayInstructions();
   }
 }

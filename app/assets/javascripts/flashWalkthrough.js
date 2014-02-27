@@ -3,11 +3,11 @@ PublicStand.flashWalkthrough = {
     BrowserCall.startCall(campaignID);
   },
 
-  displayInstructions: function () {
+  displayInstructions: function displayInstructions() {
     $('#ps-flash-grandparent').foundation('reveal', 'open');
   },
 
-  displayNextStep: function () {
+  displayNextStep: function displayNextStep() {
     var $oldInstructions = $('#ps-flash-grandparent');
     var $instructions = $('#flash-instructions');
     var $step2 = $instructions.find('.step-2');

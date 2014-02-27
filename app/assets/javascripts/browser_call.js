@@ -12,7 +12,7 @@ BrowserCall = {
     });
   },
 
-  connectWithTwilio: function startCall(data, textStatus, jqXHR) {
+  connectWithTwilio: function connectWithTwilio(data, textStatus, jqXHR) {
     Twilio.Device.ready(PublicStand.displayInstructions);
     Twilio.Device.setup(data.twilio_token);
 

@@ -3,12 +3,12 @@ PublicStand.webRTCWalkthrough = {
     BrowserCall.startCall(campaignID);
   },
 
-  displayInstructions: function () {
+  displayInstructions: function displayInstructions() {
     $('#webrtc-instructions').foundation('reveal', 'open');
     $('#webrtc-arrow').show();
   },
 
-  displayNextStep: function () {
+  displayNextStep: function displayNextStep() {
     var $instructions = $('#webrtc-instructions');
     var $step1 = $instructions.find('.step-1');
     var $step2 = $instructions.find('.step-2');

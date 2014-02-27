@@ -1,5 +1,5 @@
 PublicStand = {
-  browserCapability: function () {
+  browserCapability: function browserCapability() {
     if (navigator.userAgent.match(/Chrome/)) {
       return 'webRTC';
     } else {
@@ -7,7 +7,7 @@ PublicStand = {
     }
   },
 
-  setWalkthrough: function (type) {
+  setWalkthrough: function setWalkthrough(type) {
     if (type === 'mobile') {
       this.walkthrough = PublicStand.mobileWalkthrough;
     } else if (PublicStand.browserCapability() === 'webRTC') {
@@ -22,11 +22,11 @@ PublicStand = {
     this.walkthrough.start(campaignID);
   },
 
-  displayInstructions: function() {
+  displayInstructions: function displayInstructions() {
     PublicStand.walkthrough.displayInstructions();
   },
 
-  displayNextStep: function() {
+  displayNextStep: function displayNextStep() {
     PublicStand.walkthrough.displayNextStep();
   }
 }
