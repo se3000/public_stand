@@ -11,7 +11,7 @@ callTrigger = function callTrigger(element) {
     event.preventDefault();
   });
 
-  if($element.data('auto-trigger')) {
+  if($element.data('auto-trigger') && $element.is(':visible')) {
     startCall();
   }
 }

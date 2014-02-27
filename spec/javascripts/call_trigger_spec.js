@@ -34,12 +34,28 @@ describe("callTrigger", function () {
         $element = $fixture.find('a').show();
       });
 
-      it('initiates a call', function () {
-        spyOn(PublicStand, 'callCampaign');
+      describe("and the button is visible", function () {
+        beforeEach(function () { $element.show(); });
 
-        Elemental.load();
+        it('initiates a call', function () {
+          spyOn(PublicStand, 'callCampaign');
 
-        expect(PublicStand.callCampaign).toHaveBeenCalledWith(3);
+          Elemental.load();
+
+          expect(PublicStand.callCampaign).toHaveBeenCalledWith(3);
+        });
+      });
+
+      describe("and the button is NOT visible", function () {
+        beforeEach(function () { $element.hide(); });
+
+        it('initiates a call', function () {
+          spyOn(PublicStand, 'callCampaign');
+
+          Elemental.load();
+
+          expect(PublicStand.callCampaign).not.toHaveBeenCalledWith(3);
+        });
       });
     });
 
