@@ -41,12 +41,6 @@ describe PhoneCallsController, twilio: true do
 
         post :create, campaign_id: campaign.id, phone_call: {from_number: "+15183346656"}
       end
-
-      it "redirects back" do
-        post :create, campaign_id: campaign.id, phone_call: {from_number: "+15183346656"}
-
-        expect(response).to redirect_to :back
-      end
     end
 
     context "when there is no #from_number" do
@@ -54,12 +48,6 @@ describe PhoneCallsController, twilio: true do
         PhoneCall.any_instance.should_not_receive :start
 
         post :create, campaign_id: campaign.id, phone_call: {}
-      end
-
-      it "responds with JSON" do
-        post :create, campaign_id: campaign.id, phone_call: {}
-
-        JSON.parse(response.body)['phone_call_id'].should == PhoneCall.last.id
       end
     end
   end

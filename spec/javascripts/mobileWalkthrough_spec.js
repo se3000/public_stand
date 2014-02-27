@@ -37,45 +37,25 @@ describe('PublicStand.mobileWalkthrough', function () {
     });
   });
 
-  // describe('#displayNextStep', function () {
-    // beforeEach(function () {
-      // $instructions.show();
-    // });
+  describe('#displayNextStep', function () {
+    beforeEach(function () {
+      $instructions.show();
+    });
 
-    // describe('when the first step is visible', function () {
-      // beforeEach(function () {
-        // $step1.show();
-      // });
+    describe('when the first step is visible', function () {
+      beforeEach(function () {
+        $step1.show();
+      });
 
-      // it('displays the second step', function () {
-        // expect($step1.is(':visible')).toBeTruthy();
-        // expect($step2.is(':visible')).toBeFalsy();
-        // expect($step3.is(':visible')).toBeFalsy();
+      it('displays the second step', function () {
+        expect($step1.is(':visible')).toBeTruthy();
+        expect($step2.is(':visible')).toBeFalsy();
 
-        // webRTC.displayNextStep();
+        walkthrough.displayNextStep();
 
-        // expect($step1.is(':visible')).toBeFalsy();
-        // expect($step2.is(':visible')).toBeTruthy();
-        // expect($step3.is(':visible')).toBeFalsy();
-      // });
-    // });
-
-    // describe('when the second step is visible', function () {
-      // beforeEach(function () {
-        // $step2.show();
-      // });
-
-      // it('displays the third step', function () {
-        // expect($step1.is(':visible')).toBeFalsy();
-        // expect($step2.is(':visible')).toBeTruthy();
-        // expect($step3.is(':visible')).toBeFalsy();
-
-        // webRTC.displayNextStep();
-
-        // expect($step1.is(':visible')).toBeFalsy();
-        // expect($step2.is(':visible')).toBeFalsy();
-        // expect($step3.is(':visible')).toBeTruthy();
-      // });
-    // });
-  // });
+        expect($step1.is(':visible')).toBeFalsy();
+        expect($step2.is(':visible')).toBeTruthy();
+      });
+    });
+  });
 });

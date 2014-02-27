@@ -6,13 +6,9 @@
       .instructions
         .step-1
           %p We'll call and connect you
-          = form_for [@campaign, @phone_call] do |call_form|
+          = form_for [@campaign, @phone_call], remote: true, data: {behavior: 'startMobileCall'} do |call_form|
             = call_form.text_field :from_number, placeholder: "Your Phone Number"
             = call_form.submit "Call Me", class: 'button'
-        -# .step-2{hidden: 'hidden'}
-          -# %h3 Don't know what to say?
-          -# %h3 The clearest thing you can tell #{target.name} is:
-          -# .script
-            -# %h2 "#{campaign_target.script}"
-        -# = link_to "Hang Up", '#', class: 'hang-up-btn btn disabled',
-          -# data: {behavior: 'hangUpTrigger displayNextStep'}
+        .step-2{hidden: 'hidden'}
+          = render 'talking_points', campaign_target: @campaign.campaign_targets.first
+          = render 'social_sharing'

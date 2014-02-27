@@ -1,16 +1,12 @@
 class PhoneCallsController < ApplicationController
+  protect_from_forgery with: :exception, except: [:create]
 
   def create
     phone_call = PhoneCall.create(Params.clean(params))
 
-    if phone_call.from_number?
-      phone_call.start
-      flash[:notice] = "Thanks! We'll call you shortly."
-      redirect_to :back
-    else
-      render json: { phone_call_id: phone_call.id,
-                     twilio_token: phone_call.twilio_token }
-    end
+    phone_call.start if phone_call.from_number?
+    render json: { phone_call_id: phone_call.id,
+                   twilio_token: phone_call.twilio_token }
   end
 
   class Params
