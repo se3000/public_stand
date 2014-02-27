@@ -55,11 +55,11 @@ describe('PublicStand', function () {
       });
 
       xit('reveals WebRTC instructions', function () {
-        spyOn(PublicStand.webRTCWalkthrough, 'displayInstructions');
+        spyOn(PublicStand.mobileWalkthrough, 'start');
 
         PublicStand.displayInstructions();
 
-        expect(PublicStand.mobileWalkthrough.displayInstructions).toHaveBeenCalled();
+        expect(PublicStand.mobileWalkthrough.start).toHaveBeenCalled();
       });
 
       xit('reveals the next WebRTC step', function () {

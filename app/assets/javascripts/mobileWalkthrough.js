@@ -15,5 +15,9 @@ PublicStand.mobileWalkthrough = {
       // $step2.hide();
       // $instructions.find('.step-3').show();
     // }
+  },
+
+  start: function () {
+    this.displayInstructions();
   }
 }

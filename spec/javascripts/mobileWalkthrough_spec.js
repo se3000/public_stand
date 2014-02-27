@@ -1,5 +1,5 @@
 describe('PublicStand.mobileWalkthrough', function () {
-  var webRTC = PublicStand.mobileWalkthrough;
+  var walkthrough = PublicStand.mobileWalkthrough;
   var $instructions, $step1, $step2, $step3;
 
   beforeEach(function () {
@@ -15,13 +15,23 @@ describe('PublicStand.mobileWalkthrough', function () {
     $instructions.children().andSelf().hide();
   });
 
+  describe('#start', function () {
+    it('calls #displayInstructions', function () {
+      spyOn(walkthrough, 'displayInstructions');
+
+      walkthrough.start();
+
+      expect(walkthrough.displayInstructions).toHaveBeenCalled();
+    });
+  });
+
   describe('#displayInstructions', function () {
     it('reveals the first step of webRTC instructions', function () {
       spyOn($.fn, 'foundation').and.callFake(function () {
         expect(this[0].id).toEqual('mobile-instructions');
       });
 
-      webRTC.displayInstructions();
+      walkthrough.displayInstructions();
 
       expect($.fn.foundation).toHaveBeenCalledWith('reveal', 'open');
     });

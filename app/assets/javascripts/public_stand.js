@@ -29,7 +29,7 @@ PublicStand = {
       },
       success: function (data, textStatus, jqXHR) {
         if (PublicStand.walkthrough === PublicStand.mobileWalkthrough) {
-          PublicStand.displayInstructions();
+          PublicStand.start();
         } else {
           BrowserCall.start(data);
         }
