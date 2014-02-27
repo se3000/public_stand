@@ -19,22 +19,7 @@ PublicStand = {
   },
 
   callCampaign: function callCampaign(campaignID) {
-    var url = '/campaigns/' + campaignID + '/phone_calls';
-    $.ajax({
-      type: 'POST',
-      url: url,
-      beforeSend: function (xhr) {
-        var csrfToken = $('meta[name="csrf-token"]').attr('content');
-        xhr.setRequestHeader('X-CSRF-Token', csrfToken);
-      },
-      success: function (data, textStatus, jqXHR) {
-        if (PublicStand.walkthrough === PublicStand.mobileWalkthrough) {
-          PublicStand.start();
-        } else {
-          BrowserCall.startCall(data);
-        }
-      }
-    });
+    this.walkthrough.start(campaignID);
   },
 
   displayInstructions: function() {

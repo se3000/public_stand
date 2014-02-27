@@ -19,7 +19,7 @@ describe('PublicStand.mobileWalkthrough', function () {
     it('calls #displayInstructions', function () {
       spyOn(walkthrough, 'displayInstructions');
 
-      walkthrough.start();
+      walkthrough.start(3);
 
       expect(walkthrough.displayInstructions).toHaveBeenCalled();
     });

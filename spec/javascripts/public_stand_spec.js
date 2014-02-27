@@ -1,49 +1,4 @@
 describe('PublicStand', function () {
-  describe('#callCampaign', function () {
-    var campaignID = 17;
-
-    beforeEach(function () {
-      setFixture("<div class='step-1'>1</div><div hidden='hidden' class='step-2'>2</div><div class='hang-up-btn disabled'>3</div>");
-      spyOn(jQuery, 'ajax').and.callFake(function (options) {
-        options.success({twilio_token: 'TwiML', phone_call_id: 42}, 'textStatus', 'jqXHR');
-      });
-    });
-
-    it('connects with a Twilio Device', function () {
-      spyOn(Twilio.Device, 'connect');
-
-      PublicStand.callCampaign(campaignID);
-
-      expect(Twilio.Device.connect).toHaveBeenCalledWith({phone_call_id: 42});
-    });
-
-    it('sets up a Twilio Device and calls', function () {
-      spyOn(Twilio.Device, 'setup');
-
-      PublicStand.callCampaign(campaignID);
-
-      expect(Twilio.Device.setup).toHaveBeenCalledWith('TwiML');
-    });
-
-    xit('hides anything with the class "step-1"', function () {
-      expect($('.step-1').is(':visible')).toBeTruthy();
-
-      PublicStand.callCampaign(campaignID);
-      Twilio.Device.connect();
-
-      expect($('.step-1').is(':visible')).toBeFalsy();
-    });
-
-    xit('displays anything with the class "step-2"', function () {
-      expect($('.step-2').is(':visible')).toBeFalsy();
-
-      PublicStand.callCampaign(campaignID);
-      Twilio.Device.connect();
-
-      expect($('.step-2').is(':visible')).toBeTruthy();
-    });
-  });
-
   describe('#walkthrough', function () {
     describe("when set to mobile", function () {
       beforeEach(function () {
@@ -54,20 +9,28 @@ describe('PublicStand', function () {
         expect(PublicStand.walkthrough).toEqual(PublicStand.mobileWalkthrough);
       });
 
-      xit('reveals WebRTC instructions', function () {
-        spyOn(PublicStand.mobileWalkthrough, 'start');
+      it('reveals mobile instructions', function () {
+        spyOn(PublicStand.mobileWalkthrough, 'displayInstructions');
 
         PublicStand.displayInstructions();
 
-        expect(PublicStand.mobileWalkthrough.start).toHaveBeenCalled();
+        expect(PublicStand.mobileWalkthrough.displayInstructions).toHaveBeenCalled();
       });
 
-      xit('reveals the next WebRTC step', function () {
-        spyOn(PublicStand.webRTCWalkthrough, 'displayNextStep');
+      it('reveals the next mobile step', function () {
+        spyOn(PublicStand.mobileWalkthrough, 'displayNextStep');
 
         PublicStand.displayNextStep();
 
         expect(PublicStand.mobileWalkthrough.displayNextStep).toHaveBeenCalled();
+      });
+
+      it('starts the mobile walkthrough', function () {
+        spyOn(PublicStand.mobileWalkthrough, 'start');
+
+        PublicStand.callCampaign(17);
+
+        expect(PublicStand.mobileWalkthrough.start).toHaveBeenCalledWith(17);
       });
     });
 
@@ -97,6 +60,14 @@ describe('PublicStand', function () {
 
           expect(PublicStand.flashWalkthrough.displayNextStep).toHaveBeenCalled();
         });
+
+        it('starts the flash walkthrough', function () {
+          spyOn(PublicStand.flashWalkthrough, 'start');
+
+          PublicStand.callCampaign(17);
+
+          expect(PublicStand.flashWalkthrough.start).toHaveBeenCalledWith(17);
+        });
       });
 
       describe("and uses webRTC", function () {
@@ -123,6 +94,14 @@ describe('PublicStand', function () {
           PublicStand.displayNextStep();
 
           expect(PublicStand.webRTCWalkthrough.displayNextStep).toHaveBeenCalled();
+        });
+
+        it('starts the webRTC walkthrough', function () {
+          spyOn(PublicStand.webRTCWalkthrough, 'start');
+
+          PublicStand.callCampaign(17);
+
+          expect(PublicStand.webRTCWalkthrough.start).toHaveBeenCalledWith(17);
         });
       });
     });

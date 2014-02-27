@@ -1,4 +1,8 @@
 PublicStand.flashWalkthrough = {
+  start: function start(campaignID) {
+    BrowserCall.startCall(campaignID);
+  },
+
   displayInstructions: function () {
     $('#ps-flash-grandparent').foundation('reveal', 'open');
   },

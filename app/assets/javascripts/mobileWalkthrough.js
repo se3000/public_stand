@@ -17,7 +17,7 @@ PublicStand.mobileWalkthrough = {
     // }
   },
 
-  start: function () {
+  start: function (campaignID) {
     this.displayInstructions();
   }
 }

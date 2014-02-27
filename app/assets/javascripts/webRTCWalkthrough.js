@@ -1,4 +1,8 @@
 PublicStand.webRTCWalkthrough = {
+  start: function start(campaignID) {
+    BrowserCall.startCall(campaignID);
+  },
+
   displayInstructions: function () {
     $('#webrtc-instructions').foundation('reveal', 'open');
     $('#webrtc-arrow').show();

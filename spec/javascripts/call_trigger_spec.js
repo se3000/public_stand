@@ -17,6 +17,7 @@ describe("callTrigger", function () {
       });
 
       it('sets the walkthrough type', function () {
+        spyOn(PublicStand, 'callCampaign');
         spyOn(PublicStand, 'setWalkthrough');
 
         $element.click();
