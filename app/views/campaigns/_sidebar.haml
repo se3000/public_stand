@@ -11,10 +11,11 @@
     .small-12.columns.tight-top
       = mobile_call_button(campaign_target)
   .campaign-target-info.hide-for-small
-    %p.center
-      = "Calls made: 5"
-      %br
-      = "Average Call Duration: #{average_call_time_of(campaign_target)}"
+    - if @campaign.phone_calls.any?
+      %p.center
+        = "Calls made: #{@campaign.phone_calls.count}"
+        %br
+        = "Average Call Duration: #{average_call_time_of(campaign_target)}"
     .social.center
       - share_url = organization_campaign_url(@organization, @campaign)
       = facebook_share_button(share_url)

@@ -21,6 +21,6 @@ class CampaignTarget < ActiveRecord::Base
   private
 
   def completed_phone_calls
-    @completed_phone_call ||= phone_calls.completed
+    @completed_phone_call ||= campaign.phone_calls.completed
   end
 end
