@@ -11,7 +11,7 @@
     .small-12.columns.tight-top
       = mobile_call_button(campaign_target)
   .campaign-target-info.hide-for-small
-    - if @campaign.phone_calls.any?
+    - if @campaign.phone_calls.count > 0
       %p.center
         = "Calls made: #{@campaign.phone_calls.count}"
         %br
