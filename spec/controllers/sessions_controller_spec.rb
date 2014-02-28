@@ -78,7 +78,7 @@ describe SessionsController do
     it "redirects to root" do
       get :destroy
 
-      expect(response).to redirect_to welcome_path
+      expect(response).to redirect_to root_path
     end
   end
 end
