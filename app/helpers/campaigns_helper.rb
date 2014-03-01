@@ -1,6 +1,6 @@
 module CampaignsHelper
   def average_call_time_of(cmpgn_trgt)
-    cmpgn_trgt.average_call_time
+    cmpgn_trgt.average_call_time || "0:00"
   end
 
   def in_browser_call_button(campaign_target, options = {})
