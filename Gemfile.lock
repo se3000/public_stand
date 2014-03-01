@@ -127,6 +127,7 @@ GEM
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
+    newrelic_rpm (3.7.2.195)
     nokogiri (1.5.10)
     pg (0.17.0)
     phantomjs (1.9.2.0)
@@ -232,6 +233,7 @@ DEPENDENCIES
   jasmine!
   jasmine-core!
   jquery-rails
+  newrelic_rpm
   pg
   pry
   rails (= 4.0.1)
