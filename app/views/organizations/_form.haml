@@ -8,3 +8,5 @@
       = form.text_area :description
 
       = form.submit
+      - if @organization.persisted?
+        .right= link_to 'Cancel', organization_path(@organization)

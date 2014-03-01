@@ -22,3 +22,5 @@
         = campaign_target_form.text_area :script
 
       = form.submit
+      - if @campaign.persisted?
+        .right= link_to 'Cancel', organization_campaign_path(@organization, @campaign)
