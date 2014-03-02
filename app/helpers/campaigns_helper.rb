@@ -26,4 +26,20 @@ module CampaignsHelper
       }
     })
   end
+
+  def facebook_share_button(cmpgn_trgt)
+    facebook_url = "https://www.facebook.com/sharer/sharer.php?u=#{cgi_escape(campaign_target_share_url(cmpgn_trgt))}"
+    link_to image_tag('facebook_share.png', style: 'width: 110px; height: 30px;'), facebook_url, target: '_blank'
+  end
+
+  def tweet_button(cmpgn_trgt)
+    description = cmpgn_trgt.twitter_share_text || cmpgn_trgt.campaign.name
+    twitter_url = "https://twitter.com/intent/tweet?related=publicstand&source=tweetbutton&text=#{cgi_escape(description)}&url=#{cgi_escape(campaign_target_share_url(cmpgn_trgt))}"
+    link_to image_tag('twitter_share.png', style: 'width: 110px; height: 30px;'), twitter_url, target: '_blank'
+  end
+
+  def campaign_target_share_url(cmpgn_trgt)
+    campaign = cmpgn_trgt.campaign
+    organization_campaign_url(campaign.organization, campaign)
+  end
 end

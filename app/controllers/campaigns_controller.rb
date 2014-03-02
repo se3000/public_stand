@@ -62,6 +62,7 @@ class CampaignsController < ApplicationController
           :campaign_id,
           :target_id,
           :script,
+          :twitter_share_text,
           target_attributes: [:name, :phone_number]
         ]
       )

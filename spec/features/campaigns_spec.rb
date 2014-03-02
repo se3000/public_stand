@@ -15,7 +15,7 @@ describe "Creating a campaign" do
     fill_in "Description", with: "Claire Underwood is evil. Who knows about Frank? And Carrie Underwood just sucks."
     fill_in "Target Name", with: "Claire Underwood"
     fill_in "Phone Number", with: "(123)456-7890"
-    fill_in "Script", with: "Hey Claire,\n\nShut it!\n\n\nLove,\n{{your name here}}"
+    fill_in "Talking Points", with: "Hey Claire,\n\nShut it!\n\n\nLove,\n{{your name here}}"
     click_button 'Create Campaign'
     page.should have_content 'Successfully created a new campaign'
 

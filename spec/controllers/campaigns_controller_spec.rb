@@ -152,6 +152,7 @@ describe "CampaignsController::Params" do
             campaign_id: 2,
             target_id: 3,
             script: 'hey',
+            twitter_share_text: 'Hello Internet!',
             target_attributes: [{name: 'a', phone_number: '1', other: 'b'}]
           }]
         }
@@ -166,6 +167,7 @@ describe "CampaignsController::Params" do
           campaign_id: 2,
           target_id: 3,
           script: 'hey',
+          twitter_share_text: 'Hello Internet!',
           target_attributes: [{name: 'a', phone_number: '1'}]
         }]
       }.with_indifferent_access)

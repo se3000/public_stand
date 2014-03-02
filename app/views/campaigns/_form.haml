@@ -18,8 +18,12 @@
         = campaign_target_form.hidden_field :id
         = campaign_target_form.hidden_field :campaign_id
         = campaign_target_form.hidden_field :target_id
-        = campaign_target_form.label :script, "Script"
+
+        = campaign_target_form.label :script, "Talking Points"
         = campaign_target_form.text_area :script
+
+        = campaign_target_form.label :twitter_share_text, 'Tweet Text (url will be added, defaults to campaign name)'
+        = campaign_target_form.text_field :twitter_share_text
 
       = form.submit
       - if @campaign.persisted?
