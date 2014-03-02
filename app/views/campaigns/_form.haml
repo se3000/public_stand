@@ -22,8 +22,10 @@
         = campaign_target_form.label :script, "Talking Points"
         = campaign_target_form.text_area :script
 
-        = campaign_target_form.label :twitter_share_text, 'Tweet Text (url will be added, defaults to campaign name)'
-        = campaign_target_form.text_field :twitter_share_text
+        = campaign_target_form.label :twitter_share_text, 'Tweet Text (url will be added)'
+        = campaign_target_form.text_field :twitter_share_text, data: {behavior: 'tweetPreview'}
+        Example tweet:
+        #tweet-preview #{@campaign.name} t.co/rndm42
 
       = form.submit
       - if @campaign.persisted?
