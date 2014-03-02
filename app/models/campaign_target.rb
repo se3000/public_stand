@@ -18,6 +18,11 @@ class CampaignTarget < ActiveRecord::Base
     "#{minutes}:#{0 if seconds < 10}#{seconds}"
   end
 
+  def suggested_tweet
+    twitter_share_text.present? ? twitter_share_text : campaign.name
+  end
+
+
   private
 
   def completed_phone_calls

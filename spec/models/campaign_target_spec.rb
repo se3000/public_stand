@@ -40,4 +40,19 @@ describe CampaignTarget do
       its(:average_call_time) { should be_nil }
     end
   end
+
+  describe '#suggested_tweet' do
+    subject { cmpgn_trgt.suggested_tweet }
+    let(:campaign) { Campaign.last }
+
+    context "when twitter_share_text is present" do
+      let(:cmpgn_trgt) { CampaignTarget.new(campaign: campaign, twitter_share_text: 'Yo!') }
+      it { should == cmpgn_trgt.twitter_share_text }
+    end
+
+    context "when twitter_share_text is not present" do
+      let(:cmpgn_trgt) { CampaignTarget.new(twitter_share_text: '', campaign: campaign) }
+      it { should == cmpgn_trgt.campaign.name }
+    end
+  end
 end
