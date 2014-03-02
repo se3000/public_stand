@@ -1,11 +1,15 @@
 function tweetPreview($element) {
-  var $preview = $('#tweet-preview');
+  var $text = $('#tweet-text');
+  var $backup = $('#backup-tweet-text');
 
-  function updateText() {
-    var text = $(this).val();
-    $preview.text(text + ' t.co/rndm42')
+  function updateText(input) {
+    if ($text.val())
+      $element.text($text.val() + ' t.co/rndm42')
+    else {
+      $element.text($backup.val() + ' t.co/rndm42')
+    }
   }
 
-  $element.keydown(updateText);
-  $element.keyup(updateText);
+  $text.keyup(updateText);
+  $backup.keyup(updateText);
 }

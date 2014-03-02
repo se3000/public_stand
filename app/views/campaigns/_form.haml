@@ -2,7 +2,7 @@
   .columns.large-8.large-offset-2
     = form_for [@organization, @campaign] do |form|
       = form.label :name
-      = form.text_field :name, maxlength: 35
+      = form.text_field :name, maxlength: 35, id: 'backup-tweet-text'
 
       = form.label :description
       = form.text_area :description
@@ -23,9 +23,10 @@
         = campaign_target_form.text_area :script
 
         = campaign_target_form.label :twitter_share_text, 'Tweet Text (url will be added)'
-        = campaign_target_form.text_field :twitter_share_text, data: {behavior: 'tweetPreview'}
-        Example tweet:
-        #tweet-preview #{@campaign.name} t.co/rndm42
+        = campaign_target_form.text_field :twitter_share_text, id: 'tweet-text'
+        Tweet Preview:
+        #tweet-preview{data: {behavior: 'tweetPreview'}}
+          #{campaign_target_form.object.suggested_tweet} t.co/rndm42
 
       = form.submit
       - if @campaign.persisted?
