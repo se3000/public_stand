@@ -3,6 +3,7 @@ class CampaignTarget < ActiveRecord::Base
   belongs_to :target, inverse_of: :campaign_targets
 
   validates :campaign, :target, presence: true
+  validates :twitter_share_text, length: {maximum: 118}
 
   accepts_nested_attributes_for :target
 
