@@ -11,7 +11,7 @@ describe "Creating a campaign" do
     visit organization_path(clear_water_initiative)
     click_link "Create a new campaign"
 
-    fill_in "Name", with: "Down with the Underwoods"
+    fill_in "backup-tweet-text", with: "Down with the Underwoods"
     fill_in "Description", with: "Claire Underwood is evil. Who knows about Frank? And Carrie Underwood just sucks."
     fill_in "Target Name", with: "Claire Underwood"
     fill_in "Phone Number", with: "(123)456-7890"
