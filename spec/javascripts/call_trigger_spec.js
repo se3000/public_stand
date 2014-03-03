@@ -3,7 +3,7 @@ describe("callTrigger", function () {
 
   describe("after the page loads", function () {
     beforeEach(function () {
-      $fixture = setFixture('<a href="#" data-behavior="callTrigger" data-campaign-id="3" data-call-type="tinCan">link</a>');
+      $fixture = setFixture('<a href="#" data-behavior="callTrigger" data-campaign-target-id="3" data-call-type="tinCan">link</a>');
       $element = $fixture.find('a');
     });
 
@@ -30,7 +30,7 @@ describe("callTrigger", function () {
   describe("on page load", function () {
     describe('when the trigger is set to true', function () {
       beforeEach(function () {
-        $fixture = setFixture('<a data-behavior="callTrigger" data-auto-trigger="true" data-campaign-id="3" id="element">Call</a>');
+        $fixture = setFixture('<a data-behavior="callTrigger" data-auto-trigger="true" data-campaign-target-id="3" id="element">Call</a>');
         $element = $fixture.find('a').show();
       });
 

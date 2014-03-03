@@ -3,7 +3,7 @@ describe('BrowserCall', function () {
   var phoneCallID = 42;
 
   describe('#startCall', function () {
-    var campaignID = 17;
+    var campaignTargetID = 17;
 
     it('calls connectWithTwilio on success', function () {
       spyOn(BrowserCall, 'connectWithTwilio');
@@ -11,7 +11,7 @@ describe('BrowserCall', function () {
         options.success({twilio_token: 'TwiML', phone_call_id: 42}, 'textStatus', 'jqXHR');
       });
 
-      BrowserCall.startCall(campaignID);
+      BrowserCall.startCall(campaignTargetID);
 
       expect(BrowserCall.connectWithTwilio).toHaveBeenCalledWith({twilio_token: 'TwiML', phone_call_id: 42}, 'textStatus', 'jqXHR');
     });

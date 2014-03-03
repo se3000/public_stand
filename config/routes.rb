@@ -7,7 +7,7 @@ PublicStand::Application.routes.draw do
   get 'dear-internet' => 'root#dear_internet'
 
   resources :authentications, only: [:new, :create]
-  resources :campaigns, only: [] do
+  resources :campaign_targets, only: [] do
     resources :phone_calls, only: [:create]
   end
   resources :email_subscribers, only: [:create]
