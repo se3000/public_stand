@@ -29,6 +29,7 @@
           #tweet-preview{data: {behavior: 'tweetPreview'}}
             #{campaign_target_form.object.suggested_tweet} t.co/randomShortened42
           #letter-count-preview
+            #{118 - campaign_target_form.object.suggested_tweet.to_s.length}/140
 
       = form.submit
       - if @campaign.persisted?
