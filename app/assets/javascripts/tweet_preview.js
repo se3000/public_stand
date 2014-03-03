@@ -9,7 +9,7 @@ function tweetPreview($element) {
     else {
       previewText = $backup.val();
     }
-    $element.text(previewText + ' t.co/randomShortened42');
+    $element.text(previewText + ' http://t.co/abcxyz1234');
     var charCount = 118 - previewText.length;
     $('#letter-count-preview').text(charCount.toString() + '/140');
   }
