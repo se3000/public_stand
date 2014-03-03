@@ -4,9 +4,9 @@ function tweetPreview($element) {
 
   function updateText(input) {
     if ($text.val())
-      $element.text($text.val() + ' t.co/rndm42')
+      $element.text($text.val() + ' t.co/randomShortened42')
     else {
-      $element.text($backup.val() + ' t.co/rndm42')
+      $element.text($backup.val() + ' t.co/randomShortened42')
     }
   }
 

@@ -14,7 +14,7 @@ describe('tweetPreview', function () {
 
     $text.keyup();
 
-    expect($preview.text()).toEqual('Foo Bar Baz t.co/rndm42');
+    expect($preview.text()).toEqual('Foo Bar Baz t.co/randomShortened42');
   });
 
   describe('updating the primary input', function () {
@@ -28,7 +28,7 @@ describe('tweetPreview', function () {
 
         $backup.keyup();
 
-        expect($preview.text()).toEqual('Foo Bar Baz t.co/rndm42');
+        expect($preview.text()).toEqual('Foo Bar Baz t.co/randomShortened42');
       });
     });
 
@@ -42,7 +42,7 @@ describe('tweetPreview', function () {
 
         $backup.keyup();
 
-        expect($preview.text()).toEqual('backup text t.co/rndm42');
+        expect($preview.text()).toEqual('backup text t.co/randomShortened42');
       });
     });
   });
