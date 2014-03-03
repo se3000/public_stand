@@ -3,11 +3,15 @@ function tweetPreview($element) {
   var $backup = $('#backup-tweet-text');
 
   function updateText(input) {
+    var previewText;
     if ($text.val())
-      $element.text($text.val() + ' t.co/randomShortened42')
+      previewText = $text.val();
     else {
-      $element.text($backup.val() + ' t.co/randomShortened42')
+      previewText = $backup.val();
     }
+    $element.text(previewText + ' t.co/randomShortened42');
+    var charCount = 118 - previewText.length;
+    $('#letter-count-preview').text(charCount.toString() + '/140');
   }
 
   $text.keyup(updateText);

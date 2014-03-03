@@ -25,8 +25,10 @@
         = campaign_target_form.label :twitter_share_text, 'Tweet Text (url will be added)'
         = campaign_target_form.text_field :twitter_share_text, id: 'tweet-text', maxlength: 118
         Tweet Preview:
-        #tweet-preview{data: {behavior: 'tweetPreview'}}
-          #{campaign_target_form.object.suggested_tweet} t.co/randomShortened42
+        .twitter-preview
+          #tweet-preview{data: {behavior: 'tweetPreview'}}
+            #{campaign_target_form.object.suggested_tweet} t.co/randomShortened42
+          #letter-count-preview
 
       = form.submit
       - if @campaign.persisted?

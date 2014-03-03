@@ -123,10 +123,13 @@ body {
   }
 }
 
-#tweet-preview {
+.twitter-preview {
   padding: 1em;
   margin: 1em;
   background-color: $light-background;
+  #tweet-preview {
+    margin-bottom: 1em;
+  }
 }
 
 
