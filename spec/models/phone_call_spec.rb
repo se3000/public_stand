@@ -2,21 +2,19 @@ require 'spec_helper'
 
 describe PhoneCall do
   describe "validations" do
-    it { should have_valid(:campaign).when(Campaign.all.sample) }
-    it { should_not have_valid(:campaign).when(nil) }
-
-    it { should have_valid(:target).when(Target.all.sample) }
-    it { should_not have_valid(:target).when(nil) }
+    it { should have_valid(:campaign_target).when(FactoryGirl.create(:campaign_target)) }
+    it { should_not have_valid(:campaign_target).when(nil) }
 
     it { should have_valid(:twilio_token).when('any_string') }
     context "uniqueness" do
-      before { FactoryGirl.create(:phone_call) }
-      it { should_not have_valid(:twilio_token).when(PhoneCall.last.twilio_token) }
+      let(:old_call) { FactoryGirl.create(:phone_call) }
+      it { should_not have_valid(:twilio_token).when(old_call.twilio_token) }
     end
   end
 
   describe "on create" do
-    let(:phone_call) { PhoneCall.new(campaign: Campaign.last, target: Target.last) }
+    let(:campaign_target) { FactoryGirl.create(:campaign_target) }
+    let(:phone_call) { PhoneCall.new(campaign_target: campaign_target) }
     it "generates a  twilio token before" do
       expect(phone_call.twilio_token).to be_nil
 
@@ -38,7 +36,8 @@ describe PhoneCall do
   describe "#target_phone_number" do
     it "delegates to #number to target" do
       target = Target.new
-      phone_call = PhoneCall.new(target: target)
+      campaign_target = CampaignTarget.new(target: target)
+      phone_call = PhoneCall.new(campaign_target: campaign_target)
 
       expect(target).to receive(:phone_number).and_return("target's phone number")
 

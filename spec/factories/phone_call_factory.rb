@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :phone_call do
-    association :campaign
-    association :target
+    association :campaign_target
     twilio_token { Faker::Code.isbn }
   end
 end

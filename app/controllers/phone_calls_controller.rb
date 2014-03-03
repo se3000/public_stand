@@ -15,8 +15,7 @@ class PhoneCallsController < ApplicationController
 
       from = params[:phone_call][:from_number] if params[:phone_call]
       {
-        "campaign" => campaign,
-        "target" => campaign.targets.first,
+        "campaign_target" => campaign.campaign_targets.first,
         "from_number" => from
       }
     end

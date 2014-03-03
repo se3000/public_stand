@@ -1,15 +1,12 @@
 class CampaignTarget < ActiveRecord::Base
   belongs_to :campaign, inverse_of: :campaign_targets
   belongs_to :target, inverse_of: :campaign_targets
+  has_many :phone_calls, inverse_of: :campaign_target
 
   validates :campaign, :target, presence: true
   validates :twitter_share_text, length: {maximum: 118}
 
   accepts_nested_attributes_for :target
-
-  def phone_calls
-    PhoneCall.where(campaign_id: campaign_id, target_id: target_id)
-  end
 
   def average_call_time
     return unless completed_phone_calls.any?
@@ -27,6 +24,6 @@ class CampaignTarget < ActiveRecord::Base
   private
 
   def completed_phone_calls
-    @completed_phone_call ||= campaign.phone_calls.completed
+    @completed_phone_call ||= phone_calls.completed
   end
 end

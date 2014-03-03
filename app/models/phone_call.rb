@@ -1,9 +1,7 @@
 class PhoneCall < ActiveRecord::Base
-  belongs_to :campaign
-  belongs_to :target
+  belongs_to :campaign_target
 
-  validates :campaign, presence: true
-  validates :target, presence: true
+  validates :campaign_target, presence: true
   validates :twilio_token, presence: true, uniqueness: true
 
   before_validation :generate_twilio_token, on: :create
@@ -18,6 +16,8 @@ class PhoneCall < ActiveRecord::Base
 
 
   private
+
+  delegate :campaign, :target, to: :campaign_target
 
   def generate_twilio_token
     self.twilio_token ||= TwilioClient.outgoing_token

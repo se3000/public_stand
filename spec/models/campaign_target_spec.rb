@@ -9,33 +9,22 @@ describe CampaignTarget do
     it { should_not have_valid(:target).when(nil) }
   end
 
-  describe "#phone_calls" do
-    subject { campaign_target.phone_calls }
-
-    let(:campaign_target) { campaign_targets(:claire_campaign_target) }
-    let(:match) { FactoryGirl.create(:phone_call, campaign: campaign_target.campaign, target: campaign_target.target) }
-    let(:campaign_match) { FactoryGirl.create(:phone_call, campaign: campaign_target.campaign) }
-    let(:target_match) { FactoryGirl.create(:phone_call, campaign: campaign_target.campaign) }
-
-    it { should include match }
-    it { should_not include campaign_match }
-    it { should_not include target_match }
-  end
-
   describe "#average_call_time" do
     subject(:campaign_target) { FactoryGirl.create(:campaign_target) }
 
     context "when there are phone calls" do
       before do
-        FactoryGirl.create(:phone_call, call_duration: 10, status: 'completed', campaign: campaign_target.campaign, target: campaign_target.target)
-        FactoryGirl.create(:phone_call, call_duration: 0, status: 'completed', campaign: campaign_target.campaign, target: campaign_target.target)
+        FactoryGirl.create(:phone_call, call_duration: 10, status: 'completed', campaign_target: campaign_target)
+        FactoryGirl.create(:phone_call, call_duration: 0, status: 'completed', campaign_target: campaign_target)
       end
 
-      its(:average_call_time) { should == '0:05' }
+      it "averages out the call duration" do
+        campaign_target.average_call_time.should == '0:05'
+      end
     end
 
     context "when there are no phone calls" do
-      before { PhoneCall.where(campaign: campaign_target.campaign, target: campaign_target.target).destroy_all }
+      before { PhoneCall.where(campaign_target_id: campaign_target.id).destroy_all }
 
       its(:average_call_time) { should be_nil }
     end

@@ -10,18 +10,12 @@ describe PhoneCallsController, twilio: true do
 
   describe "#create" do
     let(:campaign) { campaigns(:clear_water_campaign) }
-    let(:target) { campaign.targets.first }
+    let(:campaign_target) { campaign.campaign_targets.first }
 
-    it "creates a new call record assocaited with the campaign" do
+    it "associates the call record the campaign target" do
       expect {
         post :create, campaign_id: campaign.id
-      }.to change { campaign.phone_calls.count }.by(+1)
-    end
-
-    it "associates the call record the campaign's first target" do
-      expect {
-        post :create, campaign_id: campaign.id
-      }.to change { target.phone_calls.count }.by(+1)
+      }.to change { campaign_target.phone_calls.count }.by(+1)
     end
 
     it "returns JSON with the token and id included" do
@@ -72,8 +66,7 @@ describe "PhoneCallsController::Params" do
       cleaned = PhoneCallsController::Params.clean(params)
 
       expect(cleaned).to eq({
-        "campaign"    => campaign,
-        "target"      => campaign.targets.first,
+        "campaign_target"    => campaign.campaign_targets.first,
         "from_number" => '+15183346656'
       })
     end
