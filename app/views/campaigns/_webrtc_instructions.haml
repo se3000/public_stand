@@ -13,5 +13,14 @@
           = render 'talking_points', campaign_target: @campaign.campaign_targets.first
           = link_to "Hang Up", '#', class: 'hang-up btn large', data: {behavior: 'hangUpTrigger'}
         .step-3{hidden: 'hidden'}
+          = form_tag({}, {id: 'phone-call-feedback', data: {behavior: 'walkthroughFeedback'}})
+          = hidden_field_tag :phone_call_id
+          = label_tag :email_address, 'Recieve updates about the campaign:'
+          = text_field_tag :email_address, nil, placeholder: 'email@example.com'
+          = label_tag :comments, 'How did the call go?'
+          = text_area_tag :comments, nil, placeholder: 'Swell!'
+          = submit_tag 'Submit', class: 'btn'
+          = link_to 'Skip', '#', class: 'btn disabled'
+        .step-4{hidden: 'hidden'}
           = render 'social_sharing'
 #webrtc-arrow

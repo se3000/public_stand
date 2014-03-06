@@ -12,6 +12,7 @@ PublicStand.webRTCWalkthrough = {
     var $instructions = $('#webrtc-instructions');
     var $step1 = $instructions.find('.step-1');
     var $step2 = $instructions.find('.step-2');
+    var $step3 = $instructions.find('.step-3');
 
     if ($step1.is(':visible')) {
       $step1.hide();
@@ -20,6 +21,9 @@ PublicStand.webRTCWalkthrough = {
     } else if ($step2.is(':visible')) {
       $step2.hide();
       $instructions.find('.step-3').show();
+    } else if ($step3.is(':visible')) {
+      $step3.hide();
+      $instructions.find('.step-4').show();
     }
   },
 

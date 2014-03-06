@@ -18,6 +18,8 @@ describe('BrowserCall', function () {
   });
 
   describe('#connectWithTwilio', function () {
+    var $fixture, $feedbackForm;
+
     beforeEach(function () {
       PublicStand.setWalkthrough('mobile');
     });
@@ -71,6 +73,17 @@ describe('BrowserCall', function () {
       BrowserCall.connectWithTwilio({phone_call_id: phoneCallID, twilio_token: twilioToken});
 
       expect(PublicStand.walkthrough.displayNextStep).toHaveBeenCalled();
+    });
+
+    it('records the phone call ID', function () {
+      $fixture = setFixture('<form id="phone-call-feedback"/>');
+      $feedbackForm = $fixture.find('#phone-call-feedback')
+
+      expect($feedbackForm.data('phone-call-id')).toBeFalsy();
+
+      BrowserCall.connectWithTwilio({phone_call_id: phoneCallID, twilio_token: twilioToken});
+
+      expect($feedbackForm.data('phone-call-id')).toEqual(phoneCallID);
     });
   });
 });

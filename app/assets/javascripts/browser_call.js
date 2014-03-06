@@ -13,6 +13,8 @@ BrowserCall = {
   },
 
   connectWithTwilio: function connectWithTwilio(data, textStatus, jqXHR) {
+    $('#phone-call-feedback').data('phone-call-id', data.phone_call_id);
+
     Twilio.Device.ready(PublicStand.displayInstructions);
     Twilio.Device.setup(data.twilio_token);
 
