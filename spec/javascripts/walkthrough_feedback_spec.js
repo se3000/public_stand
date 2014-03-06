@@ -19,6 +19,8 @@ describe('walkthroughFeedback', function () {
     });
 
     it('posts to the correct url', function () {
+      BrowserCall.phoneCallID = 1248;
+
       spyOn(jQuery, 'ajax').and.callFake(function (options) {
         expect(options.url).toEqual('/phone_calls/1248/phone_call_feedback');
       });

@@ -22,6 +22,7 @@ describe('BrowserCall', function () {
 
     beforeEach(function () {
       PublicStand.setWalkthrough('mobile');
+      BrowserCall.phoneCallID = undefined;
     });
 
     it('connects with a Twilio Device', function () {
@@ -76,14 +77,11 @@ describe('BrowserCall', function () {
     });
 
     it('records the phone call ID', function () {
-      $fixture = setFixture('<form id="phone-call-feedback"/>');
-      $feedbackForm = $fixture.find('#phone-call-feedback')
-
-      expect($feedbackForm.data('phone-call-id')).toBeFalsy();
+      expect(BrowserCall.phoneCallID).toBeFalsy();
 
       BrowserCall.connectWithTwilio({phone_call_id: phoneCallID, twilio_token: twilioToken});
 
-      expect($feedbackForm.data('phone-call-id')).toEqual(phoneCallID);
+      expect(BrowserCall.phoneCallID).toEqual(phoneCallID);
     });
   });
 });
