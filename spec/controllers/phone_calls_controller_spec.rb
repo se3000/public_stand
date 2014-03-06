@@ -51,8 +51,6 @@ describe "PhoneCallsController::Params" do
   let(:campaign_target) { campaign_targets(:claire_campaign_target) }
 
   describe ".clean" do
-    subject { CampaignsController::Params.clean(params) }
-
     let(:params) do
       ActionController::Parameters.new(
         campaign_target_id: campaign_target.id,

@@ -10,6 +10,9 @@ PublicStand::Application.routes.draw do
   resources :campaign_targets, only: [] do
     resources :phone_calls, only: [:create]
   end
+  resources :phone_calls, only: [] do
+    resources :phone_call_feedbacks, only: [:create]
+  end
   resources :email_subscribers, only: [:create]
   resources :organizations, except: [:delete] do
     resources :campaigns, except: [:delete]
