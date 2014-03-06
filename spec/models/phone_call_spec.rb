@@ -55,4 +55,15 @@ describe PhoneCall do
       phone_call.start
     end
   end
+
+  describe "#outgoing_number" do
+    it "returns the campaign target's outgoing phone number" do
+      campaign_target = CampaignTarget.new
+      phone_call = PhoneCall.new(campaign_target: campaign_target)
+
+      expect(campaign_target).to receive(:outgoing_number).and_return("outgoing phone number")
+
+      expect(phone_call.outgoing_number).to eq "outgoing phone number"
+    end
+  end
 end

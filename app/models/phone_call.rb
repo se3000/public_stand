@@ -6,12 +6,18 @@ class PhoneCall < ActiveRecord::Base
 
   before_validation :generate_twilio_token, on: :create
 
-  delegate :phone_number, to: :target, prefix: true
-
   scope :completed, ->{ where(status: 'completed') }
 
   def start
     TwilioClient.begin_call(self)
+  end
+
+  def target_phone_number
+    target.phone_number
+  end
+
+  def outgoing_number
+    campaign_target.outgoing_number
   end
 
 
