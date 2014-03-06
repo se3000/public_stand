@@ -3,11 +3,11 @@ class TwilioClient
   AUTH_TOKEN = ENV['TWILIO_AUTH_TOKEN']
   OUTGOING_APP_ID = ENV['TWILIO_APP_ID']
   ROOT_URL = ENV['ROOT_URL']
-  APP_PHONE_NUMBER = '+15186213184'
+  APP_PHONE_NUMBER = '5186213184'
 
-  def self.outbound_twiml_for phone_call
+  def self.outbound_twiml_for(phone_call)
     Twilio::TwiML::Response.new do |response|
-      response.Dial callerId: APP_PHONE_NUMBER do |dial|
+      response.Dial callerId: "+1#{phone_call.outgoing_number}" do |dial|
         dial.Number "+1#{phone_call.target_phone_number}"
       end
     end
@@ -17,7 +17,7 @@ class TwilioClient
     new.outgoing_token
   end
 
-  def self.begin_call phone_call
+  def self.begin_call(phone_call)
     new.begin_call(phone_call)
   end
 
@@ -29,7 +29,7 @@ class TwilioClient
 
   def begin_call(phone_call)
     new_client.account.calls.create(
-      from: APP_PHONE_NUMBER,
+      from: "+1#{phone_call.outgoing_number}",
       to: "+1#{phone_call.from_number}",
       url: "#{ROOT_URL}/twilio_outbound_voice_callback?phone_call_id=#{phone_call.id}",
       method: 'GET'

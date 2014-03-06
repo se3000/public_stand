@@ -4,7 +4,7 @@ describe TwilioClient do
   describe ".outbound_twiml_for" do
     let(:response) { double(:twilio_response) }
     let(:dialer) { double(:twilio_dialer) }
-    let(:phone_call) { double(:twiml_response, target_phone_number: 'any#') }
+    let(:phone_call) { double(:twiml_response, target_phone_number: 'any#', outgoing_number: 'another#') }
 
     it "returns a TwiML response calling the phone call's number" do
       expect(Twilio::TwiML::Response).to receive(:new)
@@ -12,7 +12,7 @@ describe TwilioClient do
       expect(response).to receive(:Dial)
         .and_yield(dialer)
       expect(dialer).to receive(:Number)
-        .with("+1"+phone_call.target_phone_number)
+        .with("+1#{phone_call.target_phone_number}")
 
       TwilioClient.outbound_twiml_for phone_call
     end
@@ -43,7 +43,8 @@ describe TwilioClient do
   end
 
   describe "#begin_call" do
-    let(:phone_call) { FactoryGirl.build(:phone_call, from_number: 'a') }
+    let(:campaign_target) { FactoryGirl.build(:campaign_target, twilio_number: '5183346656') }
+    let(:phone_call) { FactoryGirl.build(:phone_call, from_number: 'a', campaign_target: campaign_target) }
     let(:calls) { double(:calls) }
     let(:client) { TwilioClient.new }
 
@@ -54,7 +55,7 @@ describe TwilioClient do
 
       expect(calls).to receive(:create)
         .with({
-          from: TwilioClient::APP_PHONE_NUMBER,
+          from: "+1#{phone_call.outgoing_number}",
           to: "+1#{phone_call.from_number}",
           url: "#{ENV['ROOT_URL']}/twilio_outbound_voice_callback?phone_call_id=#{phone_call.id}",
           method: "GET"
