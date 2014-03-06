@@ -19,6 +19,7 @@ describe('PublicStand.flashWalkthrough', function () {
       $step1 = $('#ps-flash-parent');
       $step2 = $('.step-2');
       $step3 = $('.step-3');
+      $step4 = $('.step-4');
     }
 
     beforeEach(function () {
@@ -28,6 +29,7 @@ describe('PublicStand.flashWalkthrough', function () {
                  <div id='flash-instructions'>\
                    <div class='step-2'/>\
                    <div class='step-3' hidden='hidden'/>\
+                   <div class='step-4' hidden='hidden'/>\
                  </div>");
       resetSteps();
       $instructions.hide();
@@ -75,7 +77,7 @@ describe('PublicStand.flashWalkthrough', function () {
         });
       });
 
-      describe('when the first step is marked as having been completed', function () {
+      describe('when the second step is visible', function () {
         beforeEach(function () {
           $instructions.show();
           $oldInstructions.addClass('completed');
@@ -89,6 +91,25 @@ describe('PublicStand.flashWalkthrough', function () {
 
           expect($step2.is(':visible')).toBeFalsy();
           expect($step3.is(':visible')).toBeTruthy();
+        });
+      });
+
+      describe('when the third step is visible', function () {
+        beforeEach(function () {
+          $instructions.show();
+          $step2.hide();
+          $step3.show();
+          $oldInstructions.addClass('completed');
+        });
+
+        it('displays the third step', function () {
+          expect($step3.is(':visible')).toBeTruthy();
+          expect($step4.is(':visible')).toBeFalsy();
+
+          walkthrough.displayNextStep();
+
+          expect($step3.is(':visible')).toBeFalsy();
+          expect($step4.is(':visible')).toBeTruthy();
         });
       });
     });
