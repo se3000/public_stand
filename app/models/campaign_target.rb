@@ -20,6 +20,9 @@ class CampaignTarget < ActiveRecord::Base
     twitter_share_text.present? ? twitter_share_text : campaign.name
   end
 
+  def outgoing_number
+    twilio_number || TwilioClient::APP_PHONE_NUMBER
+  end
 
   private
 

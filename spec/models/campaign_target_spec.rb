@@ -44,4 +44,18 @@ describe CampaignTarget do
       it { should == cmpgn_trgt.campaign.name }
     end
   end
+
+  describe "#outgoing_number" do
+    subject { CampaignTarget.new(twilio_number: twilio_number).outgoing_number }
+
+    context "when the twilio_number is present" do
+      let(:twilio_number) { '1234567890' }
+      it { should == twilio_number }
+    end
+
+    context "when the twilio_number is blank" do
+      let(:twilio_number) { nil }
+      it { should == TwilioClient::APP_PHONE_NUMBER }
+    end
+  end
 end
