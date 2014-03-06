@@ -177,3 +177,10 @@ $ribbon-size: 167px;
   -moz-transform: rotate(30deg);
   transform: rotate(30deg);
 }
+
+#phone-call-feedback {
+  #comments {
+    height: 135px;
+    resize: none;
+  }
+}

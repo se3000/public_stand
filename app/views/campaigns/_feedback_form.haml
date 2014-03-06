@@ -5,4 +5,4 @@
 = label_tag :comments, 'How did the call go?'
 = text_area_tag :comments, nil, placeholder: 'Swell!'
 = submit_tag 'Submit', class: 'btn'
-= link_to 'Skip', '#', class: 'btn disabled'
+= link_to 'Skip', '#', class: 'btn secondary', data: {behavior: 'displayNextStep'}
