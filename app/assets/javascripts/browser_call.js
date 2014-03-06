@@ -1,6 +1,6 @@
 BrowserCall = {
-  startCall: function startCall(campaignID) {
-    var url = '/campaigns/' + campaignID + '/phone_calls';
+  startCall: function startCall(campaignTargetID) {
+    var url = '/campaign_targets/' + campaignTargetID + '/phone_calls';
     $.ajax({
       type: 'POST',
       url: url,

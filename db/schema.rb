@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140302182538) do
+ActiveRecord::Schema.define(version: 20140306172020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140302182538) do
     t.datetime "updated_at"
     t.text     "script"
     t.string   "twitter_share_text"
+    t.string   "twilio_number"
   end
 
   create_table "campaigns", force: true do |t|
@@ -86,6 +87,7 @@ ActiveRecord::Schema.define(version: 20140302182538) do
     t.string   "to_state"
     t.string   "to_zip"
     t.string   "to_country"
+    t.integer  "campaign_target_id"
   end
 
   create_table "pictures", force: true do |t|

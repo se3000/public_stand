@@ -11,12 +11,11 @@ class PhoneCallsController < ApplicationController
 
   class Params
     def self.clean(params)
-      campaign = Campaign.find(params[:campaign_id])
+      campaign_target = CampaignTarget.find(params[:campaign_target_id])
 
       from = params[:phone_call][:from_number] if params[:phone_call]
       {
-        "campaign" => campaign,
-        "target" => campaign.targets.first,
+        "campaign_target" => campaign_target,
         "from_number" => from
       }
     end
