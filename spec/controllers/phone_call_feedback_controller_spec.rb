@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PhoneCallFeedbacksController do
+describe PhoneCallFeedbackController do
   describe "#create" do
     let(:phone_call) { FactoryGirl.create(:phone_call) }
     let(:feedback_params) { {phone_call_id: phone_call.id, phone_call_feedback: {email_address: nil, phone_call_id: phone_call.id}} }
@@ -25,7 +25,7 @@ describe "PhoneCallFeedbacksController::Params" do
     end
 
     it "sets the target and the campaign" do
-      cleaned = PhoneCallFeedbacksController::Params.clean(params)
+      cleaned = PhoneCallFeedbackController::Params.clean(params)
 
       expect(cleaned).to eq({
         "phone_call_id"    => 272,

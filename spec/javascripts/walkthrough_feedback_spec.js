@@ -20,7 +20,7 @@ describe('walkthroughFeedback', function () {
 
     it('posts to the correct url', function () {
       spyOn(jQuery, 'ajax').and.callFake(function (options) {
-        expect(options.url).toEqual('/phone_calls/1248/phone_call_feedbacks');
+        expect(options.url).toEqual('/phone_calls/1248/phone_call_feedback');
       });
 
       $form.submit();

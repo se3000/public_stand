@@ -11,7 +11,7 @@ PublicStand::Application.routes.draw do
     resources :phone_calls, only: [:create]
   end
   resources :phone_calls, only: [] do
-    resources :phone_call_feedbacks, only: [:create]
+    resource :phone_call_feedback, only: [:create], controller: :phone_call_feedback
   end
   resources :email_subscribers, only: [:create]
   resources :organizations, except: [:delete] do
