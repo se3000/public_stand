@@ -4,6 +4,7 @@ displayNextStep = function displayNextStep(element) {
   $element.click(function (event) {
     if (! $element.hasClass('disabled')) {
       PublicStand.displayNextStep();
+      return false;
     }
   });
 }

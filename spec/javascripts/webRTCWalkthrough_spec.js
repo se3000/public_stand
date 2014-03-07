@@ -116,16 +116,12 @@ describe('PublicStand.webRTCWalkthrough', function () {
           $step2.show();
         });
 
-        it('displays the third step', function () {
-          expect($step1.is(':visible')).toBeFalsy();
-          expect($step2.is(':visible')).toBeTruthy();
-          expect($step3.is(':visible')).toBeFalsy();
+        it('calls hideCall', function () {
+          spyOn(walkthrough, 'hideCall');
 
           walkthrough.displayNextStep();
 
-          expect($step1.is(':visible')).toBeFalsy();
-          expect($step2.is(':visible')).toBeFalsy();
-          expect($step3.is(':visible')).toBeTruthy();
+          expect(walkthrough.hideCall).toHaveBeenCalled();
         });
       });
 
@@ -146,6 +142,26 @@ describe('PublicStand.webRTCWalkthrough', function () {
           expect($step4.is(':visible')).toBeTruthy();
         });
       });
+    });
+  });
+
+  describe('.hideCall', function () {
+    var $step2, $step3;
+
+    beforeEach(function () {
+      setFixture("<div id='webrtc-instructions'><div class='step-2'/><div class='step-3'/></div>");
+      $step2 = $('.step-2').show();
+      $step3 = $('.step-3').hide();
+    });
+
+    it('displays the third step', function () {
+      expect($step2.is(':visible')).toBeTruthy();
+      expect($step3.is(':visible')).toBeFalsy();
+
+      walkthrough.hideCall();
+
+      expect($step2.is(':visible')).toBeFalsy();
+      expect($step3.is(':visible')).toBeTruthy();
     });
   });
 });

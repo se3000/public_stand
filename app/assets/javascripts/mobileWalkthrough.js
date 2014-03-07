@@ -16,5 +16,7 @@ PublicStand.mobileWalkthrough = {
 
   start: function start(campaignID) {
     this.displayInstructions();
-  }
+  },
+
+  hideCall: function hideCall() {}
 }

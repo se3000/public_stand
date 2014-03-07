@@ -36,5 +36,9 @@ PublicStand = {
 
   displayNextStep: function displayNextStep() {
     PublicStand.walkthrough.displayNextStep();
+  },
+
+  hideCall: function () {
+    PublicStand.walkthrough.hideCall();
   }
 }

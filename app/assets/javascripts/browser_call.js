@@ -21,6 +21,6 @@ BrowserCall = {
     Twilio.Device.connect(PublicStand.displayNextStep);
     Twilio.Device.connect({phone_call_id: data.phone_call_id});
 
-    Twilio.Device.disconnect(PublicStand.displayNextStep);
+    Twilio.Device.disconnect(PublicStand.hideCall);
   }
 }

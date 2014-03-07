@@ -66,14 +66,16 @@ describe('BrowserCall', function () {
     });
 
     it('sets up the callbacks for seting up a Twilio Device', function () {
-      spyOn(PublicStand.walkthrough, 'displayNextStep');
+      spyOn(PublicStand.walkthrough, 'hideCall');
       spyOn(Twilio.Device, 'disconnect').and.callFake(function (callback) {
-        callback();
+        if (typeof(callback) == 'function') {
+          callback();
+        }
       });
 
       BrowserCall.connectWithTwilio({phone_call_id: phoneCallID, twilio_token: twilioToken});
 
-      expect(PublicStand.walkthrough.displayNextStep).toHaveBeenCalled();
+      expect(PublicStand.walkthrough.hideCall).toHaveBeenCalled();
     });
 
     it('records the phone call ID', function () {

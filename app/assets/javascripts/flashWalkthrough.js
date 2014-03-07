@@ -18,11 +18,18 @@ PublicStand.flashWalkthrough = {
       $instructions.foundation('reveal', 'open');
       $oldInstructions.addClass('completed'); //FIXME: Hiding seems to break the Twilio Flash
     } else if ($step2.is(':visible')) {
-      $step2.hide();
-      $step3.show();
+      this.hideCall();
     } else if ($step3.is(':visible')) {
       $step3.hide();
       $step4.show();
+    }
+  },
+
+  hideCall: function hideCall() {
+    var $step2 = $('#flash-instructions .step-2');
+    if ($step2.is(':visible')) {
+      $step2.hide();
+      $('#flash-instructions .step-3').show();
     }
   }
 }

@@ -83,14 +83,12 @@ describe('PublicStand.flashWalkthrough', function () {
           $oldInstructions.addClass('completed');
         });
 
-        it('displays the third step', function () {
-          expect($step2.is(':visible')).toBeTruthy();
-          expect($step3.is(':visible')).toBeFalsy();
+        it('calls hideCall', function () {
+          spyOn(walkthrough, 'hideCall');
 
           walkthrough.displayNextStep();
 
-          expect($step2.is(':visible')).toBeFalsy();
-          expect($step3.is(':visible')).toBeTruthy();
+          expect(walkthrough.hideCall).toHaveBeenCalled();
         });
       });
 
@@ -112,6 +110,26 @@ describe('PublicStand.flashWalkthrough', function () {
           expect($step4.is(':visible')).toBeTruthy();
         });
       });
+    });
+  });
+
+  describe('.hideCall', function () {
+    var $step2, $step3;
+
+    beforeEach(function () {
+      setFixture("<div id='flash-instructions'><div class='step-2'/><div class='step-3'/></div>");
+      $step2 = $('.step-2').show();
+      $step3 = $('.step-3').hide();
+    });
+
+    it('displays the third step', function () {
+      expect($step2.is(':visible')).toBeTruthy();
+      expect($step3.is(':visible')).toBeFalsy();
+
+      walkthrough.hideCall();
+
+      expect($step2.is(':visible')).toBeFalsy();
+      expect($step3.is(':visible')).toBeTruthy();
     });
   });
 });
