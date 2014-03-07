@@ -2,8 +2,8 @@ describe('walkthroughFeedback', function () {
   var $fixture, $form;
 
   beforeEach(function () {
-    $fixture = setFixture('<form data-behavior="walkthroughFeedback" data-phone-call-id="1248">1</form>');
-    $form = $fixture.find('form');
+    $fixture = setFixture('<form id="phone-call-feedback" data-behavior="walkthroughFeedback" data-phone-call-id="1248">1</form>');
+    $form = $fixture.find('#phone-call-feedback');
   });
 
   describe('on success', function () {
