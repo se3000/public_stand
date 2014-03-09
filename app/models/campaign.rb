@@ -6,7 +6,7 @@ class Campaign < ActiveRecord::Base
   has_one :picture
 
   validates :organization, presence: true
-  validates :name, presence: true, length: {maximum: 118}
+  validates :name, presence: true
 
   after_create :create_picture
 
