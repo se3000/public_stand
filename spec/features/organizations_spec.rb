@@ -10,6 +10,7 @@ describe "Creating an organization" do
 
     fill_in "Name", with: "Politicians Unsettled by Scandal(the tv show)"
     fill_in "Description", with: "We've had enough."
+    fill_in "Vanity String", with: "We've had enough."
     click_button "Create Organization"
     page.should have_content "Successfully created new organization"
   end

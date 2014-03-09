@@ -7,6 +7,9 @@ describe Campaign do
 
     it { should have_valid(:name).when('Anything') }
     it { should_not have_valid(:name).when(nil, '') }
+
+    it { should have_valid(:vanity_string).when('bar') }
+    it { should_not have_valid(:vanity_string).when(nil, '') }
   end
 
   describe "on creation" do
