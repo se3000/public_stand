@@ -11,5 +11,12 @@ describe Organization do
     it "allows for long descriptions" do
       FactoryGirl.build(:organization, description: '*'*1000).save!
     end
+
+    describe "#vanity_string" do
+      let(:other_organization) { FactoryGirl.create(:organization) }
+
+      it { should have_valid(:vanity_string).when((other_organization.vanity_string + '1'))}
+      it { should_not have_valid(:vanity_string).when(other_organization.vanity_string, '', nil)}
+    end
   end
 end

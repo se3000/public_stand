@@ -5,7 +5,8 @@ class Campaign < ActiveRecord::Base
   has_many :targets, through: :campaign_targets
   has_one :picture
 
-  validates :organization, :name, :vanity_string, presence: true
+  validates :organization, :name, presence: true
+  validates :vanity_string, presence: true, uniqueness: {scope: [:organization_id]}
 
   after_create :create_picture
 

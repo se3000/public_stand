@@ -10,6 +10,15 @@ describe Campaign do
 
     it { should have_valid(:vanity_string).when('bar') }
     it { should_not have_valid(:vanity_string).when(nil, '') }
+
+    describe "#vanity_string" do
+      subject { FactoryGirl.create(:campaign) }
+      let(:same_organizations_campaign) { FactoryGirl.create(:campaign, organization: subject.organization) }
+      let(:other_organizations_campaign) { FactoryGirl.create(:campaign) }
+
+      it { should have_valid(:vanity_string).when(other_organizations_campaign.vanity_string)}
+      it { should_not have_valid(:vanity_string).when(same_organizations_campaign.vanity_string, nil)}
+    end
   end
 
   describe "on creation" do
