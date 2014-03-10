@@ -36,7 +36,7 @@ class OrganizationsController < ApplicationController
 
   class Params
     def self.clean(params)
-      params.require(:organization).permit(:name, :description)
+      params.require(:organization).permit(:name, :description, :vanity_string)
     end
   end
 

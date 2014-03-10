@@ -25,6 +25,7 @@ PublicStand::Application.routes.draw do
 
   get 'twilio_outbound_voice_callback' => 'twilio_callbacks#outbound_voice'
   get 'twilio_voice_status_callback' => 'twilio_callbacks#voice_status'
+  get '/:campaign_vanity' => 'campaigns#show', constraints: { subdomain: /.+/ }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

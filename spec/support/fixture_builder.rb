@@ -5,8 +5,8 @@ FixtureBuilder.configure do |fbuilder|
   fbuilder.files_to_check += Dir["spec/factories/*.rb", "spec/support/fixture_builder.rb"]
 
   fbuilder.factory do
-    @clear_water_initiative = Organization.create(name: 'Clear Water Initaitive', description: 'Get wet.')
-    @clear_water_campaign = Campaign.create(name: 'Clear Water for Africa', organization: @clear_water_initiative)
+    @clear_water_initiative = FactoryGirl.create(:organization, name: 'Clear Water Initaitive', description: 'Get wet.')
+    @clear_water_campaign = Campaign.create(name: 'Clear Water for Africa', organization: @clear_water_initiative, vanity_string: 'clear-water-africa')
 
     @gillians_auth = Authentication.create(email: 'gcole@clearwater.org', password: 'claireDontCare', password_confirmation: 'claireDontCare')
     @gillian = User.create(name: "Gillian Cole", authentication: @gillians_auth)

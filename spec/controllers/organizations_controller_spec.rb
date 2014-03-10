@@ -27,7 +27,7 @@ describe OrganizationsController do
 
   describe "#create" do
     context "when the organization is valid" do
-      let(:organization_params) { {name: "Clear Water Initiative"} }
+      let(:organization_params) { FactoryGirl.attributes_for(:organization) }
 
       it "creates a new instance of Organization" do
         expect {
@@ -103,14 +103,15 @@ describe "OrganizationsController::Params" do
       params = ActionController::Parameters.new(organization: {
           name: 'Required',
           description: 'Not Required',
-          email: 'email@example.com'
+          email: 'email@example.com',
+          vanity_string: 'ouch'
         },
         otro: "Woah, no."
       )
 
       cleaned = OrganizationsController::Params.clean(params)
 
-      expect(cleaned).to eq({name: 'Required', description: 'Not Required'}.with_indifferent_access)
+      expect(cleaned).to eq({name: 'Required', description: 'Not Required', vanity_string: 'ouch'}.with_indifferent_access)
     end
   end
 end

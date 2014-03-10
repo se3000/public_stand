@@ -44,7 +44,16 @@ class CampaignsController < ApplicationController
   private
 
   def organization
+    return @organization if @organization
+    @organization = Organization.find_by_vanity_string(request.subdomain)
+    @organization ||= Organization.find_by_host_url(request.host)
     @organization ||= Organization.find(params[:organization_id])
+    if params[:campaign_vanity] || params[:id]
+      @campaign = @organization.campaigns.find_by_vanity_string(params[:campaign_vanity])
+      @campaign ||= @organization.campaigns.find_by_id(params[:id])
+    else
+      @campaign = @organization.campaigns.build
+    end
   end
 
   def build_campaign_target
@@ -57,6 +66,7 @@ class CampaignsController < ApplicationController
       params.require(:campaign).permit(
         :name,
         :description,
+        :vanity_string,
         campaign_targets_attributes: [
           :id,
           :campaign_id,
