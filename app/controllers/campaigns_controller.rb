@@ -46,6 +46,7 @@ class CampaignsController < ApplicationController
   def organization
     return @organization if @organization
     @organization = Organization.find_by_vanity_string(request.subdomain)
+    @organization ||= Organization.find_by_host_url(request.host)
     @organization ||= Organization.find(params[:organization_id])
     if params[:campaign_vanity] || params[:id]
       @campaign = @organization.campaigns.find_by_vanity_string(params[:campaign_vanity])
