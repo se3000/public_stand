@@ -13,25 +13,25 @@ class OrganizationsController < ApplicationController
       flash.notice = "Successfully created new organization!"
       redirect_to @organization
     else
-      flash.now.alert = @organization.errors.full_messages
+      flash.now.alert = organization.errors.full_messages
       render :new
     end
   end
 
   def update
-    @organization = Organization.find(params[:id])
+    organization = Organization.find(params[:id])
 
-    if @organization.update_attributes(Params.clean(params))
+    if organization.update_attributes(Params.clean(params))
       flash.notice = "Successfully updated organization"
-      redirect_to @organization
+      redirect_to organization
     else
-      flash.now.alert = @organization.errors.full_messages
+      flash.now.alert = organization.errors.full_messages
       render :edit
     end
   end
 
   def show
-    @organization = Organization.find(params[:id])
+    organization
   end
 
   class Params
@@ -42,6 +42,13 @@ class OrganizationsController < ApplicationController
 
 
   private
+
+  def organization
+    return @organization if @organization.present?
+    @organization = Organization.find_by_vanity_string(request.subdomain)
+    @organization ||= Organization.find_by_host_url(request.host)
+    @organization ||= Organization.find(params[:organization_id])
+  end
 
   def organization_params
     Params.clean(params)

@@ -89,10 +89,38 @@ describe OrganizationsController do
   end
 
   describe "#show" do
-    it "creates a new instance of Authentication" do
-      get :show, id: organization.id
+    context "when using subdomains" do
+      before do
+        @request.host = "#{organization.vanity_string}.example.com"
+      end
 
-      expect(assigns :organization).to eq organization
+      it "creates a new instance of Authentication" do
+        get :show
+
+        expect(assigns :organization).to eq organization
+      end
+    end
+
+    context "when hosting on another site" do
+      before do
+        host = 'foobarbaz.om'
+        organization.update_attributes(host_url: host)
+        @request.host = host
+      end
+
+      it "creates a new instance of Authentication" do
+        get :show
+
+        expect(assigns :organization).to eq organization
+      end
+    end
+
+    context "when using reqular params" do
+      it "creates a new instance of Authentication" do
+        get :show, id: organization.id
+
+        expect(assigns :organization).to eq organization
+      end
     end
   end
 end
