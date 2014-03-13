@@ -1,12 +1,13 @@
 class OrganizationsController < ApplicationController
   load_and_authorize_resource
+  before_filter :lookup_organization, except: [:new, :create]
 
   def new
     @organization = Organization.new
   end
 
   def create
-    @organization = Organization.new(Params.clean(params))
+    @organization = Organization.new(organization_params)
 
     if @organization.save
       current_user.memberships.create(organization: @organization)
@@ -19,9 +20,7 @@ class OrganizationsController < ApplicationController
   end
 
   def update
-    organization = Organization.find(params[:id])
-
-    if organization.update_attributes(Params.clean(params))
+    if organization.update_attributes(organization_params)
       flash.notice = "Successfully updated organization"
       redirect_to organization
     else
@@ -30,27 +29,24 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  def show
+
+  private
+
+  def organization
+    @organization ||= Organization.lookup(request.host, request.subdomain, params[:organization_id])
+  end
+
+  def lookup_organization
     organization
+  end
+
+  def organization_params
+    Params.clean(params)
   end
 
   class Params
     def self.clean(params)
       params.require(:organization).permit(:name, :description, :vanity_string)
     end
-  end
-
-
-  private
-
-  def organization
-    return @organization if @organization.present?
-    @organization = Organization.find_by_vanity_string(request.subdomain)
-    @organization ||= Organization.find_by_host_url(request.host)
-    @organization ||= Organization.find(params[:organization_id])
-  end
-
-  def organization_params
-    Params.clean(params)
   end
 end

@@ -1,65 +1,65 @@
 class CampaignsController < ApplicationController
   load_and_authorize_resource through: :organization
+  before_filter :lookup_organization_and_campaign
 
   def new
     build_campaign_target
   end
 
   def edit
-    @campaign_target = @campaign.campaign_targets.first
+    @campaign_target = campaign.campaign_targets.first
     @target = @campaign_target.target
   end
 
   def create
-    if @campaign.save
+    if campaign.save
       flash.notice = 'Successfully created a new campaign'
-      redirect_to [@organization, @campaign]
+      redirect_to [organization, campaign]
     else
       build_campaign_target
-      flash.now.alert = @campaign.errors.full_messages
+      flash.now.alert = campaign.errors.full_messages
       render :new
     end
   end
 
   def update
-    if @campaign.update_attributes(Params.clean(params))
+    if campaign.update_attributes(Params.clean(params))
       flash.notice = 'Campaign successfully updated'
-      redirect_to [@organization, @campaign]
+      redirect_to [organization, campaign]
     else
-      @campaign_target = @campaign.campaign_targets.first
+      @campaign_target = campaign.campaign_targets.first
       @target = @campaign_target.target
-      flash.now.alert = @campaign.errors.full_messages
+      flash.now.alert = campaign.errors.full_messages
       render :edit
     end
   end
 
   def show
-    @picture = @campaign.picture
+    @picture = campaign.picture
     @twilio_token = TwilioClient.outgoing_token
     @auto_trigger = !!params[:auto]
-    @phone_call = @campaign.phone_calls.build
+    @phone_call = campaign.phone_calls.build
   end
 
 
   private
 
-  def organization
-    return @organization if @organization
-    Rails.logger.info "*" * 80 + "\n" + request.host + "\n" + "*" * 80 + "\n"
-    @organization = Organization.find_by_vanity_string(request.subdomain)
-    @organization ||= Organization.find_by_host_url(request.host)
-    @organization ||= Organization.find(params[:organization_id])
-    if params[:campaign_vanity] || params[:id]
-      @campaign = @organization.campaigns.find_by_vanity_string(params[:campaign_vanity])
-      @campaign ||= @organization.campaigns.find_by_id(params[:id])
-    else
-      @campaign = @organization.campaigns.build
-    end
+  def build_campaign_target
+    @campaign_target = campaign.campaign_targets.build
+    @target = @campaign_target.build_target
   end
 
-  def build_campaign_target
-    @campaign_target = @campaign.campaign_targets.build
-    @target = @campaign_target.build_target
+  def organization
+    @organization ||= Organization.lookup(request.host, request.subdomain, params[:organization_id])
+  end
+
+  def campaign
+    @campaign ||= organization.campaign_lookup(params[:campaign_vanity], params[:id]) ||
+      organization.campaigns.build
+  end
+
+  def lookup_organization_and_campaign
+    organization and organization
   end
 
   class Params
