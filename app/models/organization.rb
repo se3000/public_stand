@@ -8,6 +8,11 @@ class Organization < ActiveRecord::Base
 
   def self.lookup(host_url, vanity_string, organization_id)
     organization = find_by_host_url(host_url) if host_url.present?
+
+    if Rails.configuration.subdomain_base.present?
+      vanity_string.gsub!(".#{Rails.configuration.subdomain_base}", '')
+    end
+
     organization || find_by_vanity_string(vanity_string) || find(organization_id)
   end
 

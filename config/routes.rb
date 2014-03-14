@@ -6,8 +6,8 @@ PublicStand::Application.routes.draw do
   get 'sign_up' => 'authentications#new'
   get 'home' => 'root#home'
   get 'dear-internet' => 'root#dear_internet'
-  get '/:campaign_vanity' => 'campaigns#show', constraints: { subdomain: /.+/ }
-  get '/' => 'organizations#show', constraints: { subdomain: /.+/ }
+  get '/:campaign_vanity' => 'campaigns#show', constraints: { subdomain: /[^(staging)]+/ }
+  get '/' => 'organizations#show', constraints: { subdomain: /[^(staging)]+/ }
   root 'root#home'
 
   resources :authentications, only: [:new, :create]

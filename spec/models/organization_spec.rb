@@ -37,6 +37,15 @@ describe Organization do
     context "when the vanity string is present but no host_url" do
       let(:host_url) { nil }
       it { should == organization_by_vanity_string }
+
+      context "and the subdomain has a base" do
+        let(:subdomain_base) { 'subdomain-base' }
+        let(:vanity_string) { "#{organization_by_vanity_string.vanity_string}.#{subdomain_base}" }
+
+        before { Rails.configuration.stub(subdomain_base: subdomain_base) }
+
+        it { should == organization_by_vanity_string }
+      end
     end
 
     context "when just the id is present" do
