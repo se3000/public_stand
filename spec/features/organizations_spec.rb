@@ -29,6 +29,15 @@ describe "Viewing an organization" do
 
     page.should have_content "Campaigns:"
     page.should have_content clear_water_campaign.name
+    page.should have_content "Create a new campaign"
+  end
+
+  it "does not allow other users to edit the organization" do
+    log_in_as users(:doug)
+
+    visit organization_path(clear_water_initiative)
+
+    page.should have_no_content "Create a new campaign"
   end
 end
 
