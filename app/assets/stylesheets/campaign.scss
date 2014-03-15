@@ -87,37 +87,6 @@ body {
 }
 
 
-.instructions {
-  font-size: 1.5em;
-  font-weight: 500;
-  p {
-    font-size: 1.2em;
-  }
-  span {
-    font-weight: bold;
-  }
-
-  h3 {
-    color: $secondary-color;
-  }
-  .step-1 {
-    input.button{
-      margin-bottom: 0;
-    }
-  }
-  .step-2 {
-    h2 { color: $secondary-color; }
-    h4 { font-weight: 500; }
-    .script{
-      h4 { font-weight: 600; }
-    }
-  }
-
-  .hang-up-btn {
-    margin-top: 1em;
-  }
-}
-
 .twitter-preview {
   padding: 1em;
   margin: 1em;
@@ -180,31 +149,95 @@ $ribbon-size: 167px;
   }
 }
 
-#mobile-instructions {
+.instructions {
+  font-size: 1.5em;
+  font-weight: 500;
+  p {
+    font-size: 1.2em;
+  }
+  span {
+    font-weight: bold;
+  }
+
+  h3 {
+    color: $secondary-color;
+  }
   .step-1 {
-    p {
-      font-size: 14px;
-    }
-    #phone_call_from_number {
-      margin: 0 auto 1em auto;
-      text-align: center;
-    }
-    input {
-      font-size: 14px;
-      width: 80%;
+    input.button{
+      margin-bottom: 0;
     }
   }
   .step-2 {
-    h1 {
-      font-size: 16px;
+    h2 { color: $secondary-color; }
+    h4 { font-weight: 500; }
+    .script{
+      h4 { font-weight: 600; }
     }
-    h2 {
-      font-size: 16px;
+  }
+
+  .hang-up-btn {
+    margin-top: 1em;
+  }
+}
+
+#mobile-instructions {
+  @media only screen and (min-width: 768px) {
+    .step-1 {
+      p {
+        font-size: 1.5em;
+      }
+      #phone_call_from_number {
+        margin: 0 auto 1em auto;
+        text-align: center;
+        width: 60%
+      }
     }
-    h4 {
-      font-size: 16px;
-      .script & {
-        font-size: 20px;
+    .step-2 {
+      h1 {
+        font-size: 16px;
+      }
+      h2 {
+        font-size: 16px;
+      }
+      h4 {
+        font-size: 16px;
+        .script & {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    width: 90%;
+    margin-left: -45%;
+    .step-1 {
+      p {
+        font-size: 18px;
+      }
+      #phone_call_from_number {
+        margin: 0 auto 1em auto;
+        text-align: center;
+      }
+      input {
+        font-size: 14px;
+        width: 80%;
+      }
+      .button{
+        margin-top: 1em;
+      }
+    }
+    .step-2 {
+      h1 {
+        font-size: 16px;
+      }
+      h2 {
+        font-size: 16px;
+      }
+      h4 {
+        font-size: 16px;
+        .script & {
+          font-size: 20px;
+        }
       }
     }
   }
