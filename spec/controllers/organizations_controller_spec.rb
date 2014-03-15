@@ -27,7 +27,7 @@ describe OrganizationsController do
 
   describe "#create" do
     context "when the organization is valid" do
-      let(:organization_params) { {name: "Clear Water Initiative"} }
+      let(:organization_params) { FactoryGirl.attributes_for(:organization) }
 
       it "creates a new instance of Organization" do
         expect {
@@ -89,10 +89,38 @@ describe OrganizationsController do
   end
 
   describe "#show" do
-    it "creates a new instance of Authentication" do
-      get :show, id: organization.id
+    context "when using subdomains" do
+      before do
+        @request.host = "#{organization.vanity_string}.example.com"
+      end
 
-      expect(assigns :organization).to eq organization
+      it "creates a new instance of Authentication" do
+        get :show
+
+        expect(assigns :organization).to eq organization
+      end
+    end
+
+    context "when hosting on another site" do
+      before do
+        host = 'foobarbaz.om'
+        organization.update_attributes(host_url: host)
+        @request.host = host
+      end
+
+      it "creates a new instance of Authentication" do
+        get :show
+
+        expect(assigns :organization).to eq organization
+      end
+    end
+
+    context "when using reqular params" do
+      it "creates a new instance of Authentication" do
+        get :show, id: organization.id
+
+        expect(assigns :organization).to eq organization
+      end
     end
   end
 end
@@ -103,14 +131,15 @@ describe "OrganizationsController::Params" do
       params = ActionController::Parameters.new(organization: {
           name: 'Required',
           description: 'Not Required',
-          email: 'email@example.com'
+          email: 'email@example.com',
+          vanity_string: 'ouch'
         },
         otro: "Woah, no."
       )
 
       cleaned = OrganizationsController::Params.clean(params)
 
-      expect(cleaned).to eq({name: 'Required', description: 'Not Required'}.with_indifferent_access)
+      expect(cleaned).to eq({name: 'Required', description: 'Not Required', vanity_string: 'ouch'}.with_indifferent_access)
     end
   end
 end

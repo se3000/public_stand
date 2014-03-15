@@ -101,11 +101,6 @@ body {
     color: $secondary-color;
   }
   .step-1 {
-    #phone_call_from_number {
-      width: 50%;
-      margin: 0 auto 1em auto;
-      text-align: center;
-    }
     input.button{
       margin-bottom: 0;
     }
@@ -182,5 +177,35 @@ $ribbon-size: 167px;
   #comments {
     height: 135px;
     resize: none;
+  }
+}
+
+#mobile-instructions {
+  .step-1 {
+    p {
+      font-size: 14px;
+    }
+    #phone_call_from_number {
+      margin: 0 auto 1em auto;
+      text-align: center;
+    }
+    input {
+      font-size: 14px;
+      width: 80%;
+    }
+  }
+  .step-2 {
+    h1 {
+      font-size: 16px;
+    }
+    h2 {
+      font-size: 16px;
+    }
+    h4 {
+      font-size: 16px;
+      .script & {
+        font-size: 20px;
+      }
+    }
   }
 }
