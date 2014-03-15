@@ -3,11 +3,24 @@
 <head>
   <title>The page you were looking for doesn't exist (404)</title>
   <style>
+  
   body {
+    font-family: helvetica, sans-serif;
     background-color: #ffffff;
     color: #4b4f4f;
+  }
+  .container {
     text-align: center;
-    font-family: helvetica, sans-serif;
+  }
+  .logo {
+    text-align: left;
+    margin-left: 2em;
+    margin-top: 1em;
+    font-size: 2em;
+  }
+  a {
+    text-decoration: none;
+    color: #4b4f4f;
   }
   h1{
     font-size: 6em;
@@ -28,9 +41,12 @@
 <body>
   <!-- This file lives in public/404.html -->
   <div>
-    <h1>Oops!</h1>
-    <h2>The page you're looking for doesn't exist.</h2>
-    <p>Where'd it go? We have no idea. You may have mistyped the address.</p>
+    <div class="logo"><a href="http://publicstand.com">Public Stand</a></div>
+    <div class="container">
+      <h1>Oops!</h1>
+      <h2>The page you're looking for doesn't exist.</h2>
+      <p>Where'd it go? We have no idea. You may have mistyped the address.</p>
+    </div>
   </div>
 </body>
 </html>
