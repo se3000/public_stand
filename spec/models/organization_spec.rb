@@ -41,7 +41,6 @@ describe Organization do
       context "and the subdomain has a base" do
         let(:subdomain_base) { 'subdomain-base' }
         let(:vanity_string) { "#{organization_by_vanity_string.vanity_string}.#{subdomain_base}" }
-
         before { Rails.configuration.stub(subdomain_base: subdomain_base) }
 
         it { should == organization_by_vanity_string }
