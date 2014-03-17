@@ -1,15 +1,16 @@
-.row
-  .column.large-12.center
-    .title= "#{@organization.name}" 
-    - if can? :manage, @organization
-      =link_to "Edit Name", edit_organization_path(@organization)
-  
-.row
-  .column.large-10.large-offset-1.end#campaigns-list
-    - @organization.campaigns.each do |campaign|
-      %h3= link_to(campaign.name, [@organization, campaign])
+#organization-page
+  .row
+    .column.large-12.center
+      .title= "#{@organization.name}" 
       - if can? :manage, @organization
-        =link_to "Edit Content", edit_organization_campaign_path(organization_id: @organization, id: campaign)
-        =link_to "Edit Image", edit_picture_path(campaign.picture.id)
-      .large-10.large-offset-1= campaign.description
+        =link_to "Edit Name", edit_organization_path(@organization)
+    
+  .row
+    .column.large-10.large-offset-1.end#campaigns-list
+      - @organization.campaigns.each do |campaign|
+        %h3= link_to(campaign.name, [@organization, campaign])
+        - if can? :manage, @organization
+          =link_to "Edit Content", edit_organization_campaign_path(organization_id: @organization, id: campaign)
+          =link_to "Edit Image", edit_picture_path(campaign.picture.id)
+        .large-10.large-offset-1= campaign.description
 
