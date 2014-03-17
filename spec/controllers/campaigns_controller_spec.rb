@@ -33,7 +33,7 @@ describe CampaignsController do
 
   describe "#create" do
     context "when the campaign is valid" do
-      let(:campaign_params) { { name: 'May all you pain be campaign' } }
+      let(:campaign_params) { FactoryGirl.attributes_for(:campaign) }
 
       it "creates a new instance of campaign" do
         expect {
@@ -147,6 +147,7 @@ describe "CampaignsController::Params" do
           name: 'No Campaign, No Gain.',
           description: 'Hilarity ensues as Sebastian(Dwayne Johnson) tries to convince politicians, and the world, that Independents are people too.',
           release_date: 'November 11th, 2014',
+          vanity_string: 'so-vain',
           campaign_targets_attributes: [{
             id: 1,
             campaign_id: 2,
@@ -162,6 +163,7 @@ describe "CampaignsController::Params" do
     it { should eq({
         name: 'No Campaign, No Gain.',
         description: 'Hilarity ensues as Sebastian(Dwayne Johnson) tries to convince politicians, and the world, that Independents are people too.',
+        vanity_string: 'so-vain',
         campaign_targets_attributes: [{
           id: 1,
           campaign_id: 2,

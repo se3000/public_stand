@@ -13,5 +13,7 @@
           = render 'talking_points', campaign_target: @campaign.campaign_targets.first
           = link_to "Hang Up", '#', class: 'hang-up btn large', data: {behavior: 'hangUpTrigger'}
         .step-3{hidden: 'hidden'}
+          = render 'feedback_form'
+        .step-4{hidden: 'hidden'}
           = render 'social_sharing'
 #webrtc-arrow

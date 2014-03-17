@@ -9,26 +9,20 @@ describe PhoneCallsController, twilio: true do
   end
 
   describe "#create" do
-    let(:campaign) { campaigns(:clear_water_campaign) }
-    let(:target) { campaign.targets.first }
+    let(:campaign_target) { campaign_targets(:claire_campaign_target) }
+    let(:phone_call_params) { {campaign_target_id: campaign_target.id} }
 
-    it "creates a new call record assocaited with the campaign" do
+    it "associates the call record the campaign target" do
       expect {
-        post :create, campaign_id: campaign.id
-      }.to change { campaign.phone_calls.count }.by(+1)
-    end
-
-    it "associates the call record the campaign's first target" do
-      expect {
-        post :create, campaign_id: campaign.id
-      }.to change { target.phone_calls.count }.by(+1)
+        post :create, phone_call_params
+      }.to change { campaign_target.phone_calls.count }.by(+1)
     end
 
     it "returns JSON with the token and id included" do
       phone_call = double(PhoneCall, id: 10, twilio_token: 'twilioToken', from_number?: false)
       PhoneCall.stub(create: phone_call)
 
-      post :create, campaign_id: campaign.id
+      post :create, phone_call_params
 
       parsed = JSON.parse(response.body)
       expect(parsed['phone_call_id']).to eq 10
@@ -39,7 +33,7 @@ describe PhoneCallsController, twilio: true do
       it "has Twilio call the from_number" do
         PhoneCall.any_instance.should_receive :start
 
-        post :create, campaign_id: campaign.id, phone_call: {from_number: "+15183346656"}
+        post :create, phone_call_params.merge(phone_call: {from_number: "+15183346656"})
       end
     end
 
@@ -47,21 +41,19 @@ describe PhoneCallsController, twilio: true do
       it "does not call the from_number" do
         PhoneCall.any_instance.should_not_receive :start
 
-        post :create, campaign_id: campaign.id, phone_call: {}
+        post :create, phone_call_params.merge(phone_call: {})
       end
     end
   end
 end
 
 describe "PhoneCallsController::Params" do
-  let(:campaign) { campaigns(:clear_water_campaign) }
+  let(:campaign_target) { campaign_targets(:claire_campaign_target) }
 
   describe ".clean" do
-    subject { CampaignsController::Params.clean(params) }
-
     let(:params) do
       ActionController::Parameters.new(
-        campaign_id: campaign.id,
+        campaign_target_id: campaign_target.id,
         phone_call: {
           from_number: '+15183346656',
         }
@@ -72,8 +64,7 @@ describe "PhoneCallsController::Params" do
       cleaned = PhoneCallsController::Params.clean(params)
 
       expect(cleaned).to eq({
-        "campaign"    => campaign,
-        "target"      => campaign.targets.first,
+        "campaign_target"    => campaign_target,
         "from_number" => '+15183346656'
       })
     end

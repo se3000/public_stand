@@ -29,10 +29,10 @@ body {
 
 .cta-banner.columns {
   background-color: $cta-background;
-  padding-top: 50px;
+  padding-top: 200px;
   padding-left: 0 !important;
   padding-right: 0 !important;
-  top: -9em;
+  top: -18em;
   @media only screen and (max-width: 767px) {
     top: 0;
     padding-top: 0;
@@ -87,42 +87,6 @@ body {
 }
 
 
-.instructions {
-  font-size: 1.5em;
-  font-weight: 500;
-  p {
-    font-size: 1.2em;
-  }
-  span {
-    font-weight: bold;
-  }
-
-  h3 {
-    color: $secondary-color;
-  }
-  .step-1 {
-    #phone_call_from_number {
-      width: 50%;
-      margin: 0 auto 1em auto;
-      text-align: center;
-    }
-    input.button{
-      margin-bottom: 0;
-    }
-  }
-  .step-2 {
-    h2 { color: $secondary-color; }
-    h4 { font-weight: 500; }
-    .script{
-      h4 { font-weight: 600; }
-    }
-  }
-
-  .hang-up-btn {
-    margin-top: 1em;
-  }
-}
-
 .twitter-preview {
   padding: 1em;
   margin: 1em;
@@ -145,35 +109,104 @@ body {
   font-size: 1.2em;
 }
 
-$ribbon-size: 167px;
-.ribbon-left, .ribbon-right {
-  position: absolute;
-  top: 92%;
-  width: $ribbon-size;
-  height: $ribbon-size/2;
-  background-color: $cta-background;
-  z-index: -1;
-}
-.ribbon-left {
-  left: 10px;
 
-  -moz-box-shadow:    4px 7px 20px -7px #222;
-  -webkit-box-shadow: 4px 7px 20px -7px #222;
-  box-shadow:         4px 7px 20px -7px #222;
-
-  -webkit-transform: rotate(330deg);
-  -moz-transform: rotate(330deg);
-  transform: rotate(330deg);
+#phone-call-feedback {
+  #comments {
+    height: 135px;
+    resize: none;
+  }
 }
 
-.ribbon-right {
-  left: 156px;
+.instructions {
+  font-size: 1.5em;
+  font-weight: 500;
+  p {
+    font-size: 1.2em;
+  }
+  span {
+    font-weight: bold;
+  }
 
-  -moz-box-shadow:    4px -7px 20px -7px #222;
-  -webkit-box-shadow: 4px -7px 20px -7px #222;
-  box-shadow:         4px -7px 20px -7px #222;
+  h3 {
+    color: $secondary-color;
+  }
+  .step-1 {
+    input.button{
+      margin-bottom: 0;
+    }
+  }
+  .step-2 {
+    h2 { color: $secondary-color; }
+    h4 { font-weight: 500; }
+    .script{
+      h4 { font-weight: 600; }
+    }
+  }
 
-  -webkit-transform: rotate(30deg);
-  -moz-transform: rotate(30deg);
-  transform: rotate(30deg);
+  .hang-up-btn {
+    margin-top: 1em;
+  }
+}
+
+#mobile-instructions {
+  @media only screen and (min-width: 768px) {
+    .step-1 {
+      p {
+        font-size: 1.5em;
+      }
+      #phone_call_from_number {
+        margin: 0 auto 1em auto;
+        text-align: center;
+        width: 60%
+      }
+    }
+    .step-2 {
+      h1 {
+        font-size: 16px;
+      }
+      h2 {
+        font-size: 16px;
+      }
+      h4 {
+        font-size: 16px;
+        .script & {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    width: 90%;
+    margin-left: -45%;
+    .step-1 {
+      p {
+        font-size: 18px;
+      }
+      #phone_call_from_number {
+        margin: 0 auto 1em auto;
+        text-align: center;
+      }
+      input {
+        font-size: 14px;
+        width: 80%;
+      }
+      .button{
+        margin-top: 1em;
+      }
+    }
+    .step-2 {
+      h1 {
+        font-size: 16px;
+      }
+      h2 {
+        font-size: 16px;
+      }
+      h4 {
+        font-size: 16px;
+        .script & {
+          font-size: 20px;
+        }
+      }
+    }
+  }
 }

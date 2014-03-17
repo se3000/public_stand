@@ -74,4 +74,10 @@ a.btn, form input[type='submit'].btn {
     background-color: #ddd;
     color: #aaa;
   }
+
+  &.secondary {
+    border: 1px solid #555;
+    background-color: #ddd;
+    color: #555;
+  }
 }

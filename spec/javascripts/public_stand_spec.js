@@ -106,4 +106,21 @@ describe('PublicStand', function () {
       });
     });
   });
+
+  describe(".hideCall", function () {
+    var walkthrough;
+
+    beforeEach(function () {
+      walkthrough = {hideCall: function () {}};
+      PublicStand.walkthrough = walkthrough;
+    });
+
+    it('calls hide call on the walkthrough', function () {
+      spyOn(walkthrough, 'hideCall');
+
+      PublicStand.hideCall();
+
+      expect(walkthrough.hideCall).toHaveBeenCalled();
+    });
+  });
 });

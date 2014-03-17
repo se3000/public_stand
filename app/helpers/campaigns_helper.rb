@@ -9,7 +9,7 @@ module CampaignsHelper
       data: {
         behavior: 'callTrigger',
         call_type: 'browser',
-        campaign_id: campaign_target.campaign_id,
+        campaign_target_id: campaign_target.id,
         auto_trigger: options[:auto_trigger]
       }
     })

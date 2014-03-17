@@ -1,14 +1,21 @@
 PublicStand::Application.routes.draw do
-  root 'root#home'
+  get 'twilio_outbound_voice_callback' => 'twilio_callbacks#outbound_voice'
+  get 'twilio_voice_status_callback' => 'twilio_callbacks#voice_status'
   get 'login' => 'sessions#new'
   get 'log_out' => 'sessions#destroy'
   get 'sign_up' => 'authentications#new'
   get 'home' => 'root#home'
   get 'dear-internet' => 'root#dear_internet'
+  get '/:campaign_vanity' => 'campaigns#show', constraints: { subdomain: /[^(staging)]+/ }
+  get '/' => 'organizations#show', constraints: { subdomain: /[^(staging)]+/ }
+  root 'root#home'
 
   resources :authentications, only: [:new, :create]
-  resources :campaigns, only: [] do
+  resources :campaign_targets, only: [] do
     resources :phone_calls, only: [:create]
+  end
+  resources :phone_calls, only: [] do
+    resource :phone_call_feedback, only: [:create], controller: :phone_call_feedback
   end
   resources :email_subscribers, only: [:create]
   resources :organizations, except: [:delete] do
@@ -19,9 +26,6 @@ PublicStand::Application.routes.draw do
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
-
-  get 'twilio_outbound_voice_callback' => 'twilio_callbacks#outbound_voice'
-  get 'twilio_voice_status_callback' => 'twilio_callbacks#voice_status'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -3,7 +3,7 @@ describe('BrowserCall', function () {
   var phoneCallID = 42;
 
   describe('#startCall', function () {
-    var campaignID = 17;
+    var campaignTargetID = 17;
 
     it('calls connectWithTwilio on success', function () {
       spyOn(BrowserCall, 'connectWithTwilio');
@@ -11,13 +11,15 @@ describe('BrowserCall', function () {
         options.success({twilio_token: 'TwiML', phone_call_id: 42}, 'textStatus', 'jqXHR');
       });
 
-      BrowserCall.startCall(campaignID);
+      BrowserCall.startCall(campaignTargetID);
 
       expect(BrowserCall.connectWithTwilio).toHaveBeenCalledWith({twilio_token: 'TwiML', phone_call_id: 42}, 'textStatus', 'jqXHR');
     });
   });
 
   describe('#connectWithTwilio', function () {
+    var $fixture, $feedbackForm;
+
     beforeEach(function () {
       PublicStand.setWalkthrough('mobile');
     });
@@ -63,14 +65,27 @@ describe('BrowserCall', function () {
     });
 
     it('sets up the callbacks for seting up a Twilio Device', function () {
-      spyOn(PublicStand.walkthrough, 'displayNextStep');
+      spyOn(PublicStand.walkthrough, 'hideCall');
       spyOn(Twilio.Device, 'disconnect').and.callFake(function (callback) {
-        callback();
+        if (typeof(callback) == 'function') {
+          callback();
+        }
       });
 
       BrowserCall.connectWithTwilio({phone_call_id: phoneCallID, twilio_token: twilioToken});
 
-      expect(PublicStand.walkthrough.displayNextStep).toHaveBeenCalled();
+      expect(PublicStand.walkthrough.hideCall).toHaveBeenCalled();
+    });
+
+    it('records the phone call ID', function () {
+      $fixture = setFixture('<form id="phone-call-feedback"/>');
+      $feedbackForm = $fixture.find('#phone-call-feedback')
+
+      expect($feedbackForm.data('phone-call-id')).toBeFalsy();
+
+      BrowserCall.connectWithTwilio({phone_call_id: phoneCallID, twilio_token: twilioToken});
+
+      expect($feedbackForm.data('phone-call-id')).toEqual(phoneCallID);
     });
   });
 });

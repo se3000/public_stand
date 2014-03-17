@@ -6,7 +6,7 @@
       .instructions
         .step-1
           %p We'll call and connect you
-          = form_for [@campaign, @phone_call], remote: true, data: {behavior: 'startMobileCall'} do |call_form|
+          = form_for [campaign_target, @phone_call], remote: true, data: {behavior: 'startMobileCall'} do |call_form|
             = call_form.text_field :from_number, placeholder: "Your Phone Number"
             = call_form.submit "Call Me", class: 'button'
         .step-2{hidden: 'hidden'}

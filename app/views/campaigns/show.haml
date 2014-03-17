@@ -4,7 +4,9 @@
 
 .contain-to-grid
   %nav.top-bar{:data => {'topbar' => true}}
-    %h1.left= @campaign.name
+    .row
+      .columns.large-8#no-margin-or-padding
+        %h1.left= @campaign.name
 
 .row
   .large-7.columns

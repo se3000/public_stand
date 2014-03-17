@@ -1,6 +1,6 @@
 BrowserCall = {
-  startCall: function startCall(campaignID) {
-    var url = '/campaigns/' + campaignID + '/phone_calls';
+  startCall: function startCall(campaignTargetID) {
+    var url = '/campaign_targets/' + campaignTargetID + '/phone_calls';
     $.ajax({
       type: 'POST',
       url: url,
@@ -13,12 +13,14 @@ BrowserCall = {
   },
 
   connectWithTwilio: function connectWithTwilio(data, textStatus, jqXHR) {
+    $('#phone-call-feedback').data('phone-call-id', data.phone_call_id);
+
     Twilio.Device.ready(PublicStand.displayInstructions);
     Twilio.Device.setup(data.twilio_token);
 
     Twilio.Device.connect(PublicStand.displayNextStep);
     Twilio.Device.connect({phone_call_id: data.phone_call_id});
 
-    Twilio.Device.disconnect(PublicStand.displayNextStep);
+    Twilio.Device.disconnect(PublicStand.hideCall);
   }
 }

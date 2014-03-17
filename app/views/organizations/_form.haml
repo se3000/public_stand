@@ -7,6 +7,9 @@
       = form.label :description
       = form.text_area :description
 
+      = form.label :vanity_string, 'Vanity String'
+      = form.text_area :vanity_string
+
       = form.submit
       - if @organization.persisted?
         .right= link_to 'Cancel', organization_path(@organization)

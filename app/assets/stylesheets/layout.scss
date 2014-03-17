@@ -80,6 +80,12 @@ header {
     h1, h2, h3, h4, h5, h6 {
       line-height: 2em;
       margin: 0;
+      font-weight: 400;
     }
   }
+}
+
+#no-margin-or-padding {
+  margin: 0px;
+  padding: 0px;
 }

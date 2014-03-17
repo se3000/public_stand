@@ -23,4 +23,6 @@ jQuery(document).foundation()
 $(document).ready(function() {
   Elemental.load(document);
   $('#ps-flash-grandparent').addClass('reveal-modal');
+
+  mixpanel.track("page load", {url: window.location.toString()});
 });

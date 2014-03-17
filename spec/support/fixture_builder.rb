@@ -5,8 +5,8 @@ FixtureBuilder.configure do |fbuilder|
   fbuilder.files_to_check += Dir["spec/factories/*.rb", "spec/support/fixture_builder.rb"]
 
   fbuilder.factory do
-    @clear_water_initiative = Organization.create(name: 'Clear Water Initaitive', description: 'Get wet.')
-    @clear_water_campaign = Campaign.create(name: 'Clear Water for Africa', organization: @clear_water_initiative)
+    @clear_water_initiative = FactoryGirl.create(:organization, name: 'Clear Water Initaitive', description: 'Get wet.')
+    @clear_water_campaign = Campaign.create(name: 'Clear Water for Africa', organization: @clear_water_initiative, vanity_string: 'clear-water-africa')
 
     @gillians_auth = Authentication.create(email: 'gcole@clearwater.org', password: 'claireDontCare', password_confirmation: 'claireDontCare')
     @gillian = User.create(name: "Gillian Cole", authentication: @gillians_auth)
@@ -18,7 +18,7 @@ FixtureBuilder.configure do |fbuilder|
     @claire = Target.create(name: "Claire Underwood", phone_number: "5183346656")
     @claire_campaign_target = CampaignTarget.create(campaign: @clear_water_campaign, target: @claire, script: 'Call that B...')
 
-    @unstarted_call = PhoneCall.create(target: @claire, campaign: @clear_water_campaign)
+    @unstarted_call = PhoneCall.create(campaign_target: @claire_campaign_target)
 
     @dougs_auth = Authentication.create(email: "dstamper@southcarolina.gov", password: 'AwwPeaches', password_confirmation: 'AwwPeaches')
     @doug = User.create(name: "Doug Stamper", authentication: @dougs_auth)
