@@ -7,6 +7,6 @@ describe('mixpanelTrack', function () {
 
     mixpanelTrack(eventName, options);
 
-    expect(mixpanel.track).toHaveBeenCalledWith(eventName, options);
+    expect(mixpanel.track).toHaveBeenCalledWith(eventName, {foo: 'bar', url: window.location.toString()});
   });
 })
