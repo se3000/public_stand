@@ -29,16 +29,6 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  def show
-    @organization = Organization.find(params[:id])
-    if can?(:manage, @organization)
-      render :show
-    else
-      redirect_to new_session_path
-    end
-
-  end
-
   private
 
   def organization
