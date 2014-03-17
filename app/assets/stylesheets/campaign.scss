@@ -109,38 +109,6 @@ body {
   font-size: 1.2em;
 }
 
-$ribbon-size: 167px;
-.ribbon-left, .ribbon-right {
-  position: absolute;
-  top: 92%;
-  width: $ribbon-size;
-  height: $ribbon-size/2;
-  background-color: $cta-background;
-  z-index: -1;
-}
-.ribbon-left {
-  left: 10px;
-
-  -moz-box-shadow:    4px 7px 20px -7px #222;
-  -webkit-box-shadow: 4px 7px 20px -7px #222;
-  box-shadow:         4px 7px 20px -7px #222;
-
-  -webkit-transform: rotate(330deg);
-  -moz-transform: rotate(330deg);
-  transform: rotate(330deg);
-}
-
-.ribbon-right {
-  left: 156px;
-
-  -moz-box-shadow:    4px -7px 20px -7px #222;
-  -webkit-box-shadow: 4px -7px 20px -7px #222;
-  box-shadow:         4px -7px 20px -7px #222;
-
-  -webkit-transform: rotate(30deg);
-  -moz-transform: rotate(30deg);
-  transform: rotate(30deg);
-}
 
 #phone-call-feedback {
   #comments {
