@@ -21,3 +21,7 @@ Twilio = {
     ready: function () {}
   }
 }
+
+mixpanel = {
+  track: function () {}
+};
