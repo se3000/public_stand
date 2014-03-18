@@ -12,7 +12,7 @@
 }
 
 .image-bar{
-  margin: 1.5em 0 2em 0;
+  margin: 0 0 2em 0;
   width: 100%;
 }
 
@@ -26,6 +26,8 @@ body {
   margin-bottom: 1em;
   white-space: pre-line;
 }
+
+.script p { white-space: pre-line; }
 
 .cta-banner.columns {
   background-color: $cta-background;
@@ -99,6 +101,8 @@ body {
   }
 }
 
+textarea#campaign_vanity_string { height: 55px }
+textarea#campaign_description { height: 220px }
 
 .image-bar {
 }
@@ -120,8 +124,9 @@ body {
 .instructions {
   font-size: 1.5em;
   font-weight: 500;
+  h2 {font-size: 2em;}
   p {
-    font-size: 1.2em;
+    font-size: 1em;
   }
   span {
     font-weight: bold;
@@ -131,16 +136,22 @@ body {
     color: $secondary-color;
   }
   .step-1 {
+    h2 {
+      font-size: 2.2em;
+    }
     input.button{
       margin-bottom: 0;
     }
   }
   .step-2 {
-    h2 { color: $secondary-color; }
+    h2 { 
+      color: $secondary-color; 
+    }
     h4 { font-weight: 500; }
     .script{
-      h4 { font-weight: 600; }
+      h4 { font-weight: 400; }
     }
+    p { text-align: left; }
   }
 
   .hang-up-btn {
@@ -152,7 +163,7 @@ body {
   @media only screen and (min-width: 768px) {
     .step-1 {
       p {
-        font-size: 1.5em;
+        font-size: 1em;
       }
       #phone_call_from_number {
         margin: 0 auto 1em auto;
@@ -173,6 +184,7 @@ body {
           font-size: 20px;
         }
       }
+      p { text-align: left; }
     }
   }
   @media only screen and (max-width: 767px) {

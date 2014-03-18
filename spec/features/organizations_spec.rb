@@ -21,13 +21,12 @@ describe "Viewing an organization" do
   let(:clear_water_initiative) { gillian.organizations.first }
   let(:clear_water_campaign) { clear_water_initiative.campaigns.first }
 
-  it "associates the user that creates the organization with the organization" do
+  xit "allows the a member to create another campaign" do
     log_in_as gillian
 
     page.should have_content clear_water_initiative.name
     page.should have_content clear_water_initiative.description
 
-    page.should have_content "Campaigns:"
     page.should have_content clear_water_campaign.name
     page.should have_content "Create a new campaign"
   end
@@ -52,7 +51,9 @@ describe "Editing an organization" do
     visit organization_path(clear_water_initiative)
     page.should have_content clear_water_initiative.description
 
-    click_link 'Edit'
+    within "#organization-page .top-bar" do
+      click_link 'Edit Organization'
+    end
     fill_in "Description", with: "Where is SSN 2 when you need it?"
     click_button 'Update Organization'
 

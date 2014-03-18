@@ -1,14 +1,14 @@
 .row
   .columns.large-8.large-offset-2
     = form_for [@organization, @campaign] do |form|
-      = form.label :name
+      = form.label :name, "Campaign Name"
       = form.text_field :name, id: 'backup-tweet-text'
 
       = form.label :description
       = form.text_area :description
 
-      = form.label :vanity_string, 'Vanity String'
-      = form.text_area :vanity_string
+      = form.label :vanity_string, 'URL Vanity String'
+      = form.text_area :vanity_string, placeholder: 'name-of-campaign'
 
       = form.fields_for :campaign_targets, @campaign_target do |campaign_target_form|
         = campaign_target_form.fields_for :target, @target do |target_form|
