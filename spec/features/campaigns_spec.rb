@@ -32,7 +32,7 @@ describe "Creating a campaign" do
     visit organization_campaign_path(clear_water_initiative, clear_water_campaign)
     click_link 'Edit Campaign'
 
-    fill_in "Name", with: "The Underwoods are killing America!"
+    fill_in "campaign[name]", with: "The Underwoods are killing America!"
     click_button 'Update Campaign'
     page.should have_content "Campaign successfully updated"
     page.should have_content "The Underwoods are killing America!"
