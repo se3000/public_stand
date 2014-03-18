@@ -1,16 +1,25 @@
 #organization-page
+  .contain-to-grid
+    %nav.top-bar{:data => {'topbar' => true}}
+      .row
+        .columns.small-12.large-8-centered
+          %h1.center= "#{@organization.name} Campaigns"
+        %p.center
+          - if can? :manage, @organization
+            =link_to "Edit Organization", edit_organization_path(@organization)
+
   .row
-    .column.large-12.center
-      .title= "#{@organization.name}" 
-      - if can? :manage, @organization
-        =link_to "Edit Name", edit_organization_path(@organization)
-    
+    .columns.large-11.large-offset-1
+      = @organization.description
   .row
-    .column.large-10.large-offset-1.end#campaigns-list
+    .columns.large-10.large-offset-1.end#campaigns-list
       - @organization.campaigns.each do |campaign|
         %h3= link_to(campaign.name, [@organization, campaign])
-        - if can? :manage, @organization
-          =link_to "Edit Content", edit_organization_campaign_path(organization_id: @organization, id: campaign)
-          =link_to "Edit Image", edit_picture_path(campaign.picture.id)
+        #edit-links
+          - if can? :manage, @organization
+            =link_to "Edit Content", edit_organization_campaign_path(organization_id: @organization, id: campaign)
+            =link_to "Edit Image", edit_picture_path(campaign.picture.id)
         .large-10.large-offset-1= campaign.description
-
+      - if can? :manage, @organization
+        %br
+        %h3= link_to("Create a new campaign", new_organization_campaign_path(@organization))
