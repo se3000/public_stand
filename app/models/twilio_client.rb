@@ -4,6 +4,7 @@ class TwilioClient
   OUTGOING_APP_ID = ENV['TWILIO_APP_ID']
   ROOT_URL = ENV['ROOT_URL']
   APP_PHONE_NUMBER = '5186213184'
+  STATUS_CALLBACK = ENV['TWILIO_STATUS_CALLBACK']
 
   def self.outbound_twiml_for(phone_call)
     Twilio::TwiML::Response.new do |response|
@@ -32,7 +33,9 @@ class TwilioClient
       from: "+1#{phone_call.outgoing_number}",
       to: "+1#{phone_call.from_number}",
       url: "#{ROOT_URL}/twilio_outbound_voice_callback?phone_call_id=#{phone_call.id}",
-      method: 'GET'
+      method: 'GET',
+      status_callback: STATUS_CALLBACK, #necessary?
+      status_callback_method: 'GET'     #necessary?
     )
   end
 

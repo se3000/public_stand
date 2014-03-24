@@ -58,7 +58,9 @@ describe TwilioClient do
           from: "+1#{phone_call.outgoing_number}",
           to: "+1#{phone_call.from_number}",
           url: "#{ENV['ROOT_URL']}/twilio_outbound_voice_callback?phone_call_id=#{phone_call.id}",
-          method: "GET"
+          method: 'GET',
+          status_callback: ENV['TWILIO_STATUS_CALLBACK'],
+          status_callback_method: 'GET'
         })
 
       client.begin_call phone_call
