@@ -19,6 +19,7 @@
   = javascript_include_tag "vendor/custom.modernizr"
   = csrf_meta_tag
   = render 'layouts/mixpanel' if mixpanel_enabled?
+  = render 'layouts/google_analytics' if ga_enabled?
 
 %body
   #container
