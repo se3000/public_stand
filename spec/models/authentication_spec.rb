@@ -11,6 +11,12 @@ describe Authentication do
     end
   end
 
+  describe "validations" do
+    let(:older_authentication) { FactoryGirl.create(:authentication) }
+    it { should have_valid(:email).when('completelyRandom2132@horseshoePlantain.com') }
+    it { should_not have_valid(:email).when(older_authentication.email, nil) }
+  end
+
   describe ".authenticate" do
     let(:email) { 'email@example.com' }
     let(:password) { 'Password123' }

@@ -3,6 +3,7 @@ class Authentication < ActiveRecord::Base
 
   belongs_to :user, inverse_of: :authentication
 
+  validates :email, uniqueness: true, presence: true
   validates :user, presence: true, on: :update
 
   def self.authenticate(email, password)
