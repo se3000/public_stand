@@ -1,10 +1,12 @@
 #organization-page
   .contain-to-grid
     %nav.top-bar{:data => {'topbar' => true}}
-      .columns.large-8#no-margin-or-padding
-        %h1.left= @organization.name
-        - if can? :manage, @organization
-          =link_to "Edit Organization", edit_organization_path(@organization)
+      .row
+        .columns.small-12.large-8-centered
+          %h1.center= "#{@organization.name} Campaigns"
+          %p.center
+            - if can? :manage, @organization
+              =link_to "Edit Organization", edit_organization_path(@organization)
 
   .row
     .columns.large-11.large-offset-1
@@ -14,8 +16,9 @@
       - @organization.campaigns.each do |campaign|
         %h3= link_to(campaign.name, [@organization, campaign])
         - if can? :manage, @organization
-          =link_to "Edit Content", edit_organization_campaign_path(organization_id: @organization, id: campaign)
-          =link_to "Edit Image", edit_picture_path(campaign.picture.id)
+          #edit-links
+            =link_to "Edit Content", edit_organization_campaign_path(organization_id: @organization, id: campaign)
+            =link_to "Edit Image", edit_picture_path(campaign.picture.id)
         .large-10.large-offset-1= campaign.description
       - if can? :manage, @organization
         %br

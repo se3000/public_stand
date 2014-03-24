@@ -1,7 +1,14 @@
 #organization-page {
-	#campaigns-list {
-		margin-top: 3em;
-		h3, a {display: inline-block}
-		a { padding-right: 1.5em;}
-	}
+  #campaigns-list {
+    h3, a, #edit-links {
+      display: inline-block
+    }
+    #edit-links a {
+      padding-right: 1.5em;
+      margin-bottom: 1em;
+    }
+    h3 {
+      padding-right: 1.5em;
+    }
+  }
 }
