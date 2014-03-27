@@ -1,5 +1,6 @@
 class PhoneCall < ActiveRecord::Base
   belongs_to :campaign_target
+  has_one :feedback, class_name: "PhoneCallFeedback"
 
   validates :campaign_target, presence: true
   validates :twilio_token, presence: true, uniqueness: true
