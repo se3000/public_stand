@@ -9,7 +9,6 @@ namespace :report do
       puts "Call duration(seconds): #{phone_call.call_duration}"
       puts "Call started at: #{phone_call.created_at}"
       puts "Call connected to: #{phone_call.from_number}" if phone_call.from_number
-      puts "Call connected to: #{phone_call.from_number}" if phone_call.from_number
       if feedback = phone_call.feedback
         puts "Caller email: #{feedback.email_address}"
         puts "Caller comments: #{feedback.comments}"
