@@ -21,6 +21,10 @@ class PhoneCall < ActiveRecord::Base
     campaign_target.outgoing_number
   end
 
+  def supporter_phone_number=(phone_number)
+    self.from_number = phone_number.to_s.gsub(/[^0-9]/,'')
+  end
+
 
   private
 

@@ -66,4 +66,20 @@ describe PhoneCall do
       expect(phone_call.outgoing_number).to eq "outgoing phone number"
     end
   end
+
+  describe "#supporter_phone_number=" do
+    it "removes non numeric characters" do
+      phone_call = PhoneCall.new
+      phone_call.supporter_phone_number = '(518)334-6656'
+      expect(phone_call.from_number).to eq('5183346656')
+
+      phone_call = PhoneCall.new
+      phone_call.supporter_phone_number = '518.334.6656'
+      expect(phone_call.from_number).to eq('5183346656')
+
+      phone_call = PhoneCall.new
+      phone_call.supporter_phone_number = '1.2.3.4'
+      expect(phone_call.from_number).to eq('1234')
+    end
+  end
 end

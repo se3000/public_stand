@@ -65,7 +65,7 @@ describe "PhoneCallsController::Params" do
 
       expect(cleaned).to eq({
         "campaign_target"    => campaign_target,
-        "from_number" => '+15183346656'
+        "supporter_phone_number" => '+15183346656'
       })
     end
   end
