@@ -1,3 +1,4 @@
+= content_for(:title, @campaign.name)
 = content_for(:custom_head) do
   %meta{property: 'og:title', content: @campaign.name}
   %meta{property: 'og:description', content: @campaign.description}
