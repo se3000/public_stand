@@ -82,4 +82,18 @@ describe PhoneCall do
       expect(phone_call.from_number).to eq('1234')
     end
   end
+
+  describe "#call_duration_in_minutes" do
+    subject { PhoneCall.new(call_duration: duration).call_duration_in_minutes }
+
+    context 'when it was less than a minute' do
+      let(:duration) { 25 }
+      it { should == '0:25' }
+    end
+
+    context 'when it is more than a minute' do
+      let(:duration) { 625 }
+      it { should == '10:25' }
+    end
+  end
 end

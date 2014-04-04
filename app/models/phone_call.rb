@@ -9,6 +9,11 @@ class PhoneCall < ActiveRecord::Base
 
   scope :completed, ->{ where(status: 'completed') }
 
+  def self.call_duration_in_minutes(call_duration)
+    return unless call_duration.present?
+    "#{call_duration / 60}:#{call_duration % 60}"
+  end
+
   def start
     TwilioClient.begin_call(self)
   end
@@ -23,6 +28,10 @@ class PhoneCall < ActiveRecord::Base
 
   def supporter_phone_number=(phone_number)
     self.from_number = phone_number.to_s.gsub(/[^0-9]/,'')
+  end
+
+  def call_duration_in_minutes
+    self.class.call_duration_in_minutes(call_duration)
   end
 
 
