@@ -3,10 +3,10 @@
   %meta{property: 'og:title', content: @campaign.name}
   %meta{property: 'og:description', content: @campaign.description}
 
-.contain-to-grid
+.contain-to-grid.header
   %nav.top-bar{:data => {'topbar' => true}}
     .row
-      .columns.large-8#no-margin-or-padding
+      .columns.large-8
         %h1.left= @campaign.name
 
 .row
