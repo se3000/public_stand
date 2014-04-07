@@ -41,11 +41,17 @@ PublicStand.flashWalkthrough = {
     }
   },
 
+  flashRequirements: {
+    major: 10,
+    minor: 1
+  },
+
   upToDate: function upToDate() {
     version = swfobject.getFlashPlayerVersion();
-    if (version.major < 10) {
+    required = this.flashRequirements;
+    if (version.major < required.major) {
       return false;
-    } else if (version.major === 10 && version.minor < 1) {
+    } else if (version.major === required.major && version.minor < required.minor) {
       return false;
     } else {
       return true
