@@ -4,6 +4,7 @@ PublicStand.flashWalkthrough = {
       BrowserCall.startCall(campaignID);
     } else {
       $('#flash-alternative-instructions').foundation('reveal', 'open');
+      mixpanelTrack('update flash');
     }
   },
 
