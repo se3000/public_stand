@@ -5,9 +5,21 @@
     .columns.center
       .instructions
         .step-2
-          = render 'talking_points', campaign_target: @campaign.campaign_targets.first
+          = render 'talking_points', campaign_target: campaign_target
           = link_to "Hang Up", '#', class: 'hang-up btn large', data: {behavior: 'hangUpTrigger'}
         .step-3{hidden: 'hidden'}
           = render 'feedback_form'
         .step-4{hidden: 'hidden'}
           = render 'social_sharing'
+
+.reveal-modal#flash-alternative-instructions
+  .instructions.center
+    %h5
+      It appears that you're Flash player is out of date.
+      %br
+      You have a few options:
+    %ol
+      %li= link_to "Update your Flash player.", "http://get.adobe.com/flashplayer/"
+      %li Visit this page using #{link_to 'Google Chrome', 'https://www.google.com/intl/en/chrome/browser/'} and try again.
+      %li= link_to "Have us call and connect you with #{target.name}.", '#', data: { behavior: 'callTrigger', call_type: 'mobile'}
+    %h5 We're sorry for the inconvenience.
