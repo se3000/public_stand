@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require elemental
 //= require public_stand
+//= require swfobject
 //= require_tree .
 
 jQuery(document).foundation()
