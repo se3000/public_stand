@@ -11,11 +11,6 @@
     .small-12.columns
       = mobile_call_button(campaign_target)
   .campaign-target-info.hide-for-small
-    -# - if @campaign.phone_calls.count > 0
-      -# %p.center
-        -# = "Calls made: #{@campaign.phone_calls.count}"
-        -# %br
-        -# = "Average Call Duration: #{average_call_time_of(campaign_target)}"
     .social.center
       = facebook_share_button(campaign_target)
       = tweet_button(campaign_target)
