@@ -1,6 +1,11 @@
 PublicStand.flashWalkthrough = {
   start: function start(campaignID) {
-    BrowserCall.startCall(campaignID);
+    if (this.upToDate()) {
+      BrowserCall.startCall(campaignID);
+    } else {
+      $('#flash-alternative-instructions').foundation('reveal', 'open');
+      mixpanelTrack('update flash');
+    }
   },
 
   displayInstructions: function displayInstructions() {
@@ -34,6 +39,23 @@ PublicStand.flashWalkthrough = {
       $step2.hide();
       $('#flash-instructions .step-3').show();
       mixpanelTrack('gather feedback', {type: 'flash'});
+    }
+  },
+
+  flashRequirements: {
+    major: 10,
+    minor: 1
+  },
+
+  upToDate: function upToDate() {
+    version = swfobject.getFlashPlayerVersion();
+    required = this.flashRequirements;
+    if (version.major < required.major) {
+      return false;
+    } else if (version.major === required.major && version.minor < required.minor) {
+      return false;
+    } else {
+      return true
     }
   }
 }

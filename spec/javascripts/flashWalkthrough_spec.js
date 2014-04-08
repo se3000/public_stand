@@ -3,12 +3,35 @@ describe('PublicStand.flashWalkthrough', function () {
   var $instructions, $step1, $step2, $step3;
 
   describe('#start', function () {
-    it('starts a call in the browser', function () {
-      spyOn(BrowserCall, 'startCall');
+    describe('when the flash player is up to date', function () {
+      beforeEach(function () {
+        spyOn(swfobject, 'getFlashPlayerVersion').and.returnValue({major: 10, minor: 1});
+      });
 
-      walkthrough.start(3);
+      it('starts a call in the browser', function () {
+        spyOn(BrowserCall, 'startCall');
 
-      expect(BrowserCall.startCall).toHaveBeenCalledWith(3);
+        walkthrough.start(3);
+
+        expect(BrowserCall.startCall).toHaveBeenCalledWith(3);
+      });
+    });
+
+    describe('when the flash player is out of date', function () {
+      beforeEach(function () {
+        setFixture('<div id="flash-alternative-instructions"/>');
+        spyOn(swfobject, 'getFlashPlayerVersion').and.returnValue({major: 10, minor: 0});
+      });
+
+      it('reveals the flash alternative directions', function () {
+        spyOn($.fn, 'foundation').and.callFake(function () {
+          expect(this[0].id).toEqual("flash-alternative-instructions");
+        });
+
+        walkthrough.start(3);
+
+        expect($.fn.foundation).toHaveBeenCalledWith('reveal', 'open');
+      });
     });
   });
 
