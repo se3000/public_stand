@@ -8,6 +8,10 @@ Bundler.require(:default, Rails.env)
 
 module PublicStand
   class Application < Rails::Application
+
+    config.autoload_paths += %W(#{config.root}/lib)
+    config.middleware.use "CustomDomainCookie", ".yourdomain.com"
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -21,5 +25,8 @@ module PublicStand
     # config.i18n.default_locale = :de
 
     config.subdomain_base = ENV['SUBDOMAIN_BASE']
+
+    config.session_store :upgrade_signature_to_encryption_cookie_store,
+      domain: :all
   end
 end
