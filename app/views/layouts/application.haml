@@ -49,6 +49,6 @@
                 %li= link_to 'Edit Image', edit_picture_path(@campaign.picture)
               %li
                 - if logged_in?
-                  = link_to "Log Out", log_out_path
+                  = link_to "Log Out", log_out_url(subdomain: nil)
               %li.divider
   = javascript_include_tag "application"
