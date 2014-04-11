@@ -1,4 +1,6 @@
 PublicStand::Application.routes.draw do
+  subdomain_regex = /[^(staging)(www)]+/
+
   get 'twilio_outbound_voice_callback' => 'twilio_callbacks#outbound_voice'
   get 'twilio_voice_status_callback' => 'twilio_callbacks#voice_status'
   get 'login' => 'sessions#new'
@@ -6,8 +8,8 @@ PublicStand::Application.routes.draw do
   get 'sign_up' => 'authentications#new'
   get 'home' => 'root#home'
   get 'dear-internet' => 'root#dear_internet'
-  get '/:campaign_vanity' => 'campaigns#show', constraints: { subdomain: /[^(staging)]+/ }
-  get '/' => 'organizations#show', constraints: { subdomain: /[^(staging)]+/ }
+  get '/:campaign_vanity' => 'campaigns#show', constraints: { subdomain: subdomain_regex }
+  get '/' => 'organizations#show', constraints: { subdomain: subdomain_regex }
   root 'root#home'
 
   resources :authentications, only: [:new, :create]
