@@ -36,19 +36,19 @@
         %nav.top-bar
           %ul.title-area
             %li
-              %h5 Powered by #{link_to 'Public Stand', 'http://publicstand.com'}
+              %h5 Powered by #{link_to 'Public Stand', root_url}
           %section.top-bar-section
-            %ul.right
-              %li.divider
-              - if @organization && can?(:manage, @organization)
-                %li= link_to 'Edit Organization', edit_organization_path(@organization)
-              - if @campaign && @campaign.persisted? && can?(:manage, @campaign)
+            - if logged_in?
+              %ul.right
                 %li.divider
-                  %li= link_to 'Edit Campaign', edit_organization_campaign_path(@campaign.organization, @campaign)
-                %li.divider
-                %li= link_to 'Edit Image', edit_picture_path(@campaign.picture)
-              %li
-                - if logged_in?
+                - if @organization && can?(:manage, @organization)
+                  %li= link_to 'Edit Organization', edit_organization_vanity(@organization)
+                - if @campaign && @campaign.persisted? && can?(:manage, @campaign)
+                  %li.divider
+                    %li= link_to 'Edit Campaign', edit_campaign_vanity(@campaign)
+                  %li.divider
+                  %li= link_to 'Edit Image', edit_picture_vanity(@campaign.picture)
+                %li
                   = link_to "Log Out", log_out_url(subdomain: nil)
-              %li.divider
+                %li.divider
   = javascript_include_tag "application"

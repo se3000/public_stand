@@ -12,7 +12,7 @@ class OrganizationsController < ApplicationController
     if @organization.save
       current_user.memberships.create(organization: @organization)
       flash.notice = "Successfully created new organization!"
-      redirect_to @organization
+      redirect_to organization_vanity(organization)
     else
       flash.now.alert = organization.errors.full_messages
       render :new
@@ -22,7 +22,7 @@ class OrganizationsController < ApplicationController
   def update
     if organization.update_attributes(organization_params)
       flash.notice = "Successfully updated organization"
-      redirect_to organization
+      redirect_to organization_vanity(organization)
     else
       flash.now.alert = organization.errors.full_messages
       render :edit

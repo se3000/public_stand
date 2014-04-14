@@ -36,4 +36,4 @@
 
       = form.submit
       - if @campaign.persisted?
-        .right= link_to 'Cancel', organization_campaign_path(@organization, @campaign)
+        .right= link_to 'Cancel', campaign_vanity(@campaign)

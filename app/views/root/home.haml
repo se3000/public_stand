@@ -8,7 +8,7 @@
         %h3
           You aren't a part of any organizations.
       - current_user.organizations.each do |organization|
-        %h3= link_to organization.name, organization
+        %h3= link_to organization.name, root_url(subdomain: organization.vanity_string)
         .large-10.large-offset-1= organization.description
     .column
-      %h3= link_to "Create a new organization", new_organization_path
+      %h3= link_to "Create a new organization", new_organization_url

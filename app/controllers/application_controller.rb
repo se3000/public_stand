@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   def ensure_authenticated
     unless logged_in?
       flash.alert = "You must be logged in to access this page"
-      redirect_to login_path
+      redirect_to login_url
     end
   end
 

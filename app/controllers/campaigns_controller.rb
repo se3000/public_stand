@@ -14,7 +14,7 @@ class CampaignsController < ApplicationController
   def create
     if campaign.save
       flash.notice = 'Successfully created a new campaign'
-      redirect_to [organization, campaign]
+      redirect_to campaign_vanity(campaign)
     else
       build_campaign_target
       flash.now.alert = campaign.errors.full_messages
@@ -25,7 +25,7 @@ class CampaignsController < ApplicationController
   def update
     if campaign.update_attributes(Params.clean(params))
       flash.notice = 'Campaign successfully updated'
-      redirect_to [organization, campaign]
+      redirect_to campaign_vanity(campaign)
     else
       @campaign_target = campaign.campaign_targets.first
       @target = @campaign_target.target

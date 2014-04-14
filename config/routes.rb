@@ -8,9 +8,6 @@ PublicStand::Application.routes.draw do
   get 'sign_up' => 'authentications#new'
   get 'home' => 'root#home'
   get 'dear-internet' => 'root#dear_internet'
-  get '/:campaign_vanity' => 'campaigns#show', constraints: { subdomain: subdomain_regex }
-  get '/' => 'organizations#show', constraints: { subdomain: subdomain_regex }
-  root 'root#home'
 
   resources :authentications, only: [:new, :create]
   resources :campaign_targets, only: [] do
@@ -28,6 +25,17 @@ PublicStand::Application.routes.draw do
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
+
+  with_options conditions: { subdomain: subdomain_regex } do |site|
+    get '/', controller: 'organizations', action: 'show', as: 'vanity_organization'
+    get '/edit', controller: 'organizations', action: 'edit', as: 'vanity_edit_organization'
+
+    get '/campaigns/new', controller: 'campaigns', action: 'new', as: 'vanity_new_organization_campaign'
+    get '/:campaign_vanity/edit', controller: 'campaigns', action: 'edit', as: 'vanity_edit_organization_campaign'
+    get '/:campaign_vanity', controller: 'campaigns', action: 'show', as: 'vanity_organization_campaign'
+  end
+
+  root 'root#home'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -5,6 +5,6 @@ class EmailSubscribersController < ApplicationController
     @email_subscriber.save
 
     flash[:notice] = "Thanks! We'll keep you up to date."
-    redirect_to root_path
+    redirect_to root_url
   end
 end
