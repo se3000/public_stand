@@ -26,7 +26,7 @@ PublicStand::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
 
-  with_options conditions: { subdomain: subdomain_regex } do |site|
+  constraints subdomain: subdomain_regex do
     get '/', controller: 'organizations', action: 'show', as: 'vanity_organization'
     get '/edit', controller: 'organizations', action: 'edit', as: 'vanity_edit_organization'
 

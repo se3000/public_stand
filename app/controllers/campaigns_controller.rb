@@ -64,7 +64,7 @@ class CampaignsController < ApplicationController
 
   class Params
     def self.clean(params)
-      params.require(:campaign).permit(
+      attributes = params.require(:campaign).permit(
         :name,
         :description,
         :vanity_string,
@@ -77,6 +77,8 @@ class CampaignsController < ApplicationController
           target_attributes: [:name, :phone_number]
         ]
       )
+      attributes.values.map{|value| value.strip! if value.respond_to?(:strip!) }
+      attributes
     end
   end
 

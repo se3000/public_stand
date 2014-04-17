@@ -20,6 +20,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
+    Capybara.default_host = "http://example.com"
     DatabaseCleaner.start
   end
 
@@ -38,6 +39,8 @@ RSpec.configure do |config|
 end
 
 def log_in(authentication)
+  Capybara.current_session.driver.browser.clear_cookies
+
   authentication = authentication.authentication if authentication.is_a? User
 
   controller.session[:authentication_id] = authentication.id

@@ -29,7 +29,7 @@ describe SessionsController do
         it "redirects to the organization page" do
           post :create, email: email, password: password
 
-          expect(response).to redirect_to organization_path(organization)
+          expect(response).to redirect_to root_url
         end
       end
 

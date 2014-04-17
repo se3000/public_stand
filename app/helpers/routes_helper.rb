@@ -1,8 +1,4 @@
 module RoutesHelper
-  def organization_vanity(organization)
-    root_url(subdomain: organization.vanity_string)
-  end
-
   def edit_organization_vanity(organization)
     vanity_edit_organization_url(subdomain: organization.vanity_string)
   end
@@ -17,13 +13,6 @@ module RoutesHelper
   def new_campaign_vanity(organization)
     vanity_new_organization_campaign_url(
       subdomain: organization.vanity_string
-    )
-  end
-
-  def campaign_vanity(campaign)
-    vanity_organization_campaign_url(
-      campaign_vanity: campaign.vanity_string,
-      subdomain: campaign.organization.vanity_string
     )
   end
 

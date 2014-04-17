@@ -10,9 +10,11 @@ describe "Creating an organization" do
 
     fill_in "Name", with: "Politicians Unsettled by Scandal(the tv show)"
     fill_in "Description", with: "We've had enough."
-    fill_in "Vanity String", with: "We've had enough."
+    fill_in "Vanity String", with: "enough"
     click_button "Create Organization"
-    page.should have_content "Successfully created new organization"
+    page.should have_content "Politicians Unsettled by Scandal(the tv show)"
+    # page.should have_content "Successfully created new organization!"
+    expect(current_url).to eq('http://enough.example.com/')
   end
 end
 
@@ -48,7 +50,7 @@ describe "Editing an organization" do
 
   it "members of the organization can edit the organization" do
     log_in_as gillian
-    visit organization_path(clear_water_initiative)
+    click_link clear_water_initiative.name
     page.should have_content clear_water_initiative.description
 
     within "#organization-page .top-bar" do

@@ -29,6 +29,7 @@ class OrganizationsController < ApplicationController
     end
   end
 
+
   private
 
   def organization
@@ -45,7 +46,9 @@ class OrganizationsController < ApplicationController
 
   class Params
     def self.clean(params)
-      params.require(:organization).permit(:name, :description, :vanity_string)
+      attributes = params.require(:organization).permit(:name, :description, :vanity_string)
+      attributes.values.compact.map(&:strip!)
+      attributes
     end
   end
 end
