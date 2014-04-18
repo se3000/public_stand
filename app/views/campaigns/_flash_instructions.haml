@@ -20,7 +20,7 @@
       %br
       You have a few options:
     %ol
+      %li= link_to "Have us call your phone and connect you with #{target.name}.", '#', data: { behavior: 'callTrigger', call_type: 'mobile'}
       %li= link_to "Update your Flash player.", "http://get.adobe.com/flashplayer/"
       %li Visit this page using #{link_to 'Google Chrome', 'https://www.google.com/intl/en/chrome/browser/'} and try again.
-      %li= link_to "Have us call and connect you with #{target.name}.", '#', data: { behavior: 'callTrigger', call_type: 'mobile'}
     %h5 We're sorry for the inconvenience.
