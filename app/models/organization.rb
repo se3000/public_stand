@@ -10,7 +10,7 @@ class Organization < ActiveRecord::Base
     organization = find_by_host_url(host_url) if host_url.present?
 
     if Rails.configuration.try(:subdomain_base)
-      vanity_string.gsub!(".#{Rails.configuration.subdomain_base}", '')
+      vanity_string.to_s.gsub!(".#{Rails.configuration.subdomain_base}", '')
     end
 
     organization || find_by_vanity_string(vanity_string) || find(organization_id)
