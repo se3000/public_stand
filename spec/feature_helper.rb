@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+include RoutesHelper
+
 def log_in_as(auth)
   auth = auth.authentication if auth.is_a? User
   visit login_path
@@ -14,5 +16,5 @@ def log_in_as(auth)
 end
 
 def log_out
-  visit log_out_path
+  visit log_out_url
 end

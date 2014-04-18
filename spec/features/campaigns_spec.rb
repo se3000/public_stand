@@ -8,7 +8,8 @@ describe "Creating a campaign" do
 
   it "associates the user that creates the organization with the organization" do
     log_in_as gillian
-    visit organization_path(clear_water_initiative)
+    click_link(clear_water_initiative.name)
+    expect(current_url).to eq("http://#{clear_water_initiative.vanity_string}.example.com/")
     click_link "Create a new campaign"
 
     fill_in "backup-tweet-text", with: "Down with the Underwoods"
@@ -29,7 +30,8 @@ describe "Creating a campaign" do
 
   it "does not allow other users to edit the campaign" do
     log_in_as gillian
-    visit organization_campaign_path(clear_water_initiative, clear_water_campaign)
+    click_link clear_water_initiative.name
+    click_link clear_water_campaign.name
     click_link 'Edit Campaign'
 
     fill_in "campaign[name]", with: "The Underwoods are killing America!"
@@ -39,7 +41,7 @@ describe "Creating a campaign" do
     log_out
 
     log_in_as doug
-    visit organization_campaign_path(clear_water_initiative, clear_water_campaign)
+    visit campaign_vanity(clear_water_campaign)
     page.should_not have_link 'Edit Campaign'
   end
 end

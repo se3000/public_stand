@@ -12,4 +12,4 @@
 
       = form.submit
       - if @organization.persisted?
-        .right= link_to 'Cancel', organization_path(@organization)
+        .right= link_to 'Cancel', vanity_organization_url(@organization)

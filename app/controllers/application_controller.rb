@@ -3,14 +3,14 @@ class ApplicationController < ActionController::Base
 
   before_filter :sanitize_for_cancan
 
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :organization_vanity, :campaign_vanity
 
   private
 
   def ensure_authenticated
     unless logged_in?
       flash.alert = "You must be logged in to access this page"
-      redirect_to login_path
+      redirect_to login_url
     end
   end
 
@@ -31,4 +31,16 @@ class ApplicationController < ActionController::Base
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
   end
+
+  def organization_vanity(organization)
+    root_url(subdomain: organization.vanity_string)
+  end
+
+  def campaign_vanity(campaign)
+    vanity_organization_campaign_url(
+      campaign_vanity: campaign.vanity_string,
+      subdomain: campaign.organization.vanity_string
+    )
+  end
+
 end
