@@ -7,7 +7,7 @@
           %h1.center= "#{@organization.name} Campaigns"
           %p.center
             - if can? :manage, @organization
-              =link_to "Edit Organization", edit_organization_vanity(@organization)
+              = link_to "Edit Organization", edit_organization_vanity(@organization)
 
   .row
     .columns.large-11.large-offset-1
@@ -18,8 +18,8 @@
         %h3= link_to(campaign.name, campaign_vanity(campaign))
         - if can? :manage, @organization
           #edit-links
-            =link_to "Edit Content", edit_campaign_vanity(campaign)
-            =link_to "Edit Image", edit_picture_vanity(campaign.picture)
+            = link_to "Edit Content", edit_campaign_vanity(campaign)
+            = link_to "Edit Image", edit_picture_vanity(campaign.picture)
         .large-10.large-offset-1= campaign.description
       - if can? :manage, @organization
         %br

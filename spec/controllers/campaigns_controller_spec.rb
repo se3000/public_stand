@@ -40,7 +40,7 @@ describe CampaignsController do
           post :create, organization_id: organization.id, campaign: campaign_params
         }.to change { Campaign.count }.by(+1)
 
-        expect(response).to redirect_to "http://#{organization.vanity_string}.test.host/#{Campaign.last.vanity_string}"
+        expect(response).to redirect_to "http://#{organization.vanity_string}.#{ENV['HOST_BASE']}/#{Campaign.last.vanity_string}"
       end
     end
 
@@ -70,7 +70,7 @@ describe CampaignsController do
           patch :update, organization_id: organization.id, id: campaign.id, campaign: campaign_params
         }.to change { campaign.reload.name }.to('May all your pain be campaign')
 
-        expect(response).to redirect_to "http://#{organization.vanity_string}.test.host/#{campaign.vanity_string}"
+        expect(response).to redirect_to "http://#{organization.vanity_string}.#{ENV['HOST_BASE']}/#{campaign.vanity_string}"
       end
     end
 

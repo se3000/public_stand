@@ -39,7 +39,7 @@ describe OrganizationsController do
       it "redirects to the new organization page" do
         post :create, organization: organization_params
 
-        expect(response).to redirect_to "http://#{Organization.last.vanity_string}.test.host/"
+        expect(response).to redirect_to "http://#{Organization.last.vanity_string}.#{ENV['HOST_BASE']}/"
       end
     end
 
@@ -73,7 +73,7 @@ describe OrganizationsController do
       it "redirects to the new organization page" do
         patch :update, id: organization.id, organization: organization_params
 
-        expect(response).to redirect_to "http://#{organization.vanity_string}.test.host/"
+        expect(response).to redirect_to "http://#{organization.vanity_string}.#{ENV['HOST_BASE']}/"
       end
     end
 

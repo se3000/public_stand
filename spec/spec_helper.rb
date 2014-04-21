@@ -20,7 +20,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    Capybara.default_host = "http://example.com"
+    Capybara.default_host = "http://lvh.me"
     DatabaseCleaner.start
   end
 

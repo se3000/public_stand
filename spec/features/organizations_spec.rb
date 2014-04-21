@@ -14,7 +14,7 @@ describe "Creating an organization" do
     click_button "Create Organization"
     page.should have_content "Politicians Unsettled by Scandal(the tv show)"
     # page.should have_content "Successfully created new organization!"
-    expect(current_url).to eq('http://enough.example.com/')
+    expect(current_url).to eq('http://enough.lvh.me/')
   end
 end
 

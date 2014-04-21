@@ -1,9 +1,12 @@
 class ApplicationController < ActionController::Base
+  include RoutesHelper
+
   protect_from_forgery with: :exception
 
   before_filter :sanitize_for_cancan
 
-  helper_method :current_user, :logged_in?, :organization_vanity, :campaign_vanity
+  helper_method :current_user, :logged_in?
+  helper_method :organization_vanity, :campaign_vanity, :vanity_options, :subdomain, :host
 
   private
 
@@ -30,17 +33,6 @@ class ApplicationController < ActionController::Base
     resource = controller_name.singularize.to_sym
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
-  end
-
-  def organization_vanity(organization)
-    root_url(subdomain: organization.vanity_string)
-  end
-
-  def campaign_vanity(campaign)
-    vanity_organization_campaign_url(
-      campaign_vanity: campaign.vanity_string,
-      subdomain: campaign.organization.vanity_string
-    )
   end
 
 end
