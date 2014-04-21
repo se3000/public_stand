@@ -36,7 +36,7 @@
         %nav.top-bar
           %ul.title-area
             %li
-              %h5 Powered by #{link_to 'Public Stand', root_url}
+              %h5 Powered by #{link_to 'Public Stand', url_for(host: local_base_url, subdomain: nil)}
           %section.top-bar-section
             - if logged_in?
               %ul.right
@@ -49,6 +49,6 @@
                   %li.divider
                   %li= link_to 'Edit Image', edit_picture_vanity(@campaign.picture)
                 %li
-                  = link_to "Log Out", log_out_url(subdomain: nil)
+                  = link_to "Log Out", log_out_url(host: local_base_url, subdomain: nil)
                 %li.divider
   = javascript_include_tag "application"
