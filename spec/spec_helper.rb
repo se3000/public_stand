@@ -14,13 +14,14 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = false
   config.global_fixtures = :all
+  Capybara.server_port = ENV['PORT']
+  Capybara.default_host = "http://lvh.me"
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
   end
 
   config.before(:each) do
-    Capybara.default_host = "http://lvh.me"
     DatabaseCleaner.start
   end
 

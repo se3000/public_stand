@@ -32,6 +32,7 @@ group :development, :test do
   gem 'jasmine-core', github: 'pivotal/jasmine'
   gem 'jasmine', github: 'pivotal/jasmine-gem'
   gem 'rspec-rails'
+  gem 'selenium-webdriver'
   gem 'spring'
   gem 'valid_attribute'
 end
