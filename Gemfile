@@ -7,8 +7,8 @@ gem 'elementaljs-rails'
 gem 'haml'
 gem 'jquery-rails'
 gem 'pg'
-gem 'rails', '4.0.1'
-gem 'sass-rails'
+gem 'rails', '~> 4.1.0'
+gem 'sass-rails', '~> 4.0.0', '>= 4.0.2' #FIXME unlock when possible
 gem 'turbolinks'
 gem 'twilio-ruby'
 gem 'uglifier'
@@ -32,5 +32,6 @@ group :development, :test do
   gem 'jasmine-core', github: 'pivotal/jasmine'
   gem 'jasmine', github: 'pivotal/jasmine-gem'
   gem 'rspec-rails'
+  gem 'spring'
   gem 'valid_attribute'
 end

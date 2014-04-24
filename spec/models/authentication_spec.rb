@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Authentication do
   describe "has_secure_password" do
     it "does not allow the user to be saved without setting the password confirmation" do
-      auth = Authentication.new(email: 'email@example.com', password: 'password')
+      auth = Authentication.new(email: 'email@example.com', password: 'password', password_confirmation: '')
       auth.should_not be_valid
 
       auth.password_confirmation = 'password'
