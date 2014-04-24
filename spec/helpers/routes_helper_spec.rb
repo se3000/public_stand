@@ -10,12 +10,12 @@ describe RoutesHelper do
 
       context "when the user is not logged in" do
         before { helper.stub(logged_in?: true) }
-        it { should == 'http://test.lvh.me/' }
+        it { should == "http://test.lvh.me:#{ENV['PORT']}/" }
       end
 
       context "when the user is not logged in" do
         before { helper.stub(logged_in?: false) }
-        it { should == 'http://test.lvh.me/' }
+        it { should == "http://test.lvh.me:#{ENV['PORT']}/" }
       end
     end
 
@@ -24,12 +24,12 @@ describe RoutesHelper do
 
       context "when the user is not logged in" do
         before { helper.stub(logged_in?: true) }
-        it { should == 'http://test.lvh.me/' }
+        it { should == "http://test.lvh.me:#{ENV['PORT']}/" }
       end
 
       context "when the user is not logged in" do
         before { helper.stub(logged_in?: false) }
-        it { should == 'http://boom.example.com/' }
+        it { should == "http://boom.example.com:#{ENV['PORT']}/" }
       end
     end
   end
@@ -44,12 +44,12 @@ describe RoutesHelper do
 
       context "when the user is logged in" do
         before { helper.stub(logged_in?: true) }
-        it { should == 'http://test.lvh.me/the-best' }
+        it { should == "http://test.lvh.me:#{ENV['PORT']}/the-best" }
       end
 
       context "when the user is not logged in" do
         before { helper.stub(logged_in?: false) }
-        it { should == 'http://test.lvh.me/the-best' }
+        it { should == "http://test.lvh.me:#{ENV['PORT']}/the-best" }
       end
     end
 
@@ -58,12 +58,12 @@ describe RoutesHelper do
 
       context "when the user is not logged in" do
         before { helper.stub(logged_in?: true) }
-        it { should == 'http://test.lvh.me/the-best' }
+        it { should == "http://test.lvh.me:#{ENV['PORT']}/the-best" }
       end
 
       context "when the user is not logged in" do
         before { helper.stub(logged_in?: false) }
-        it { should == 'http://boom.example.com/the-best' }
+        it { should == "http://boom.example.com:#{ENV['PORT']}/the-best" }
       end
     end
   end

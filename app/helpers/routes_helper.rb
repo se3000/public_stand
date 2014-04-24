@@ -4,7 +4,7 @@ module RoutesHelper
     options.merge({
       subdomain: subdomain(organization),
       host: host(organization),
-      port: (3000 if Rails.env.development?)
+      port: (ENV['PORT'])
     })
   end
 

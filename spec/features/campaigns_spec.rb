@@ -9,7 +9,7 @@ describe "Creating a campaign" do
   it "associates the user that creates the organization with the organization" do
     log_in_as gillian
     click_link(clear_water_initiative.name)
-    expect(current_url).to eq("http://#{clear_water_initiative.vanity_string}.lvh.me/")
+    expect(current_url).to eq("http://#{clear_water_initiative.vanity_string}.lvh.me:#{ENV['PORT']}/")
     click_link "Create a new campaign"
 
     fill_in "backup-tweet-text", with: "Down with the Underwoods"
