@@ -9,6 +9,8 @@ end
 
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
+include RoutesHelper
+
 RSpec.configure do |config|
   config.order = "random"
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

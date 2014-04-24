@@ -2,11 +2,13 @@ class RootController < ApplicationController
   layout "splash"
 
   def home
-    if logged_in?
-      render 'home', layout: 'application'
-    else
+    if logged_out?
       @email_subscriber = EmailSubscriber.new
       render 'organizer_splash'
+    elsif current_user.organizations.one?
+      redirect_to organization_vanity(current_user.organizations.first)
+    else
+      render 'home', layout: 'application'
     end
   end
 

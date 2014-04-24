@@ -1,7 +1,5 @@
 require 'spec_helper'
 
-include RoutesHelper
-
 def log_in_as(auth)
   auth = auth.authentication if auth.is_a? User
   visit login_path

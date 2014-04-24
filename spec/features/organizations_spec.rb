@@ -50,7 +50,6 @@ describe "Editing an organization" do
 
   it "members of the organization can edit the organization" do
     log_in_as gillian
-    click_link clear_water_initiative.name
     page.should have_content clear_water_initiative.description
 
     within "#organization-page .top-bar" do

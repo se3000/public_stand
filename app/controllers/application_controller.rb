@@ -29,6 +29,10 @@ class ApplicationController < ActionController::Base
     current_auth.present?
   end
 
+  def logged_out?
+    !logged_in?
+  end
+
   def sanitize_for_cancan #https://github.com/ryanb/cancan/issues/835#issuecomment-18663815
     resource = controller_name.singularize.to_sym
     method = "#{resource}_params"

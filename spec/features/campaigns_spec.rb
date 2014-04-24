@@ -8,7 +8,6 @@ describe "Creating a campaign" do
 
   it "associates the user that creates the organization with the organization" do
     log_in_as gillian
-    click_link(clear_water_initiative.name)
     expect(current_url).to eq("http://#{clear_water_initiative.vanity_string}.lvh.me:#{ENV['PORT']}/")
     click_link "Create a new campaign"
 
@@ -30,7 +29,6 @@ describe "Creating a campaign" do
 
   it "does not allow other users to edit the campaign" do
     log_in_as gillian
-    click_link clear_water_initiative.name
     click_link clear_water_campaign.name
     click_link 'Edit Campaign'
 
