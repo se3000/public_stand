@@ -1,17 +1,19 @@
 describe('PublicStand.mobileWalkthrough', function () {
   var walkthrough = PublicStand.mobileWalkthrough;
-  var $instructions, $step1, $step2, $step3;
+  var $instructions, $step1, $step2, $step3, $step4;
 
   beforeEach(function () {
     setFixture("<div class='reveal-modal' id='mobile-instructions' style='visibility: hidden;'>\
                  <div class='step-1'/>\
                  <div class='step-2'/>\
                  <div class='step-3'/>\
+                 <div class='step-4'/>\
                </div>");
     $instructions = $('#mobile-instructions');
     $step1 = $('.step-1');
     $step2 = $('.step-2');
     $step3 = $('.step-3');
+    $step4 = $('.step-4');
     $instructions.children().andSelf().hide();
   });
 
@@ -55,6 +57,46 @@ describe('PublicStand.mobileWalkthrough', function () {
 
         expect($step1.is(':visible')).toBeFalsy();
         expect($step2.is(':visible')).toBeTruthy();
+        expect($step3.is(':visible')).toBeFalsy();
+        expect($step4.is(':visible')).toBeFalsy();
+      });
+    });
+
+    describe('when the second step is visible', function () {
+      beforeEach(function () {
+        $step2.show();
+      });
+
+      it('displays the second step', function () {
+        expect($step1.is(':visible')).toBeFalsy();
+        expect($step2.is(':visible')).toBeTruthy();
+        expect($step3.is(':visible')).toBeFalsy();
+
+        walkthrough.displayNextStep();
+
+        expect($step1.is(':visible')).toBeFalsy();
+        expect($step2.is(':visible')).toBeFalsy();
+        expect($step3.is(':visible')).toBeTruthy();
+        expect($step4.is(':visible')).toBeFalsy();
+      });
+    });
+
+    describe('when the third step is visible', function () {
+      beforeEach(function () {
+        $step3.show();
+      });
+
+      it('displays the second step', function () {
+        expect($step2.is(':visible')).toBeFalsy();
+        expect($step3.is(':visible')).toBeTruthy();
+        expect($step4.is(':visible')).toBeFalsy();
+
+        walkthrough.displayNextStep();
+
+        expect($step1.is(':visible')).toBeFalsy();
+        expect($step2.is(':visible')).toBeFalsy();
+        expect($step3.is(':visible')).toBeFalsy();
+        expect($step4.is(':visible')).toBeTruthy();
       });
     });
   });

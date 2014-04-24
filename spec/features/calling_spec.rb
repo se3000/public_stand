@@ -6,14 +6,19 @@ describe "Calling" do
   let(:campaign) { organization.campaigns.first }
   let(:target) { campaign.targets.first }
 
-  before do
-    log_in_as user
-    visit organization_campaign_path(organization, campaign)
-  end
+  it "calls the user", twilio: true, js: true do
+    visit campaign_vanity(campaign)
 
-  xit "calls the user", twilio: true do
+    click_link "Call from your phone"
     fill_in "Your Phone Number", with: '5183346656'
-    click_button "Call #{target.name} from my phone"
-    page.should have_content "Thanks! We'll call you shortly."
+    click_button 'Call Me'
+
+    page.should have_content "Don't know what to say?"
+    click_link "I've completed the call..."
+
+    page.should have_content "How did the call go?"
+    click_link "Skip"
+
+    page.should have_content "Tell your friends to support the cause"
   end
 end
