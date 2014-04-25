@@ -11,7 +11,7 @@
             = call_form.submit "Call Me", class: 'button'
         .step-2{hidden: 'hidden'}
           = render 'talking_points', campaign_target: @campaign.campaign_targets.first
-          = link_to "I've completed the call...", '#', class: 'btn large secondary', data: {behavior: 'displayNextStep'}
+          = link_to "I've completed the call...", '#', class: 'btn large', data: {behavior: 'displayNextStep'}
         .step-3{hidden: 'hidden'}
           = render 'feedback_form'
         .step-4{hidden: 'hidden'}
