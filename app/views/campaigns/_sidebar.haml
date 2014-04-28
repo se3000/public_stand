@@ -1,5 +1,5 @@
-#sidebar.fixed.shadow
-  = image_tag "phone_icon_circles.png", class: "center-block"
+#sidebar.shadow
+  = image_tag "phone_icon_circles.png", class: "center-block hide-for-small"
   - @campaign.campaign_targets.each do |campaign_target|
     - target = campaign_target.target
     .in-browser-cta.hide-for-small.row.collapse

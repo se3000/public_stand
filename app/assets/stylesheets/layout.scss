@@ -92,3 +92,18 @@ header {
   margin: 0px;
   padding: 0px;
 }
+
+.sticky {
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  top: 0;
+  z-index: 10;
+
+  a {
+    width: 100%;
+    margin-bottom: 0;
+    font-size: 1.2em;
+  }
+}
