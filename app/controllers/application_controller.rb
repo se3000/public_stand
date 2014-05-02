@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
   helper_method :organization_vanity, :campaign_vanity, :vanity_options, :subdomain, :host
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to login_url(subdomain: nil)
+  end
+
   private
 
   def ensure_authenticated
