@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   helper_method :organization_vanity, :campaign_vanity, :vanity_options, :subdomain, :host
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to login_url(subdomain: nil)
+    render 'public/404', status: 404
   end
 
   private
