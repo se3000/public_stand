@@ -29,61 +29,79 @@ body {
 
 .script p { white-space: pre-line; }
 
-.cta-banner.columns {
+#sidebar {
   background-color: $cta-background;
-  padding-top: 200px;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  top: -18em;
-  @media only screen and (max-width: 767px) {
-    top: 0;
-    padding-top: 0;
-  }
-
-  img { height: 200px; }
-
+  padding: 0 !important;
   .in-browser-cta {
-
     a {
       line-height: 4em;
       height: 4em;
       margin-bottom: 0;
       font-size: 1.2em;
     }
-    p {
+  }
+
+  @media (max-width: 30em) {
+    width: 100%%;
+    height: 12.5%;
+
+    .columns {
+      padding: 0;
+    }
+  }
+
+  @media (min-width: 767px) {
+    position: fixed;
+    top: 0px;
+    left: 60%;
+    width: 33%;
+    max-width: (960px * 0.333);
+
+    img {
+      height: 200px;
+    }
+
+    .in-browser-cta {
+      a {
+        line-height: 4em;
+        height: 4em;
+        margin-bottom: 0;
+        font-size: 1.2em;
+      }
+      p {
+        background-color: #b6c6de;
+        padding: 1em 0.5em 1em 0.5em;
+        margin-bottom: 0;
+        color: $primary-color;
+      }
+    }
+
+    #or {
+      font-size: 1.5em;
+    }
+
+    .browser-to-mobile-cta {
       background-color: #b6c6de;
-      padding: 1em 0.5em 1em 0.5em;
-      margin-bottom: 0;
-      color: $primary-color;
+      input {
+        margin-bottom: 0;
+      }
+      p {
+        padding: 1em 0.5em 1em 0.5em;
+        margin-bottom: 0;
+        color: $primary-color
+      }
+      .button {
+        margin-bottom: 0;
+        line-height: 7.2em;
+        height: 7.2em;
+      }
     }
-  }
-
-  #or{
-    font-size: 1.5em;
-  }
-
-  .browser-to-mobile-cta{
-    background-color: #b6c6de;
-    input {
-      margin-bottom: 0;
+    .campaign-target-info {
+      margin: 1em 0 1em 0;
+      p { margin-bottom: 1em}
     }
-    p {
-      padding: 1em 0.5em 1em 0.5em;
-      margin-bottom: 0;
-      color: $primary-color
-    }
-    .button {
-      margin-bottom: 0;
-      line-height: 7.2em;
-      height: 7.2em;
-    }
-  }
-  .campaign-target-info {
-    margin: 1em 0 1em 0;
-    p { margin-bottom: 1em}
   }
 }
-
 
 .twitter-preview {
   padding: 1em;

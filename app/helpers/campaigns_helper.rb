@@ -16,8 +16,9 @@ module CampaignsHelper
   end
 
   def mobile_call_button(campaign_target, options = {})
-    link_to("Call from your phone", '#', {
-      class: 'button postfix',
+    text = options[:text] || "Call from your phone"
+    link_to(text, '#', {
+      class: 'button postfix mobile-call',
       data: {
         behavior: 'callTrigger',
         call_type: 'mobile',

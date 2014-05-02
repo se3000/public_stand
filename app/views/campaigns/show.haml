@@ -8,6 +8,10 @@
     .row
       .columns.large-8
         %h1.left= @campaign.name
+.sticky.shadow.hide-for-medium-up
+  - campaign_target = @campaign.campaign_targets.first
+  = mobile_call_button(campaign_target, text: 'Call Now!')
+
 
 .row
   .large-7.columns
@@ -15,8 +19,7 @@
       = image_tag @picture.url, class: 'shadow'
     %h4 by #{@organization.name}
     .campaign-description= @campaign.description
-  .cta-banner.shadow.large-4.large-offset-1.columns
-    = render 'sidebar'
+= render 'sidebar'
 
 = render 'webrtc_instructions'
 = render 'flash_instructions'
