@@ -41,7 +41,6 @@ class CampaignsController < ApplicationController
     @phone_call = @campaign.campaign_targets.first.phone_calls.build
   end
 
-
   private
 
   def build_campaign_target
@@ -56,10 +55,11 @@ class CampaignsController < ApplicationController
   def campaign
     @campaign ||= organization.campaign_lookup(params[:campaign_vanity], params[:id]) ||
       organization.campaigns.build
+    @campaign
   end
 
   def lookup_organization_and_campaign
-    organization and organization
+    organization and campaign
   end
 
   class Params

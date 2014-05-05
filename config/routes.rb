@@ -15,6 +15,7 @@ PublicStand::Application.routes.draw do
   end
   resources :phone_calls, only: [] do
     resource :phone_call_feedback, only: [:create], controller: :phone_call_feedback
+    get '/analytics', controller: 'campaigns', action: 'edit', as: 'vanity_edit_organization_campaign'
   end
   resources :email_subscribers, only: [:create]
   resources :organizations, except: [:delete] do
@@ -32,6 +33,7 @@ PublicStand::Application.routes.draw do
 
     get '/campaigns/new', controller: 'campaigns', action: 'new', as: 'vanity_new_organization_campaign'
     get '/:campaign_vanity/edit', controller: 'campaigns', action: 'edit', as: 'vanity_edit_organization_campaign'
+    get '/:campaign_vanity/analytics', controller: 'campaigns', action: 'analytics', as: 'vanity_analytics_organization_campaign'
     get '/:campaign_vanity', controller: 'campaigns', action: 'show', as: 'vanity_organization_campaign'
   end
 

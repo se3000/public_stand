@@ -1,0 +1,30 @@
+= content_for(:title, @campaign.name)
+= content_for(:custom_head) do
+  %meta{property: 'og:title', content: @campaign.name}
+  %meta{property: 'og:description', content: @campaign.description}
+
+.contain-to-grid.header
+  %nav.top-bar{:data => {'topbar' => true}}
+    .row
+      .columns.large-12
+        %h1.left #{@campaign.name} Analytics
+.row
+  .columns.large-12
+    %table.dynatable{data: {per_page_default: 20}}
+      %thead
+        %tr
+          %th SID
+          %th duration
+          %th started at
+          %th connected to
+          %th email
+          %th comments
+      %tbody
+        - @campaign.campaign_targets.first.phone_calls.completed.each do |phone_call|
+          %tr
+            %td= phone_call.sid
+            %td= phone_call.call_duration
+            %td= phone_call.created_at
+            %td= phone_call.from_number
+            %td= phone_call.feedback.try(:email_address)
+            %td= phone_call.feedback.try(:comments)

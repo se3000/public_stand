@@ -26,4 +26,7 @@ $(document).ready(function() {
   $('#ps-flash-grandparent').addClass('reveal-modal');
 
   mixpanel.track("page load", {url: window.location.toString()});
+
+  $.dynatableSetup({dataset: {perPageDefault: 20}});
+  $('.dynatable').dynatable();
 });
