@@ -12,7 +12,7 @@ class TwilioClient
         response.Say "Hold on while we connect you, we will automatically route you to the FCC complaints line."
       end
       response.Dial callerId: "+1#{phone_call.outgoing_number}" do |dial|
-        dial.Number("+1#{phone_call.target_phone_number}", sendDigits: (phone_call.fcc? ? "ww1ww5" : nil))
+        dial.Number("+1#{phone_call.target_phone_number}", sendDigits: (phone_call.fcc? ? "ww1ww5wwwwwww1" : nil))
       end
     end
   end
