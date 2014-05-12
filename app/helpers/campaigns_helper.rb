@@ -41,6 +41,6 @@ module CampaignsHelper
 
   def campaign_target_share_url(cmpgn_trgt)
     campaign = cmpgn_trgt.campaign
-    organization_campaign_url(campaign.organization, campaign)
+    campaign_vanity(campaign)
   end
 end
