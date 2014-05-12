@@ -2,16 +2,16 @@
   = image_tag "phone_icon_circles.png", class: "center-block hide-for-small"
   - @campaign.campaign_targets.each do |campaign_target|
     - target = campaign_target.target
-    .in-browser-cta.hide-for-small.row.collapse
+    .in-browser-cta.row.collapse.desktop
       .small-12.columns
         = in_browser_call_button(campaign_target, auto_trigger: @auto_trigger)
 
-    .row.center.hide-for-small#or or
+    .row.center.desktop#or or
 
     .in-browser-cta.row.collapse
       .small-12.columns
         = mobile_call_button(campaign_target)
-    .campaign-target-info.hide-for-small
+    .campaign-target-info
       .social.center
         = facebook_share_button(campaign_target)
         = tweet_button(campaign_target)

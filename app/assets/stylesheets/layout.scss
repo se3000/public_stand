@@ -94,16 +94,22 @@ header {
 }
 
 .sticky {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -ms-sticky;
-  position: -o-sticky;
-  top: 0;
-  z-index: 10;
+  @media (max-width: 780px) {
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    top: 0;
+    z-index: 10;
 
-  a {
-    width: 100%;
-    margin-bottom: 0;
-    font-size: 1.2em;
+    a {
+      width: 100%;
+      margin-bottom: 0;
+      font-size: 1.2em;
+    }
+  }
+
+  @media (min-width: 780px) {
+    display: none;
   }
 }
