@@ -17,7 +17,7 @@
     .image-bar
       = image_tag @picture.url, class: 'shadow'
     %h4 by #{@organization.name}
-    .campaign-description= @campaign.description
+    .campaign-description= @campaign.description.html_safe
 = render 'sidebar'
 
 = render 'webrtc_instructions'
