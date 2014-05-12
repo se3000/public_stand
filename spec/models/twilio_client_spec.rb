@@ -4,7 +4,7 @@ describe TwilioClient do
   describe ".outbound_twiml_for" do
     let(:response) { double(:twilio_response) }
     let(:dialer) { double(:twilio_dialer) }
-    let(:phone_call) { double(:twiml_response, target_phone_number: 'any#', outgoing_number: 'another#') }
+    let(:phone_call) { double(:twiml_response, target_phone_number: 'any#', outgoing_number: 'another#', fcc?: nil) }
 
     it "returns a TwiML response calling the phone call's number" do
       expect(Twilio::TwiML::Response).to receive(:new)
@@ -12,7 +12,7 @@ describe TwilioClient do
       expect(response).to receive(:Dial)
         .and_yield(dialer)
       expect(dialer).to receive(:Number)
-        .with("+1#{phone_call.target_phone_number}")
+        .with("+1#{phone_call.target_phone_number}", sendDigits: nil)
 
       TwilioClient.outbound_twiml_for phone_call
     end

@@ -37,6 +37,10 @@ class PhoneCall < ActiveRecord::Base
     self.class.call_duration_in_minutes(call_duration)
   end
 
+  def fcc?
+    campaign_target.campaign.fcc?
+  end
+
 
   private
 

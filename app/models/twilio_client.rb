@@ -6,10 +6,13 @@ class TwilioClient
   APP_PHONE_NUMBER = '5186213184'
   STATUS_CALLBACK = ENV['TWILIO_STATUS_CALLBACK']
 
-  def self.outbound_twiml_for(phone_call)
+  def self.outbound_twiml_for(phone_call, options = {})
     Twilio::TwiML::Response.new do |response|
+      if phone_call.fcc?
+        response.Say "Hold on while we connect you, we will automatically route you to the FCC complaints line."
+      end
       response.Dial callerId: "+1#{phone_call.outgoing_number}" do |dial|
-        dial.Number "+1#{phone_call.target_phone_number}"
+        dial.Number("+1#{phone_call.target_phone_number}", sendDigits: (phone_call.fcc? ? "ww1ww5" : nil))
       end
     end
   end
