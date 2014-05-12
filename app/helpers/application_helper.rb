@@ -10,4 +10,8 @@ module ApplicationHelper
   def ga_enabled?
     Rails.env.production?
   end
+
+  def format_time(time)
+    time.strftime('%m/%d/%y %H:%M')
+  end
 end

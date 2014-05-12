@@ -13,18 +13,19 @@
     %table.dynatable{data: {per_page_default: 20}}
       %thead
         %tr
-          %th SID
-          %th duration
           %th started at
+          %th duration
           %th connected to
           %th email
           %th comments
+          %th SID
       %tbody
-        - @campaign.campaign_targets.first.phone_calls.completed.each do |phone_call|
+        - campaign_target = @campaign.campaign_targets.first
+        - campaign_target.phone_calls.completed.most_recent.each do |phone_call|
           %tr
-            %td= phone_call.sid
-            %td= phone_call.call_duration
-            %td= phone_call.created_at
+            %td= format_time(phone_call.created_at)
+            %td= phone_call.call_duration_in_minutes
             %td= phone_call.from_number
             %td= phone_call.feedback.try(:email_address)
             %td= phone_call.feedback.try(:comments)
+            %td= phone_call.sid
