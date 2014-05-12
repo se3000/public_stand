@@ -87,8 +87,8 @@ describe PhoneCall do
     subject { PhoneCall.new(call_duration: duration).call_duration_in_minutes }
 
     context 'when it was less than a minute' do
-      let(:duration) { 25 }
-      it { should == '0:25' }
+      let(:duration) { 5 }
+      it { should == '0:05' }
     end
 
     context 'when it is more than a minute' do

@@ -8,10 +8,13 @@ class PhoneCall < ActiveRecord::Base
   before_validation :generate_twilio_token, on: :create
 
   scope :completed, ->{ where(status: 'completed') }
+  scope :most_recent, -> { order 'created_at DESC' }
 
   def self.call_duration_in_minutes(call_duration)
     return unless call_duration.present?
-    "#{call_duration / 60}:#{call_duration % 60}"
+    minutes = call_duration / 60
+    seconds = call_duration % 60
+    "#{minutes}:#{0 if seconds < 10}#{seconds}"
   end
 
   def start
