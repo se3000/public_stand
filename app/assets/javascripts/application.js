@@ -31,10 +31,4 @@ $(document).ready(function() {
 
   $.dynatableSetup({dataset: {perPageDefault: 20}});
   $('.dynatable').dynatable();
-
-
-  new wysihtml5.Editor("campaign_description", {
-    toolbar:      "wysihtml5-toolbar",
-    parserRules: wysihtml5ParserRules
-  });
 });
