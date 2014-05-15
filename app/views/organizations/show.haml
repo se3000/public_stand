@@ -20,7 +20,7 @@
           #edit-links
             = link_to "Edit Content", edit_campaign_vanity(campaign)
             = link_to "Edit Image", edit_picture_vanity(campaign.picture)
-        .large-10.large-offset-1= campaign.description
+        .large-10.large-offset-1= campaign.description.try(:html_safe)
       - if can? :manage, @organization
         %br
         %h3= link_to("Create a new campaign", new_campaign_vanity(@organization))
