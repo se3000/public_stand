@@ -16,6 +16,8 @@
 //= require elemental
 //= require public_stand
 //= require swfobject
+//= require wysihtml5
+//= require wysihtml5-rules
 //= require_tree .
 
 jQuery(document).foundation()
