@@ -854,19 +854,15 @@ exports.Device = Device; });
             close.attachEvent("onclick", hideFn);
         }
 
-        
         var firstWords = document.createTextNode("Please select");
         var checkMark = document.createElement("img");
-        checkMark.src = "/assets/checkmark.png";
-        var spanElement = document.createElement("span");
-        spanElement.innerHTML = " Allow ";
+        checkMark.id = "flash-check-mark"
+        checkMark.src = "https://s3.amazonaws.com/publicstand-production/checkmark.png";
         var lastWords = document.createTextNode("from the Flash options before continuing your call.");
         instruction.appendChild(firstWords);
         instruction.appendChild(checkMark);
-        instruction.appendChild(spanElement);
         instruction.appendChild(lastWords);
-        //instruction.appendChild(document.createTextNode("Please select \"Allow\" from the Flash options before continuing your call."));
-        
+
         screen.appendChild(dialog);
         dialog.appendChild(instruction);
         dialog.appendChild(close);
