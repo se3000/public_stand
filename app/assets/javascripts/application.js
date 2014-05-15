@@ -16,6 +16,8 @@
 //= require elemental
 //= require public_stand
 //= require swfobject
+//= require wysihtml5
+//= require wysihtml5-rules
 //= require_tree .
 
 jQuery(document).foundation()
@@ -29,4 +31,10 @@ $(document).ready(function() {
 
   $.dynatableSetup({dataset: {perPageDefault: 20}});
   $('.dynatable').dynatable();
+
+
+  new wysihtml5.Editor("campaign_description", {
+    toolbar:      "wysihtml5-toolbar",
+    parserRules: wysihtml5ParserRules
+  });
 });

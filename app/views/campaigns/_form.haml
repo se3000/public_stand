@@ -5,6 +5,7 @@
       = form.text_field :name, id: 'backup-tweet-text'
 
       = form.label :description
+      = render 'wysihtml5_toolbar'
       = form.text_area :description
 
       = form.label :vanity_string, 'URL Vanity String'
