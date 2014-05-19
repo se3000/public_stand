@@ -81,3 +81,13 @@ a.btn, form input[type='submit'].btn {
     color: #555;
   }
 }
+
+.related {
+  display: inline-block;
+}
+
+.edit {
+  label:after {
+    content: ":";
+  }
+}

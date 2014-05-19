@@ -1,6 +1,9 @@
-.row
+.row.edit
   .columns.large-8.large-offset-2
     = form_for [@organization, @campaign] do |form|
+      = form.label :active, class: 'related'
+      = form.check_box :active, class: 'related'
+
       = form.label :name, "Campaign Name"
       = form.text_field :name, id: 'backup-tweet-text'
 

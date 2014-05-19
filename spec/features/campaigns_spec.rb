@@ -42,4 +42,17 @@ describe "Creating a campaign" do
     visit campaign_vanity(clear_water_campaign)
     page.should_not have_link 'Edit Campaign'
   end
+
+  it "does not allow calls to be made for inactive campaigns" do
+    log_in_as gillian
+    click_link clear_water_campaign.name
+    click_link 'Edit Campaign'
+
+    uncheck "active"
+    click_button 'Update Campaign'
+
+    page.should have_content "Campaign successfully updated"
+    page.should have_content "The Underwoods are killing America!"
+    page.should have_content "This campaign is closed, check out more here."
+  end
 end
