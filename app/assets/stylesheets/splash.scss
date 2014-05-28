@@ -8,7 +8,7 @@
   #phone {
     margin-bottom: 40px;
   }
-
+  background-color: #333f50;
   #organizer-splash {
     background-image: url( "phone_background.png");
     background-repeat: no-repeat;
@@ -21,24 +21,28 @@
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
 
+    .centered {
+      text-align: center;
+    }
+    .no-margin {
+      margin: 0;
+    }
+
     h1, h2 {
       color: rgb(251,181,9);
     }
 
-
+  
     /* Paragraph & Typographic */
     p {
        line-height: 28px;
-       margin-bottom: 2em;
     }
 
-    .centered {
-      text-align: center;
-    }
+    
 
     /* Links */
     a {
-       color: $main-color;
+       color: rgb(251,181,9);
        word-wrap: break-word;
 
        -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
@@ -66,7 +70,7 @@
 
     .btn-theme {
        color: #ffffff;
-       background-color: $main-color;
+       background-color: rgb(251,181,9);
        border-color: transparent;
     }
 
@@ -80,9 +84,6 @@
 
     .header {
       margin-top: 1em;
-      .columns {
-        padding-top: 0;
-      }
       h2 {
         margin-top: .3em;
         font-weight: bold;
@@ -91,8 +92,7 @@
         padding-top: 0;
       }
       .signup-box {
-        background-color: #f9f9f9;
-        margin: 0 1em 0 0;
+        background-color: #4f5b6d; 
       }
       form#new_email_subscriber {
         text-align: center;
@@ -129,13 +129,6 @@
           font-weight: 400;
           font-size: 1.8em;
        }
-       .call-tool {
-          margin-top: 3em;
-          button {
-             background-color: $main-color;
-             width: 284px;
-          }
-       }
     }
 
     #how-works {
@@ -149,21 +142,21 @@
       .columns {
         padding-top: 0;
       }
+      h2 {
+         color: white;
+         font-weight: 400;
+         margin-top: 0;
+      }
       img {
         padding-top: 1em;
         width: 300px;
       }
-      h3 {
-         color: white;
-         font-weight: 400;
-         margin-top: 0;
-         margin-bottom: 20px;
-         font-weight: bold;
-      }
-      p,li {
+      
+      p {
         color: white;
         font-weight: 400;
         font-size: 20px;
+        padding-top: 1em;
       }
       li {
         text-align: left;
@@ -172,6 +165,7 @@
 
     #cta {
       text-align: center;
+      padding-top: 2em;
       p {
         letter-spacing: 1px;
         margin-bottom: 1em;
