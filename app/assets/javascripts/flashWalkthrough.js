@@ -15,14 +15,15 @@ PublicStand.flashWalkthrough = {
 
   displayNextStep: function displayNextStep() {
     var $oldInstructions = $('#ps-flash-grandparent');
-    var $instructions = $('#flash-instructions');
+    $instructions = $('#flash-instructions');
     var $step2 = $instructions.find('.step-2');
     var $step3 = $instructions.find('.step-3');
     var $step4 = $instructions.find('.step-4');
 
-    if (! $oldInstructions.hasClass('completed')) {
-      $instructions.foundation('reveal', 'open');
+    if (!$oldInstructions.hasClass('completed')) {
       $oldInstructions.addClass('completed'); //FIXME: Hiding seems to break the Twilio Flash
+      $oldInstructions.append($instructions.show());
+      $('#ps-flash-parent').css('height', '1px').css('overflow', 'hidden')
       mixpanelTrack('call start', {type: 'flash'});
     } else if ($step2.is(':visible')) {
       this.hideCall();

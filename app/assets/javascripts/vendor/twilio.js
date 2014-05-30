@@ -1071,27 +1071,12 @@ exports.Device = Device; });
         var close = document.createElement("button");
 
       //PublicStand
-        var dialog = document.createElement("h3");
+        var dialog = document.createElement("div");
         screen.id = "ps-flash-grandparent";
         dialog.id = "ps-flash-parent";
         instruction.id = "ps-flash-instruction";
         close.id = 'ps-flash-close';
         close.className = "btn";
-
-        var self = this;
-        var hideFn = function() {
-            self.hide();
-            if (self.closeCb) {
-                self.closeCb.call();
-            }
-        };
-
-        close.appendChild(document.createTextNode("Continue Call"));
-        if (window.addEventListener) {
-            close.addEventListener("click", hideFn, false);
-        } else {
-            close.attachEvent("onclick", hideFn);
-        }
 
         var firstWords = document.createTextNode("Please select");
         var checkMark = document.createElement("img");
@@ -1103,9 +1088,6 @@ exports.Device = Device; });
         instruction.appendChild(lastWords);
         dialog.appendChild(instruction);
       // PublicStand
-        // var screen = document.createElement("div");
-        // var dialog = document.createElement("div");
-        // var close = document.createElement("button");
 
         // screen.style.position = "fixed";
         // screen.style.zIndex = "99999";
@@ -1121,22 +1103,22 @@ exports.Device = Device; });
         // dialog.style.borderRadius = "8px";
         // dialog.style.backgroundColor = "#f8f8f8";
         // dialog.style.border = "8px solid rgb(160, 160, 160)";
-
-        // var self = this;
-        // var hideFn = function() {
-            // self.hide();
-            // if (self.closeCb) {
-                // self.closeCb.call();
-            // }
-        // };
-
-        // close.appendChild(document.createTextNode("Close"));
-        // if (window.addEventListener) {
-            // close.addEventListener("click", hideFn, false);
-        // } else {
-            // close.attachEvent("onclick", hideFn);
-        // }
       // PublicStand
+        var self = this;
+        var hideFn = function() {
+            // self.hide();
+            if (self.closeCb) {
+                self.closeCb.call();
+            }
+        };
+
+        close.appendChild(document.createTextNode("Close"));
+        if (window.addEventListener) {
+            close.addEventListener("click", hideFn, false);
+        } else {
+            close.attachEvent("onclick", hideFn);
+        }
+
         screen.appendChild(dialog);
         dialog.appendChild(close);
 
