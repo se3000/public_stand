@@ -47,3 +47,9 @@
   z-index: 1000;
   display: none;
 }
+
+#__connectionFlash__ {
+  max-height: none !important;
+  max-width: none !important;
+  display: block;
+}
