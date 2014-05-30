@@ -41,40 +41,55 @@ describe('PublicStand.webRTCWalkthrough', function () {
         expect($.fn.foundation).toHaveBeenCalledWith('reveal', 'open');
       });
 
-      it('makes the walkthrough arrow visible', function () {
-        expect($arrow.is(":visible")).toBeFalsy();
+      describe('when the browser is Chrome', function () {
+        beforeEach(function () { PublicStand.chrome = true });
 
-        walkthrough.displayInstructions();
-
-        expect($arrow.is(":visible")).toBeTruthy();
-      });
-
-      describe('when the browser is running in Windows', function () {
-        beforeEach(function () { spyOn(PublicStand, 'browserOS').and.returnValue('windows') });
-
-        it('sets the style for the left', function () {
-          expect($arrow.css('left')).toEqual('auto');
-          expect($arrow.css('right')).toEqual('auto');
+        it('makes the walkthrough arrow visible', function () {
+          expect($arrow.is(":visible")).toBeFalsy();
 
           walkthrough.displayInstructions();
 
-          expect($arrow.css('left')).toEqual('345px');
-          expect($arrow.css('right')).toEqual('auto');
+          expect($arrow.is(":visible")).toBeTruthy();
+        });
+
+
+        describe('and running in Windows', function () {
+          beforeEach(function () { spyOn(PublicStand, 'browserOS').and.returnValue('windows') });
+
+          it('sets the style for the left', function () {
+            expect($arrow.css('left')).toEqual('auto');
+            expect($arrow.css('right')).toEqual('auto');
+
+            walkthrough.displayInstructions();
+
+            expect($arrow.css('left')).toEqual('345px');
+            expect($arrow.css('right')).toEqual('auto');
+          });
+        });
+
+        describe('and running in anything other than windows', function () {
+          beforeEach(function () { spyOn(PublicStand, 'browserOS').and.returnValue('unix') });
+
+          it('removes the style for the right', function () {
+            expect($arrow.css('right')).toEqual('auto');
+            expect($arrow.css('left')).toEqual('auto');
+
+            walkthrough.displayInstructions();
+
+
+            expect($arrow.css('right')).toEqual('60px');
+            expect($arrow.css('left')).toEqual('auto');
+          });
         });
       });
 
-      describe('when the browser is running in anything other than windows', function () {
-        beforeEach(function () { spyOn(PublicStand, 'browserOS').and.returnValue('unix') });
+      describe('when the browser is not Chrome', function () {
+        beforeEach(function () { PublicStand.chrome = false });
 
-        it('removes the style for the right', function () {
-          expect($arrow.css('right')).toEqual('auto');
-          expect($arrow.css('left')).toEqual('auto');
-
+        it('sets the style for the left', function () {
           walkthrough.displayInstructions();
 
-
-          expect($arrow.css('right')).toEqual('60px');
-          expect($arrow.css('left')).toEqual('auto');
+          expect($arrow.is(':visible')).toBeFalsy();
         });
       });
     });

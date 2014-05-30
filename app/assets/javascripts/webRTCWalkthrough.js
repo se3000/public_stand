@@ -31,13 +31,15 @@ PublicStand.webRTCWalkthrough = {
   },
 
   displayArrow: function () {
-    var $arrow = $('#webrtc-arrow');
-    if (PublicStand.browserOS() == 'windows') {
-      $arrow.css('left', '345px');
-    } else {
-      $arrow.css('right', '60px');
+    if (PublicStand.chrome) {
+      var $arrow = $('#webrtc-arrow');
+      if (PublicStand.browserOS() == 'windows') {
+        $arrow.css('left', '345px');
+      } else {
+        $arrow.css('right', '60px');
+      }
+      $arrow.show();
     }
-    $arrow.show();
   },
 
   hideCall: function hideCall() {
