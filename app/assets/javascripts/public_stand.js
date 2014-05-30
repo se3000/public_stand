@@ -1,6 +1,9 @@
 PublicStand = {
+  chrome: (!! navigator.userAgent.match(/Chrome/)),
+  firefox: (!! navigator.userAgent.match(/Firefox/)),
+
   browserCapability: function browserCapability() {
-    if (navigator.userAgent.match(/Chrome/)) {
+    if (PublicStand.chrome || PublicStand.firefox) {
       return 'webRTC';
     } else {
       return 'flash';
