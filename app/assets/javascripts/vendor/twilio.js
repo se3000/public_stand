@@ -1067,27 +1067,46 @@ exports.Device = Device; });
     files["lib/twilio/dialog.js"] = (function(require, exports){ var Dialog = (function() {
     function Dialog() {
         var screen = document.createElement("div");
-        var dialog = document.createElement("div");
+        var instruction = document.createElement("div");
         var close = document.createElement("button");
 
-        screen.style.position = "fixed";
-        screen.style.zIndex = "99999";
-        screen.style.top = "0";
-        screen.style.left = "0";
-        screen.style.width = "1px";
-        screen.style.height = "1px";
-        screen.style.overflow = "hidden";
-        screen.style.visibility = "hidden";
+      //PublicStand
+        var dialog = document.createElement("div");
+        screen.id = "ps-flash-grandparent";
+        dialog.id = "ps-flash-parent";
+        instruction.id = "ps-flash-instruction";
+        close.id = 'ps-flash-close';
+        close.className = "btn";
 
-        dialog.style.margin = "10% auto 0";
-        dialog.style.width = "215px";
-        dialog.style.borderRadius = "8px";
-        dialog.style.backgroundColor = "#f8f8f8";
-        dialog.style.border = "8px solid rgb(160, 160, 160)";
+        var firstWords = document.createTextNode("Please select");
+        var checkMark = document.createElement("img");
+        checkMark.id = "flash-check-mark"
+        checkMark.src = "https://s3.amazonaws.com/publicstand-production/checkmark.png";
+        var lastWords = document.createTextNode("from the Flash options before continuing your call.");
+        instruction.appendChild(firstWords);
+        instruction.appendChild(checkMark);
+        instruction.appendChild(lastWords);
+        dialog.appendChild(instruction);
+      // PublicStand
 
+        // screen.style.position = "fixed";
+        // screen.style.zIndex = "99999";
+        // screen.style.top = "0";
+        // screen.style.left = "0";
+        // screen.style.width = "1px";
+        // screen.style.height = "1px";
+        // screen.style.overflow = "hidden";
+        // screen.style.visibility = "hidden";
+
+        // dialog.style.margin = "10% auto 0";
+        // dialog.style.width = "215px";
+        // dialog.style.borderRadius = "8px";
+        // dialog.style.backgroundColor = "#f8f8f8";
+        // dialog.style.border = "8px solid rgb(160, 160, 160)";
+      // PublicStand
         var self = this;
         var hideFn = function() {
-            self.hide();
+            // self.hide();
             if (self.closeCb) {
                 self.closeCb.call();
             }
@@ -1158,7 +1177,7 @@ exports.Device = Device; });
             else
                 this.close.style.display = "none";
             this.closeCb = closeCb;
-            this.screen.style.width = "100%";
+            // this.screen.style.width = "100%"; //PublicStand
             this.screen.style.height = "auto";
             this.screen.style.visibility = "visible";
             // Firefox uses subpixel units for positioning which is incompatible
@@ -1166,11 +1185,13 @@ exports.Device = Device; });
             // inputs. The workaround is to add a subpixel left margin to the flash
             // component's container. This is a known bug:
             // http://bugs.adobe.com/jira/browse/FP-4656.
-            var dw = this.dialog.style.width.replace("px", "") | 0,
-                ww = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
-                wh = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-            this.dialog.style.marginLeft = (((ww - dw) / 2) | 0) + "px";
-            this.dialog.style.marginTop = ((wh * .1) | 0) + "px";
+          // PublicStand
+            // var dw = this.dialog.style.width.replace("px", "") | 0;
+            // var ww = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            // var wh = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            // this.dialog.style.marginLeft = (((ww - dw) / 2) | 0) + "px";
+            // this.dialog.style.marginTop = ((wh * .1) | 0) + "px";
+          // PublicStand
         },
         /**
          * Hides the dialog.
@@ -2727,7 +2748,7 @@ Device.prototype = {
         // IE9: after showing and hiding the dialog once,
         // often we end up with a blank permissions dialog
         // the next time around. This makes it show back up
-        Device.dialog.screen.style.width = "200%";
+        // Device.dialog.screen.style.width = "200%"; //PublicStand
     },
     connect: function(params) {
         if (typeof params == "function") {
@@ -4173,7 +4194,7 @@ exports.PStream = require("twilio/pstream").PStream;
 exports.Connection = require("twilio/connection").Connection;
 exports.require = require; });
     var TWILIO_ROOT = typeof TWILIO_ROOT != "undefined" ?  TWILIO_ROOT : (function(){
-      return "https://static.twilio.com/libs/twiliojs/refs/9fd4c89/"; //PS
+      return "https://static.twilio.com/libs/twiliojs/refs/9fd4c89/"; //PublicStand
       // var prot = window.location.protocol || "http:";
           // uri = "//static.twilio.com/libs/twiliojs/1.0/",
           // scripts = document.getElementsByTagName("script"),
