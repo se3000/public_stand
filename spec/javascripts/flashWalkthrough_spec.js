@@ -89,14 +89,15 @@ describe('PublicStand.flashWalkthrough', function () {
           expect($oldInstructions.hasClass('completed')).toBeTruthy();
         });
 
-        it('reveals the second set of flash instructions', function () {
-          spyOn($.fn, 'foundation').and.callFake(function () {
-            expect(this[0].id).toEqual('flash-instructions');
+        it('makes the flash box hardly visible', function () {
+          spyOn($.fn, 'css').and.callFake(function () {
+            expect(this[0].id).toEqual('ps-flash-parent');
+            return this;
           });
 
           walkthrough.displayNextStep();
 
-          expect($.fn.foundation).toHaveBeenCalledWith('reveal', 'open');
+          expect($.fn.css).toHaveBeenCalled();
         });
       });
 
